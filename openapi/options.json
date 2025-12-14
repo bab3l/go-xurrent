@@ -1,0 +1,6 @@
+{
+    "additionalVars": {
+        "endpoint": "https://api.xurrent.com"
+    },
+    "replaceVars": true
+}
