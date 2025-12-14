@@ -1,4 +1,4 @@
-module github.com/xurrent/go-xurrent/xurrent
+module github.com/bab3l/go-xurrent
 
 go 1.23
 
