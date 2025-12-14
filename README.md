@@ -78,118 +78,112 @@ All URIs are relative to *https://api.xurrent.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Class0EventsAPI* | [**V1EventsPost**](docs/Class0EventsAPI.md#v1eventspost) | **Post** /v1/events | CreateNewIncident (top impact)
-*Class100OtherAPI* | [**V1EnumsGet**](docs/Class100OtherAPI.md#v1enumsget) | **Get** /v1/enums | GetEnumerationsValues
-*Class100OtherAPI* | [**V1MeGet**](docs/Class100OtherAPI.md#v1meget) | **Get** /v1/me | GetMyData
-*Class10WorkflowsAPI* | [**V1Workflows1Get**](docs/Class10WorkflowsAPI.md#v1workflows1get) | **Get** /v1/workflows/1 | GetWorkflowProperties
-*Class10WorkflowsAPI* | [**V1WorkflowsGet**](docs/Class10WorkflowsAPI.md#v1workflowsget) | **Get** /v1/workflows | GetWorkflows
-*Class11TasksAPI* | [**V1Tasks1Get**](docs/Class11TasksAPI.md#v1tasks1get) | **Get** /v1/tasks/1 | GetTasksProperties
-*Class11TasksAPI* | [**V1Tasks1Patch**](docs/Class11TasksAPI.md#v1tasks1patch) | **Patch** /v1/tasks/1 | SetNewStatus Copy
-*Class11TasksAPI* | [**V1Tasks411828NotesPost**](docs/Class11TasksAPI.md#v1tasks411828notespost) | **Post** /v1/tasks/411828/notes | AddCommentToTask
-*Class11TasksAPI* | [**V1TasksAssignedByMeGet**](docs/Class11TasksAPI.md#v1tasksassignedbymeget) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
-*Class11TasksAPI* | [**V1TasksAssignedToMeGet**](docs/Class11TasksAPI.md#v1tasksassignedtomeget) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
-*Class11TasksAPI* | [**V1TasksAssignedToMyTeamGet**](docs/Class11TasksAPI.md#v1tasksassignedtomyteamget) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
-*Class11TasksAPI* | [**V1TasksGet**](docs/Class11TasksAPI.md#v1tasksget) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
-*Class11TasksAPI* | [**V1TasksManagedByMeGet**](docs/Class11TasksAPI.md#v1tasksmanagedbymeget) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
-*Class11TasksAPI* | [**V1TasksOpenGet**](docs/Class11TasksAPI.md#v1tasksopenget) | **Get** /v1/tasks/open | GetListOfTasks (opened)
-*Class12SitesAdressesAPI* | [**V1Sites1Get**](docs/Class12SitesAdressesAPI.md#v1sites1get) | **Get** /v1/sites/1 | GetSiteProperties
-*Class13ProductsAPI* | [**V1Products1Get**](docs/Class13ProductsAPI.md#v1products1get) | **Get** /v1/products/1 | GetProductProperties
-*Class13ProductsAPI* | [**V1ProductsGet**](docs/Class13ProductsAPI.md#v1productsget) | **Get** /v1/products | GetProductsList
-*Class14ProductCategoriesAPI* | [**V1ProductCategories1Get**](docs/Class14ProductCategoriesAPI.md#v1productcategories1get) | **Get** /v1/product_categories/1 | GetProductCategoriesProperties
-*Class14ProductCategoriesAPI* | [**V1ProductCategoriesGet**](docs/Class14ProductCategoriesAPI.md#v1productcategoriesget) | **Get** /v1/product_categories | GetProductCategoriesList
-*Class15UIExtensionsAPI* | [**V1UiExtensions2405Get**](docs/Class15UIExtensionsAPI.md#v1uiextensions2405get) | **Get** /v1/ui_extensions/2405 | GetUIExtensionProperties Copy
-*Class15UIExtensionsAPI* | [**V1UiExtensionsGet**](docs/Class15UIExtensionsAPI.md#v1uiextensionsget) | **Get** /v1/ui_extensions | GetUIExtensionPropertiesList
-*Class16ServiceLevelAgreementsAPI* | [**V1Slas3809Get**](docs/Class16ServiceLevelAgreementsAPI.md#v1slas3809get) | **Get** /v1/slas/3809 | GetSLAProperties
-*Class16ServiceLevelAgreementsAPI* | [**V1SlasActiveGet**](docs/Class16ServiceLevelAgreementsAPI.md#v1slasactiveget) | **Get** /v1/slas/active | GetSLAListActive
-*Class16ServiceLevelAgreementsAPI* | [**V1SlasGet**](docs/Class16ServiceLevelAgreementsAPI.md#v1slasget) | **Get** /v1/slas | GetSLAListAllByService
-*Class16ServiceLevelAgreementsAPI* | [**V1SlasInactiveGet**](docs/Class16ServiceLevelAgreementsAPI.md#v1slasinactiveget) | **Get** /v1/slas/inactive | GetSLAListInactive
-*Class18RequestTemplatesAPI* | [**V1RequestTemplates1Get**](docs/Class18RequestTemplatesAPI.md#v1requesttemplates1get) | **Get** /v1/request_templates/1 | GetRequestTemplatesProperties
-*Class18RequestTemplatesAPI* | [**V1RequestTemplatesGet**](docs/Class18RequestTemplatesAPI.md#v1requesttemplatesget) | **Get** /v1/request_templates | GetRequestTemplatesListByService
-*Class19ReservationsAPI* | [**V1Get**](docs/Class19ReservationsAPI.md#v1get) | **Get** /v1 | List reservations
-*Class19ReservationsAPI* | [**V1RequestsPost**](docs/Class19ReservationsAPI.md#v1requestspost) | **Post** /v1/requests | Create a reservation
-*Class1RequestsAPI* | [**V1Requests1Cis1Delete**](docs/Class1RequestsAPI.md#v1requests1cis1delete) | **Delete** /v1/requests/1/cis/1 | RemoveLinkWithCi
-*Class1RequestsAPI* | [**V1Requests1Cis1Post**](docs/Class1RequestsAPI.md#v1requests1cis1post) | **Post** /v1/requests/1/cis/1 | SetLinkWithOneCi
-*Class1RequestsAPI* | [**V1Requests1Cis460359Post**](docs/Class1RequestsAPI.md#v1requests1cis460359post) | **Post** /v1/requests/1/cis/460359 | SetCIToRequest
-*Class1RequestsAPI* | [**V1Requests1CisGet**](docs/Class1RequestsAPI.md#v1requests1cisget) | **Get** /v1/requests/1/cis | GetIssueAllRelatedCiList
-*Class1RequestsAPI* | [**V1Requests1DissatisfiedPost**](docs/Class1RequestsAPI.md#v1requests1dissatisfiedpost) | **Post** /v1/requests/1/dissatisfied | ReturnToWork - Decline Execution
-*Class1RequestsAPI* | [**V1Requests1Get**](docs/Class1RequestsAPI.md#v1requests1get) | **Get** /v1/requests/1 | GetIssuesProperties
-*Class1RequestsAPI* | [**V1Requests1GroupedRequestsGet**](docs/Class1RequestsAPI.md#v1requests1groupedrequestsget) | **Get** /v1/requests/1/grouped_requests | GetGroupedRequestLinkedRecordsList
-*Class1RequestsAPI* | [**V1Requests1NotesPost**](docs/Class1RequestsAPI.md#v1requests1notespost) | **Post** /v1/requests/1/notes | AddInternalComment
-*Class1RequestsAPI* | [**V1Requests1Put**](docs/Class1RequestsAPI.md#v1requests1put) | **Put** /v1/requests/1 | SetNewStatus (no_reply)
-*Class1RequestsAPI* | [**V1Requests1SatisfiedPost**](docs/Class1RequestsAPI.md#v1requests1satisfiedpost) | **Post** /v1/requests/1/satisfied | CloseRequest - Satisfied
-*Class1RequestsAPI* | [**V1Requests2048741AuditGet**](docs/Class1RequestsAPI.md#v1requests2048741auditget) | **Get** /v1/requests/2048741/audit | GetIssuesAuditEntries
-*Class1RequestsAPI* | [**V1RequestsAssignedToMeGet**](docs/Class1RequestsAPI.md#v1requestsassignedtomeget) | **Get** /v1/requests/assigned_to_me | GetIssuesList (assigned to ...)
-*Class1RequestsAPI* | [**V1RequestsAssignedToMyTeamGet**](docs/Class1RequestsAPI.md#v1requestsassignedtomyteamget) | **Get** /v1/requests/assigned_to_my_team | GetIssuesList (assigned to my team)
-*Class1RequestsAPI* | [**V1RequestsCompletedGet**](docs/Class1RequestsAPI.md#v1requestscompletedget) | **Get** /v1/requests/completed | GetIssuesList (in status \&quot;completed\&quot;)
-*Class1RequestsAPI* | [**V1RequestsGet**](docs/Class1RequestsAPI.md#v1requestsget) | **Get** /v1/requests/ | GetIssuesList (by subject) Copy
-*Class1RequestsAPI* | [**V1RequestsOpenGet**](docs/Class1RequestsAPI.md#v1requestsopenget) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
-*Class1RequestsAPI* | [**V1RequestsRequestedByOrForMeGet**](docs/Class1RequestsAPI.md#v1requestsrequestedbyorformeget) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
-*Class1RequestsAPI* | [**V1RequestsRequestsOfMyOrganizationGet**](docs/Class1RequestsAPI.md#v1requestsrequestsofmyorganizationget) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
-*Class20NotesAPI* | [**V1Requests1NotesGet**](docs/Class20NotesAPI.md#v1requests1notesget) | **Get** /v1/requests/1/notes | GetIssuesNotesList
-*Class20NotesAPI* | [**V1Requests1NotesGet_0**](docs/Class20NotesAPI.md#v1requests1notesget_0) | **Get** /v1/requests/1/notes/ | GetIssueNotesList (query - created at)
-*Class21AutomationRulesAPI* | [**V1AutomationRules329020Get**](docs/Class21AutomationRulesAPI.md#v1automationrules329020get) | **Get** /v1/automation_rules/329020 | GetAutomationuRulesProperties
-*Class21AutomationRulesAPI* | [**V1AutomationRulesGet**](docs/Class21AutomationRulesAPI.md#v1automationrulesget) | **Get** /v1/automation_rules | GetAutomationuRulesList
-*Class22SearchAPI* | [**V1RequestsGet**](docs/Class22SearchAPI.md#v1requestsget) | **Get** /v1/requests | GetIssuesList (several templates) Copy
-*Class22SearchAPI* | [**V1SearchGet**](docs/Class22SearchAPI.md#v1searchget) | **Get** /v1/search | SearchRecords
-*Class23CustomCollectionsAndElementsAPI* | [**V1CustomCollectionElements31328Get**](docs/Class23CustomCollectionsAndElementsAPI.md#v1customcollectionelements31328get) | **Get** /v1/custom_collection_elements/31328 | GetCustomCollectionElementsProperties
-*Class23CustomCollectionsAndElementsAPI* | [**V1CustomCollectionElementsGet**](docs/Class23CustomCollectionsAndElementsAPI.md#v1customcollectionelementsget) | **Get** /v1/custom_collection_elements | GetCustomCollectionElementsList (by custom_collection_id)
-*Class23CustomCollectionsAndElementsAPI* | [**V1CustomCollections894Get**](docs/Class23CustomCollectionsAndElementsAPI.md#v1customcollections894get) | **Get** /v1/custom_collections/894 | GetCustomCollectionProperties
-*Class23CustomCollectionsAndElementsAPI* | [**V1CustomCollectionsGet**](docs/Class23CustomCollectionsAndElementsAPI.md#v1customcollectionsget) | **Get** /v1/custom_collections | GetCustomCollectionsList
-*Class2PeopleAPI* | [**V1People1CiGet**](docs/Class2PeopleAPI.md#v1people1ciget) | **Get** /v1/people/1/ci | GetUsersCIList
-*Class2PeopleAPI* | [**V1People1ContactsGet**](docs/Class2PeopleAPI.md#v1people1contactsget) | **Get** /v1/people/1/contacts | GetUsersContacts
-*Class2PeopleAPI* | [**V1People1ContactsPost**](docs/Class2PeopleAPI.md#v1people1contactspost) | **Post** /v1/people/1/contacts | CreateNewContactToUser
-*Class2PeopleAPI* | [**V1People1PermissionsGet**](docs/Class2PeopleAPI.md#v1people1permissionsget) | **Get** /v1/people/1/permissions | GetUsersPermissions
-*Class2PeopleAPI* | [**V1People1ServiceCoveragesGet**](docs/Class2PeopleAPI.md#v1people1servicecoveragesget) | **Get** /v1/people/1/service_coverages | GetUsersServiceCoverages
-*Class2PeopleAPI* | [**V1People1SkillPoolsGet**](docs/Class2PeopleAPI.md#v1people1skillpoolsget) | **Get** /v1/people/1/skill_pools | GetUsersSkillPools
-*Class2PeopleAPI* | [**V1People1TeamsGet**](docs/Class2PeopleAPI.md#v1people1teamsget) | **Get** /v1/people/1/teams | GetUsersTeamList
-*Class2PeopleAPI* | [**V1People3944Get**](docs/Class2PeopleAPI.md#v1people3944get) | **Get** /v1/people/3944 | GetUser (by Id)
-*Class2PeopleAPI* | [**V1PeopleDisabledGet**](docs/Class2PeopleAPI.md#v1peopledisabledget) | **Get** /v1/people/disabled | GetUsers (disabled)
-*Class2PeopleAPI* | [**V1PeopleEnabledGet**](docs/Class2PeopleAPI.md#v1peopleenabledget) | **Get** /v1/people/enabled | GetUsers (enabled)
-*Class2PeopleAPI* | [**V1PeopleGet**](docs/Class2PeopleAPI.md#v1peopleget) | **Get** /v1/people | GetUsersByPermision
-*Class2PeopleAPI* | [**V1PeopleInternalGet**](docs/Class2PeopleAPI.md#v1peopleinternalget) | **Get** /v1/people/internal | GetUsers (internal)
-*Class2PeopleAPI* | [**V1PeopleManager53Get**](docs/Class2PeopleAPI.md#v1peoplemanager53get) | **Get** /v1/people/manager&#x3D;53 | GetUserByManager
-*Class2PeopleAPI* | [**V1PeoplePost**](docs/Class2PeopleAPI.md#v1peoplepost) | **Post** /v1/people | CreateNewUser
-*Class2PeopleAPI* | [**V1PeopleSupportDomainGet**](docs/Class2PeopleAPI.md#v1peoplesupportdomainget) | **Get** /v1/people/support_domain | GetUsers (by directory)
-*Class30ImportAPI* | [**V1ImportPost**](docs/Class30ImportAPI.md#v1importpost) | **Post** /v1/import | RunNewImport
-*Class3AttachmentsAPI* | [**V1AttachmentsPost**](docs/Class3AttachmentsAPI.md#v1attachmentspost) | **Post** /v1/attachments | Add Attach - PutAttachToStorageAndGetURL
-*Class3AttachmentsAPI* | [**V1AttachmentsStorageGet**](docs/Class3AttachmentsAPI.md#v1attachmentsstorageget) | **Get** /v1/attachments/storage | Add Attach - ReservePlaceForAttachment
-*Class3AttachmentsAPI* | [**V1AttachmentsUploadGet**](docs/Class3AttachmentsAPI.md#v1attachmentsuploadget) | **Get** /v1/attachments/upload | Get Attach
-*Class3AttachmentsAPI* | [**V1Requests1Patch**](docs/Class3AttachmentsAPI.md#v1requests1patch) | **Patch** /v1/requests/1 | Add Attach (multi) - AddAttachmentsToRequest
-*Class40ExportAPI* | [**V1ExportPost**](docs/Class40ExportAPI.md#v1exportpost) | **Post** /v1/export | RunNewExport (sites, teams)
-*Class40ExportAPI* | [**V1Import75715a414338bb1516ee782a470e5372Get**](docs/Class40ExportAPI.md#v1import75715a414338bb1516ee782a470e5372get) | **Get** /v1/import/75715a414338bb1516ee782a470e5372 | GetExportJobProperties
-*Class40ExportAPI* | [**V1ImportGet**](docs/Class40ExportAPI.md#v1importget) | **Get** /v1/import | GetExportJobsList (all)
-*Class4TeamsAPI* | [**V1Teams1Get**](docs/Class4TeamsAPI.md#v1teams1get) | **Get** /v1/teams/1 | GetTeamProperties
-*Class4TeamsAPI* | [**V1Teams1MembersGet**](docs/Class4TeamsAPI.md#v1teams1membersget) | **Get** /v1/teams/1/members | GetTeamMembersList
-*Class50AccountAPI* | [**V1AccountGet**](docs/Class50AccountAPI.md#v1accountget) | **Get** /v1/account | GetAccountProperties
-*Class51ConfigItemsAPI* | [**V1Cis1Get**](docs/Class51ConfigItemsAPI.md#v1cis1get) | **Get** /v1/cis/1 | GetCIProperties
-*Class51ConfigItemsAPI* | [**V1CisActiveGet**](docs/Class51ConfigItemsAPI.md#v1cisactiveget) | **Get** /v1/cis/active | GetCIList_ActiveCIs
-*Class51ConfigItemsAPI* | [**V1CisGet**](docs/Class51ConfigItemsAPI.md#v1cisget) | **Get** /v1/cis | GetCIByLabel
-*Class51ConfigItemsAPI* | [**V1CisInactiveGet**](docs/Class51ConfigItemsAPI.md#v1cisinactiveget) | **Get** /v1/cis/inactive | GetCIList_InactiveCIs
-*Class51ConfigItemsAPI* | [**V1CisPost**](docs/Class51ConfigItemsAPI.md#v1cispost) | **Post** /v1/cis | CreateNewCI
-*Class51ConfigItemsAPI* | [**V1CisSupportedByMyTeamsGet**](docs/Class51ConfigItemsAPI.md#v1cissupportedbymyteamsget) | **Get** /v1/cis/supported_by_my_teams | GetCIList_supported_by_my_teams
-*Class52CIRelationsAPI* | [**V1Cis1CiRelations586529Delete**](docs/Class52CIRelationsAPI.md#v1cis1cirelations586529delete) | **Delete** /v1/cis/1/ci_relations/586529 | DeleteRelationWithCI
-*Class52CIRelationsAPI* | [**V1Cis1CiRelationsDelete**](docs/Class52CIRelationsAPI.md#v1cis1cirelationsdelete) | **Delete** /v1/cis/1/ci_relations | DeleteAllRelationsWithCI
-*Class52CIRelationsAPI* | [**V1Cis1CiRelationsGet**](docs/Class52CIRelationsAPI.md#v1cis1cirelationsget) | **Get** /v1/cis/1/ci_relations | GetRelatedCIList
-*Class52CIRelationsAPI* | [**V1Cis1CiRelationsPost**](docs/Class52CIRelationsAPI.md#v1cis1cirelationspost) | **Post** /v1/cis/1/ci_relations | SetRelationWithCI
-*Class52CIRelationsAPI* | [**V1Cis1Users1Delete**](docs/Class52CIRelationsAPI.md#v1cis1users1delete) | **Delete** /v1/cis/1/users/1 | DeleteLinkCIwithPerson
-*Class52CIRelationsAPI* | [**V1Cis1Users1Post**](docs/Class52CIRelationsAPI.md#v1cis1users1post) | **Post** /v1/cis/1/users/1 | LinkCIwithPerson
-*Class52CIRelationsAPI* | [**V1Cis1UsersDelete**](docs/Class52CIRelationsAPI.md#v1cis1usersdelete) | **Delete** /v1/cis/1/users | DeleteLinkCIwithAllPersons
-*Class52CIRelationsAPI* | [**V1Cis1UsersGet**](docs/Class52CIRelationsAPI.md#v1cis1usersget) | **Get** /v1/cis/1/users | GetAllUsersLinkedWithCI
-*Class60ProblemsAPI* | [**V1Problems1Patch**](docs/Class60ProblemsAPI.md#v1problems1patch) | **Patch** /v1/problems/1 | SetNewStatus (solved)
-*Class60ProblemsAPI* | [**V1Problems1Requests1Post**](docs/Class60ProblemsAPI.md#v1problems1requests1post) | **Post** /v1/problems/1/requests/1 | UpdateProblem - AddRequestToProblem
-*Class60ProblemsAPI* | [**V1Problems434Patch**](docs/Class60ProblemsAPI.md#v1problems434patch) | **Patch** /v1/problems/434 | SetNewStatus (in_progress)
-*Class60ProblemsAPI* | [**V1ProblemsGet**](docs/Class60ProblemsAPI.md#v1problemsget) | **Get** /v1/problems/ | GetProblemProperties
-*Class60ProblemsAPI* | [**V1ProblemsPost**](docs/Class60ProblemsAPI.md#v1problemspost) | **Post** /v1/problems | CreateNewProblem
-*Class6ServicesAPI* | [**V1Services1Get**](docs/Class6ServicesAPI.md#v1services1get) | **Get** /v1/services/1 | GetServiceProperties
-*Class6ServicesAPI* | [**V1ServicesGet**](docs/Class6ServicesAPI.md#v1servicesget) | **Get** /v1/services | GetServiceByProvider
-*Class7CalendarsAPI* | [**V1CalendarsGet**](docs/Class7CalendarsAPI.md#v1calendarsget) | **Get** /v1/calendars | GetCalendars
-*Class8ServiceOfferingsAPI* | [**V1ServiceOfferings1AuditGet**](docs/Class8ServiceOfferingsAPI.md#v1serviceofferings1auditget) | **Get** /v1/service_offerings/1/audit | GetServiceOfferAuditEntries
-*Class8ServiceOfferingsAPI* | [**V1ServiceOfferings1AuditGet_0**](docs/Class8ServiceOfferingsAPI.md#v1serviceofferings1auditget_0) | **Get** /v1/service_offerings/1/audit/ | GetServiceOfferAuditEntries_UpdatedAfterDDMMYY
-*Class8ServiceOfferingsAPI* | [**V1ServiceOfferings1Get**](docs/Class8ServiceOfferingsAPI.md#v1serviceofferings1get) | **Get** /v1/service_offerings/1 | GetServiceOfferById
-*Class8ServiceOfferingsAPI* | [**V1ServiceOfferingsGet**](docs/Class8ServiceOfferingsAPI.md#v1serviceofferingsget) | **Get** /v1/service_offerings | GetServiceOfferList
-*Class9OrganizationsAPI* | [**V1Organizations19Get**](docs/Class9OrganizationsAPI.md#v1organizations19get) | **Get** /v1/organizations/19 | GetOrganizationProperties
-*Class9OrganizationsAPI* | [**V1OrganizationsGet**](docs/Class9OrganizationsAPI.md#v1organizationsget) | **Get** /v1/organizations | GetOrganizationsList
-*Class9OrganizationsAPI* | [**V1OrganizationsPost**](docs/Class9OrganizationsAPI.md#v1organizationspost) | **Post** /v1/organizations | CreateOrganization
+*AccountAPI* | [**V1AccountGet**](docs/AccountAPI.md#v1accountget) | **Get** /v1/account | GetAccountProperties
+*AttachmentsAPI* | [**V1AttachmentsPost**](docs/AttachmentsAPI.md#v1attachmentspost) | **Post** /v1/attachments | Add Attach - PutAttachToStorageAndGetURL
+*AttachmentsAPI* | [**V1AttachmentsStorageGet**](docs/AttachmentsAPI.md#v1attachmentsstorageget) | **Get** /v1/attachments/storage | Add Attach - ReservePlaceForAttachment
+*AttachmentsAPI* | [**V1AttachmentsUploadGet**](docs/AttachmentsAPI.md#v1attachmentsuploadget) | **Get** /v1/attachments/upload | Get Attach
+*AttachmentsAPI* | [**V1RequestsIdPatch**](docs/AttachmentsAPI.md#v1requestsidpatch) | **Patch** /v1/requests/{id} | Add Attach (multi) - AddAttachmentsToRequest
+*AutomationRulesAPI* | [**V1AutomationRulesGet**](docs/AutomationRulesAPI.md#v1automationrulesget) | **Get** /v1/automation_rules | GetAutomationuRulesList
+*AutomationRulesAPI* | [**V1AutomationRulesIdGet**](docs/AutomationRulesAPI.md#v1automationrulesidget) | **Get** /v1/automation_rules/{id} | GetAutomationuRulesProperties
+*CalendarsAPI* | [**V1CalendarsGet**](docs/CalendarsAPI.md#v1calendarsget) | **Get** /v1/calendars | GetCalendars
+*ConfigurationItemRelationsAPI* | [**V1CisIdCiRelationsDelete**](docs/ConfigurationItemRelationsAPI.md#v1cisidcirelationsdelete) | **Delete** /v1/cis/{id}/ci_relations | DeleteAllRelationsWithCI
+*ConfigurationItemRelationsAPI* | [**V1CisIdCiRelationsGet**](docs/ConfigurationItemRelationsAPI.md#v1cisidcirelationsget) | **Get** /v1/cis/{id}/ci_relations | GetRelatedCIList
+*ConfigurationItemRelationsAPI* | [**V1CisIdCiRelationsIdDelete**](docs/ConfigurationItemRelationsAPI.md#v1cisidcirelationsiddelete) | **Delete** /v1/cis/{id}/ci_relations/{id} | DeleteRelationWithCI
+*ConfigurationItemRelationsAPI* | [**V1CisIdCiRelationsPost**](docs/ConfigurationItemRelationsAPI.md#v1cisidcirelationspost) | **Post** /v1/cis/{id}/ci_relations | SetRelationWithCI
+*ConfigurationItemRelationsAPI* | [**V1CisIdUsersDelete**](docs/ConfigurationItemRelationsAPI.md#v1cisidusersdelete) | **Delete** /v1/cis/{id}/users | DeleteLinkCIwithAllPersons
+*ConfigurationItemRelationsAPI* | [**V1CisIdUsersGet**](docs/ConfigurationItemRelationsAPI.md#v1cisidusersget) | **Get** /v1/cis/{id}/users | GetAllUsersLinkedWithCI
+*ConfigurationItemRelationsAPI* | [**V1CisIdUsersIdDelete**](docs/ConfigurationItemRelationsAPI.md#v1cisidusersiddelete) | **Delete** /v1/cis/{id}/users/{id} | DeleteLinkCIwithPerson
+*ConfigurationItemRelationsAPI* | [**V1CisIdUsersIdPost**](docs/ConfigurationItemRelationsAPI.md#v1cisidusersidpost) | **Post** /v1/cis/{id}/users/{id} | LinkCIwithPerson
+*ConfigurationItemsAPI* | [**V1CisActiveGet**](docs/ConfigurationItemsAPI.md#v1cisactiveget) | **Get** /v1/cis/active | GetCIList_ActiveCIs
+*ConfigurationItemsAPI* | [**V1CisGet**](docs/ConfigurationItemsAPI.md#v1cisget) | **Get** /v1/cis | GetCIByLabel
+*ConfigurationItemsAPI* | [**V1CisIdGet**](docs/ConfigurationItemsAPI.md#v1cisidget) | **Get** /v1/cis/{id} | GetCIProperties
+*ConfigurationItemsAPI* | [**V1CisInactiveGet**](docs/ConfigurationItemsAPI.md#v1cisinactiveget) | **Get** /v1/cis/inactive | GetCIList_InactiveCIs
+*ConfigurationItemsAPI* | [**V1CisPost**](docs/ConfigurationItemsAPI.md#v1cispost) | **Post** /v1/cis | CreateNewCI
+*ConfigurationItemsAPI* | [**V1CisSupportedByMyTeamsGet**](docs/ConfigurationItemsAPI.md#v1cissupportedbymyteamsget) | **Get** /v1/cis/supported_by_my_teams | GetCIList_supported_by_my_teams
+*CustomCollectionsAPI* | [**V1CustomCollectionElementsGet**](docs/CustomCollectionsAPI.md#v1customcollectionelementsget) | **Get** /v1/custom_collection_elements | GetCustomCollectionElementsList (by custom_collection_id)
+*CustomCollectionsAPI* | [**V1CustomCollectionElementsIdGet**](docs/CustomCollectionsAPI.md#v1customcollectionelementsidget) | **Get** /v1/custom_collection_elements/{id} | GetCustomCollectionElementsProperties
+*CustomCollectionsAPI* | [**V1CustomCollectionsGet**](docs/CustomCollectionsAPI.md#v1customcollectionsget) | **Get** /v1/custom_collections | GetCustomCollectionsList
+*CustomCollectionsAPI* | [**V1CustomCollectionsIdGet**](docs/CustomCollectionsAPI.md#v1customcollectionsidget) | **Get** /v1/custom_collections/{id} | GetCustomCollectionProperties
+*EventsAPI* | [**V1EventsPost**](docs/EventsAPI.md#v1eventspost) | **Post** /v1/events | CreateNewIncident (top impact)
+*ExportAPI* | [**V1ExportPost**](docs/ExportAPI.md#v1exportpost) | **Post** /v1/export | RunNewExport (sites, teams)
+*ExportAPI* | [**V1ImportGet**](docs/ExportAPI.md#v1importget) | **Get** /v1/import | GetExportJobsList (all)
+*ExportAPI* | [**V1ImportTokenGet**](docs/ExportAPI.md#v1importtokenget) | **Get** /v1/import/{token} | GetExportJobProperties
+*GeneralAPI* | [**V1EnumsGet**](docs/GeneralAPI.md#v1enumsget) | **Get** /v1/enums | GetEnumerationsValues
+*GeneralAPI* | [**V1MeGet**](docs/GeneralAPI.md#v1meget) | **Get** /v1/me | GetMyData
+*ImportAPI* | [**V1ImportPost**](docs/ImportAPI.md#v1importpost) | **Post** /v1/import | RunNewImport
+*NotesAPI* | [**V1RequestsIdNotesGet**](docs/NotesAPI.md#v1requestsidnotesget) | **Get** /v1/requests/{id}/notes | GetIssuesNotesList
+*OrganizationsAPI* | [**V1OrganizationsGet**](docs/OrganizationsAPI.md#v1organizationsget) | **Get** /v1/organizations | GetOrganizationsList
+*OrganizationsAPI* | [**V1OrganizationsIdGet**](docs/OrganizationsAPI.md#v1organizationsidget) | **Get** /v1/organizations/{id} | GetOrganizationProperties
+*OrganizationsAPI* | [**V1OrganizationsPost**](docs/OrganizationsAPI.md#v1organizationspost) | **Post** /v1/organizations | CreateOrganization
+*PeopleAPI* | [**V1PeopleDisabledGet**](docs/PeopleAPI.md#v1peopledisabledget) | **Get** /v1/people/disabled | GetUsers (disabled)
+*PeopleAPI* | [**V1PeopleEnabledGet**](docs/PeopleAPI.md#v1peopleenabledget) | **Get** /v1/people/enabled | GetUsers (enabled)
+*PeopleAPI* | [**V1PeopleGet**](docs/PeopleAPI.md#v1peopleget) | **Get** /v1/people | GetUsersByPermision
+*PeopleAPI* | [**V1PeopleIdCiGet**](docs/PeopleAPI.md#v1peopleidciget) | **Get** /v1/people/{id}/ci | GetUsersCIList
+*PeopleAPI* | [**V1PeopleIdContactsGet**](docs/PeopleAPI.md#v1peopleidcontactsget) | **Get** /v1/people/{id}/contacts | GetUsersContacts
+*PeopleAPI* | [**V1PeopleIdContactsPost**](docs/PeopleAPI.md#v1peopleidcontactspost) | **Post** /v1/people/{id}/contacts | CreateNewContactToUser
+*PeopleAPI* | [**V1PeopleIdGet**](docs/PeopleAPI.md#v1peopleidget) | **Get** /v1/people/{id} | GetUser (by Id)
+*PeopleAPI* | [**V1PeopleIdPermissionsGet**](docs/PeopleAPI.md#v1peopleidpermissionsget) | **Get** /v1/people/{id}/permissions | GetUsersPermissions
+*PeopleAPI* | [**V1PeopleIdServiceCoveragesGet**](docs/PeopleAPI.md#v1peopleidservicecoveragesget) | **Get** /v1/people/{id}/service_coverages | GetUsersServiceCoverages
+*PeopleAPI* | [**V1PeopleIdSkillPoolsGet**](docs/PeopleAPI.md#v1peopleidskillpoolsget) | **Get** /v1/people/{id}/skill_pools | GetUsersSkillPools
+*PeopleAPI* | [**V1PeopleIdTeamsGet**](docs/PeopleAPI.md#v1peopleidteamsget) | **Get** /v1/people/{id}/teams | GetUsersTeamList
+*PeopleAPI* | [**V1PeopleInternalGet**](docs/PeopleAPI.md#v1peopleinternalget) | **Get** /v1/people/internal | GetUsers (internal)
+*PeopleAPI* | [**V1PeoplePost**](docs/PeopleAPI.md#v1peoplepost) | **Post** /v1/people | CreateNewUser
+*PeopleAPI* | [**V1PeopleSupportDomainGet**](docs/PeopleAPI.md#v1peoplesupportdomainget) | **Get** /v1/people/support_domain | GetUsers (by directory)
+*ProblemsAPI* | [**V1ProblemsGet**](docs/ProblemsAPI.md#v1problemsget) | **Get** /v1/problems | GetProblemProperties
+*ProblemsAPI* | [**V1ProblemsIdPatch**](docs/ProblemsAPI.md#v1problemsidpatch) | **Patch** /v1/problems/{id} | SetNewStatus (solved)
+*ProblemsAPI* | [**V1ProblemsIdRequestsIdPost**](docs/ProblemsAPI.md#v1problemsidrequestsidpost) | **Post** /v1/problems/{id}/requests/{id} | UpdateProblem - AddRequestToProblem
+*ProblemsAPI* | [**V1ProblemsPost**](docs/ProblemsAPI.md#v1problemspost) | **Post** /v1/problems | CreateNewProblem
+*ProductCategoriesAPI* | [**V1ProductCategoriesGet**](docs/ProductCategoriesAPI.md#v1productcategoriesget) | **Get** /v1/product_categories | GetProductCategoriesList
+*ProductCategoriesAPI* | [**V1ProductCategoriesIdGet**](docs/ProductCategoriesAPI.md#v1productcategoriesidget) | **Get** /v1/product_categories/{id} | GetProductCategoriesProperties
+*ProductsAPI* | [**V1ProductsGet**](docs/ProductsAPI.md#v1productsget) | **Get** /v1/products | GetProductsList
+*ProductsAPI* | [**V1ProductsIdGet**](docs/ProductsAPI.md#v1productsidget) | **Get** /v1/products/{id} | GetProductProperties
+*RequestTemplatesAPI* | [**V1RequestTemplatesGet**](docs/RequestTemplatesAPI.md#v1requesttemplatesget) | **Get** /v1/request_templates | GetRequestTemplatesListByService
+*RequestTemplatesAPI* | [**V1RequestTemplatesIdGet**](docs/RequestTemplatesAPI.md#v1requesttemplatesidget) | **Get** /v1/request_templates/{id} | GetRequestTemplatesProperties
+*RequestsAPI* | [**V1RequestsAssignedToMeGet**](docs/RequestsAPI.md#v1requestsassignedtomeget) | **Get** /v1/requests/assigned_to_me | GetIssuesList (assigned to ...)
+*RequestsAPI* | [**V1RequestsAssignedToMyTeamGet**](docs/RequestsAPI.md#v1requestsassignedtomyteamget) | **Get** /v1/requests/assigned_to_my_team | GetIssuesList (assigned to my team)
+*RequestsAPI* | [**V1RequestsCompletedGet**](docs/RequestsAPI.md#v1requestscompletedget) | **Get** /v1/requests/completed | GetIssuesList (in status \&quot;completed\&quot;)
+*RequestsAPI* | [**V1RequestsIdAuditGet**](docs/RequestsAPI.md#v1requestsidauditget) | **Get** /v1/requests/{id}/audit | GetIssuesAuditEntries
+*RequestsAPI* | [**V1RequestsIdCisGet**](docs/RequestsAPI.md#v1requestsidcisget) | **Get** /v1/requests/{id}/cis | GetIssueAllRelatedCiList
+*RequestsAPI* | [**V1RequestsIdCisIdDelete**](docs/RequestsAPI.md#v1requestsidcisiddelete) | **Delete** /v1/requests/{id}/cis/{id} | RemoveLinkWithCi
+*RequestsAPI* | [**V1RequestsIdCisIdPost**](docs/RequestsAPI.md#v1requestsidcisidpost) | **Post** /v1/requests/{id}/cis/{id} | SetCIToRequest
+*RequestsAPI* | [**V1RequestsIdDissatisfiedPost**](docs/RequestsAPI.md#v1requestsiddissatisfiedpost) | **Post** /v1/requests/{id}/dissatisfied | ReturnToWork - Decline Execution
+*RequestsAPI* | [**V1RequestsIdGet**](docs/RequestsAPI.md#v1requestsidget) | **Get** /v1/requests/{id} | GetIssuesProperties
+*RequestsAPI* | [**V1RequestsIdGroupedRequestsGet**](docs/RequestsAPI.md#v1requestsidgroupedrequestsget) | **Get** /v1/requests/{id}/grouped_requests | GetGroupedRequestLinkedRecordsList
+*RequestsAPI* | [**V1RequestsIdNotesPost**](docs/RequestsAPI.md#v1requestsidnotespost) | **Post** /v1/requests/{id}/notes | AddInternalComment
+*RequestsAPI* | [**V1RequestsIdPut**](docs/RequestsAPI.md#v1requestsidput) | **Put** /v1/requests/{id} | SetNewStatus (no_reply)
+*RequestsAPI* | [**V1RequestsIdSatisfiedPost**](docs/RequestsAPI.md#v1requestsidsatisfiedpost) | **Post** /v1/requests/{id}/satisfied | CloseRequest - Satisfied
+*RequestsAPI* | [**V1RequestsOpenGet**](docs/RequestsAPI.md#v1requestsopenget) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
+*RequestsAPI* | [**V1RequestsRequestedByOrForMeGet**](docs/RequestsAPI.md#v1requestsrequestedbyorformeget) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
+*RequestsAPI* | [**V1RequestsRequestsOfMyOrganizationGet**](docs/RequestsAPI.md#v1requestsrequestsofmyorganizationget) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
+*ReservationsAPI* | [**V1Get**](docs/ReservationsAPI.md#v1get) | **Get** /v1 | List reservations
+*ReservationsAPI* | [**V1RequestsPost**](docs/ReservationsAPI.md#v1requestspost) | **Post** /v1/requests | Create a reservation
+*SearchAPI* | [**V1RequestsGet**](docs/SearchAPI.md#v1requestsget) | **Get** /v1/requests | GetIssuesList (several templates) Copy
+*SearchAPI* | [**V1SearchGet**](docs/SearchAPI.md#v1searchget) | **Get** /v1/search | SearchRecords
+*ServiceLevelAgreementsAPI* | [**V1SlasActiveGet**](docs/ServiceLevelAgreementsAPI.md#v1slasactiveget) | **Get** /v1/slas/active | GetSLAListActive
+*ServiceLevelAgreementsAPI* | [**V1SlasGet**](docs/ServiceLevelAgreementsAPI.md#v1slasget) | **Get** /v1/slas | GetSLAListAllByService
+*ServiceLevelAgreementsAPI* | [**V1SlasIdGet**](docs/ServiceLevelAgreementsAPI.md#v1slasidget) | **Get** /v1/slas/{id} | GetSLAProperties
+*ServiceLevelAgreementsAPI* | [**V1SlasInactiveGet**](docs/ServiceLevelAgreementsAPI.md#v1slasinactiveget) | **Get** /v1/slas/inactive | GetSLAListInactive
+*ServiceOfferingsAPI* | [**V1ServiceOfferingsGet**](docs/ServiceOfferingsAPI.md#v1serviceofferingsget) | **Get** /v1/service_offerings | GetServiceOfferList
+*ServiceOfferingsAPI* | [**V1ServiceOfferingsIdAuditGet**](docs/ServiceOfferingsAPI.md#v1serviceofferingsidauditget) | **Get** /v1/service_offerings/{id}/audit | GetServiceOfferAuditEntries
+*ServiceOfferingsAPI* | [**V1ServiceOfferingsIdGet**](docs/ServiceOfferingsAPI.md#v1serviceofferingsidget) | **Get** /v1/service_offerings/{id} | GetServiceOfferById
+*ServicesAPI* | [**V1ServicesGet**](docs/ServicesAPI.md#v1servicesget) | **Get** /v1/services | GetServiceByProvider
+*ServicesAPI* | [**V1ServicesIdGet**](docs/ServicesAPI.md#v1servicesidget) | **Get** /v1/services/{id} | GetServiceProperties
+*SitesAPI* | [**V1SitesIdGet**](docs/SitesAPI.md#v1sitesidget) | **Get** /v1/sites/{id} | GetSiteProperties
+*TasksAPI* | [**V1TasksAssignedByMeGet**](docs/TasksAPI.md#v1tasksassignedbymeget) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
+*TasksAPI* | [**V1TasksAssignedToMeGet**](docs/TasksAPI.md#v1tasksassignedtomeget) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
+*TasksAPI* | [**V1TasksAssignedToMyTeamGet**](docs/TasksAPI.md#v1tasksassignedtomyteamget) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
+*TasksAPI* | [**V1TasksGet**](docs/TasksAPI.md#v1tasksget) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
+*TasksAPI* | [**V1TasksIdGet**](docs/TasksAPI.md#v1tasksidget) | **Get** /v1/tasks/{id} | GetTasksProperties
+*TasksAPI* | [**V1TasksIdNotesPost**](docs/TasksAPI.md#v1tasksidnotespost) | **Post** /v1/tasks/{id}/notes | AddCommentToTask
+*TasksAPI* | [**V1TasksIdPatch**](docs/TasksAPI.md#v1tasksidpatch) | **Patch** /v1/tasks/{id} | SetNewStatus Copy
+*TasksAPI* | [**V1TasksManagedByMeGet**](docs/TasksAPI.md#v1tasksmanagedbymeget) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
+*TasksAPI* | [**V1TasksOpenGet**](docs/TasksAPI.md#v1tasksopenget) | **Get** /v1/tasks/open | GetListOfTasks (opened)
+*TeamsAPI* | [**V1TeamsIdGet**](docs/TeamsAPI.md#v1teamsidget) | **Get** /v1/teams/{id} | GetTeamProperties
+*TeamsAPI* | [**V1TeamsIdMembersGet**](docs/TeamsAPI.md#v1teamsidmembersget) | **Get** /v1/teams/{id}/members | GetTeamMembersList
+*UIExtensionsAPI* | [**V1UiExtensionsGet**](docs/UIExtensionsAPI.md#v1uiextensionsget) | **Get** /v1/ui_extensions | GetUIExtensionPropertiesList
+*UIExtensionsAPI* | [**V1UiExtensionsIdGet**](docs/UIExtensionsAPI.md#v1uiextensionsidget) | **Get** /v1/ui_extensions/{id} | GetUIExtensionProperties Copy
+*WorkflowsAPI* | [**V1WorkflowsGet**](docs/WorkflowsAPI.md#v1workflowsget) | **Get** /v1/workflows | GetWorkflows
+*WorkflowsAPI* | [**V1WorkflowsIdGet**](docs/WorkflowsAPI.md#v1workflowsidget) | **Get** /v1/workflows/{id} | GetWorkflowProperties
 
 
 ## Documentation For Models
