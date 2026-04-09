@@ -138,8 +138,18 @@ Class | Method | HTTP request | Description
 *PeopleAPI* | [**PostPeopleIdRestore**](docs/PeopleAPI.md#postpeopleidrestore) | **Post** /v1/people/{id}/restore | Restore a person from archive or trash
 *PeopleAPI* | [**PostPeopleIdTrash**](docs/PeopleAPI.md#postpeopleidtrash) | **Post** /v1/people/{id}/trash | Trash a person
 *ProblemsAPI* | [**GetProblems**](docs/ProblemsAPI.md#getproblems) | **Get** /v1/problems | GetProblemProperties
+*ProblemsAPI* | [**GetProblemsActive**](docs/ProblemsAPI.md#getproblemsactive) | **Get** /v1/problems/active | List active problems
+*ProblemsAPI* | [**GetProblemsAssignedToMe**](docs/ProblemsAPI.md#getproblemsassignedtome) | **Get** /v1/problems/assigned_to_me | List problems assigned to API user
+*ProblemsAPI* | [**GetProblemsAssignedToMyTeam**](docs/ProblemsAPI.md#getproblemsassignedtomyteam) | **Get** /v1/problems/assigned_to_my_team | List problems assigned to API user&#39;s teams
+*ProblemsAPI* | [**GetProblemsKnownErrors**](docs/ProblemsAPI.md#getproblemsknownerrors) | **Get** /v1/problems/known_errors | List known_errors problems
+*ProblemsAPI* | [**GetProblemsManagedByMe**](docs/ProblemsAPI.md#getproblemsmanagedbyme) | **Get** /v1/problems/managed_by_me | List problems managed by API user
+*ProblemsAPI* | [**GetProblemsProgressHalted**](docs/ProblemsAPI.md#getproblemsprogresshalted) | **Get** /v1/problems/progress_halted | List progress_halted problems
+*ProblemsAPI* | [**GetProblemsSolved**](docs/ProblemsAPI.md#getproblemssolved) | **Get** /v1/problems/solved | List solved problems
 *ProblemsAPI* | [**PatchProblemsId**](docs/ProblemsAPI.md#patchproblemsid) | **Patch** /v1/problems/{id} | SetNewStatus (solved)
 *ProblemsAPI* | [**PostProblems**](docs/ProblemsAPI.md#postproblems) | **Post** /v1/problems | CreateNewProblem
+*ProblemsAPI* | [**PostProblemsIdArchive**](docs/ProblemsAPI.md#postproblemsidarchive) | **Post** /v1/problems/{id}/archive | Archive a problem
+*ProblemsAPI* | [**PostProblemsIdRestore**](docs/ProblemsAPI.md#postproblemsidrestore) | **Post** /v1/problems/{id}/restore | Restore a problem
+*ProblemsAPI* | [**PostProblemsIdTrash**](docs/ProblemsAPI.md#postproblemsidtrash) | **Post** /v1/problems/{id}/trash | Trash a problem
 *ProblemsAPI* | [**PostProblemsProblemIdRequestsRequestId**](docs/ProblemsAPI.md#postproblemsproblemidrequestsrequestid) | **Post** /v1/problems/{problem_id}/requests/{request_id} | UpdateProblem - AddRequestToProblem
 *ProductCategoriesAPI* | [**GetProductCategories**](docs/ProductCategoriesAPI.md#getproductcategories) | **Get** /v1/product_categories | GetProductCategoriesList
 *ProductCategoriesAPI* | [**GetProductCategoriesId**](docs/ProductCategoriesAPI.md#getproductcategoriesid) | **Get** /v1/product_categories/{id} | GetProductCategoriesProperties
