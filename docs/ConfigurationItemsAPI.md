@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## GetCis
 
-> map[string]interface{} GetCis(ctx).Authorization(authorization).X4meAccount(x4meAccount).Status(status).Execute()
+> map[string]interface{} GetCis(ctx).Authorization(authorization).X4meAccount(x4meAccount).Status(status).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCIByLabel
 
@@ -37,10 +37,17 @@ func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
 	status := "{{cis_status}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationItemsAPI.GetCis(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Status(status).Execute()
+	resp, r, err := apiClient.ConfigurationItemsAPI.GetCis(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Status(status).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationItemsAPI.GetCis``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,6 +71,13 @@ Name | Type | Description  | Notes
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
  **status** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -85,7 +99,7 @@ No authorization required
 
 ## GetCisActive
 
-> map[string]interface{} GetCisActive(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCisActive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCIList_ActiveCIs
 
@@ -104,10 +118,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisActive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisActive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationItemsAPI.GetCisActive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +151,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -151,7 +179,7 @@ No authorization required
 
 ## GetCisId
 
-> map[string]interface{} GetCisId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCisId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetCIProperties
 
@@ -171,10 +199,12 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	ifNoneMatch := "ifNoneMatch_example" // string | Conditional GET; returns 304 Not Modified when unchanged. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationItemsAPI.GetCisId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,6 +232,8 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **ifNoneMatch** | **string** | Conditional GET; returns 304 Not Modified when unchanged. | 
 
 ### Return type
 
@@ -223,7 +255,7 @@ No authorization required
 
 ## GetCisInactive
 
-> map[string]interface{} GetCisInactive(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCisInactive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCIList_InactiveCIs
 
@@ -242,10 +274,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisInactive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisInactive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationItemsAPI.GetCisInactive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -268,6 +307,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -289,7 +335,7 @@ No authorization required
 
 ## GetCisSupportedByMyTeams
 
-> map[string]interface{} GetCisSupportedByMyTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCisSupportedByMyTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCIList_supported_by_my_teams
 
@@ -310,10 +356,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisSupportedByMyTeams(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ConfigurationItemsAPI.GetCisSupportedByMyTeams(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationItemsAPI.GetCisSupportedByMyTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,6 +389,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 

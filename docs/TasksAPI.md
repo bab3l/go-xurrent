@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## GetTasks
 
-> GetTasks(ctx).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
+> GetTasks(ctx).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (by workflow id)
 
@@ -40,10 +40,17 @@ func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
 	workflow := "{{some workflow id}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasks(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
+	r, err := apiClient.TasksAPI.GetTasks(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,6 +72,13 @@ Name | Type | Description  | Notes
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
  **workflow** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -86,7 +100,7 @@ No authorization required
 
 ## GetTasksApprovalByMe
 
-> []map[string]interface{} GetTasksApprovalByMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []map[string]interface{} GetTasksApprovalByMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List approval tasks assigned to API user (non-registered status)
 
@@ -105,10 +119,17 @@ import (
 func main() {
 	authorization := "authorization_example" // string |  (optional)
 	x4meAccount := "x4meAccount_example" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TasksAPI.GetTasksApprovalByMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.TasksAPI.GetTasksApprovalByMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksApprovalByMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,6 +152,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -152,7 +180,7 @@ No authorization required
 
 ## GetTasksAssignedByMe
 
-> GetTasksAssignedByMe(ctx).Execute()
+> GetTasksAssignedByMe(ctx).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (managed_by_me) Copy 3
 
@@ -169,10 +197,17 @@ import (
 )
 
 func main() {
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksAssignedByMe(context.Background()).Execute()
+	r, err := apiClient.TasksAPI.GetTasksAssignedByMe(context.Background()).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedByMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,12 +217,22 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTasksAssignedByMeRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -209,7 +254,7 @@ No authorization required
 
 ## GetTasksAssignedToMe
 
-> GetTasksAssignedToMe(ctx).Execute()
+> GetTasksAssignedToMe(ctx).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (managed_by_me) Copy 2
 
@@ -226,10 +271,17 @@ import (
 )
 
 func main() {
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksAssignedToMe(context.Background()).Execute()
+	r, err := apiClient.TasksAPI.GetTasksAssignedToMe(context.Background()).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedToMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,12 +291,22 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTasksAssignedToMeRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -266,7 +328,7 @@ No authorization required
 
 ## GetTasksAssignedToMyTeam
 
-> GetTasksAssignedToMyTeam(ctx).Execute()
+> GetTasksAssignedToMyTeam(ctx).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (managed_by_me) Copy
 
@@ -283,10 +345,17 @@ import (
 )
 
 func main() {
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksAssignedToMyTeam(context.Background()).Execute()
+	r, err := apiClient.TasksAPI.GetTasksAssignedToMyTeam(context.Background()).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedToMyTeam``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,12 +365,22 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTasksAssignedToMyTeamRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -323,7 +402,7 @@ No authorization required
 
 ## GetTasksFinished
 
-> []map[string]interface{} GetTasksFinished(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []map[string]interface{} GetTasksFinished(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List finished tasks
 
@@ -342,10 +421,17 @@ import (
 func main() {
 	authorization := "authorization_example" // string |  (optional)
 	x4meAccount := "x4meAccount_example" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TasksAPI.GetTasksFinished(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.TasksAPI.GetTasksFinished(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksFinished``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -368,6 +454,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -389,7 +482,7 @@ No authorization required
 
 ## GetTasksId
 
-> GetTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetTasksProperties
 
@@ -409,10 +502,12 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	ifNoneMatch := "ifNoneMatch_example" // string | Conditional GET; returns 304 Not Modified when unchanged. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -438,6 +533,8 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **ifNoneMatch** | **string** | Conditional GET; returns 304 Not Modified when unchanged. | 
 
 ### Return type
 
@@ -459,7 +556,7 @@ No authorization required
 
 ## GetTasksManagedByMe
 
-> GetTasksManagedByMe(ctx).Execute()
+> GetTasksManagedByMe(ctx).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (managed_by_me)
 
@@ -476,10 +573,17 @@ import (
 )
 
 func main() {
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksManagedByMe(context.Background()).Execute()
+	r, err := apiClient.TasksAPI.GetTasksManagedByMe(context.Background()).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksManagedByMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,12 +593,22 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTasksManagedByMeRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -516,7 +630,7 @@ No authorization required
 
 ## GetTasksOpen
 
-> GetTasksOpen(ctx).Execute()
+> GetTasksOpen(ctx).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetListOfTasks (opened)
 
@@ -533,10 +647,17 @@ import (
 )
 
 func main() {
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksOpen(context.Background()).Execute()
+	r, err := apiClient.TasksAPI.GetTasksOpen(context.Background()).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksOpen``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,12 +667,22 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTasksOpenRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 

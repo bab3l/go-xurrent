@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 ## GetPeople
 
-> map[string]interface{} GetPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
+> map[string]interface{} GetPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersByPermision
 
@@ -48,10 +48,17 @@ func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
 	roles := "auditor" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeople(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeople(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeople``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -75,6 +82,13 @@ Name | Type | Description  | Notes
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
  **roles** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -96,7 +110,7 @@ No authorization required
 
 ## GetPeopleDirectory
 
-> []map[string]interface{} GetPeopleDirectory(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []map[string]interface{} GetPeopleDirectory(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List people (directory predefined filter)
 
@@ -115,10 +129,17 @@ import (
 func main() {
 	authorization := "authorization_example" // string |  (optional)
 	x4meAccount := "x4meAccount_example" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleDirectory(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleDirectory(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDirectory``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +162,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -162,7 +190,7 @@ No authorization required
 
 ## GetPeopleDisabled
 
-> map[string]interface{} GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (disabled)
 
@@ -181,10 +209,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleDisabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleDisabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDisabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,6 +242,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -228,7 +270,7 @@ No authorization required
 
 ## GetPeopleEnabled
 
-> map[string]interface{} GetPeopleEnabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleEnabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (enabled)
 
@@ -247,10 +289,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleEnabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleEnabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleEnabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -273,6 +322,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -294,7 +350,7 @@ No authorization required
 
 ## GetPeopleId
 
-> map[string]interface{} GetPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetUser (by Id)
 
@@ -314,10 +370,12 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	ifNoneMatch := "ifNoneMatch_example" // string | Conditional GET; returns 304 Not Modified when unchanged. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,6 +403,8 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **ifNoneMatch** | **string** | Conditional GET; returns 304 Not Modified when unchanged. | 
 
 ### Return type
 
@@ -366,7 +426,7 @@ No authorization required
 
 ## GetPeopleIdCi
 
-> GetPeopleIdCi(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetPeopleIdCi(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersCIList
 
@@ -386,10 +446,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PeopleAPI.GetPeopleIdCi(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.PeopleAPI.GetPeopleIdCi(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdCi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,6 +482,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -436,7 +510,7 @@ No authorization required
 
 ## GetPeopleIdContacts
 
-> map[string]interface{} GetPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersContacts
 
@@ -456,10 +530,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleIdContacts(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdContacts(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdContacts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,6 +568,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -508,7 +596,7 @@ No authorization required
 
 ## GetPeopleIdPermissions
 
-> map[string]interface{} GetPeopleIdPermissions(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdPermissions(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersPermissions
 
@@ -528,10 +616,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleIdPermissions(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdPermissions(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdPermissions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -559,6 +654,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -580,7 +682,7 @@ No authorization required
 
 ## GetPeopleIdServiceCoverages
 
-> GetPeopleIdServiceCoverages(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetPeopleIdServiceCoverages(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersServiceCoverages
 
@@ -600,10 +702,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PeopleAPI.GetPeopleIdServiceCoverages(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.PeopleAPI.GetPeopleIdServiceCoverages(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdServiceCoverages``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -629,6 +738,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -650,7 +766,7 @@ No authorization required
 
 ## GetPeopleIdSkillPools
 
-> map[string]interface{} GetPeopleIdSkillPools(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdSkillPools(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersSkillPools
 
@@ -670,10 +786,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleIdSkillPools(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdSkillPools(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdSkillPools``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -701,6 +824,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -722,7 +852,7 @@ No authorization required
 
 ## GetPeopleIdTeams
 
-> map[string]interface{} GetPeopleIdTeams(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdTeams(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersTeamList
 
@@ -742,10 +872,17 @@ func main() {
 	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleIdTeams(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdTeams(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -773,6 +910,13 @@ Name | Type | Description  | Notes
 
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -794,7 +938,7 @@ No authorization required
 
 ## GetPeopleInternal
 
-> map[string]interface{} GetPeopleInternal(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleInternal(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (internal)
 
@@ -813,10 +957,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleInternal(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleInternal(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleInternal``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -839,6 +990,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 
@@ -860,7 +1018,7 @@ No authorization required
 
 ## GetPeopleSupportDomain
 
-> map[string]interface{} GetPeopleSupportDomain(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleSupportDomain(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (by directory)
 
@@ -879,10 +1037,17 @@ import (
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.GetPeopleSupportDomain(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleSupportDomain(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleSupportDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -905,6 +1070,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
 
 ### Return type
 

@@ -2,6 +2,10 @@ openapi: 3.0.0
 info:
   title: Xurrent REST API
   version: 1.0.0
+  description: 'Xurrent REST API. Global conventions (injected on collection GETs): pagination (`per_page`, `search_after`,
+    `search_before`), field selection (`fields`), ordering (`sort`), predefined state (`state`), and `X-Xurrent-Language`.
+    Resource-specific filters use additional query parameters per https://developer.xurrent.com/v1/general/filtering/ — use
+    `collection_query.go` helpers or append encoded query pairs when filters are not modeled as named parameters.'
 servers:
 - url: https://api.xurrent.com
 components:
@@ -838,6 +842,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -1523,6 +1537,43 @@ paths:
         schema:
           type: string
         example: 36080,36096
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -1628,6 +1679,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -2312,6 +2370,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -2412,6 +2507,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -3310,6 +3416,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -3415,6 +3558,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -4010,6 +4160,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -4115,6 +4302,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -4685,6 +4879,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -4785,6 +5016,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -5168,6 +5410,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -5268,6 +5547,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -5651,6 +5941,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -5727,6 +6054,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -5907,6 +6245,43 @@ paths:
         schema:
           type: string
         example: '{{status}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -6007,6 +6382,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -6647,11 +7033,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_id_audit
   /v1/requests/{id}/cis:
     get:
@@ -6674,6 +7109,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -6766,6 +7238,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -6847,6 +7330,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -6939,6 +7459,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -7289,6 +7820,43 @@ paths:
         schema:
           type: string
         example: auditor
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -7381,6 +7949,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -7539,6 +8118,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -7631,6 +8247,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -7683,6 +8310,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -7853,6 +8490,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -7945,6 +8619,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -7992,6 +8677,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8084,6 +8806,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8131,6 +8864,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8223,6 +8993,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8270,6 +9051,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8362,6 +9180,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8414,11 +9243,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_people_id_ci
   /v1/people/{id}/teams:
     get:
@@ -8441,6 +9319,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8533,6 +9448,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8585,6 +9511,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8677,6 +9640,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8724,6 +9698,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -8751,6 +9735,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -8843,6 +9864,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -8895,11 +9927,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_people_id_service_coverages
   /v1/attachments/upload:
     get:
@@ -8917,6 +9998,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -8939,6 +10030,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -9188,6 +10289,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -9215,6 +10326,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -9928,6 +11049,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -10033,6 +11191,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -10648,6 +11813,43 @@ paths:
         schema:
           type: string
         example: '{{cis_status}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -10753,6 +11955,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -11372,6 +12581,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -11477,6 +12723,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -11954,6 +13207,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -12038,6 +13328,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -12260,6 +13561,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -12344,6 +13682,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -12373,6 +13722,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -12457,6 +13843,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -12484,6 +13881,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -12664,6 +14071,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -12748,6 +14192,17 @@ paths:
               schema:
                 type: string
                 example: nosniff
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -13245,6 +14700,43 @@ paths:
         schema:
           type: integer
         example: '2823'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -13321,6 +14813,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -13456,6 +14959,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -13665,6 +15178,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -13765,6 +15315,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -13923,11 +15484,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_service_offerings
     post:
       tags:
@@ -13976,6 +15586,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -14034,11 +15654,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_service_offerings_id_audit
   /v1/organizations:
     post:
@@ -14084,6 +15753,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -14093,6 +15799,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Organization'
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_organizations
   /v1/organizations/{id}:
     get:
@@ -14115,6 +15833,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -14170,6 +15898,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -14274,6 +16039,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -14947,6 +16719,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -15836,11 +17618,60 @@ paths:
         schema:
           type: string
         example: '{{some workflow id}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks
   /v1/tasks/open:
     get:
@@ -15852,7 +17683,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_open
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
   /v1/tasks/managed_by_me:
     get:
       tags:
@@ -15863,7 +17744,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_managed_by_me
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
   /v1/tasks/assigned_to_my_team:
     get:
       tags:
@@ -15874,7 +17805,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_assigned_to_my_team
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
   /v1/tasks/assigned_to_me:
     get:
       tags:
@@ -15885,7 +17866,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_assigned_to_me
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
   /v1/tasks/assigned_by_me:
     get:
       tags:
@@ -15896,7 +17927,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_assigned_by_me
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
   /v1/sites/{id}:
     get:
       tags:
@@ -15918,6 +17999,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -15971,6 +18062,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -16076,6 +18204,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -16311,6 +18446,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -16487,6 +18632,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -16583,6 +18765,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -16830,6 +19019,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -16857,6 +19056,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -17624,6 +19833,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -17729,6 +19975,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -18396,6 +20649,43 @@ paths:
         schema:
           type: integer
         example: '2439'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -18472,6 +20762,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -18615,6 +20916,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -18691,6 +21029,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -18808,6 +21157,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -18884,6 +21270,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -19006,6 +21403,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -19064,6 +21471,43 @@ paths:
         schema:
           type: string
         example: '{{service id}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -19169,6 +21613,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -19642,6 +22093,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -19862,11 +22323,60 @@ paths:
         schema:
           type: string
         example: '{{account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_reservations
     post:
       tags:
@@ -19909,11 +22419,60 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_reservations_open
   /v1/reservations/completed:
     get:
@@ -19930,11 +22489,60 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_reservations_completed
   /v1/reservations/{id}:
     get:
@@ -19953,6 +22561,16 @@ paths:
           type: string
       - name: X-4me-Account
         in: header
+        schema:
+          type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
         schema:
           type: string
       responses:
@@ -20006,11 +22624,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_automation_rules
   /v1/automation_rules/{id}:
     get:
@@ -20033,6 +22700,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -20065,11 +22742,60 @@ paths:
         schema:
           type: string
         example: req
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_search
   /v1/custom_collections:
     get:
@@ -20087,6 +22813,43 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -20192,6 +22955,13 @@ paths:
               schema:
                 type: string
                 example: gzip
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -20399,6 +23169,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -20549,6 +23329,43 @@ paths:
         schema:
           type: string
         example: product_backlogs
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -20625,6 +23442,17 @@ paths:
               schema:
                 type: string
                 example: gzip
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
           content:
             application/json:
               schema:
@@ -20699,6 +23527,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -20875,11 +23713,60 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_import
   /v1/import/{token}:
     get:
@@ -20902,6 +23789,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -20964,6 +23861,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -21015,11 +23922,60 @@ paths:
         schema:
           type: string
         example: school
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems
   /v1/problems/{problem_id}/requests/{request_id}:
     post:
@@ -21103,6 +24059,16 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -21127,6 +24093,16 @@ paths:
         schema:
           type: string
         example: '{{X-4me-Account}}'
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26166,6 +29142,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26175,6 +29188,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_waiting_for_me
   /v1/requests/problem_management_review:
     get:
@@ -26190,6 +29215,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26199,6 +29261,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_problem_management_review
   /v1/requests/sla_accountability:
     get:
@@ -26214,6 +29288,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26223,6 +29334,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_sla_accountability
   /v1/requests/{id}/archive:
     post:
@@ -26324,6 +29447,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26333,6 +29493,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_id_cis_active
   /v1/requests/{id}/cis/inactive:
     get:
@@ -26353,6 +29525,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26362,6 +29571,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_id_cis_inactive
   /v1/requests/{id}/notes/public:
     get:
@@ -26382,6 +29603,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26391,6 +29649,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_id_notes_public
   /v1/requests/{id}/notes/internal:
     get:
@@ -26411,6 +29681,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26420,6 +29727,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_requests_id_notes_internal
   /v1/people/directory:
     get:
@@ -26435,6 +29754,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26444,6 +29800,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_people_directory
   /v1/people/{id}/archive:
     post:
@@ -26540,6 +29908,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26549,6 +29954,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_teams
     post:
       tags:
@@ -26590,6 +30007,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26599,6 +30053,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_sites
     post:
       tags:
@@ -26753,6 +30219,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26762,6 +30265,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_active
   /v1/problems/known_errors:
     get:
@@ -26777,6 +30292,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26786,6 +30338,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_known_errors
   /v1/problems/progress_halted:
     get:
@@ -26801,6 +30365,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26810,6 +30411,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_progress_halted
   /v1/problems/solved:
     get:
@@ -26825,6 +30438,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26834,6 +30484,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_solved
   /v1/problems/managed_by_me:
     get:
@@ -26849,6 +30511,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26858,6 +30557,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_managed_by_me
   /v1/problems/assigned_to_my_team:
     get:
@@ -26873,6 +30584,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26882,6 +30630,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_assigned_to_my_team
   /v1/problems/assigned_to_me:
     get:
@@ -26897,6 +30657,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -26906,6 +30703,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_problems_assigned_to_me
   /v1/problems/{id}/archive:
     post:
@@ -27038,6 +30847,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27047,6 +30893,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_finished
   /v1/tasks/approval_by_me:
     get:
@@ -27062,6 +30920,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27071,6 +30966,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_tasks_approval_by_me
   /v1/products/disabled:
     get:
@@ -27086,6 +30993,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27095,6 +31039,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_products_disabled
   /v1/products/enabled:
     get:
@@ -27110,6 +31066,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27119,6 +31112,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_products_enabled
   /v1/products/supported_by_my_teams:
     get:
@@ -27134,6 +31139,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27143,6 +31185,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_products_supported_by_my_teams
   /v1/account/usage_statements:
     get:
@@ -27158,6 +31212,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27167,6 +31258,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_account_usage_statements
   /v1/account/usage_statements/{id}:
     get:
@@ -27187,6 +31290,43 @@ paths:
         in: header
         schema:
           type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27194,6 +31334,18 @@ paths:
             application/json:
               schema:
                 type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_account_usage_statements_id
   /v1/account/billable_users:
     get:
@@ -27217,6 +31369,43 @@ paths:
         in: query
         schema:
           type: integer
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
       responses:
         '200':
           description: OK
@@ -27226,6 +31415,18 @@ paths:
                 type: array
                 items:
                   type: object
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
       operationId: get_account_billable_users
   /v1/rate_limit:
     get:
@@ -27240,3 +31441,14 @@ paths:
               schema:
                 type: object
       operationId: get_rate_limit
+      parameters:
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Conditional GET; returns 304 Not Modified when unchanged.
+        schema:
+          type: string

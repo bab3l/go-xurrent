@@ -99,6 +99,8 @@ The Go client is **generated** from the spec: any **missing path** or **wrong me
 
 **Shipped in spec (backlog `07`–`09`):** **P1** — `GET /v1/problems/{id}`, `POST /v1/workflows/{id}/tasks`, `GET /v1/tasks/finished`, `GET /v1/tasks/approval_by_me`. **P2** — `POST/PATCH /v1/products`, `GET /v1/products/disabled|enabled|supported_by_my_teams`. **P3** — `GET /v1/account/usage_statements`, `GET /v1/account/usage_statements/{id}`, `GET /v1/account/billable_users`, `GET /v1/rate_limit`. **Production smoke:** `go test -tags=integration ./test/integration/ -v` (see file header for env vars; default CI runs only offline tests).
 
+**Collection conventions (reduce payload & calls):** `python utils/inject_api_conventions.py` adds optional **`per_page`**, **`search_after`**, **`search_before`**, **`fields`**, **`sort`**, **`state`** on collection `GET`s; **`X-Xurrent-Language`** on all `GET`s; **`If-None-Match`** on single-resource `GET /v1/{tag}/{id}`; response **`Link`** + **`X-Pagination-Throttled`** where applicable. Hand helpers in **`collection_query.go`** build ad-hoc [filtering](https://developer.xurrent.com/v1/general/filtering/) query strings. Wired into **`utils/generate_api.ps1`** after `fix_spec.py`.
+
 **Priority tiers (suggested):**
 
 | Tier | Focus | Examples |
@@ -112,7 +114,7 @@ The Go client is **generated** from the spec: any **missing path** or **wrong me
 **Process (each batch):**
 
 1. Add or extend `openapi/backlog/NN_name.yaml` (paths only).  
-2. `python utils/merge_backlog_paths.py` → `python utils/add_operation_ids.py`  
+2. `python utils/merge_backlog_paths.py` → `python utils/inject_api_conventions.py` → `python utils/add_operation_ids.py`  
 3. `openapi-generator-cli validate` → `utils/generate_client.ps1`  
 4. Restore `go.mod` / `go.sum` if generator clobbers them; `go test ./...`  
 5. Refresh `docs/ROUTE_VALIDATION_CHECKLIST.md` table (`export_route_checklist.py`) when the inventory should match CI.

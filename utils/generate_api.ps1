@@ -14,6 +14,14 @@ if ($LASTEXITCODE -eq 0) {
 }
 Pop-Location
 
+Write-Host "Step 1.45: Inject collection pagination / header conventions..."
+Push-Location $ProjectRoot
+python utils/inject_api_conventions.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "inject_api_conventions failed"
+}
+Pop-Location
+
 Write-Host "Step 1.5: Ensure operationIds (add missing only)..."
 Push-Location $ProjectRoot
 python utils/add_operation_ids.py
