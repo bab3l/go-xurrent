@@ -4,6 +4,8 @@
 //
 //   go test -tags=integration ./test/integration/ -v -count=1
 //
+// Variables are documented in .env.example (no committed .env — use local file or export env vars).
+//
 // Unauthenticated:
 //   (none required) — exercises GET /v1/rate_limit
 //

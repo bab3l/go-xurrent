@@ -3,6 +3,9 @@
 *.a
 *.so
 
+# Local secrets (copy from .env.example)
+.env
+
 # Folders
 _obj
 _test
