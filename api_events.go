@@ -18,15 +18,16 @@ import (
 	"net/url"
 )
 
+
 // EventsAPIService EventsAPI service
 type EventsAPIService service
 
 type ApiPostEventsRequest struct {
-	ctx           context.Context
-	ApiService    *EventsAPIService
+	ctx context.Context
+	ApiService *EventsAPIService
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPostEventsRequest) Authorization(authorization string) ApiPostEventsRequest {
@@ -51,25 +52,24 @@ func (r ApiPostEventsRequest) Execute() (map[string]interface{}, *http.Response,
 /*
 PostEvents CreateNewIncident (top impact)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostEventsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostEventsRequest
 */
 func (a *EventsAPIService) PostEvents(ctx context.Context) ApiPostEventsRequest {
 	return ApiPostEventsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.PostEvents")
@@ -137,8 +137,8 @@ func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -148,8 +148,8 @@ func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -159,8 +159,8 @@ func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -170,8 +170,8 @@ func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -1,0 +1,137 @@
+# https://developer.xurrent.com/v1/workflows/
+paths:
+  /v1/workflows:
+    post:
+      tags:
+      - Workflows
+      summary: Create a workflow
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/workflows/{id}:
+    patch:
+      tags:
+      - Workflows
+      summary: Update a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/workflows/{id}/archive:
+    post:
+      tags:
+      - Workflows
+      summary: Archive a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/workflows/{id}/trash:
+    post:
+      tags:
+      - Workflows
+      summary: Trash a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/workflows/{id}/restore:
+    post:
+      tags:
+      - Workflows
+      summary: Restore a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object

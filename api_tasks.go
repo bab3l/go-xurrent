@@ -19,15 +19,16 @@ import (
 	"strings"
 )
 
+
 // TasksAPIService TasksAPI service
 type TasksAPIService service
 
 type ApiGetTasksRequest struct {
-	ctx           context.Context
-	ApiService    *TasksAPIService
+	ctx context.Context
+	ApiService *TasksAPIService
 	authorization *string
-	x4meAccount   *string
-	workflow      *string
+	x4meAccount *string
+	workflow *string
 }
 
 func (r ApiGetTasksRequest) Authorization(authorization string) ApiGetTasksRequest {
@@ -52,22 +53,22 @@ func (r ApiGetTasksRequest) Execute() (*http.Response, error) {
 /*
 GetTasks GetListOfTasks (by workflow id)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksRequest
 */
 func (a *TasksAPIService) GetTasks(ctx context.Context) ApiGetTasksRequest {
 	return ApiGetTasksRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksExecute(r ApiGetTasksRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasks")
@@ -136,7 +137,7 @@ func (a *TasksAPIService) GetTasksExecute(r ApiGetTasksRequest) (*http.Response,
 }
 
 type ApiGetTasksAssignedByMeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TasksAPIService
 }
 
@@ -147,22 +148,22 @@ func (r ApiGetTasksAssignedByMeRequest) Execute() (*http.Response, error) {
 /*
 GetTasksAssignedByMe GetListOfTasks (managed_by_me) Copy 3
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksAssignedByMeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksAssignedByMeRequest
 */
 func (a *TasksAPIService) GetTasksAssignedByMe(ctx context.Context) ApiGetTasksAssignedByMeRequest {
 	return ApiGetTasksAssignedByMeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksAssignedByMeExecute(r ApiGetTasksAssignedByMeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksAssignedByMe")
@@ -222,7 +223,7 @@ func (a *TasksAPIService) GetTasksAssignedByMeExecute(r ApiGetTasksAssignedByMeR
 }
 
 type ApiGetTasksAssignedToMeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TasksAPIService
 }
 
@@ -233,22 +234,22 @@ func (r ApiGetTasksAssignedToMeRequest) Execute() (*http.Response, error) {
 /*
 GetTasksAssignedToMe GetListOfTasks (managed_by_me) Copy 2
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksAssignedToMeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksAssignedToMeRequest
 */
 func (a *TasksAPIService) GetTasksAssignedToMe(ctx context.Context) ApiGetTasksAssignedToMeRequest {
 	return ApiGetTasksAssignedToMeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksAssignedToMeExecute(r ApiGetTasksAssignedToMeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksAssignedToMe")
@@ -308,7 +309,7 @@ func (a *TasksAPIService) GetTasksAssignedToMeExecute(r ApiGetTasksAssignedToMeR
 }
 
 type ApiGetTasksAssignedToMyTeamRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TasksAPIService
 }
 
@@ -319,22 +320,22 @@ func (r ApiGetTasksAssignedToMyTeamRequest) Execute() (*http.Response, error) {
 /*
 GetTasksAssignedToMyTeam GetListOfTasks (managed_by_me) Copy
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksAssignedToMyTeamRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksAssignedToMyTeamRequest
 */
 func (a *TasksAPIService) GetTasksAssignedToMyTeam(ctx context.Context) ApiGetTasksAssignedToMyTeamRequest {
 	return ApiGetTasksAssignedToMyTeamRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksAssignedToMyTeamExecute(r ApiGetTasksAssignedToMyTeamRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksAssignedToMyTeam")
@@ -394,11 +395,11 @@ func (a *TasksAPIService) GetTasksAssignedToMyTeamExecute(r ApiGetTasksAssignedT
 }
 
 type ApiGetTasksIdRequest struct {
-	ctx           context.Context
-	ApiService    *TasksAPIService
-	id            int32
+	ctx context.Context
+	ApiService *TasksAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetTasksIdRequest) Authorization(authorization string) ApiGetTasksIdRequest {
@@ -418,24 +419,24 @@ func (r ApiGetTasksIdRequest) Execute() (*http.Response, error) {
 /*
 GetTasksId GetTasksProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetTasksIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetTasksIdRequest
 */
 func (a *TasksAPIService) GetTasksId(ctx context.Context, id int32) ApiGetTasksIdRequest {
 	return ApiGetTasksIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksIdExecute(r ApiGetTasksIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksId")
@@ -502,7 +503,7 @@ func (a *TasksAPIService) GetTasksIdExecute(r ApiGetTasksIdRequest) (*http.Respo
 }
 
 type ApiGetTasksManagedByMeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TasksAPIService
 }
 
@@ -513,22 +514,22 @@ func (r ApiGetTasksManagedByMeRequest) Execute() (*http.Response, error) {
 /*
 GetTasksManagedByMe GetListOfTasks (managed_by_me)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksManagedByMeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksManagedByMeRequest
 */
 func (a *TasksAPIService) GetTasksManagedByMe(ctx context.Context) ApiGetTasksManagedByMeRequest {
 	return ApiGetTasksManagedByMeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksManagedByMeExecute(r ApiGetTasksManagedByMeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksManagedByMe")
@@ -588,7 +589,7 @@ func (a *TasksAPIService) GetTasksManagedByMeExecute(r ApiGetTasksManagedByMeReq
 }
 
 type ApiGetTasksOpenRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TasksAPIService
 }
 
@@ -599,22 +600,22 @@ func (r ApiGetTasksOpenRequest) Execute() (*http.Response, error) {
 /*
 GetTasksOpen GetListOfTasks (opened)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetTasksOpenRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTasksOpenRequest
 */
 func (a *TasksAPIService) GetTasksOpen(ctx context.Context) ApiGetTasksOpenRequest {
 	return ApiGetTasksOpenRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TasksAPIService) GetTasksOpenExecute(r ApiGetTasksOpenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.GetTasksOpen")
@@ -674,12 +675,12 @@ func (a *TasksAPIService) GetTasksOpenExecute(r ApiGetTasksOpenRequest) (*http.R
 }
 
 type ApiPatchTasksIdRequest struct {
-	ctx           context.Context
-	ApiService    *TasksAPIService
-	id            int32
+	ctx context.Context
+	ApiService *TasksAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPatchTasksIdRequest) Authorization(authorization string) ApiPatchTasksIdRequest {
@@ -704,27 +705,26 @@ func (r ApiPatchTasksIdRequest) Execute() (string, *http.Response, error) {
 /*
 PatchTasksId SetNewStatus Copy
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPatchTasksIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchTasksIdRequest
 */
 func (a *TasksAPIService) PatchTasksId(ctx context.Context, id int32) ApiPatchTasksIdRequest {
 	return ApiPatchTasksIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *TasksAPIService) PatchTasksIdExecute(r ApiPatchTasksIdRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.PatchTasksId")
@@ -786,14 +786,14 @@ func (a *TasksAPIService) PatchTasksIdExecute(r ApiPatchTasksIdRequest) (string,
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v string
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-		newErr.model = v
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -810,12 +810,12 @@ func (a *TasksAPIService) PatchTasksIdExecute(r ApiPatchTasksIdRequest) (string,
 }
 
 type ApiPostTasksIdNotesRequest struct {
-	ctx           context.Context
-	ApiService    *TasksAPIService
-	id            int32
+	ctx context.Context
+	ApiService *TasksAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPostTasksIdNotesRequest) Authorization(authorization string) ApiPostTasksIdNotesRequest {
@@ -840,27 +840,26 @@ func (r ApiPostTasksIdNotesRequest) Execute() (map[string]interface{}, *http.Res
 /*
 PostTasksIdNotes AddCommentToTask
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPostTasksIdNotesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPostTasksIdNotesRequest
 */
 func (a *TasksAPIService) PostTasksIdNotes(ctx context.Context, id int32) ApiPostTasksIdNotesRequest {
 	return ApiPostTasksIdNotesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *TasksAPIService) PostTasksIdNotesExecute(r ApiPostTasksIdNotesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.PostTasksIdNotes")

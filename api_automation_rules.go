@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // AutomationRulesAPIService AutomationRulesAPI service
 type AutomationRulesAPIService service
 
 type ApiGetAutomationRulesRequest struct {
-	ctx           context.Context
-	ApiService    *AutomationRulesAPIService
+	ctx context.Context
+	ApiService *AutomationRulesAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetAutomationRulesRequest) Authorization(authorization string) ApiGetAutomationRulesRequest {
@@ -46,22 +47,22 @@ func (r ApiGetAutomationRulesRequest) Execute() (*http.Response, error) {
 /*
 GetAutomationRules GetAutomationuRulesList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAutomationRulesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAutomationRulesRequest
 */
 func (a *AutomationRulesAPIService) GetAutomationRules(ctx context.Context) ApiGetAutomationRulesRequest {
 	return ApiGetAutomationRulesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AutomationRulesAPIService) GetAutomationRulesExecute(r ApiGetAutomationRulesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.GetAutomationRules")
@@ -127,11 +128,11 @@ func (a *AutomationRulesAPIService) GetAutomationRulesExecute(r ApiGetAutomation
 }
 
 type ApiGetAutomationRulesIdRequest struct {
-	ctx           context.Context
-	ApiService    *AutomationRulesAPIService
-	id            int32
+	ctx context.Context
+	ApiService *AutomationRulesAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetAutomationRulesIdRequest) Authorization(authorization string) ApiGetAutomationRulesIdRequest {
@@ -151,24 +152,24 @@ func (r ApiGetAutomationRulesIdRequest) Execute() (*http.Response, error) {
 /*
 GetAutomationRulesId GetAutomationuRulesProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetAutomationRulesIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetAutomationRulesIdRequest
 */
 func (a *AutomationRulesAPIService) GetAutomationRulesId(ctx context.Context, id int32) ApiGetAutomationRulesIdRequest {
 	return ApiGetAutomationRulesIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AutomationRulesAPIService) GetAutomationRulesIdExecute(r ApiGetAutomationRulesIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.GetAutomationRulesId")

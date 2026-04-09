@@ -19,15 +19,131 @@ import (
 	"strings"
 )
 
+
 // TeamsAPIService TeamsAPI service
 type TeamsAPIService service
 
-type ApiGetTeamsIdRequest struct {
-	ctx           context.Context
-	ApiService    *TeamsAPIService
-	id            int32
+type ApiGetTeamsRequest struct {
+	ctx context.Context
+	ApiService *TeamsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
+}
+
+func (r ApiGetTeamsRequest) Authorization(authorization string) ApiGetTeamsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetTeamsRequest) X4meAccount(x4meAccount string) ApiGetTeamsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetTeamsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetTeamsExecute(r)
+}
+
+/*
+GetTeams List teams
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTeamsRequest
+*/
+func (a *TeamsAPIService) GetTeams(ctx context.Context) ApiGetTeamsRequest {
+	return ApiGetTeamsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []map[string]interface{}
+func (a *TeamsAPIService) GetTeamsExecute(r ApiGetTeamsRequest) ([]map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/teams"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetTeamsIdRequest struct {
+	ctx context.Context
+	ApiService *TeamsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
 }
 
 func (r ApiGetTeamsIdRequest) Authorization(authorization string) ApiGetTeamsIdRequest {
@@ -47,27 +163,26 @@ func (r ApiGetTeamsIdRequest) Execute() (map[string]interface{}, *http.Response,
 /*
 GetTeamsId GetTeamProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetTeamsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetTeamsIdRequest
 */
 func (a *TeamsAPIService) GetTeamsId(ctx context.Context, id int32) ApiGetTeamsIdRequest {
 	return ApiGetTeamsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsId")
@@ -143,11 +258,11 @@ func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (map[string]
 }
 
 type ApiGetTeamsIdMembersRequest struct {
-	ctx           context.Context
-	ApiService    *TeamsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *TeamsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetTeamsIdMembersRequest) Authorization(authorization string) ApiGetTeamsIdMembersRequest {
@@ -167,27 +282,26 @@ func (r ApiGetTeamsIdMembersRequest) Execute() (map[string]interface{}, *http.Re
 /*
 GetTeamsIdMembers GetTeamMembersList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetTeamsIdMembersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetTeamsIdMembersRequest
 */
 func (a *TeamsAPIService) GetTeamsIdMembers(ctx context.Context, id int32) ApiGetTeamsIdMembersRequest {
 	return ApiGetTeamsIdMembersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsIdMembers")
@@ -225,6 +339,256 @@ func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest
 	if r.x4meAccount != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPatchTeamsIdRequest struct {
+	ctx context.Context
+	ApiService *TeamsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPatchTeamsIdRequest) Authorization(authorization string) ApiPatchTeamsIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPatchTeamsIdRequest) X4meAccount(x4meAccount string) ApiPatchTeamsIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPatchTeamsIdRequest) Body(body map[string]interface{}) ApiPatchTeamsIdRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPatchTeamsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchTeamsIdExecute(r)
+}
+
+/*
+PatchTeamsId Update a team
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchTeamsIdRequest
+*/
+func (a *TeamsAPIService) PatchTeamsId(ctx context.Context, id int32) ApiPatchTeamsIdRequest {
+	return ApiPatchTeamsIdRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *TeamsAPIService) PatchTeamsIdExecute(r ApiPatchTeamsIdRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.PatchTeamsId")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/teams/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostTeamsRequest struct {
+	ctx context.Context
+	ApiService *TeamsAPIService
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPostTeamsRequest) Authorization(authorization string) ApiPostTeamsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostTeamsRequest) X4meAccount(x4meAccount string) ApiPostTeamsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostTeamsRequest) Body(body map[string]interface{}) ApiPostTeamsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostTeamsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostTeamsExecute(r)
+}
+
+/*
+PostTeams Create a team
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostTeamsRequest
+*/
+func (a *TeamsAPIService) PostTeams(ctx context.Context) ApiPostTeamsRequest {
+	return ApiPostTeamsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *TeamsAPIService) PostTeamsExecute(r ApiPostTeamsRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.PostTeams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/teams"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

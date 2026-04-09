@@ -19,15 +19,16 @@ import (
 	"strings"
 )
 
+
 // ConfigurationItemsAPIService ConfigurationItemsAPI service
 type ConfigurationItemsAPIService service
 
 type ApiGetCisRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
 	authorization *string
-	x4meAccount   *string
-	status        *string
+	x4meAccount *string
+	status *string
 }
 
 func (r ApiGetCisRequest) Authorization(authorization string) ApiGetCisRequest {
@@ -52,31 +53,30 @@ func (r ApiGetCisRequest) Execute() (map[string]interface{}, *http.Response, err
 /*
 GetCis GetCIByLabel
 
-# StartFragment
+StartFragment
 
-# List all configuration items which support team is one of the teams that the API user is a member of
+List all configuration items which support team is one of the teams that the API user is a member of
 
 EndFragme
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetCisRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetCisRequest
 */
 func (a *ConfigurationItemsAPIService) GetCis(ctx context.Context) ApiGetCisRequest {
 	return ApiGetCisRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationItemsAPIService) GetCisExecute(r ApiGetCisRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.GetCis")
@@ -154,10 +154,10 @@ func (a *ConfigurationItemsAPIService) GetCisExecute(r ApiGetCisRequest) (map[st
 }
 
 type ApiGetCisActiveRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetCisActiveRequest) Authorization(authorization string) ApiGetCisActiveRequest {
@@ -177,25 +177,24 @@ func (r ApiGetCisActiveRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 GetCisActive GetCIList_ActiveCIs
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetCisActiveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetCisActiveRequest
 */
 func (a *ConfigurationItemsAPIService) GetCisActive(ctx context.Context) ApiGetCisActiveRequest {
 	return ApiGetCisActiveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationItemsAPIService) GetCisActiveExecute(r ApiGetCisActiveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.GetCisActive")
@@ -270,11 +269,11 @@ func (a *ConfigurationItemsAPIService) GetCisActiveExecute(r ApiGetCisActiveRequ
 }
 
 type ApiGetCisIdRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetCisIdRequest) Authorization(authorization string) ApiGetCisIdRequest {
@@ -294,27 +293,26 @@ func (r ApiGetCisIdRequest) Execute() (map[string]interface{}, *http.Response, e
 /*
 GetCisId GetCIProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetCisIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetCisIdRequest
 */
 func (a *ConfigurationItemsAPIService) GetCisId(ctx context.Context, id int32) ApiGetCisIdRequest {
 	return ApiGetCisIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationItemsAPIService) GetCisIdExecute(r ApiGetCisIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.GetCisId")
@@ -390,10 +388,10 @@ func (a *ConfigurationItemsAPIService) GetCisIdExecute(r ApiGetCisIdRequest) (ma
 }
 
 type ApiGetCisInactiveRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetCisInactiveRequest) Authorization(authorization string) ApiGetCisInactiveRequest {
@@ -413,25 +411,24 @@ func (r ApiGetCisInactiveRequest) Execute() (map[string]interface{}, *http.Respo
 /*
 GetCisInactive GetCIList_InactiveCIs
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetCisInactiveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetCisInactiveRequest
 */
 func (a *ConfigurationItemsAPIService) GetCisInactive(ctx context.Context) ApiGetCisInactiveRequest {
 	return ApiGetCisInactiveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationItemsAPIService) GetCisInactiveExecute(r ApiGetCisInactiveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.GetCisInactive")
@@ -506,10 +503,10 @@ func (a *ConfigurationItemsAPIService) GetCisInactiveExecute(r ApiGetCisInactive
 }
 
 type ApiGetCisSupportedByMyTeamsRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetCisSupportedByMyTeamsRequest) Authorization(authorization string) ApiGetCisSupportedByMyTeamsRequest {
@@ -529,31 +526,30 @@ func (r ApiGetCisSupportedByMyTeamsRequest) Execute() (map[string]interface{}, *
 /*
 GetCisSupportedByMyTeams GetCIList_supported_by_my_teams
 
-# StartFragment
+StartFragment
 
-# List all configuration items which support team is one of the teams that the API user is a member of
+List all configuration items which support team is one of the teams that the API user is a member of
 
 EndFragme
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetCisSupportedByMyTeamsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetCisSupportedByMyTeamsRequest
 */
 func (a *ConfigurationItemsAPIService) GetCisSupportedByMyTeams(ctx context.Context) ApiGetCisSupportedByMyTeamsRequest {
 	return ApiGetCisSupportedByMyTeamsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationItemsAPIService) GetCisSupportedByMyTeamsExecute(r ApiGetCisSupportedByMyTeamsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.GetCisSupportedByMyTeams")
@@ -628,11 +624,11 @@ func (a *ConfigurationItemsAPIService) GetCisSupportedByMyTeamsExecute(r ApiGetC
 }
 
 type ApiPostCisRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemsAPIService
+	ctx context.Context
+	ApiService *ConfigurationItemsAPIService
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPostCisRequest) Authorization(authorization string) ApiPostCisRequest {
@@ -659,22 +655,22 @@ PostCis CreateNewCI
 
 Example Description
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostCisRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostCisRequest
 */
 func (a *ConfigurationItemsAPIService) PostCis(ctx context.Context) ApiPostCisRequest {
 	return ApiPostCisRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationItemsAPIService) PostCisExecute(r ApiPostCisRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemsAPIService.PostCis")

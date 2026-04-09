@@ -11,14 +11,24 @@ Method | HTTP request | Description
 [**GetRequestsId**](RequestsAPI.md#GetRequestsId) | **Get** /v1/requests/{id} | GetIssuesProperties
 [**GetRequestsIdAudit**](RequestsAPI.md#GetRequestsIdAudit) | **Get** /v1/requests/{id}/audit | GetIssuesAuditEntries
 [**GetRequestsIdCis**](RequestsAPI.md#GetRequestsIdCis) | **Get** /v1/requests/{id}/cis | GetIssueAllRelatedCiList
+[**GetRequestsIdCisActive**](RequestsAPI.md#GetRequestsIdCisActive) | **Get** /v1/requests/{id}/cis/active | List active configuration items linked to a request
+[**GetRequestsIdCisInactive**](RequestsAPI.md#GetRequestsIdCisInactive) | **Get** /v1/requests/{id}/cis/inactive | List inactive configuration items linked to a request
 [**GetRequestsIdGroupedRequests**](RequestsAPI.md#GetRequestsIdGroupedRequests) | **Get** /v1/requests/{id}/grouped_requests | GetGroupedRequestLinkedRecordsList
+[**GetRequestsIdNotesInternal**](RequestsAPI.md#GetRequestsIdNotesInternal) | **Get** /v1/requests/{id}/notes/internal | List internal notes for a request
+[**GetRequestsIdNotesPublic**](RequestsAPI.md#GetRequestsIdNotesPublic) | **Get** /v1/requests/{id}/notes/public | List public notes for a request
 [**GetRequestsOpen**](RequestsAPI.md#GetRequestsOpen) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
+[**GetRequestsProblemManagementReview**](RequestsAPI.md#GetRequestsProblemManagementReview) | **Get** /v1/requests/problem_management_review | List requests (problem management review predefined filter)
 [**GetRequestsRequestedByOrForMe**](RequestsAPI.md#GetRequestsRequestedByOrForMe) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
 [**GetRequestsRequestsOfMyOrganization**](RequestsAPI.md#GetRequestsRequestsOfMyOrganization) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
+[**GetRequestsSlaAccountability**](RequestsAPI.md#GetRequestsSlaAccountability) | **Get** /v1/requests/sla_accountability | List requests (SLA accountability predefined filter)
+[**GetRequestsWaitingForMe**](RequestsAPI.md#GetRequestsWaitingForMe) | **Get** /v1/requests/waiting_for_me | List requests (waiting for me predefined filter)
 [**PostRequests**](RequestsAPI.md#PostRequests) | **Post** /v1/requests | Create request
+[**PostRequestsIdArchive**](RequestsAPI.md#PostRequestsIdArchive) | **Post** /v1/requests/{id}/archive | Archive a request
 [**PostRequestsIdDissatisfied**](RequestsAPI.md#PostRequestsIdDissatisfied) | **Post** /v1/requests/{id}/dissatisfied | ReturnToWork - Decline Execution
 [**PostRequestsIdNotes**](RequestsAPI.md#PostRequestsIdNotes) | **Post** /v1/requests/{id}/notes | AddInternalComment
+[**PostRequestsIdRestore**](RequestsAPI.md#PostRequestsIdRestore) | **Post** /v1/requests/{id}/restore | Restore a request from archive or trash
 [**PostRequestsIdSatisfied**](RequestsAPI.md#PostRequestsIdSatisfied) | **Post** /v1/requests/{id}/satisfied | CloseRequest - Satisfied
+[**PostRequestsIdTrash**](RequestsAPI.md#PostRequestsIdTrash) | **Post** /v1/requests/{id}/trash | Trash a request
 [**PostRequestsRequestIdCisCiId**](RequestsAPI.md#PostRequestsRequestIdCisCiId) | **Post** /v1/requests/{request_id}/cis/{ci_id} | SetCIToRequest
 [**PutRequestsId**](RequestsAPI.md#PutRequestsId) | **Put** /v1/requests/{id} | SetNewStatus (no_reply)
 
@@ -39,7 +49,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -114,7 +124,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -184,7 +194,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -250,7 +260,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -316,7 +326,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -388,7 +398,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -458,7 +468,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -515,6 +525,150 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetRequestsIdCisActive
+
+> []map[string]interface{} GetRequestsIdCisActive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List active configuration items linked to a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdCisActive(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdCisActive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsIdCisActive`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdCisActive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsIdCisActiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsIdCisInactive
+
+> []map[string]interface{} GetRequestsIdCisInactive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List inactive configuration items linked to a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdCisInactive(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdCisInactive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsIdCisInactive`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdCisInactive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsIdCisInactiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetRequestsIdGroupedRequests
 
 > map[string]interface{} GetRequestsIdGroupedRequests(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
@@ -530,7 +684,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -587,6 +741,150 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetRequestsIdNotesInternal
+
+> []map[string]interface{} GetRequestsIdNotesInternal(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List internal notes for a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdNotesInternal(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdNotesInternal``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsIdNotesInternal`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdNotesInternal`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsIdNotesInternalRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsIdNotesPublic
+
+> []map[string]interface{} GetRequestsIdNotesPublic(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List public notes for a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdNotesPublic(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdNotesPublic``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsIdNotesPublic`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdNotesPublic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsIdNotesPublicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetRequestsOpen
 
 > []map[string]interface{} GetRequestsOpen(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
@@ -602,7 +900,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -653,6 +951,72 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetRequestsProblemManagementReview
+
+> []map[string]interface{} GetRequestsProblemManagementReview(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List requests (problem management review predefined filter)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsProblemManagementReview(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsProblemManagementReview``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsProblemManagementReview`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsProblemManagementReview`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsProblemManagementReviewRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetRequestsRequestedByOrForMe
 
 > map[string]interface{} GetRequestsRequestedByOrForMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
@@ -668,7 +1032,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -734,7 +1098,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -785,6 +1149,138 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetRequestsSlaAccountability
+
+> []map[string]interface{} GetRequestsSlaAccountability(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List requests (SLA accountability predefined filter)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsSlaAccountability(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsSlaAccountability``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsSlaAccountability`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsSlaAccountability`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsSlaAccountabilityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsWaitingForMe
+
+> []map[string]interface{} GetRequestsWaitingForMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List requests (waiting for me predefined filter)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsWaitingForMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsWaitingForMe``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsWaitingForMe`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsWaitingForMe`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsWaitingForMeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostRequests
 
 > map[string]interface{} PostRequests(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -800,7 +1296,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -853,6 +1349,78 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PostRequestsIdArchive
+
+> map[string]interface{} PostRequestsIdArchive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Archive a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.PostRequestsIdArchive(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdArchive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostRequestsIdArchive`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequestsIdArchive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostRequestsIdArchiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostRequestsIdDissatisfied
 
 > string PostRequestsIdDissatisfied(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -868,7 +1436,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -942,7 +1510,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -1001,6 +1569,78 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PostRequestsIdRestore
+
+> map[string]interface{} PostRequestsIdRestore(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Restore a request from archive or trash
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.PostRequestsIdRestore(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdRestore``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostRequestsIdRestore`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequestsIdRestore`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostRequestsIdRestoreRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostRequestsIdSatisfied
 
 > PostRequestsIdSatisfied(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -1016,7 +1656,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -1073,6 +1713,78 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PostRequestsIdTrash
+
+> map[string]interface{} PostRequestsIdTrash(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Trash a request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.PostRequestsIdTrash(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdTrash``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostRequestsIdTrash`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequestsIdTrash`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostRequestsIdTrashRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostRequestsRequestIdCisCiId
 
 > PostRequestsRequestIdCisCiId(ctx, requestId, ciId).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -1088,7 +1800,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -1163,7 +1875,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {

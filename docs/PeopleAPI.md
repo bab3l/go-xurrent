@@ -5,6 +5,7 @@ All URIs are relative to *https://api.xurrent.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetPeople**](PeopleAPI.md#GetPeople) | **Get** /v1/people | GetUsersByPermision
+[**GetPeopleDirectory**](PeopleAPI.md#GetPeopleDirectory) | **Get** /v1/people/directory | List people (directory predefined filter)
 [**GetPeopleDisabled**](PeopleAPI.md#GetPeopleDisabled) | **Get** /v1/people/disabled | GetUsers (disabled)
 [**GetPeopleEnabled**](PeopleAPI.md#GetPeopleEnabled) | **Get** /v1/people/enabled | GetUsers (enabled)
 [**GetPeopleId**](PeopleAPI.md#GetPeopleId) | **Get** /v1/people/{id} | GetUser (by Id)
@@ -16,8 +17,12 @@ Method | HTTP request | Description
 [**GetPeopleIdTeams**](PeopleAPI.md#GetPeopleIdTeams) | **Get** /v1/people/{id}/teams | GetUsersTeamList
 [**GetPeopleInternal**](PeopleAPI.md#GetPeopleInternal) | **Get** /v1/people/internal | GetUsers (internal)
 [**GetPeopleSupportDomain**](PeopleAPI.md#GetPeopleSupportDomain) | **Get** /v1/people/support_domain | GetUsers (by directory)
+[**PatchPeopleId**](PeopleAPI.md#PatchPeopleId) | **Patch** /v1/people/{id} | Update a person
 [**PostPeople**](PeopleAPI.md#PostPeople) | **Post** /v1/people | CreateNewUser
+[**PostPeopleIdArchive**](PeopleAPI.md#PostPeopleIdArchive) | **Post** /v1/people/{id}/archive | Archive a person
 [**PostPeopleIdContacts**](PeopleAPI.md#PostPeopleIdContacts) | **Post** /v1/people/{id}/contacts | CreateNewContactToUser
+[**PostPeopleIdRestore**](PeopleAPI.md#PostPeopleIdRestore) | **Post** /v1/people/{id}/restore | Restore a person from archive or trash
+[**PostPeopleIdTrash**](PeopleAPI.md#PostPeopleIdTrash) | **Post** /v1/people/{id}/trash | Trash a person
 
 
 
@@ -36,7 +41,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -89,6 +94,72 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetPeopleDirectory
+
+> []map[string]interface{} GetPeopleDirectory(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List people (directory predefined filter)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.GetPeopleDirectory(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDirectory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPeopleDirectory`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleDirectory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPeopleDirectoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPeopleDisabled
 
 > map[string]interface{} GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
@@ -104,7 +175,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -170,7 +241,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -236,7 +307,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -308,7 +379,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -378,7 +449,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -450,7 +521,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -522,7 +593,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -592,7 +663,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -664,7 +735,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -736,7 +807,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -802,7 +873,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -853,6 +924,80 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PatchPeopleId
+
+> map[string]interface{} PatchPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+
+Update a person
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.PatchPeopleId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PatchPeopleId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchPeopleId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PatchPeopleId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchPeopleIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostPeople
 
 > map[string]interface{} PostPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -868,7 +1013,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -921,6 +1066,78 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PostPeopleIdArchive
+
+> map[string]interface{} PostPeopleIdArchive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Archive a person
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.PostPeopleIdArchive(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeopleIdArchive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostPeopleIdArchive`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeopleIdArchive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostPeopleIdArchiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostPeopleIdContacts
 
 > map[string]interface{} PostPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
@@ -936,7 +1153,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -988,6 +1205,150 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostPeopleIdRestore
+
+> map[string]interface{} PostPeopleIdRestore(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Restore a person from archive or trash
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.PostPeopleIdRestore(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeopleIdRestore``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostPeopleIdRestore`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeopleIdRestore`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostPeopleIdRestoreRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostPeopleIdTrash
+
+> map[string]interface{} PostPeopleIdTrash(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Trash a person
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.PostPeopleIdTrash(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeopleIdTrash``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostPeopleIdTrash`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeopleIdTrash`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostPeopleIdTrashRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

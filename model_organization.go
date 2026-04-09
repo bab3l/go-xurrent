@@ -20,14 +20,14 @@ var _ MappedNullable = &Organization{}
 
 // Organization struct for Organization
 type Organization struct {
-	Id        *int32         `json:"id,omitempty"`
-	SourceID  NullableString `json:"sourceID,omitempty"`
-	Name      *string        `json:"name,omitempty"`
-	Disabled  *bool          `json:"disabled,omitempty"`
-	CreatedAt *time.Time     `json:"created_at,omitempty"`
-	UpdatedAt *time.Time     `json:"updated_at,omitempty"`
-	Remarks   NullableString `json:"remarks,omitempty"`
-	Region    NullableString `json:"region,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	SourceID NullableString `json:"sourceID,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Disabled *bool `json:"disabled,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Remarks NullableString `json:"remarks,omitempty"`
+	Region NullableString `json:"region,omitempty"`
 }
 
 // NewOrganization instantiates a new Organization object
@@ -111,7 +111,6 @@ func (o *Organization) HasSourceID() bool {
 func (o *Organization) SetSourceID(v string) {
 	o.SourceID.Set(&v)
 }
-
 // SetSourceIDNil sets the value for SourceID to be an explicit nil
 func (o *Organization) SetSourceIDNil() {
 	o.SourceID.Set(nil)
@@ -282,7 +281,6 @@ func (o *Organization) HasRemarks() bool {
 func (o *Organization) SetRemarks(v string) {
 	o.Remarks.Set(&v)
 }
-
 // SetRemarksNil sets the value for Remarks to be an explicit nil
 func (o *Organization) SetRemarksNil() {
 	o.Remarks.Set(nil)
@@ -325,7 +323,6 @@ func (o *Organization) HasRegion() bool {
 func (o *Organization) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *Organization) SetRegionNil() {
 	o.Region.Set(nil)
@@ -337,7 +334,7 @@ func (o *Organization) UnsetRegion() {
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -408,3 +405,5 @@ func (v *NullableOrganization) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

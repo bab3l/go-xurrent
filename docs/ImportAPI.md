@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {

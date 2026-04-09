@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // ReservationsAPIService ReservationsAPI service
 type ReservationsAPIService service
 
 type ApiGetReservationsRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
+	ctx context.Context
+	ApiService *ReservationsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetReservationsRequest) Authorization(authorization string) ApiGetReservationsRequest {
@@ -48,22 +49,22 @@ GetReservations List reservations
 
 See https://developer.xurrent.com/v1/reservations/
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetReservationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetReservationsRequest
 */
 func (a *ReservationsAPIService) GetReservations(ctx context.Context) ApiGetReservationsRequest {
 	return ApiGetReservationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) GetReservationsExecute(r ApiGetReservationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservations")
@@ -129,10 +130,10 @@ func (a *ReservationsAPIService) GetReservationsExecute(r ApiGetReservationsRequ
 }
 
 type ApiGetReservationsCompletedRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
+	ctx context.Context
+	ApiService *ReservationsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetReservationsCompletedRequest) Authorization(authorization string) ApiGetReservationsCompletedRequest {
@@ -154,22 +155,22 @@ GetReservationsCompleted List completed reservations
 
 Predefined filter per https://developer.xurrent.com/v1/reservations/
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetReservationsCompletedRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetReservationsCompletedRequest
 */
 func (a *ReservationsAPIService) GetReservationsCompleted(ctx context.Context) ApiGetReservationsCompletedRequest {
 	return ApiGetReservationsCompletedRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) GetReservationsCompletedExecute(r ApiGetReservationsCompletedRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsCompleted")
@@ -235,11 +236,11 @@ func (a *ReservationsAPIService) GetReservationsCompletedExecute(r ApiGetReserva
 }
 
 type ApiGetReservationsIdRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ReservationsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetReservationsIdRequest) Authorization(authorization string) ApiGetReservationsIdRequest {
@@ -259,24 +260,24 @@ func (r ApiGetReservationsIdRequest) Execute() (*http.Response, error) {
 /*
 GetReservationsId Get a single reservation
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetReservationsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetReservationsIdRequest
 */
 func (a *ReservationsAPIService) GetReservationsId(ctx context.Context, id int32) ApiGetReservationsIdRequest {
 	return ApiGetReservationsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) GetReservationsIdExecute(r ApiGetReservationsIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsId")
@@ -343,10 +344,10 @@ func (a *ReservationsAPIService) GetReservationsIdExecute(r ApiGetReservationsId
 }
 
 type ApiGetReservationsOpenRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
+	ctx context.Context
+	ApiService *ReservationsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetReservationsOpenRequest) Authorization(authorization string) ApiGetReservationsOpenRequest {
@@ -368,22 +369,22 @@ GetReservationsOpen List open reservations
 
 Predefined filter per https://developer.xurrent.com/v1/reservations/
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetReservationsOpenRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetReservationsOpenRequest
 */
 func (a *ReservationsAPIService) GetReservationsOpen(ctx context.Context) ApiGetReservationsOpenRequest {
 	return ApiGetReservationsOpenRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) GetReservationsOpenExecute(r ApiGetReservationsOpenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsOpen")
@@ -449,12 +450,12 @@ func (a *ReservationsAPIService) GetReservationsOpenExecute(r ApiGetReservations
 }
 
 type ApiPatchReservationsIdRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ReservationsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPatchReservationsIdRequest) Authorization(authorization string) ApiPatchReservationsIdRequest {
@@ -479,24 +480,24 @@ func (r ApiPatchReservationsIdRequest) Execute() (*http.Response, error) {
 /*
 PatchReservationsId Update reservation
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPatchReservationsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchReservationsIdRequest
 */
 func (a *ReservationsAPIService) PatchReservationsId(ctx context.Context, id int32) ApiPatchReservationsIdRequest {
 	return ApiPatchReservationsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) PatchReservationsIdExecute(r ApiPatchReservationsIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPatch
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.PatchReservationsId")
@@ -565,11 +566,11 @@ func (a *ReservationsAPIService) PatchReservationsIdExecute(r ApiPatchReservatio
 }
 
 type ApiPostReservationsRequest struct {
-	ctx           context.Context
-	ApiService    *ReservationsAPIService
+	ctx context.Context
+	ApiService *ReservationsAPIService
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPostReservationsRequest) Authorization(authorization string) ApiPostReservationsRequest {
@@ -596,22 +597,22 @@ PostReservations Create reservation
 
 https://developer.xurrent.com/v1/reservations/
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostReservationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostReservationsRequest
 */
 func (a *ReservationsAPIService) PostReservations(ctx context.Context) ApiPostReservationsRequest {
 	return ApiPostReservationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReservationsAPIService) PostReservationsExecute(r ApiPostReservationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.PostReservations")

@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // WorkflowsAPIService WorkflowsAPI service
 type WorkflowsAPIService service
 
 type ApiGetWorkflowsRequest struct {
-	ctx           context.Context
-	ApiService    *WorkflowsAPIService
+	ctx context.Context
+	ApiService *WorkflowsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetWorkflowsRequest) Authorization(authorization string) ApiGetWorkflowsRequest {
@@ -46,25 +47,24 @@ func (r ApiGetWorkflowsRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 GetWorkflows GetWorkflows
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetWorkflowsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetWorkflowsRequest
 */
 func (a *WorkflowsAPIService) GetWorkflows(ctx context.Context) ApiGetWorkflowsRequest {
 	return ApiGetWorkflowsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflows")
@@ -139,11 +139,11 @@ func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) (map
 }
 
 type ApiGetWorkflowsIdRequest struct {
-	ctx           context.Context
-	ApiService    *WorkflowsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetWorkflowsIdRequest) Authorization(authorization string) ApiGetWorkflowsIdRequest {
@@ -163,27 +163,26 @@ func (r ApiGetWorkflowsIdRequest) Execute() (map[string]interface{}, *http.Respo
 /*
 GetWorkflowsId GetWorkflowProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetWorkflowsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetWorkflowsIdRequest
 */
 func (a *WorkflowsAPIService) GetWorkflowsId(ctx context.Context, id int32) ApiGetWorkflowsIdRequest {
 	return ApiGetWorkflowsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowsId")
@@ -192,6 +191,613 @@ func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) 
 	}
 
 	localVarPath := localBasePath + "/v1/workflows/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPatchWorkflowsIdRequest struct {
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPatchWorkflowsIdRequest) Authorization(authorization string) ApiPatchWorkflowsIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPatchWorkflowsIdRequest) X4meAccount(x4meAccount string) ApiPatchWorkflowsIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPatchWorkflowsIdRequest) Body(body map[string]interface{}) ApiPatchWorkflowsIdRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPatchWorkflowsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchWorkflowsIdExecute(r)
+}
+
+/*
+PatchWorkflowsId Update a workflow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchWorkflowsIdRequest
+*/
+func (a *WorkflowsAPIService) PatchWorkflowsId(ctx context.Context, id int32) ApiPatchWorkflowsIdRequest {
+	return ApiPatchWorkflowsIdRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *WorkflowsAPIService) PatchWorkflowsIdExecute(r ApiPatchWorkflowsIdRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PatchWorkflowsId")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/workflows/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostWorkflowsRequest struct {
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPostWorkflowsRequest) Authorization(authorization string) ApiPostWorkflowsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostWorkflowsRequest) X4meAccount(x4meAccount string) ApiPostWorkflowsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostWorkflowsRequest) Body(body map[string]interface{}) ApiPostWorkflowsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostWorkflowsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostWorkflowsExecute(r)
+}
+
+/*
+PostWorkflows Create a workflow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostWorkflowsRequest
+*/
+func (a *WorkflowsAPIService) PostWorkflows(ctx context.Context) ApiPostWorkflowsRequest {
+	return ApiPostWorkflowsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *WorkflowsAPIService) PostWorkflowsExecute(r ApiPostWorkflowsRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflows")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/workflows"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostWorkflowsIdArchiveRequest struct {
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+}
+
+func (r ApiPostWorkflowsIdArchiveRequest) Authorization(authorization string) ApiPostWorkflowsIdArchiveRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostWorkflowsIdArchiveRequest) X4meAccount(x4meAccount string) ApiPostWorkflowsIdArchiveRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostWorkflowsIdArchiveRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostWorkflowsIdArchiveExecute(r)
+}
+
+/*
+PostWorkflowsIdArchive Archive a workflow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPostWorkflowsIdArchiveRequest
+*/
+func (a *WorkflowsAPIService) PostWorkflowsIdArchive(ctx context.Context, id int32) ApiPostWorkflowsIdArchiveRequest {
+	return ApiPostWorkflowsIdArchiveRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *WorkflowsAPIService) PostWorkflowsIdArchiveExecute(r ApiPostWorkflowsIdArchiveRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdArchive")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/workflows/{id}/archive"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostWorkflowsIdRestoreRequest struct {
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+}
+
+func (r ApiPostWorkflowsIdRestoreRequest) Authorization(authorization string) ApiPostWorkflowsIdRestoreRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostWorkflowsIdRestoreRequest) X4meAccount(x4meAccount string) ApiPostWorkflowsIdRestoreRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostWorkflowsIdRestoreRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostWorkflowsIdRestoreExecute(r)
+}
+
+/*
+PostWorkflowsIdRestore Restore a workflow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPostWorkflowsIdRestoreRequest
+*/
+func (a *WorkflowsAPIService) PostWorkflowsIdRestore(ctx context.Context, id int32) ApiPostWorkflowsIdRestoreRequest {
+	return ApiPostWorkflowsIdRestoreRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *WorkflowsAPIService) PostWorkflowsIdRestoreExecute(r ApiPostWorkflowsIdRestoreRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdRestore")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/workflows/{id}/restore"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostWorkflowsIdTrashRequest struct {
+	ctx context.Context
+	ApiService *WorkflowsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+}
+
+func (r ApiPostWorkflowsIdTrashRequest) Authorization(authorization string) ApiPostWorkflowsIdTrashRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostWorkflowsIdTrashRequest) X4meAccount(x4meAccount string) ApiPostWorkflowsIdTrashRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostWorkflowsIdTrashRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostWorkflowsIdTrashExecute(r)
+}
+
+/*
+PostWorkflowsIdTrash Trash a workflow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPostWorkflowsIdTrashRequest
+*/
+func (a *WorkflowsAPIService) PostWorkflowsIdTrash(ctx context.Context, id int32) ApiPostWorkflowsIdTrashRequest {
+	return ApiPostWorkflowsIdTrashRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *WorkflowsAPIService) PostWorkflowsIdTrashExecute(r ApiPostWorkflowsIdTrashRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdTrash")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/workflows/{id}/trash"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

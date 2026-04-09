@@ -16,18 +16,19 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // AttachmentsAPIService AttachmentsAPI service
 type AttachmentsAPIService service
 
 type ApiGetAttachmentsStorageRequest struct {
-	ctx           context.Context
-	ApiService    *AttachmentsAPIService
+	ctx context.Context
+	ApiService *AttachmentsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetAttachmentsStorageRequest) Authorization(authorization string) ApiGetAttachmentsStorageRequest {
@@ -47,25 +48,24 @@ func (r ApiGetAttachmentsStorageRequest) Execute() (map[string]interface{}, *htt
 /*
 GetAttachmentsStorage Add Attach - ReservePlaceForAttachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAttachmentsStorageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAttachmentsStorageRequest
 */
 func (a *AttachmentsAPIService) GetAttachmentsStorage(ctx context.Context) ApiGetAttachmentsStorageRequest {
 	return ApiGetAttachmentsStorageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AttachmentsAPIService) GetAttachmentsStorageExecute(r ApiGetAttachmentsStorageRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.GetAttachmentsStorage")
@@ -140,10 +140,10 @@ func (a *AttachmentsAPIService) GetAttachmentsStorageExecute(r ApiGetAttachments
 }
 
 type ApiGetAttachmentsUploadRequest struct {
-	ctx           context.Context
-	ApiService    *AttachmentsAPIService
+	ctx context.Context
+	ApiService *AttachmentsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetAttachmentsUploadRequest) Authorization(authorization string) ApiGetAttachmentsUploadRequest {
@@ -163,22 +163,22 @@ func (r ApiGetAttachmentsUploadRequest) Execute() (*http.Response, error) {
 /*
 GetAttachmentsUpload Get Attach
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAttachmentsUploadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAttachmentsUploadRequest
 */
 func (a *AttachmentsAPIService) GetAttachmentsUpload(ctx context.Context) ApiGetAttachmentsUploadRequest {
 	return ApiGetAttachmentsUploadRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AttachmentsAPIService) GetAttachmentsUploadExecute(r ApiGetAttachmentsUploadRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.GetAttachmentsUpload")
@@ -244,12 +244,12 @@ func (a *AttachmentsAPIService) GetAttachmentsUploadExecute(r ApiGetAttachmentsU
 }
 
 type ApiPatchRequestsIdRequest struct {
-	ctx           context.Context
-	ApiService    *AttachmentsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *AttachmentsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPatchRequestsIdRequest) Authorization(authorization string) ApiPatchRequestsIdRequest {
@@ -274,27 +274,26 @@ func (r ApiPatchRequestsIdRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 PatchRequestsId Add Attach (multi) - AddAttachmentsToRequest
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPatchRequestsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchRequestsIdRequest
 */
 func (a *AttachmentsAPIService) PatchRequestsId(ctx context.Context, id int32) ApiPatchRequestsIdRequest {
 	return ApiPatchRequestsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AttachmentsAPIService) PatchRequestsIdExecute(r ApiPatchRequestsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.PatchRequestsId")
@@ -372,14 +371,14 @@ func (a *AttachmentsAPIService) PatchRequestsIdExecute(r ApiPatchRequestsIdReque
 }
 
 type ApiPostAttachmentsRequest struct {
-	ctx            context.Context
-	ApiService     *AttachmentsAPIService
-	authorization  *string
-	x4meAccount    *string
-	key            *string
+	ctx context.Context
+	ApiService *AttachmentsAPIService
+	authorization *string
+	x4meAccount *string
+	key *string
 	x4meExpiration *string
-	x4meSignature  *string
-	file           *os.File
+	x4meSignature *string
+	file *os.File
 }
 
 func (r ApiPostAttachmentsRequest) Authorization(authorization string) ApiPostAttachmentsRequest {
@@ -419,25 +418,24 @@ func (r ApiPostAttachmentsRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 PostAttachments Add Attach - PutAttachToStorageAndGetURL
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostAttachmentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostAttachmentsRequest
 */
 func (a *AttachmentsAPIService) PostAttachments(ctx context.Context) ApiPostAttachmentsRequest {
 	return ApiPostAttachmentsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AttachmentsAPIService) PostAttachmentsExecute(r ApiPostAttachmentsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.PostAttachments")
@@ -484,8 +482,8 @@ func (a *AttachmentsAPIService) PostAttachmentsExecute(r ApiPostAttachmentsReque
 		parameterAddToHeaderOrQuery(localVarFormParams, "x-4me-signature", r.x4meSignature, "", "")
 	}
 	var fileLocalVarFormFileName string
-	var fileLocalVarFileName string
-	var fileLocalVarFileBytes []byte
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
 	fileLocalVarFile := r.file

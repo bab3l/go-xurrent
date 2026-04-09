@@ -1,0 +1,261 @@
+# https://developer.xurrent.com/v1/people/ , teams, sites
+paths:
+  /v1/people/directory:
+    get:
+      tags:
+      - People
+      summary: List people (directory predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/people/{id}/archive:
+    post:
+      tags:
+      - People
+      summary: Archive a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/people/{id}/trash:
+    post:
+      tags:
+      - People
+      summary: Trash a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/people/{id}/restore:
+    post:
+      tags:
+      - People
+      summary: Restore a person from archive or trash
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/teams:
+    get:
+      tags:
+      - Teams
+      summary: List teams
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      tags:
+      - Teams
+      summary: Create a team
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/teams/{id}:
+    patch:
+      tags:
+      - Teams
+      summary: Update a team
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/sites:
+    get:
+      tags:
+      - Sites
+      summary: List sites
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      tags:
+      - Sites
+      summary: Create a site
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/sites/{id}:
+    patch:
+      tags:
+      - Sites
+      summary: Update a site
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object

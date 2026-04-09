@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // UIExtensionsAPIService UIExtensionsAPI service
 type UIExtensionsAPIService service
 
 type ApiGetUiExtensionsRequest struct {
-	ctx           context.Context
-	ApiService    *UIExtensionsAPIService
+	ctx context.Context
+	ApiService *UIExtensionsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetUiExtensionsRequest) Authorization(authorization string) ApiGetUiExtensionsRequest {
@@ -46,25 +47,24 @@ func (r ApiGetUiExtensionsRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 GetUiExtensions GetUIExtensionPropertiesList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUiExtensionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUiExtensionsRequest
 */
 func (a *UIExtensionsAPIService) GetUiExtensions(ctx context.Context) ApiGetUiExtensionsRequest {
 	return ApiGetUiExtensionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UIExtensionsAPIService) GetUiExtensionsExecute(r ApiGetUiExtensionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.GetUiExtensions")
@@ -139,11 +139,11 @@ func (a *UIExtensionsAPIService) GetUiExtensionsExecute(r ApiGetUiExtensionsRequ
 }
 
 type ApiGetUiExtensionsIdRequest struct {
-	ctx           context.Context
-	ApiService    *UIExtensionsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *UIExtensionsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetUiExtensionsIdRequest) Authorization(authorization string) ApiGetUiExtensionsIdRequest {
@@ -163,27 +163,26 @@ func (r ApiGetUiExtensionsIdRequest) Execute() (map[string]interface{}, *http.Re
 /*
 GetUiExtensionsId GetUIExtensionProperties Copy
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetUiExtensionsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetUiExtensionsIdRequest
 */
 func (a *UIExtensionsAPIService) GetUiExtensionsId(ctx context.Context, id int32) ApiGetUiExtensionsIdRequest {
 	return ApiGetUiExtensionsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UIExtensionsAPIService) GetUiExtensionsIdExecute(r ApiGetUiExtensionsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.GetUiExtensionsId")

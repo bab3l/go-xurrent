@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // ServiceOfferingsAPIService ServiceOfferingsAPI service
 type ServiceOfferingsAPIService service
 
 type ApiGetServiceOfferingsRequest struct {
-	ctx           context.Context
-	ApiService    *ServiceOfferingsAPIService
+	ctx context.Context
+	ApiService *ServiceOfferingsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetServiceOfferingsRequest) Authorization(authorization string) ApiGetServiceOfferingsRequest {
@@ -46,22 +47,22 @@ func (r ApiGetServiceOfferingsRequest) Execute() (*http.Response, error) {
 /*
 GetServiceOfferings GetServiceOfferList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetServiceOfferingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetServiceOfferingsRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferings(ctx context.Context) ApiGetServiceOfferingsRequest {
 	return ApiGetServiceOfferingsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsExecute(r ApiGetServiceOfferingsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferings")
@@ -127,11 +128,11 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsExecute(r ApiGetServiceO
 }
 
 type ApiGetServiceOfferingsIdRequest struct {
-	ctx           context.Context
-	ApiService    *ServiceOfferingsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ServiceOfferingsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetServiceOfferingsIdRequest) Authorization(authorization string) ApiGetServiceOfferingsIdRequest {
@@ -151,24 +152,24 @@ func (r ApiGetServiceOfferingsIdRequest) Execute() (*http.Response, error) {
 /*
 GetServiceOfferingsId GetServiceOfferById
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetServiceOfferingsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetServiceOfferingsIdRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsId(ctx context.Context, id int32) ApiGetServiceOfferingsIdRequest {
 	return ApiGetServiceOfferingsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServiceOfferingsIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsId")
@@ -235,11 +236,11 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServic
 }
 
 type ApiGetServiceOfferingsIdAuditRequest struct {
-	ctx           context.Context
-	ApiService    *ServiceOfferingsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ServiceOfferingsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetServiceOfferingsIdAuditRequest) Authorization(authorization string) ApiGetServiceOfferingsIdAuditRequest {
@@ -259,24 +260,24 @@ func (r ApiGetServiceOfferingsIdAuditRequest) Execute() (*http.Response, error) 
 /*
 GetServiceOfferingsIdAudit GetServiceOfferAuditEntries
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetServiceOfferingsIdAuditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetServiceOfferingsIdAuditRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAudit(ctx context.Context, id int32) ApiGetServiceOfferingsIdAuditRequest {
 	return ApiGetServiceOfferingsIdAuditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAuditExecute(r ApiGetServiceOfferingsIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsIdAudit")
@@ -340,4 +341,254 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAuditExecute(r ApiGetS
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiPatchServiceOfferingsIdRequest struct {
+	ctx context.Context
+	ApiService *ServiceOfferingsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPatchServiceOfferingsIdRequest) Authorization(authorization string) ApiPatchServiceOfferingsIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPatchServiceOfferingsIdRequest) X4meAccount(x4meAccount string) ApiPatchServiceOfferingsIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPatchServiceOfferingsIdRequest) Body(body map[string]interface{}) ApiPatchServiceOfferingsIdRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPatchServiceOfferingsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchServiceOfferingsIdExecute(r)
+}
+
+/*
+PatchServiceOfferingsId Update a service offering
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchServiceOfferingsIdRequest
+*/
+func (a *ServiceOfferingsAPIService) PatchServiceOfferingsId(ctx context.Context, id int32) ApiPatchServiceOfferingsIdRequest {
+	return ApiPatchServiceOfferingsIdRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *ServiceOfferingsAPIService) PatchServiceOfferingsIdExecute(r ApiPatchServiceOfferingsIdRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.PatchServiceOfferingsId")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/service_offerings/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostServiceOfferingsRequest struct {
+	ctx context.Context
+	ApiService *ServiceOfferingsAPIService
+	authorization *string
+	x4meAccount *string
+	body *map[string]interface{}
+}
+
+func (r ApiPostServiceOfferingsRequest) Authorization(authorization string) ApiPostServiceOfferingsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostServiceOfferingsRequest) X4meAccount(x4meAccount string) ApiPostServiceOfferingsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostServiceOfferingsRequest) Body(body map[string]interface{}) ApiPostServiceOfferingsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostServiceOfferingsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostServiceOfferingsExecute(r)
+}
+
+/*
+PostServiceOfferings Create a service offering
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostServiceOfferingsRequest
+*/
+func (a *ServiceOfferingsAPIService) PostServiceOfferings(ctx context.Context) ApiPostServiceOfferingsRequest {
+	return ApiPostServiceOfferingsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *ServiceOfferingsAPIService) PostServiceOfferingsExecute(r ApiPostServiceOfferingsRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.PostServiceOfferings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/service_offerings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

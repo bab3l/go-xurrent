@@ -1,0 +1,33 @@
+# PATCH /people/:id per https://developer.xurrent.com/v1/people/
+paths:
+  /v1/people/{id}:
+    patch:
+      tags:
+      - People
+      summary: Update a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object

@@ -19,12 +19,13 @@ import (
 	"strings"
 )
 
+
 // ProblemsAPIService ProblemsAPI service
 type ProblemsAPIService service
 
 type ApiGetProblemsRequest struct {
-	ctx         context.Context
-	ApiService  *ProblemsAPIService
+	ctx context.Context
+	ApiService *ProblemsAPIService
 	x4meAccount *string
 }
 
@@ -40,22 +41,22 @@ func (r ApiGetProblemsRequest) Execute() (*http.Response, error) {
 /*
 GetProblems GetProblemProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetProblemsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetProblemsRequest
 */
 func (a *ProblemsAPIService) GetProblems(ctx context.Context) ApiGetProblemsRequest {
 	return ApiGetProblemsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) GetProblemsExecute(r ApiGetProblemsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblems")
@@ -118,11 +119,11 @@ func (a *ProblemsAPIService) GetProblemsExecute(r ApiGetProblemsRequest) (*http.
 }
 
 type ApiPatchProblemsIdRequest struct {
-	ctx         context.Context
-	ApiService  *ProblemsAPIService
-	id          int32
+	ctx context.Context
+	ApiService *ProblemsAPIService
+	id int32
 	x4meAccount *string
-	body        *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiPatchProblemsIdRequest) X4meAccount(x4meAccount string) ApiPatchProblemsIdRequest {
@@ -142,24 +143,24 @@ func (r ApiPatchProblemsIdRequest) Execute() (*http.Response, error) {
 /*
 PatchProblemsId SetNewStatus (solved)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPatchProblemsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchProblemsIdRequest
 */
 func (a *ProblemsAPIService) PatchProblemsId(ctx context.Context, id int32) ApiPatchProblemsIdRequest {
 	return ApiPatchProblemsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PatchProblemsIdExecute(r ApiPatchProblemsIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPatch
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PatchProblemsId")
@@ -225,10 +226,10 @@ func (a *ProblemsAPIService) PatchProblemsIdExecute(r ApiPatchProblemsIdRequest)
 }
 
 type ApiPostProblemsRequest struct {
-	ctx         context.Context
-	ApiService  *ProblemsAPIService
+	ctx context.Context
+	ApiService *ProblemsAPIService
 	x4meAccount *string
-	body        *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiPostProblemsRequest) X4meAccount(x4meAccount string) ApiPostProblemsRequest {
@@ -248,22 +249,22 @@ func (r ApiPostProblemsRequest) Execute() (*http.Response, error) {
 /*
 PostProblems CreateNewProblem
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostProblemsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostProblemsRequest
 */
 func (a *ProblemsAPIService) PostProblems(ctx context.Context) ApiPostProblemsRequest {
 	return ApiPostProblemsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PostProblemsExecute(r ApiPostProblemsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblems")
@@ -328,12 +329,12 @@ func (a *ProblemsAPIService) PostProblemsExecute(r ApiPostProblemsRequest) (*htt
 }
 
 type ApiPostProblemsProblemIdRequestsRequestIdRequest struct {
-	ctx         context.Context
-	ApiService  *ProblemsAPIService
-	problemId   int32
-	requestId   int32
+	ctx context.Context
+	ApiService *ProblemsAPIService
+	problemId int32
+	requestId int32
 	x4meAccount *string
-	body        *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiPostProblemsProblemIdRequestsRequestIdRequest) X4meAccount(x4meAccount string) ApiPostProblemsProblemIdRequestsRequestIdRequest {
@@ -353,26 +354,26 @@ func (r ApiPostProblemsProblemIdRequestsRequestIdRequest) Execute() (*http.Respo
 /*
 PostProblemsProblemIdRequestsRequestId UpdateProblem - AddRequestToProblem
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param problemId
-	@param requestId
-	@return ApiPostProblemsProblemIdRequestsRequestIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param problemId
+ @param requestId
+ @return ApiPostProblemsProblemIdRequestsRequestIdRequest
 */
 func (a *ProblemsAPIService) PostProblemsProblemIdRequestsRequestId(ctx context.Context, problemId int32, requestId int32) ApiPostProblemsProblemIdRequestsRequestIdRequest {
 	return ApiPostProblemsProblemIdRequestsRequestIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		problemId:  problemId,
-		requestId:  requestId,
+		ctx: ctx,
+		problemId: problemId,
+		requestId: requestId,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PostProblemsProblemIdRequestsRequestIdExecute(r ApiPostProblemsProblemIdRequestsRequestIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblemsProblemIdRequestsRequestId")

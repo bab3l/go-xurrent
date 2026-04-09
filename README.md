@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import xurrent "github.com/bab3l/go-xurrent"
+import xurrent "github.com/xurrent/go-xurrent"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -86,6 +86,8 @@ Class | Method | HTTP request | Description
 *AutomationRulesAPI* | [**GetAutomationRules**](docs/AutomationRulesAPI.md#getautomationrules) | **Get** /v1/automation_rules | GetAutomationuRulesList
 *AutomationRulesAPI* | [**GetAutomationRulesId**](docs/AutomationRulesAPI.md#getautomationrulesid) | **Get** /v1/automation_rules/{id} | GetAutomationuRulesProperties
 *CalendarsAPI* | [**GetCalendars**](docs/CalendarsAPI.md#getcalendars) | **Get** /v1/calendars | GetCalendars
+*CalendarsAPI* | [**PatchCalendarsId**](docs/CalendarsAPI.md#patchcalendarsid) | **Patch** /v1/calendars/{id} | Update a calendar
+*CalendarsAPI* | [**PostCalendars**](docs/CalendarsAPI.md#postcalendars) | **Post** /v1/calendars | Create a calendar
 *ConfigurationItemRelationsAPI* | [**DeleteCisCiIdCiRelationsRelationId**](docs/ConfigurationItemRelationsAPI.md#deletecisciidcirelationsrelationid) | **Delete** /v1/cis/{ci_id}/ci_relations/{relation_id} | DeleteRelationWithCI
 *ConfigurationItemRelationsAPI* | [**DeleteCisCiIdUsersPersonId**](docs/ConfigurationItemRelationsAPI.md#deletecisciiduserspersonid) | **Delete** /v1/cis/{ci_id}/users/{person_id} | DeleteLinkCIwithPerson
 *ConfigurationItemRelationsAPI* | [**DeleteCisIdCiRelations**](docs/ConfigurationItemRelationsAPI.md#deletecisidcirelations) | **Delete** /v1/cis/{id}/ci_relations | DeleteAllRelationsWithCI
@@ -117,6 +119,7 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**PatchOrganizationsId**](docs/OrganizationsAPI.md#patchorganizationsid) | **Patch** /v1/organizations/{id} | UpdateOrganization
 *OrganizationsAPI* | [**PostOrganizations**](docs/OrganizationsAPI.md#postorganizations) | **Post** /v1/organizations | CreateOrganization
 *PeopleAPI* | [**GetPeople**](docs/PeopleAPI.md#getpeople) | **Get** /v1/people | GetUsersByPermision
+*PeopleAPI* | [**GetPeopleDirectory**](docs/PeopleAPI.md#getpeopledirectory) | **Get** /v1/people/directory | List people (directory predefined filter)
 *PeopleAPI* | [**GetPeopleDisabled**](docs/PeopleAPI.md#getpeopledisabled) | **Get** /v1/people/disabled | GetUsers (disabled)
 *PeopleAPI* | [**GetPeopleEnabled**](docs/PeopleAPI.md#getpeopleenabled) | **Get** /v1/people/enabled | GetUsers (enabled)
 *PeopleAPI* | [**GetPeopleId**](docs/PeopleAPI.md#getpeopleid) | **Get** /v1/people/{id} | GetUser (by Id)
@@ -128,8 +131,12 @@ Class | Method | HTTP request | Description
 *PeopleAPI* | [**GetPeopleIdTeams**](docs/PeopleAPI.md#getpeopleidteams) | **Get** /v1/people/{id}/teams | GetUsersTeamList
 *PeopleAPI* | [**GetPeopleInternal**](docs/PeopleAPI.md#getpeopleinternal) | **Get** /v1/people/internal | GetUsers (internal)
 *PeopleAPI* | [**GetPeopleSupportDomain**](docs/PeopleAPI.md#getpeoplesupportdomain) | **Get** /v1/people/support_domain | GetUsers (by directory)
+*PeopleAPI* | [**PatchPeopleId**](docs/PeopleAPI.md#patchpeopleid) | **Patch** /v1/people/{id} | Update a person
 *PeopleAPI* | [**PostPeople**](docs/PeopleAPI.md#postpeople) | **Post** /v1/people | CreateNewUser
+*PeopleAPI* | [**PostPeopleIdArchive**](docs/PeopleAPI.md#postpeopleidarchive) | **Post** /v1/people/{id}/archive | Archive a person
 *PeopleAPI* | [**PostPeopleIdContacts**](docs/PeopleAPI.md#postpeopleidcontacts) | **Post** /v1/people/{id}/contacts | CreateNewContactToUser
+*PeopleAPI* | [**PostPeopleIdRestore**](docs/PeopleAPI.md#postpeopleidrestore) | **Post** /v1/people/{id}/restore | Restore a person from archive or trash
+*PeopleAPI* | [**PostPeopleIdTrash**](docs/PeopleAPI.md#postpeopleidtrash) | **Post** /v1/people/{id}/trash | Trash a person
 *ProblemsAPI* | [**GetProblems**](docs/ProblemsAPI.md#getproblems) | **Get** /v1/problems | GetProblemProperties
 *ProblemsAPI* | [**PatchProblemsId**](docs/ProblemsAPI.md#patchproblemsid) | **Patch** /v1/problems/{id} | SetNewStatus (solved)
 *ProblemsAPI* | [**PostProblems**](docs/ProblemsAPI.md#postproblems) | **Post** /v1/problems | CreateNewProblem
@@ -140,6 +147,8 @@ Class | Method | HTTP request | Description
 *ProductsAPI* | [**GetProductsId**](docs/ProductsAPI.md#getproductsid) | **Get** /v1/products/{id} | GetProductProperties
 *RequestTemplatesAPI* | [**GetRequestTemplates**](docs/RequestTemplatesAPI.md#getrequesttemplates) | **Get** /v1/request_templates | GetRequestTemplatesListByService
 *RequestTemplatesAPI* | [**GetRequestTemplatesId**](docs/RequestTemplatesAPI.md#getrequesttemplatesid) | **Get** /v1/request_templates/{id} | GetRequestTemplatesProperties
+*RequestTemplatesAPI* | [**PatchRequestTemplatesId**](docs/RequestTemplatesAPI.md#patchrequesttemplatesid) | **Patch** /v1/request_templates/{id} | Update a request template
+*RequestTemplatesAPI* | [**PostRequestTemplates**](docs/RequestTemplatesAPI.md#postrequesttemplates) | **Post** /v1/request_templates | Create a request template
 *RequestsAPI* | [**DeleteRequestsRequestIdCisCiId**](docs/RequestsAPI.md#deleterequestsrequestidcisciid) | **Delete** /v1/requests/{request_id}/cis/{ci_id} | RemoveLinkWithCi
 *RequestsAPI* | [**GetRequestsAssignedToMe**](docs/RequestsAPI.md#getrequestsassignedtome) | **Get** /v1/requests/assigned_to_me | GetIssuesList (assigned to ...)
 *RequestsAPI* | [**GetRequestsAssignedToMyTeam**](docs/RequestsAPI.md#getrequestsassignedtomyteam) | **Get** /v1/requests/assigned_to_my_team | GetIssuesList (assigned to my team)
@@ -147,14 +156,24 @@ Class | Method | HTTP request | Description
 *RequestsAPI* | [**GetRequestsId**](docs/RequestsAPI.md#getrequestsid) | **Get** /v1/requests/{id} | GetIssuesProperties
 *RequestsAPI* | [**GetRequestsIdAudit**](docs/RequestsAPI.md#getrequestsidaudit) | **Get** /v1/requests/{id}/audit | GetIssuesAuditEntries
 *RequestsAPI* | [**GetRequestsIdCis**](docs/RequestsAPI.md#getrequestsidcis) | **Get** /v1/requests/{id}/cis | GetIssueAllRelatedCiList
+*RequestsAPI* | [**GetRequestsIdCisActive**](docs/RequestsAPI.md#getrequestsidcisactive) | **Get** /v1/requests/{id}/cis/active | List active configuration items linked to a request
+*RequestsAPI* | [**GetRequestsIdCisInactive**](docs/RequestsAPI.md#getrequestsidcisinactive) | **Get** /v1/requests/{id}/cis/inactive | List inactive configuration items linked to a request
 *RequestsAPI* | [**GetRequestsIdGroupedRequests**](docs/RequestsAPI.md#getrequestsidgroupedrequests) | **Get** /v1/requests/{id}/grouped_requests | GetGroupedRequestLinkedRecordsList
+*RequestsAPI* | [**GetRequestsIdNotesInternal**](docs/RequestsAPI.md#getrequestsidnotesinternal) | **Get** /v1/requests/{id}/notes/internal | List internal notes for a request
+*RequestsAPI* | [**GetRequestsIdNotesPublic**](docs/RequestsAPI.md#getrequestsidnotespublic) | **Get** /v1/requests/{id}/notes/public | List public notes for a request
 *RequestsAPI* | [**GetRequestsOpen**](docs/RequestsAPI.md#getrequestsopen) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
+*RequestsAPI* | [**GetRequestsProblemManagementReview**](docs/RequestsAPI.md#getrequestsproblemmanagementreview) | **Get** /v1/requests/problem_management_review | List requests (problem management review predefined filter)
 *RequestsAPI* | [**GetRequestsRequestedByOrForMe**](docs/RequestsAPI.md#getrequestsrequestedbyorforme) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
 *RequestsAPI* | [**GetRequestsRequestsOfMyOrganization**](docs/RequestsAPI.md#getrequestsrequestsofmyorganization) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
+*RequestsAPI* | [**GetRequestsSlaAccountability**](docs/RequestsAPI.md#getrequestsslaaccountability) | **Get** /v1/requests/sla_accountability | List requests (SLA accountability predefined filter)
+*RequestsAPI* | [**GetRequestsWaitingForMe**](docs/RequestsAPI.md#getrequestswaitingforme) | **Get** /v1/requests/waiting_for_me | List requests (waiting for me predefined filter)
 *RequestsAPI* | [**PostRequests**](docs/RequestsAPI.md#postrequests) | **Post** /v1/requests | Create request
+*RequestsAPI* | [**PostRequestsIdArchive**](docs/RequestsAPI.md#postrequestsidarchive) | **Post** /v1/requests/{id}/archive | Archive a request
 *RequestsAPI* | [**PostRequestsIdDissatisfied**](docs/RequestsAPI.md#postrequestsiddissatisfied) | **Post** /v1/requests/{id}/dissatisfied | ReturnToWork - Decline Execution
 *RequestsAPI* | [**PostRequestsIdNotes**](docs/RequestsAPI.md#postrequestsidnotes) | **Post** /v1/requests/{id}/notes | AddInternalComment
+*RequestsAPI* | [**PostRequestsIdRestore**](docs/RequestsAPI.md#postrequestsidrestore) | **Post** /v1/requests/{id}/restore | Restore a request from archive or trash
 *RequestsAPI* | [**PostRequestsIdSatisfied**](docs/RequestsAPI.md#postrequestsidsatisfied) | **Post** /v1/requests/{id}/satisfied | CloseRequest - Satisfied
+*RequestsAPI* | [**PostRequestsIdTrash**](docs/RequestsAPI.md#postrequestsidtrash) | **Post** /v1/requests/{id}/trash | Trash a request
 *RequestsAPI* | [**PostRequestsRequestIdCisCiId**](docs/RequestsAPI.md#postrequestsrequestidcisciid) | **Post** /v1/requests/{request_id}/cis/{ci_id} | SetCIToRequest
 *RequestsAPI* | [**PutRequestsId**](docs/RequestsAPI.md#putrequestsid) | **Put** /v1/requests/{id} | SetNewStatus (no_reply)
 *ReservationsAPI* | [**GetReservations**](docs/ReservationsAPI.md#getreservations) | **Get** /v1/reservations | List reservations
@@ -169,12 +188,21 @@ Class | Method | HTTP request | Description
 *ServiceLevelAgreementsAPI* | [**GetSlasActive**](docs/ServiceLevelAgreementsAPI.md#getslasactive) | **Get** /v1/slas/active | GetSLAListActive
 *ServiceLevelAgreementsAPI* | [**GetSlasId**](docs/ServiceLevelAgreementsAPI.md#getslasid) | **Get** /v1/slas/{id} | GetSLAProperties
 *ServiceLevelAgreementsAPI* | [**GetSlasInactive**](docs/ServiceLevelAgreementsAPI.md#getslasinactive) | **Get** /v1/slas/inactive | GetSLAListInactive
+*ServiceLevelAgreementsAPI* | [**PatchSlasId**](docs/ServiceLevelAgreementsAPI.md#patchslasid) | **Patch** /v1/slas/{id} | Update an SLA
+*ServiceLevelAgreementsAPI* | [**PostSlas**](docs/ServiceLevelAgreementsAPI.md#postslas) | **Post** /v1/slas | Create an SLA
 *ServiceOfferingsAPI* | [**GetServiceOfferings**](docs/ServiceOfferingsAPI.md#getserviceofferings) | **Get** /v1/service_offerings | GetServiceOfferList
 *ServiceOfferingsAPI* | [**GetServiceOfferingsId**](docs/ServiceOfferingsAPI.md#getserviceofferingsid) | **Get** /v1/service_offerings/{id} | GetServiceOfferById
 *ServiceOfferingsAPI* | [**GetServiceOfferingsIdAudit**](docs/ServiceOfferingsAPI.md#getserviceofferingsidaudit) | **Get** /v1/service_offerings/{id}/audit | GetServiceOfferAuditEntries
+*ServiceOfferingsAPI* | [**PatchServiceOfferingsId**](docs/ServiceOfferingsAPI.md#patchserviceofferingsid) | **Patch** /v1/service_offerings/{id} | Update a service offering
+*ServiceOfferingsAPI* | [**PostServiceOfferings**](docs/ServiceOfferingsAPI.md#postserviceofferings) | **Post** /v1/service_offerings | Create a service offering
 *ServicesAPI* | [**GetServices**](docs/ServicesAPI.md#getservices) | **Get** /v1/services | GetServiceByProvider
 *ServicesAPI* | [**GetServicesId**](docs/ServicesAPI.md#getservicesid) | **Get** /v1/services/{id} | GetServiceProperties
+*ServicesAPI* | [**PatchServicesId**](docs/ServicesAPI.md#patchservicesid) | **Patch** /v1/services/{id} | Update a service
+*ServicesAPI* | [**PostServices**](docs/ServicesAPI.md#postservices) | **Post** /v1/services | Create a service
+*SitesAPI* | [**GetSites**](docs/SitesAPI.md#getsites) | **Get** /v1/sites | List sites
 *SitesAPI* | [**GetSitesId**](docs/SitesAPI.md#getsitesid) | **Get** /v1/sites/{id} | GetSiteProperties
+*SitesAPI* | [**PatchSitesId**](docs/SitesAPI.md#patchsitesid) | **Patch** /v1/sites/{id} | Update a site
+*SitesAPI* | [**PostSites**](docs/SitesAPI.md#postsites) | **Post** /v1/sites | Create a site
 *TasksAPI* | [**GetTasks**](docs/TasksAPI.md#gettasks) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
 *TasksAPI* | [**GetTasksAssignedByMe**](docs/TasksAPI.md#gettasksassignedbyme) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
 *TasksAPI* | [**GetTasksAssignedToMe**](docs/TasksAPI.md#gettasksassignedtome) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
@@ -184,12 +212,20 @@ Class | Method | HTTP request | Description
 *TasksAPI* | [**GetTasksOpen**](docs/TasksAPI.md#gettasksopen) | **Get** /v1/tasks/open | GetListOfTasks (opened)
 *TasksAPI* | [**PatchTasksId**](docs/TasksAPI.md#patchtasksid) | **Patch** /v1/tasks/{id} | SetNewStatus Copy
 *TasksAPI* | [**PostTasksIdNotes**](docs/TasksAPI.md#posttasksidnotes) | **Post** /v1/tasks/{id}/notes | AddCommentToTask
+*TeamsAPI* | [**GetTeams**](docs/TeamsAPI.md#getteams) | **Get** /v1/teams | List teams
 *TeamsAPI* | [**GetTeamsId**](docs/TeamsAPI.md#getteamsid) | **Get** /v1/teams/{id} | GetTeamProperties
 *TeamsAPI* | [**GetTeamsIdMembers**](docs/TeamsAPI.md#getteamsidmembers) | **Get** /v1/teams/{id}/members | GetTeamMembersList
+*TeamsAPI* | [**PatchTeamsId**](docs/TeamsAPI.md#patchteamsid) | **Patch** /v1/teams/{id} | Update a team
+*TeamsAPI* | [**PostTeams**](docs/TeamsAPI.md#postteams) | **Post** /v1/teams | Create a team
 *UIExtensionsAPI* | [**GetUiExtensions**](docs/UIExtensionsAPI.md#getuiextensions) | **Get** /v1/ui_extensions | GetUIExtensionPropertiesList
 *UIExtensionsAPI* | [**GetUiExtensionsId**](docs/UIExtensionsAPI.md#getuiextensionsid) | **Get** /v1/ui_extensions/{id} | GetUIExtensionProperties Copy
 *WorkflowsAPI* | [**GetWorkflows**](docs/WorkflowsAPI.md#getworkflows) | **Get** /v1/workflows | GetWorkflows
 *WorkflowsAPI* | [**GetWorkflowsId**](docs/WorkflowsAPI.md#getworkflowsid) | **Get** /v1/workflows/{id} | GetWorkflowProperties
+*WorkflowsAPI* | [**PatchWorkflowsId**](docs/WorkflowsAPI.md#patchworkflowsid) | **Patch** /v1/workflows/{id} | Update a workflow
+*WorkflowsAPI* | [**PostWorkflows**](docs/WorkflowsAPI.md#postworkflows) | **Post** /v1/workflows | Create a workflow
+*WorkflowsAPI* | [**PostWorkflowsIdArchive**](docs/WorkflowsAPI.md#postworkflowsidarchive) | **Post** /v1/workflows/{id}/archive | Archive a workflow
+*WorkflowsAPI* | [**PostWorkflowsIdRestore**](docs/WorkflowsAPI.md#postworkflowsidrestore) | **Post** /v1/workflows/{id}/restore | Restore a workflow
+*WorkflowsAPI* | [**PostWorkflowsIdTrash**](docs/WorkflowsAPI.md#postworkflowsidtrash) | **Post** /v1/workflows/{id}/trash | Trash a workflow
 
 
 ## Documentation For Models

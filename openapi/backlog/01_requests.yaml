@@ -1,0 +1,261 @@
+# https://developer.xurrent.com/v1/requests/ — predefined filters and lifecycle
+paths:
+  /v1/requests/waiting_for_me:
+    get:
+      tags:
+      - Requests
+      summary: List requests (waiting for me predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/problem_management_review:
+    get:
+      tags:
+      - Requests
+      summary: List requests (problem management review predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/sla_accountability:
+    get:
+      tags:
+      - Requests
+      summary: List requests (SLA accountability predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/{id}/archive:
+    post:
+      tags:
+      - Requests
+      summary: Archive a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/requests/{id}/trash:
+    post:
+      tags:
+      - Requests
+      summary: Trash a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/requests/{id}/restore:
+    post:
+      tags:
+      - Requests
+      summary: Restore a request from archive or trash
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/requests/{id}/cis/active:
+    get:
+      tags:
+      - Requests
+      summary: List active configuration items linked to a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/{id}/cis/inactive:
+    get:
+      tags:
+      - Requests
+      summary: List inactive configuration items linked to a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/{id}/notes/public:
+    get:
+      tags:
+      - Requests
+      summary: List public notes for a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/requests/{id}/notes/internal:
+    get:
+      tags:
+      - Requests
+      summary: List internal notes for a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object

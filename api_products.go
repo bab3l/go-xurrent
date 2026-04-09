@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // ProductsAPIService ProductsAPI service
 type ProductsAPIService service
 
 type ApiGetProductsRequest struct {
-	ctx           context.Context
-	ApiService    *ProductsAPIService
+	ctx context.Context
+	ApiService *ProductsAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetProductsRequest) Authorization(authorization string) ApiGetProductsRequest {
@@ -46,25 +47,24 @@ func (r ApiGetProductsRequest) Execute() ([]map[string]interface{}, *http.Respon
 /*
 GetProducts GetProductsList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetProductsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetProductsRequest
 */
 func (a *ProductsAPIService) GetProducts(ctx context.Context) ApiGetProductsRequest {
 	return ApiGetProductsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *ProductsAPIService) GetProductsExecute(r ApiGetProductsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProducts")
@@ -139,11 +139,11 @@ func (a *ProductsAPIService) GetProductsExecute(r ApiGetProductsRequest) ([]map[
 }
 
 type ApiGetProductsIdRequest struct {
-	ctx           context.Context
-	ApiService    *ProductsAPIService
-	id            int32
+	ctx context.Context
+	ApiService *ProductsAPIService
+	id int32
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetProductsIdRequest) Authorization(authorization string) ApiGetProductsIdRequest {
@@ -163,27 +163,26 @@ func (r ApiGetProductsIdRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 GetProductsId GetProductProperties
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGetProductsIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetProductsIdRequest
 */
 func (a *ProductsAPIService) GetProductsId(ctx context.Context, id int32) ApiGetProductsIdRequest {
 	return ApiGetProductsIdRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProductsAPIService) GetProductsIdExecute(r ApiGetProductsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsId")

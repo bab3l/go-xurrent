@@ -18,15 +18,16 @@ import (
 	"net/url"
 )
 
+
 // ImportAPIService ImportAPI service
 type ImportAPIService service
 
 type ApiPostImportRequest struct {
-	ctx           context.Context
-	ApiService    *ImportAPIService
+	ctx context.Context
+	ApiService *ImportAPIService
 	authorization *string
-	x4meAccount   *string
-	body          *map[string]interface{}
+	x4meAccount *string
+	body *map[string]interface{}
 }
 
 func (r ApiPostImportRequest) Authorization(authorization string) ApiPostImportRequest {
@@ -51,22 +52,22 @@ func (r ApiPostImportRequest) Execute() (*http.Response, error) {
 /*
 PostImport RunNewImport
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostImportRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostImportRequest
 */
 func (a *ImportAPIService) PostImport(ctx context.Context) ApiPostImportRequest {
 	return ApiPostImportRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportAPIService) PostImportExecute(r ApiPostImportRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportAPIService.PostImport")

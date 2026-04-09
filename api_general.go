@@ -18,14 +18,15 @@ import (
 	"net/url"
 )
 
+
 // GeneralAPIService GeneralAPI service
 type GeneralAPIService service
 
 type ApiGetEnumsRequest struct {
-	ctx           context.Context
-	ApiService    *GeneralAPIService
+	ctx context.Context
+	ApiService *GeneralAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetEnumsRequest) Authorization(authorization string) ApiGetEnumsRequest {
@@ -45,25 +46,24 @@ func (r ApiGetEnumsRequest) Execute() (map[string]interface{}, *http.Response, e
 /*
 GetEnums GetEnumerationsValues
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetEnumsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetEnumsRequest
 */
 func (a *GeneralAPIService) GetEnums(ctx context.Context) ApiGetEnumsRequest {
 	return ApiGetEnumsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetEnums")
@@ -138,10 +138,10 @@ func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (map[string]in
 }
 
 type ApiGetMeRequest struct {
-	ctx           context.Context
-	ApiService    *GeneralAPIService
+	ctx context.Context
+	ApiService *GeneralAPIService
 	authorization *string
-	x4meAccount   *string
+	x4meAccount *string
 }
 
 func (r ApiGetMeRequest) Authorization(authorization string) ApiGetMeRequest {
@@ -161,22 +161,22 @@ func (r ApiGetMeRequest) Execute() (*http.Response, error) {
 /*
 GetMe GetMyData
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetMeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetMeRequest
 */
 func (a *GeneralAPIService) GetMe(ctx context.Context) ApiGetMeRequest {
 	return ApiGetMeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetMe")

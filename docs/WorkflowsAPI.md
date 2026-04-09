@@ -6,6 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetWorkflows**](WorkflowsAPI.md#GetWorkflows) | **Get** /v1/workflows | GetWorkflows
 [**GetWorkflowsId**](WorkflowsAPI.md#GetWorkflowsId) | **Get** /v1/workflows/{id} | GetWorkflowProperties
+[**PatchWorkflowsId**](WorkflowsAPI.md#PatchWorkflowsId) | **Patch** /v1/workflows/{id} | Update a workflow
+[**PostWorkflows**](WorkflowsAPI.md#PostWorkflows) | **Post** /v1/workflows | Create a workflow
+[**PostWorkflowsIdArchive**](WorkflowsAPI.md#PostWorkflowsIdArchive) | **Post** /v1/workflows/{id}/archive | Archive a workflow
+[**PostWorkflowsIdRestore**](WorkflowsAPI.md#PostWorkflowsIdRestore) | **Post** /v1/workflows/{id}/restore | Restore a workflow
+[**PostWorkflowsIdTrash**](WorkflowsAPI.md#PostWorkflowsIdTrash) | **Post** /v1/workflows/{id}/trash | Trash a workflow
 
 
 
@@ -24,7 +29,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -90,7 +95,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/bab3l/go-xurrent"
+	openapiclient "github.com/xurrent/go-xurrent"
 )
 
 func main() {
@@ -121,6 +126,364 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetWorkflowsIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchWorkflowsId
+
+> map[string]interface{} PatchWorkflowsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+
+Update a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PatchWorkflowsId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchWorkflowsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PatchWorkflowsId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchWorkflowsIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostWorkflows
+
+> map[string]interface{} PostWorkflows(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+
+Create a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PostWorkflows(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflows``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostWorkflows`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflows`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostWorkflowsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostWorkflowsIdArchive
+
+> map[string]interface{} PostWorkflowsIdArchive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Archive a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PostWorkflowsIdArchive(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowsIdArchive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostWorkflowsIdArchive`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowsIdArchive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostWorkflowsIdArchiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostWorkflowsIdRestore
+
+> map[string]interface{} PostWorkflowsIdRestore(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Restore a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PostWorkflowsIdRestore(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowsIdRestore``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostWorkflowsIdRestore`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowsIdRestore`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostWorkflowsIdRestoreRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostWorkflowsIdTrash
+
+> map[string]interface{} PostWorkflowsIdTrash(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Trash a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PostWorkflowsIdTrash(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowsIdTrash``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostWorkflowsIdTrash`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowsIdTrash`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostWorkflowsIdTrashRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

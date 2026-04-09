@@ -7806,6 +7806,37 @@ paths:
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
       operationId: get_people_id
+    patch:
+      tags:
+      - People
+      summary: Update a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_people_id
   /v1/people/support_domain:
     get:
       tags:
@@ -9845,6 +9876,37 @@ paths:
                 updated_at: '2022-09-12T14:46:12+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzYyNTIz
       operationId: get_teams_id
+    patch:
+      tags:
+      - Teams
+      summary: Update a team
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_teams_id
   /v1/teams/{id}/members:
     get:
       tags:
@@ -13347,6 +13409,32 @@ paths:
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzMxNw
       operationId: get_services
+    post:
+      tags:
+      - Services
+      summary: Create a service
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_services
   /v1/services/{id}:
     get:
       tags:
@@ -13530,6 +13618,37 @@ paths:
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzMxNw
       operationId: get_services_id
+    patch:
+      tags:
+      - Services
+      summary: Update a service
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_services_id
   /v1/calendars:
     get:
       tags:
@@ -13762,6 +13881,32 @@ paths:
                 localized_name: Example Localized_name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzE4NQ
       operationId: get_calendars
+    post:
+      tags:
+      - Calendars
+      summary: Create a calendar
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_calendars
   /v1/service_offerings:
     get:
       tags:
@@ -13784,6 +13929,32 @@ paths:
           content:
             application/json: {}
       operationId: get_service_offerings
+    post:
+      tags:
+      - Service Offerings
+      summary: Create a service offering
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_service_offerings
   /v1/service_offerings/{id}:
     get:
       tags:
@@ -13811,6 +13982,37 @@ paths:
           content:
             application/json: {}
       operationId: get_service_offerings_id
+    patch:
+      tags:
+      - Service Offerings
+      summary: Update a service offering
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_service_offerings_id
   /v1/service_offerings/{id}/audit:
     get:
       tags:
@@ -14698,6 +14900,32 @@ paths:
                 updated_at: '2022-11-08T12:32:18+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy81NDk5OQ
       operationId: get_workflows
+    post:
+      tags:
+      - Workflows
+      summary: Create a workflow
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_workflows
   /v1/workflows/{id}:
     get:
       tags:
@@ -15449,6 +15677,37 @@ paths:
                 updated_at: '2022-11-08T12:32:18+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy81NDk5OQ
       operationId: get_workflows_id
+    patch:
+      tags:
+      - Workflows
+      summary: Update a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_workflows_id
   /v1/tasks/{id}/notes:
     post:
       tags:
@@ -15665,6 +15924,37 @@ paths:
           content:
             application/json: {}
       operationId: get_sites_id
+    patch:
+      tags:
+      - Sites
+      summary: Update a site
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_sites_id
   /v1/products:
     get:
       tags:
@@ -18226,6 +18516,32 @@ paths:
                 localized_title: Example Localized_title
                 nodeID: NG1lLWRldi5tb3MucnUvVWlFeHRlbnNpb24vNDI2
       operationId: get_slas
+    post:
+      tags:
+      - Service Level Agreements
+      summary: Create an SLA
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_slas
   /v1/slas/active:
     get:
       tags:
@@ -18639,6 +18955,37 @@ paths:
           content:
             application/json: {}
       operationId: get_slas_id
+    patch:
+      tags:
+      - Service Level Agreements
+      summary: Update an SLA
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_slas_id
   /v1/request_templates:
     get:
       tags:
@@ -19191,6 +19538,32 @@ paths:
                 localized_subject: Example Localized_subject
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXF1ZXN0VGVtcGxhdGUvMzEyNw
       operationId: get_request_templates
+    post:
+      tags:
+      - Request Templates
+      summary: Create a request template
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_request_templates
   /v1/request_templates/{id}:
     get:
       tags:
@@ -19384,6 +19757,37 @@ paths:
                 localized_subject: Example Localized_subject
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXF1ZXN0VGVtcGxhdGUvMjA4NQ
       operationId: get_request_templates_id
+    patch:
+      tags:
+      - Request Templates
+      summary: Update a request template
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_request_templates_id
   /v1/reservations:
     get:
       tags:
@@ -25667,3 +26071,590 @@ paths:
                 - id: JP
                   txt: Example Txt
       operationId: get_enums
+  /v1/requests/waiting_for_me:
+    get:
+      tags:
+      - Requests
+      summary: List requests (waiting for me predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_waiting_for_me
+  /v1/requests/problem_management_review:
+    get:
+      tags:
+      - Requests
+      summary: List requests (problem management review predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_problem_management_review
+  /v1/requests/sla_accountability:
+    get:
+      tags:
+      - Requests
+      summary: List requests (SLA accountability predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_sla_accountability
+  /v1/requests/{id}/archive:
+    post:
+      tags:
+      - Requests
+      summary: Archive a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_requests_id_archive
+  /v1/requests/{id}/trash:
+    post:
+      tags:
+      - Requests
+      summary: Trash a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_requests_id_trash
+  /v1/requests/{id}/restore:
+    post:
+      tags:
+      - Requests
+      summary: Restore a request from archive or trash
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_requests_id_restore
+  /v1/requests/{id}/cis/active:
+    get:
+      tags:
+      - Requests
+      summary: List active configuration items linked to a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_id_cis_active
+  /v1/requests/{id}/cis/inactive:
+    get:
+      tags:
+      - Requests
+      summary: List inactive configuration items linked to a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_id_cis_inactive
+  /v1/requests/{id}/notes/public:
+    get:
+      tags:
+      - Requests
+      summary: List public notes for a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_id_notes_public
+  /v1/requests/{id}/notes/internal:
+    get:
+      tags:
+      - Requests
+      summary: List internal notes for a request
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_requests_id_notes_internal
+  /v1/people/directory:
+    get:
+      tags:
+      - People
+      summary: List people (directory predefined filter)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_people_directory
+  /v1/people/{id}/archive:
+    post:
+      tags:
+      - People
+      summary: Archive a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_people_id_archive
+  /v1/people/{id}/trash:
+    post:
+      tags:
+      - People
+      summary: Trash a person
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_people_id_trash
+  /v1/people/{id}/restore:
+    post:
+      tags:
+      - People
+      summary: Restore a person from archive or trash
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_people_id_restore
+  /v1/teams:
+    get:
+      tags:
+      - Teams
+      summary: List teams
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_teams
+    post:
+      tags:
+      - Teams
+      summary: Create a team
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_teams
+  /v1/sites:
+    get:
+      tags:
+      - Sites
+      summary: List sites
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_sites
+    post:
+      tags:
+      - Sites
+      summary: Create a site
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_sites
+  /v1/workflows/{id}/archive:
+    post:
+      tags:
+      - Workflows
+      summary: Archive a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_workflows_id_archive
+  /v1/workflows/{id}/trash:
+    post:
+      tags:
+      - Workflows
+      summary: Trash a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_workflows_id_trash
+  /v1/workflows/{id}/restore:
+    post:
+      tags:
+      - Workflows
+      summary: Restore a workflow
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_workflows_id_restore
+  /v1/calendars/{id}:
+    patch:
+      tags:
+      - Calendars
+      summary: Update a calendar
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_calendars_id
