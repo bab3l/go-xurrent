@@ -79,6 +79,9 @@ All URIs are relative to *https://api.xurrent.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountAPI* | [**GetAccount**](docs/AccountAPI.md#getaccount) | **Get** /v1/account | GetAccountProperties
+*AccountAPI* | [**GetAccountBillableUsers**](docs/AccountAPI.md#getaccountbillableusers) | **Get** /v1/account/billable_users | List billable users
+*AccountAPI* | [**GetAccountUsageStatements**](docs/AccountAPI.md#getaccountusagestatements) | **Get** /v1/account/usage_statements | List usage statements (account owner)
+*AccountAPI* | [**GetAccountUsageStatementsId**](docs/AccountAPI.md#getaccountusagestatementsid) | **Get** /v1/account/usage_statements/{id} | Get a usage statement by id
 *AttachmentsAPI* | [**GetAttachmentsStorage**](docs/AttachmentsAPI.md#getattachmentsstorage) | **Get** /v1/attachments/storage | Add Attach - ReservePlaceForAttachment
 *AttachmentsAPI* | [**GetAttachmentsUpload**](docs/AttachmentsAPI.md#getattachmentsupload) | **Get** /v1/attachments/upload | Get Attach
 *AttachmentsAPI* | [**PatchRequestsId**](docs/AttachmentsAPI.md#patchrequestsid) | **Patch** /v1/requests/{id} | Add Attach (multi) - AddAttachmentsToRequest
@@ -112,6 +115,7 @@ Class | Method | HTTP request | Description
 *ExportAPI* | [**PostExport**](docs/ExportAPI.md#postexport) | **Post** /v1/export | RunNewExport (sites, teams)
 *GeneralAPI* | [**GetEnums**](docs/GeneralAPI.md#getenums) | **Get** /v1/enums | GetEnumerationsValues
 *GeneralAPI* | [**GetMe**](docs/GeneralAPI.md#getme) | **Get** /v1/me | GetMyData
+*GeneralAPI* | [**GetRateLimit**](docs/GeneralAPI.md#getratelimit) | **Get** /v1/rate_limit | Get current rate limit status (does not consume quota)
 *ImportAPI* | [**PostImport**](docs/ImportAPI.md#postimport) | **Post** /v1/import | RunNewImport
 *NotesAPI* | [**GetRequestsIdNotes**](docs/NotesAPI.md#getrequestsidnotes) | **Get** /v1/requests/{id}/notes | GetIssuesNotesList
 *OrganizationsAPI* | [**GetOrganizations**](docs/OrganizationsAPI.md#getorganizations) | **Get** /v1/organizations | GetOrganizationsList
@@ -141,6 +145,7 @@ Class | Method | HTTP request | Description
 *ProblemsAPI* | [**GetProblemsActive**](docs/ProblemsAPI.md#getproblemsactive) | **Get** /v1/problems/active | List active problems
 *ProblemsAPI* | [**GetProblemsAssignedToMe**](docs/ProblemsAPI.md#getproblemsassignedtome) | **Get** /v1/problems/assigned_to_me | List problems assigned to API user
 *ProblemsAPI* | [**GetProblemsAssignedToMyTeam**](docs/ProblemsAPI.md#getproblemsassignedtomyteam) | **Get** /v1/problems/assigned_to_my_team | List problems assigned to API user&#39;s teams
+*ProblemsAPI* | [**GetProblemsId**](docs/ProblemsAPI.md#getproblemsid) | **Get** /v1/problems/{id} | Get a single problem
 *ProblemsAPI* | [**GetProblemsKnownErrors**](docs/ProblemsAPI.md#getproblemsknownerrors) | **Get** /v1/problems/known_errors | List known_errors problems
 *ProblemsAPI* | [**GetProblemsManagedByMe**](docs/ProblemsAPI.md#getproblemsmanagedbyme) | **Get** /v1/problems/managed_by_me | List problems managed by API user
 *ProblemsAPI* | [**GetProblemsProgressHalted**](docs/ProblemsAPI.md#getproblemsprogresshalted) | **Get** /v1/problems/progress_halted | List progress_halted problems
@@ -154,7 +159,12 @@ Class | Method | HTTP request | Description
 *ProductCategoriesAPI* | [**GetProductCategories**](docs/ProductCategoriesAPI.md#getproductcategories) | **Get** /v1/product_categories | GetProductCategoriesList
 *ProductCategoriesAPI* | [**GetProductCategoriesId**](docs/ProductCategoriesAPI.md#getproductcategoriesid) | **Get** /v1/product_categories/{id} | GetProductCategoriesProperties
 *ProductsAPI* | [**GetProducts**](docs/ProductsAPI.md#getproducts) | **Get** /v1/products | GetProductsList
+*ProductsAPI* | [**GetProductsDisabled**](docs/ProductsAPI.md#getproductsdisabled) | **Get** /v1/products/disabled | List disabled products
+*ProductsAPI* | [**GetProductsEnabled**](docs/ProductsAPI.md#getproductsenabled) | **Get** /v1/products/enabled | List enabled products
 *ProductsAPI* | [**GetProductsId**](docs/ProductsAPI.md#getproductsid) | **Get** /v1/products/{id} | GetProductProperties
+*ProductsAPI* | [**GetProductsSupportedByMyTeams**](docs/ProductsAPI.md#getproductssupportedbymyteams) | **Get** /v1/products/supported_by_my_teams | List products supported by API user teams
+*ProductsAPI* | [**PatchProductsId**](docs/ProductsAPI.md#patchproductsid) | **Patch** /v1/products/{id} | Update a product
+*ProductsAPI* | [**PostProducts**](docs/ProductsAPI.md#postproducts) | **Post** /v1/products | Create a product
 *RequestTemplatesAPI* | [**GetRequestTemplates**](docs/RequestTemplatesAPI.md#getrequesttemplates) | **Get** /v1/request_templates | GetRequestTemplatesListByService
 *RequestTemplatesAPI* | [**GetRequestTemplatesId**](docs/RequestTemplatesAPI.md#getrequesttemplatesid) | **Get** /v1/request_templates/{id} | GetRequestTemplatesProperties
 *RequestTemplatesAPI* | [**PatchRequestTemplatesId**](docs/RequestTemplatesAPI.md#patchrequesttemplatesid) | **Patch** /v1/request_templates/{id} | Update a request template
@@ -214,9 +224,11 @@ Class | Method | HTTP request | Description
 *SitesAPI* | [**PatchSitesId**](docs/SitesAPI.md#patchsitesid) | **Patch** /v1/sites/{id} | Update a site
 *SitesAPI* | [**PostSites**](docs/SitesAPI.md#postsites) | **Post** /v1/sites | Create a site
 *TasksAPI* | [**GetTasks**](docs/TasksAPI.md#gettasks) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
+*TasksAPI* | [**GetTasksApprovalByMe**](docs/TasksAPI.md#gettasksapprovalbyme) | **Get** /v1/tasks/approval_by_me | List approval tasks assigned to API user (non-registered status)
 *TasksAPI* | [**GetTasksAssignedByMe**](docs/TasksAPI.md#gettasksassignedbyme) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
 *TasksAPI* | [**GetTasksAssignedToMe**](docs/TasksAPI.md#gettasksassignedtome) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
 *TasksAPI* | [**GetTasksAssignedToMyTeam**](docs/TasksAPI.md#gettasksassignedtomyteam) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
+*TasksAPI* | [**GetTasksFinished**](docs/TasksAPI.md#gettasksfinished) | **Get** /v1/tasks/finished | List finished tasks
 *TasksAPI* | [**GetTasksId**](docs/TasksAPI.md#gettasksid) | **Get** /v1/tasks/{id} | GetTasksProperties
 *TasksAPI* | [**GetTasksManagedByMe**](docs/TasksAPI.md#gettasksmanagedbyme) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
 *TasksAPI* | [**GetTasksOpen**](docs/TasksAPI.md#gettasksopen) | **Get** /v1/tasks/open | GetListOfTasks (opened)
@@ -235,6 +247,7 @@ Class | Method | HTTP request | Description
 *WorkflowsAPI* | [**PostWorkflows**](docs/WorkflowsAPI.md#postworkflows) | **Post** /v1/workflows | Create a workflow
 *WorkflowsAPI* | [**PostWorkflowsIdArchive**](docs/WorkflowsAPI.md#postworkflowsidarchive) | **Post** /v1/workflows/{id}/archive | Archive a workflow
 *WorkflowsAPI* | [**PostWorkflowsIdRestore**](docs/WorkflowsAPI.md#postworkflowsidrestore) | **Post** /v1/workflows/{id}/restore | Restore a workflow
+*WorkflowsAPI* | [**PostWorkflowsIdTasks**](docs/WorkflowsAPI.md#postworkflowsidtasks) | **Post** /v1/workflows/{id}/tasks | Create a task on a workflow
 *WorkflowsAPI* | [**PostWorkflowsIdTrash**](docs/WorkflowsAPI.md#postworkflowsidtrash) | **Post** /v1/workflows/{id}/trash | Trash a workflow
 
 

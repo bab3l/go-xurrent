@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetProblemsActive**](ProblemsAPI.md#GetProblemsActive) | **Get** /v1/problems/active | List active problems
 [**GetProblemsAssignedToMe**](ProblemsAPI.md#GetProblemsAssignedToMe) | **Get** /v1/problems/assigned_to_me | List problems assigned to API user
 [**GetProblemsAssignedToMyTeam**](ProblemsAPI.md#GetProblemsAssignedToMyTeam) | **Get** /v1/problems/assigned_to_my_team | List problems assigned to API user&#39;s teams
+[**GetProblemsId**](ProblemsAPI.md#GetProblemsId) | **Get** /v1/problems/{id} | Get a single problem
 [**GetProblemsKnownErrors**](ProblemsAPI.md#GetProblemsKnownErrors) | **Get** /v1/problems/known_errors | List known_errors problems
 [**GetProblemsManagedByMe**](ProblemsAPI.md#GetProblemsManagedByMe) | **Get** /v1/problems/managed_by_me | List problems managed by API user
 [**GetProblemsProgressHalted**](ProblemsAPI.md#GetProblemsProgressHalted) | **Get** /v1/problems/progress_halted | List progress_halted problems
@@ -270,6 +271,76 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetProblemsId
+
+> map[string]interface{} GetProblemsId(ctx, id).X4meAccount(x4meAccount).Execute()
+
+Get a single problem
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProblemsAPI.GetProblemsId(context.Background(), id).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProblemsAPI.GetProblemsId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetProblemsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ProblemsAPI.GetProblemsId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProblemsIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

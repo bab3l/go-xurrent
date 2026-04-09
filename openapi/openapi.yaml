@@ -16264,6 +16264,32 @@ paths:
                 updated_at: '2022-10-20T15:37:09+03:00'
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC84OTIx
       operationId: get_products
+    post:
+      tags:
+      - Products
+      summary: Create a product
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_products
   /v1/products/{id}:
     get:
       tags:
@@ -16414,6 +16440,37 @@ paths:
                 useful_life: null
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC83MTk4
       operationId: get_products_id
+    patch:
+      tags:
+      - Products
+      summary: Update a product
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: patch_products_id
   /v1/product_categories:
     get:
       tags:
@@ -21030,6 +21087,30 @@ paths:
           content:
             application/json: {}
       operationId: patch_problems_id
+    get:
+      tags:
+      - Problems
+      summary: Get a single problem
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: get_problems_id
   /v1/enums:
     get:
       tags:
@@ -26907,3 +26988,255 @@ paths:
               schema:
                 type: object
       operationId: post_problems_id_restore
+  /v1/workflows/{id}/tasks:
+    post:
+      tags:
+      - Workflows
+      summary: Create a task on a workflow
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        description: Workflow id
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: post_workflows_id_tasks
+  /v1/tasks/finished:
+    get:
+      tags:
+      - Tasks
+      summary: List finished tasks
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_tasks_finished
+  /v1/tasks/approval_by_me:
+    get:
+      tags:
+      - Tasks
+      summary: List approval tasks assigned to API user (non-registered status)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_tasks_approval_by_me
+  /v1/products/disabled:
+    get:
+      tags:
+      - Products
+      summary: List disabled products
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_products_disabled
+  /v1/products/enabled:
+    get:
+      tags:
+      - Products
+      summary: List enabled products
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_products_enabled
+  /v1/products/supported_by_my_teams:
+    get:
+      tags:
+      - Products
+      summary: List products supported by API user teams
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_products_supported_by_my_teams
+  /v1/account/usage_statements:
+    get:
+      tags:
+      - Account
+      summary: List usage statements (account owner)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_account_usage_statements
+  /v1/account/usage_statements/{id}:
+    get:
+      tags:
+      - Account
+      summary: Get a usage statement by id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: get_account_usage_statements_id
+  /v1/account/billable_users:
+    get:
+      tags:
+      - Account
+      summary: List billable users
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      - name: year
+        in: query
+        schema:
+          type: integer
+      - name: month
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get_account_billable_users
+  /v1/rate_limit:
+    get:
+      tags:
+      - General
+      summary: Get current rate limit status (does not consume quota)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      operationId: get_rate_limit

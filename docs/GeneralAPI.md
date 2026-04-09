@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetEnums**](GeneralAPI.md#GetEnums) | **Get** /v1/enums | GetEnumerationsValues
 [**GetMe**](GeneralAPI.md#GetMe) | **Get** /v1/me | GetMyData
+[**GetRateLimit**](GeneralAPI.md#GetRateLimit) | **Get** /v1/rate_limit | Get current rate limit status (does not consume quota)
 
 
 
@@ -124,6 +125,65 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRateLimit
+
+> map[string]interface{} GetRateLimit(ctx).Execute()
+
+Get current rate limit status (does not consume quota)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GeneralAPI.GetRateLimit(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetRateLimit``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRateLimit`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.GetRateLimit`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRateLimitRequest struct via the builder pattern
+
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

@@ -97,6 +97,8 @@ The Go client is **generated** from the spec: any **missing path** or **wrong me
 
 **Goal:** Close high-value gaps between [developer.xurrent.com](https://developer.xurrent.com/v1/) and `openapi/openapi.yaml`, using **`openapi/backlog/`** fragments + merge script, then regenerate.
 
+**Shipped in spec (backlog `07`–`09`):** **P1** — `GET /v1/problems/{id}`, `POST /v1/workflows/{id}/tasks`, `GET /v1/tasks/finished`, `GET /v1/tasks/approval_by_me`. **P2** — `POST/PATCH /v1/products`, `GET /v1/products/disabled|enabled|supported_by_my_teams`. **P3** — `GET /v1/account/usage_statements`, `GET /v1/account/usage_statements/{id}`, `GET /v1/account/billable_users`, `GET /v1/rate_limit`. **Production smoke:** `go test -tags=integration ./test/integration/ -v` (see file header for env vars; default CI runs only offline tests).
+
 **Priority tiers (suggested):**
 
 | Tier | Focus | Examples |

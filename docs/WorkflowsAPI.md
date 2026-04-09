@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**PostWorkflows**](WorkflowsAPI.md#PostWorkflows) | **Post** /v1/workflows | Create a workflow
 [**PostWorkflowsIdArchive**](WorkflowsAPI.md#PostWorkflowsIdArchive) | **Post** /v1/workflows/{id}/archive | Archive a workflow
 [**PostWorkflowsIdRestore**](WorkflowsAPI.md#PostWorkflowsIdRestore) | **Post** /v1/workflows/{id}/restore | Restore a workflow
+[**PostWorkflowsIdTasks**](WorkflowsAPI.md#PostWorkflowsIdTasks) | **Post** /v1/workflows/{id}/tasks | Create a task on a workflow
 [**PostWorkflowsIdTrash**](WorkflowsAPI.md#PostWorkflowsIdTrash) | **Post** /v1/workflows/{id}/trash | Trash a workflow
 
 
@@ -431,6 +432,80 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostWorkflowsIdTasks
+
+> map[string]interface{} PostWorkflowsIdTasks(ctx, id).Body(body).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+Create a task on a workflow
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | Workflow id
+	body := map[string]interface{}{ ... } // map[string]interface{} | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PostWorkflowsIdTasks(context.Background(), id).Body(body).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowsIdTasks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostWorkflowsIdTasks`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowsIdTasks`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Workflow id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostWorkflowsIdTasksRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

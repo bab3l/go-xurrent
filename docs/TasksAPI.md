@@ -5,9 +5,11 @@ All URIs are relative to *https://api.xurrent.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetTasks**](TasksAPI.md#GetTasks) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
+[**GetTasksApprovalByMe**](TasksAPI.md#GetTasksApprovalByMe) | **Get** /v1/tasks/approval_by_me | List approval tasks assigned to API user (non-registered status)
 [**GetTasksAssignedByMe**](TasksAPI.md#GetTasksAssignedByMe) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
 [**GetTasksAssignedToMe**](TasksAPI.md#GetTasksAssignedToMe) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
 [**GetTasksAssignedToMyTeam**](TasksAPI.md#GetTasksAssignedToMyTeam) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
+[**GetTasksFinished**](TasksAPI.md#GetTasksFinished) | **Get** /v1/tasks/finished | List finished tasks
 [**GetTasksId**](TasksAPI.md#GetTasksId) | **Get** /v1/tasks/{id} | GetTasksProperties
 [**GetTasksManagedByMe**](TasksAPI.md#GetTasksManagedByMe) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
 [**GetTasksOpen**](TasksAPI.md#GetTasksOpen) | **Get** /v1/tasks/open | GetListOfTasks (opened)
@@ -67,6 +69,72 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTasksApprovalByMe
+
+> []map[string]interface{} GetTasksApprovalByMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List approval tasks assigned to API user (non-registered status)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TasksAPI.GetTasksApprovalByMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksApprovalByMe``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTasksApprovalByMe`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.GetTasksApprovalByMe`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksApprovalByMeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
 
 ### Authorization
 
@@ -238,6 +306,72 @@ Other parameters are passed through a pointer to a apiGetTasksAssignedToMyTeamRe
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTasksFinished
+
+> []map[string]interface{} GetTasksFinished(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+List finished tasks
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TasksAPI.GetTasksFinished(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksFinished``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTasksFinished`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.GetTasksFinished`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksFinishedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
 
 ### Authorization
 

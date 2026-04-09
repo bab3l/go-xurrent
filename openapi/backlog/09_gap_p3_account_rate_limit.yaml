@@ -1,0 +1,94 @@
+# P3: Account usage statements, billable users, rate limit status
+paths:
+  /v1/account/usage_statements:
+    get:
+      tags:
+      - Account
+      summary: List usage statements (account owner)
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/account/usage_statements/{id}:
+    get:
+      tags:
+      - Account
+      summary: Get a usage statement by id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/account/billable_users:
+    get:
+      tags:
+      - Account
+      summary: List billable users
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      - name: year
+        in: query
+        schema:
+          type: integer
+      - name: month
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /v1/rate_limit:
+    get:
+      tags:
+      - General
+      summary: Get current rate limit status (does not consume quota)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
