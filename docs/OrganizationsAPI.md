@@ -4,15 +4,16 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1OrganizationsGet**](OrganizationsAPI.md#V1OrganizationsGet) | **Get** /v1/organizations | GetOrganizationsList
-[**V1OrganizationsIdGet**](OrganizationsAPI.md#V1OrganizationsIdGet) | **Get** /v1/organizations/{id} | GetOrganizationProperties
-[**V1OrganizationsPost**](OrganizationsAPI.md#V1OrganizationsPost) | **Post** /v1/organizations | CreateOrganization
+[**GetOrganizations**](OrganizationsAPI.md#GetOrganizations) | **Get** /v1/organizations | GetOrganizationsList
+[**GetOrganizationsId**](OrganizationsAPI.md#GetOrganizationsId) | **Get** /v1/organizations/{id} | GetOrganizationProperties
+[**PatchOrganizationsId**](OrganizationsAPI.md#PatchOrganizationsId) | **Patch** /v1/organizations/{id} | UpdateOrganization
+[**PostOrganizations**](OrganizationsAPI.md#PostOrganizations) | **Post** /v1/organizations | CreateOrganization
 
 
 
-## V1OrganizationsGet
+## GetOrganizations
 
-> V1OrganizationsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []Organization GetOrganizations(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetOrganizationsList
 
@@ -25,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -34,11 +35,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationsAPI.V1OrganizationsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.OrganizationsAPI.GetOrganizations(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.V1OrganizationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrganizations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetOrganizations`: []Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrganizations`: %v\n", resp)
 }
 ```
 
@@ -48,7 +51,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrganizationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -58,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**[]Organization**](Organization.md)
 
 ### Authorization
 
@@ -74,9 +77,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsIdGet
+## GetOrganizationsId
 
-> V1OrganizationsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> Organization GetOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetOrganizationProperties
 
@@ -89,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -99,11 +102,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationsAPI.V1OrganizationsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.OrganizationsAPI.GetOrganizationsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.V1OrganizationsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrganizationsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetOrganizationsId`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrganizationsId`: %v\n", resp)
 }
 ```
 
@@ -117,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrganizationsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -128,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Organization**](Organization.md)
 
 ### Authorization
 
@@ -144,9 +149,83 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsPost
+## PatchOrganizationsId
 
-> V1OrganizationsPost(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> Organization PatchOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
+
+UpdateOrganization
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	organization := *openapiclient.NewOrganization() // Organization |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationsAPI.PatchOrganizationsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.PatchOrganizationsId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchOrganizationsId`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.PatchOrganizationsId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchOrganizationsIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **organization** | [**Organization**](Organization.md) |  | 
+
+### Return type
+
+[**Organization**](Organization.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostOrganizations
+
+> Organization PostOrganizations(ctx).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
 
 CreateOrganization
 
@@ -159,21 +238,23 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	organization := *openapiclient.NewOrganization() // Organization |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationsAPI.V1OrganizationsPost(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.OrganizationsAPI.PostOrganizations(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.V1OrganizationsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.PostOrganizations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `PostOrganizations`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.PostOrganizations`: %v\n", resp)
 }
 ```
 
@@ -183,18 +264,18 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostOrganizationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **organization** | [**Organization**](Organization.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**Organization**](Organization.md)
 
 ### Authorization
 

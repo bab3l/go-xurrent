@@ -4,82 +4,16 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SlasActiveGet**](ServiceLevelAgreementsAPI.md#V1SlasActiveGet) | **Get** /v1/slas/active | GetSLAListActive
-[**V1SlasGet**](ServiceLevelAgreementsAPI.md#V1SlasGet) | **Get** /v1/slas | GetSLAListAllByService
-[**V1SlasIdGet**](ServiceLevelAgreementsAPI.md#V1SlasIdGet) | **Get** /v1/slas/{id} | GetSLAProperties
-[**V1SlasInactiveGet**](ServiceLevelAgreementsAPI.md#V1SlasInactiveGet) | **Get** /v1/slas/inactive | GetSLAListInactive
+[**GetSlas**](ServiceLevelAgreementsAPI.md#GetSlas) | **Get** /v1/slas | GetSLAListAllByService
+[**GetSlasActive**](ServiceLevelAgreementsAPI.md#GetSlasActive) | **Get** /v1/slas/active | GetSLAListActive
+[**GetSlasId**](ServiceLevelAgreementsAPI.md#GetSlasId) | **Get** /v1/slas/{id} | GetSLAProperties
+[**GetSlasInactive**](ServiceLevelAgreementsAPI.md#GetSlasInactive) | **Get** /v1/slas/inactive | GetSLAListInactive
 
 
 
-## V1SlasActiveGet
+## GetSlas
 
-> map[string]interface{} V1SlasActiveGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetSLAListActive
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceLevelAgreementsAPI.V1SlasActiveGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.V1SlasActiveGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1SlasActiveGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.V1SlasActiveGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1SlasActiveGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1SlasGet
-
-> map[string]interface{} V1SlasGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).Execute()
+> map[string]interface{} GetSlas(ctx).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).Execute()
 
 GetSLAListAllByService
 
@@ -92,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -102,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceLevelAgreementsAPI.V1SlasGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).Execute()
+	resp, r, err := apiClient.ServiceLevelAgreementsAPI.GetSlas(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.V1SlasGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlas``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1SlasGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.V1SlasGet`: %v\n", resp)
+	// response from `GetSlas`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlas`: %v\n", resp)
 }
 ```
 
@@ -118,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1SlasGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSlasRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -145,9 +79,75 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1SlasIdGet
+## GetSlasActive
 
-> V1SlasIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetSlasActive(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetSLAListActive
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ServiceLevelAgreementsAPI.GetSlasActive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasActive``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSlasActive`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlasActive`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSlasActiveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSlasId
+
+> GetSlasId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetSLAProperties
 
@@ -160,7 +160,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -170,9 +170,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServiceLevelAgreementsAPI.V1SlasIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.ServiceLevelAgreementsAPI.GetSlasId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.V1SlasIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1SlasIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSlasIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -215,9 +215,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1SlasInactiveGet
+## GetSlasInactive
 
-> map[string]interface{} V1SlasInactiveGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetSlasInactive(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetSLAListInactive
 
@@ -230,7 +230,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -239,13 +239,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceLevelAgreementsAPI.V1SlasInactiveGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ServiceLevelAgreementsAPI.GetSlasInactive(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.V1SlasInactiveGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasInactive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1SlasInactiveGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.V1SlasInactiveGet`: %v\n", resp)
+	// response from `GetSlasInactive`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlasInactive`: %v\n", resp)
 }
 ```
 
@@ -255,7 +255,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1SlasInactiveGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSlasInactiveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

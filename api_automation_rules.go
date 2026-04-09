@@ -22,49 +22,49 @@ import (
 // AutomationRulesAPIService AutomationRulesAPI service
 type AutomationRulesAPIService service
 
-type ApiV1AutomationRulesGetRequest struct {
+type ApiGetAutomationRulesRequest struct {
 	ctx           context.Context
 	ApiService    *AutomationRulesAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1AutomationRulesGetRequest) Authorization(authorization string) ApiV1AutomationRulesGetRequest {
+func (r ApiGetAutomationRulesRequest) Authorization(authorization string) ApiGetAutomationRulesRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1AutomationRulesGetRequest) X4meAccount(x4meAccount string) ApiV1AutomationRulesGetRequest {
+func (r ApiGetAutomationRulesRequest) X4meAccount(x4meAccount string) ApiGetAutomationRulesRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1AutomationRulesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1AutomationRulesGetExecute(r)
+func (r ApiGetAutomationRulesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetAutomationRulesExecute(r)
 }
 
 /*
-V1AutomationRulesGet GetAutomationuRulesList
+GetAutomationRules GetAutomationuRulesList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AutomationRulesGetRequest
+	@return ApiGetAutomationRulesRequest
 */
-func (a *AutomationRulesAPIService) V1AutomationRulesGet(ctx context.Context) ApiV1AutomationRulesGetRequest {
-	return ApiV1AutomationRulesGetRequest{
+func (a *AutomationRulesAPIService) GetAutomationRules(ctx context.Context) ApiGetAutomationRulesRequest {
+	return ApiGetAutomationRulesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AutomationRulesAPIService) V1AutomationRulesGetExecute(r ApiV1AutomationRulesGetRequest) (*http.Response, error) {
+func (a *AutomationRulesAPIService) GetAutomationRulesExecute(r ApiGetAutomationRulesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.V1AutomationRulesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.GetAutomationRules")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -126,7 +126,7 @@ func (a *AutomationRulesAPIService) V1AutomationRulesGetExecute(r ApiV1Automatio
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1AutomationRulesIdGetRequest struct {
+type ApiGetAutomationRulesIdRequest struct {
 	ctx           context.Context
 	ApiService    *AutomationRulesAPIService
 	id            int32
@@ -134,29 +134,29 @@ type ApiV1AutomationRulesIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1AutomationRulesIdGetRequest) Authorization(authorization string) ApiV1AutomationRulesIdGetRequest {
+func (r ApiGetAutomationRulesIdRequest) Authorization(authorization string) ApiGetAutomationRulesIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1AutomationRulesIdGetRequest) X4meAccount(x4meAccount string) ApiV1AutomationRulesIdGetRequest {
+func (r ApiGetAutomationRulesIdRequest) X4meAccount(x4meAccount string) ApiGetAutomationRulesIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1AutomationRulesIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1AutomationRulesIdGetExecute(r)
+func (r ApiGetAutomationRulesIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetAutomationRulesIdExecute(r)
 }
 
 /*
-V1AutomationRulesIdGet GetAutomationuRulesProperties
+GetAutomationRulesId GetAutomationuRulesProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1AutomationRulesIdGetRequest
+	@return ApiGetAutomationRulesIdRequest
 */
-func (a *AutomationRulesAPIService) V1AutomationRulesIdGet(ctx context.Context, id int32) ApiV1AutomationRulesIdGetRequest {
-	return ApiV1AutomationRulesIdGetRequest{
+func (a *AutomationRulesAPIService) GetAutomationRulesId(ctx context.Context, id int32) ApiGetAutomationRulesIdRequest {
+	return ApiGetAutomationRulesIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -164,14 +164,14 @@ func (a *AutomationRulesAPIService) V1AutomationRulesIdGet(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *AutomationRulesAPIService) V1AutomationRulesIdGetExecute(r ApiV1AutomationRulesIdGetRequest) (*http.Response, error) {
+func (a *AutomationRulesAPIService) GetAutomationRulesIdExecute(r ApiGetAutomationRulesIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.V1AutomationRulesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutomationRulesAPIService.GetAutomationRulesId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing CustomCollectionsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_CustomCollectionsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CustomCollectionsAPIService V1CustomCollectionElementsGet", func(t *testing.T) {
+	t.Run("Test CustomCollectionsAPIService GetCustomCollectionElements", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CustomCollectionsAPI.V1CustomCollectionElementsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CustomCollectionsAPI.GetCustomCollectionElements(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_xurrent_CustomCollectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomCollectionsAPIService V1CustomCollectionElementsIdGet", func(t *testing.T) {
+	t.Run("Test CustomCollectionsAPIService GetCustomCollectionElementsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.CustomCollectionsAPI.V1CustomCollectionElementsIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CustomCollectionsAPI.GetCustomCollectionElementsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,11 +48,11 @@ func Test_xurrent_CustomCollectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomCollectionsAPIService V1CustomCollectionsGet", func(t *testing.T) {
+	t.Run("Test CustomCollectionsAPIService GetCustomCollections", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CustomCollectionsAPI.V1CustomCollectionsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CustomCollectionsAPI.GetCustomCollections(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,13 +60,13 @@ func Test_xurrent_CustomCollectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomCollectionsAPIService V1CustomCollectionsIdGet", func(t *testing.T) {
+	t.Run("Test CustomCollectionsAPIService GetCustomCollectionsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.CustomCollectionsAPI.V1CustomCollectionsIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CustomCollectionsAPI.GetCustomCollectionsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

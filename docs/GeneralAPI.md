@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnumsGet**](GeneralAPI.md#V1EnumsGet) | **Get** /v1/enums | GetEnumerationsValues
-[**V1MeGet**](GeneralAPI.md#V1MeGet) | **Get** /v1/me | GetMyData
+[**GetEnums**](GeneralAPI.md#GetEnums) | **Get** /v1/enums | GetEnumerationsValues
+[**GetMe**](GeneralAPI.md#GetMe) | **Get** /v1/me | GetMyData
 
 
 
-## V1EnumsGet
+## GetEnums
 
-> map[string]interface{} V1EnumsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetEnums(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetEnumerationsValues
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GeneralAPI.V1EnumsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.GeneralAPI.GetEnums(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.V1EnumsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetEnums``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EnumsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.V1EnumsGet`: %v\n", resp)
+	// response from `GetEnums`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.GetEnums`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnumsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetEnumsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,9 +75,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1MeGet
+## GetMe
 
-> V1MeGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetMyData
 
@@ -90,7 +90,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -99,9 +99,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GeneralAPI.V1MeGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.GeneralAPI.GetMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.V1MeGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -113,7 +113,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1MeGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetMeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

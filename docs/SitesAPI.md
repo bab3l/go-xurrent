@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SitesIdGet**](SitesAPI.md#V1SitesIdGet) | **Get** /v1/sites/{id} | GetSiteProperties
+[**GetSitesId**](SitesAPI.md#GetSitesId) | **Get** /v1/sites/{id} | GetSiteProperties
 
 
 
-## V1SitesIdGet
+## GetSitesId
 
-> V1SitesIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetSitesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetSiteProperties
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SitesAPI.V1SitesIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.SitesAPI.GetSitesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.V1SitesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.GetSitesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1SitesIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSitesIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

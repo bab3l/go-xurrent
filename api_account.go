@@ -21,49 +21,49 @@ import (
 // AccountAPIService AccountAPI service
 type AccountAPIService service
 
-type ApiV1AccountGetRequest struct {
+type ApiGetAccountRequest struct {
 	ctx           context.Context
 	ApiService    *AccountAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1AccountGetRequest) Authorization(authorization string) ApiV1AccountGetRequest {
+func (r ApiGetAccountRequest) Authorization(authorization string) ApiGetAccountRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1AccountGetRequest) X4meAccount(x4meAccount string) ApiV1AccountGetRequest {
+func (r ApiGetAccountRequest) X4meAccount(x4meAccount string) ApiGetAccountRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1AccountGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1AccountGetExecute(r)
+func (r ApiGetAccountRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetAccountExecute(r)
 }
 
 /*
-V1AccountGet GetAccountProperties
+GetAccount GetAccountProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AccountGetRequest
+	@return ApiGetAccountRequest
 */
-func (a *AccountAPIService) V1AccountGet(ctx context.Context) ApiV1AccountGetRequest {
-	return ApiV1AccountGetRequest{
+func (a *AccountAPIService) GetAccount(ctx context.Context) ApiGetAccountRequest {
+	return ApiGetAccountRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AccountAPIService) V1AccountGetExecute(r ApiV1AccountGetRequest) (*http.Response, error) {
+func (a *AccountAPIService) GetAccountExecute(r ApiGetAccountRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.V1AccountGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.GetAccount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

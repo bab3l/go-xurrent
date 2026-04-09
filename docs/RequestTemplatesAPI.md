@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1RequestTemplatesGet**](RequestTemplatesAPI.md#V1RequestTemplatesGet) | **Get** /v1/request_templates | GetRequestTemplatesListByService
-[**V1RequestTemplatesIdGet**](RequestTemplatesAPI.md#V1RequestTemplatesIdGet) | **Get** /v1/request_templates/{id} | GetRequestTemplatesProperties
+[**GetRequestTemplates**](RequestTemplatesAPI.md#GetRequestTemplates) | **Get** /v1/request_templates | GetRequestTemplatesListByService
+[**GetRequestTemplatesId**](RequestTemplatesAPI.md#GetRequestTemplatesId) | **Get** /v1/request_templates/{id} | GetRequestTemplatesProperties
 
 
 
-## V1RequestTemplatesGet
+## GetRequestTemplates
 
-> map[string]interface{} V1RequestTemplatesGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Service(service).Execute()
+> map[string]interface{} GetRequestTemplates(ctx).Authorization(authorization).X4meAccount(x4meAccount).Service(service).Execute()
 
 GetRequestTemplatesListByService
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestTemplatesAPI.V1RequestTemplatesGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Service(service).Execute()
+	resp, r, err := apiClient.RequestTemplatesAPI.GetRequestTemplates(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Service(service).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.V1RequestTemplatesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.GetRequestTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestTemplatesGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.V1RequestTemplatesGet`: %v\n", resp)
+	// response from `GetRequestTemplates`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.GetRequestTemplates`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestTemplatesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestTemplatesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -77,9 +77,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestTemplatesIdGet
+## GetRequestTemplatesId
 
-> map[string]interface{} V1RequestTemplatesIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestTemplatesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetRequestTemplatesProperties
 
@@ -92,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -102,13 +102,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestTemplatesAPI.V1RequestTemplatesIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.RequestTemplatesAPI.GetRequestTemplatesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.V1RequestTemplatesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.GetRequestTemplatesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestTemplatesIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.V1RequestTemplatesIdGet`: %v\n", resp)
+	// response from `GetRequestTemplatesId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.GetRequestTemplatesId`: %v\n", resp)
 }
 ```
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestTemplatesIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestTemplatesIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

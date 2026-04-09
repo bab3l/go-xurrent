@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing SitesAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,13 +22,13 @@ func Test_xurrent_SitesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SitesAPIService V1SitesIdGet", func(t *testing.T) {
+	t.Run("Test SitesAPIService GetSitesId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.SitesAPI.V1SitesIdGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.SitesAPI.GetSitesId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

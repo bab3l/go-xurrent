@@ -14,7 +14,15 @@ if ($LASTEXITCODE -eq 0) {
 }
 Pop-Location
 
-Write-Host "Step 1.5: Cleaning up stale files..."
+Write-Host "Step 1.5: Ensure operationIds (add missing only)..."
+Push-Location $ProjectRoot
+python utils/add_operation_ids.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "add_operation_ids failed"
+}
+Pop-Location
+
+Write-Host "Step 1.6: Cleaning up stale files..."
 if (Test-Path "$ProjectRoot/docs/Class*.md") {
     Remove-Item "$ProjectRoot/docs/Class*.md" -Force
 }

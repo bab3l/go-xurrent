@@ -22,7 +22,7 @@ import (
 // ServicesAPIService ServicesAPI service
 type ServicesAPIService service
 
-type ApiV1ServicesGetRequest struct {
+type ApiGetServicesRequest struct {
 	ctx           context.Context
 	ApiService    *ServicesAPIService
 	authorization *string
@@ -30,33 +30,33 @@ type ApiV1ServicesGetRequest struct {
 	provider      *int32
 }
 
-func (r ApiV1ServicesGetRequest) Authorization(authorization string) ApiV1ServicesGetRequest {
+func (r ApiGetServicesRequest) Authorization(authorization string) ApiGetServicesRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ServicesGetRequest) X4meAccount(x4meAccount string) ApiV1ServicesGetRequest {
+func (r ApiGetServicesRequest) X4meAccount(x4meAccount string) ApiGetServicesRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ServicesGetRequest) Provider(provider int32) ApiV1ServicesGetRequest {
+func (r ApiGetServicesRequest) Provider(provider int32) ApiGetServicesRequest {
 	r.provider = &provider
 	return r
 }
 
-func (r ApiV1ServicesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1ServicesGetExecute(r)
+func (r ApiGetServicesRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetServicesExecute(r)
 }
 
 /*
-V1ServicesGet GetServiceByProvider
+GetServices GetServiceByProvider
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ServicesGetRequest
+	@return ApiGetServicesRequest
 */
-func (a *ServicesAPIService) V1ServicesGet(ctx context.Context) ApiV1ServicesGetRequest {
-	return ApiV1ServicesGetRequest{
+func (a *ServicesAPIService) GetServices(ctx context.Context) ApiGetServicesRequest {
+	return ApiGetServicesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -64,16 +64,16 @@ func (a *ServicesAPIService) V1ServicesGet(ctx context.Context) ApiV1ServicesGet
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ServicesAPIService) V1ServicesGetExecute(r ApiV1ServicesGetRequest) (map[string]interface{}, *http.Response, error) {
+//	@return []map[string]interface{}
+func (a *ServicesAPIService) GetServicesExecute(r ApiGetServicesRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue []map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.V1ServicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.GetServices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -147,7 +147,7 @@ func (a *ServicesAPIService) V1ServicesGetExecute(r ApiV1ServicesGetRequest) (ma
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ServicesIdGetRequest struct {
+type ApiGetServicesIdRequest struct {
 	ctx           context.Context
 	ApiService    *ServicesAPIService
 	id            int32
@@ -155,29 +155,29 @@ type ApiV1ServicesIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1ServicesIdGetRequest) Authorization(authorization string) ApiV1ServicesIdGetRequest {
+func (r ApiGetServicesIdRequest) Authorization(authorization string) ApiGetServicesIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ServicesIdGetRequest) X4meAccount(x4meAccount string) ApiV1ServicesIdGetRequest {
+func (r ApiGetServicesIdRequest) X4meAccount(x4meAccount string) ApiGetServicesIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ServicesIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1ServicesIdGetExecute(r)
+func (r ApiGetServicesIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetServicesIdExecute(r)
 }
 
 /*
-V1ServicesIdGet GetServiceProperties
+GetServicesId GetServiceProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1ServicesIdGetRequest
+	@return ApiGetServicesIdRequest
 */
-func (a *ServicesAPIService) V1ServicesIdGet(ctx context.Context, id int32) ApiV1ServicesIdGetRequest {
-	return ApiV1ServicesIdGetRequest{
+func (a *ServicesAPIService) GetServicesId(ctx context.Context, id int32) ApiGetServicesIdRequest {
+	return ApiGetServicesIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -187,7 +187,7 @@ func (a *ServicesAPIService) V1ServicesIdGet(ctx context.Context, id int32) ApiV
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServicesAPIService) V1ServicesIdGetExecute(r ApiV1ServicesIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServicesAPIService) GetServicesIdExecute(r ApiGetServicesIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -195,7 +195,7 @@ func (a *ServicesAPIService) V1ServicesIdGetExecute(r ApiV1ServicesIdGetRequest)
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.V1ServicesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.GetServicesId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

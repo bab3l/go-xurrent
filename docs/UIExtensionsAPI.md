@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1UiExtensionsGet**](UIExtensionsAPI.md#V1UiExtensionsGet) | **Get** /v1/ui_extensions | GetUIExtensionPropertiesList
-[**V1UiExtensionsIdGet**](UIExtensionsAPI.md#V1UiExtensionsIdGet) | **Get** /v1/ui_extensions/{id} | GetUIExtensionProperties Copy
+[**GetUiExtensions**](UIExtensionsAPI.md#GetUiExtensions) | **Get** /v1/ui_extensions | GetUIExtensionPropertiesList
+[**GetUiExtensionsId**](UIExtensionsAPI.md#GetUiExtensionsId) | **Get** /v1/ui_extensions/{id} | GetUIExtensionProperties Copy
 
 
 
-## V1UiExtensionsGet
+## GetUiExtensions
 
-> map[string]interface{} V1UiExtensionsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetUiExtensions(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUIExtensionPropertiesList
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UIExtensionsAPI.V1UiExtensionsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.UIExtensionsAPI.GetUiExtensions(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.V1UiExtensionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.GetUiExtensions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1UiExtensionsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.V1UiExtensionsGet`: %v\n", resp)
+	// response from `GetUiExtensions`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.GetUiExtensions`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1UiExtensionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUiExtensionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,9 +75,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1UiExtensionsIdGet
+## GetUiExtensionsId
 
-> map[string]interface{} V1UiExtensionsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetUiExtensionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUIExtensionProperties Copy
 
@@ -90,7 +90,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UIExtensionsAPI.V1UiExtensionsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.UIExtensionsAPI.GetUiExtensionsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.V1UiExtensionsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.GetUiExtensionsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1UiExtensionsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.V1UiExtensionsIdGet`: %v\n", resp)
+	// response from `GetUiExtensionsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.GetUiExtensionsId`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1UiExtensionsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUiExtensionsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

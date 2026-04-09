@@ -31,9 +31,10 @@ The PowerShell build script was updated to orchestrate the entire process:
 4.  Run `go mod tidy` and `gofmt` to ensure code quality.
 
 ## Current Status
-*   **Spec**: `openapi/openapi.yaml` is now a clean, valid OpenAPI 3.0 specification.
-*   **Client**: The `go-xurrent` package is fully generated and compiles successfully.
-*   **Verification**: `go build ./...` passes without errors.
+*   **Spec**: `openapi/openapi.yaml` is a valid OpenAPI 3.0 document; CI runs `openapi-generator-cli validate`. Path parameters and key routes have been corrected (see git history / `docs/ROADMAP.md`).
+*   **Client**: Generated Go package at module root `github.com/bab3l/go-xurrent` (`package xurrent`); `go test ./...` passes (tests skipped by default).
+*   **CI**: `.github/workflows/ci.yml` runs `go vet`, `go test`, and OpenAPI validation.
+*   **Roadmap**: **[docs/ROADMAP.md](docs/ROADMAP.md)**. Route validation + **operationId** inventory: **[docs/ROUTE_VALIDATION_CHECKLIST.md](docs/ROUTE_VALIDATION_CHECKLIST.md)**. Helpers: `python utils/extract_openapi_paths.py` (list paths), `python utils/add_operation_ids.py` (fill missing `operationId`), `python utils/export_route_checklist.py` (emit inventory markdown). There is no obligation to preserve pre-release API shapes until you ship a stable tag.
 
 ## Usage
 To regenerate the client in the future (e.g., after a new export):

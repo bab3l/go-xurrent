@@ -21,7 +21,7 @@ import (
 // ImportAPIService ImportAPI service
 type ImportAPIService service
 
-type ApiV1ImportPostRequest struct {
+type ApiPostImportRequest struct {
 	ctx           context.Context
 	ApiService    *ImportAPIService
 	authorization *string
@@ -29,47 +29,47 @@ type ApiV1ImportPostRequest struct {
 	body          *map[string]interface{}
 }
 
-func (r ApiV1ImportPostRequest) Authorization(authorization string) ApiV1ImportPostRequest {
+func (r ApiPostImportRequest) Authorization(authorization string) ApiPostImportRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ImportPostRequest) X4meAccount(x4meAccount string) ApiV1ImportPostRequest {
+func (r ApiPostImportRequest) X4meAccount(x4meAccount string) ApiPostImportRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ImportPostRequest) Body(body map[string]interface{}) ApiV1ImportPostRequest {
+func (r ApiPostImportRequest) Body(body map[string]interface{}) ApiPostImportRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1ImportPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ImportPostExecute(r)
+func (r ApiPostImportRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PostImportExecute(r)
 }
 
 /*
-V1ImportPost RunNewImport
+PostImport RunNewImport
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ImportPostRequest
+	@return ApiPostImportRequest
 */
-func (a *ImportAPIService) V1ImportPost(ctx context.Context) ApiV1ImportPostRequest {
-	return ApiV1ImportPostRequest{
+func (a *ImportAPIService) PostImport(ctx context.Context) ApiPostImportRequest {
+	return ApiPostImportRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ImportAPIService) V1ImportPostExecute(r ApiV1ImportPostRequest) (*http.Response, error) {
+func (a *ImportAPIService) PostImportExecute(r ApiPostImportRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportAPIService.V1ImportPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportAPIService.PostImport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

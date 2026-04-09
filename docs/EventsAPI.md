@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EventsPost**](EventsAPI.md#V1EventsPost) | **Post** /v1/events | CreateNewIncident (top impact)
+[**PostEvents**](EventsAPI.md#PostEvents) | **Post** /v1/events | CreateNewIncident (top impact)
 
 
 
-## V1EventsPost
+## PostEvents
 
-> map[string]interface{} V1EventsPost(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> map[string]interface{} PostEvents(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 CreateNewIncident (top impact)
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.V1EventsPost(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.EventsAPI.PostEvents(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.V1EventsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.PostEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1EventsPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.V1EventsPost`: %v\n", resp)
+	// response from `PostEvents`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.PostEvents`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EventsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostEventsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1WorkflowsGet**](WorkflowsAPI.md#V1WorkflowsGet) | **Get** /v1/workflows | GetWorkflows
-[**V1WorkflowsIdGet**](WorkflowsAPI.md#V1WorkflowsIdGet) | **Get** /v1/workflows/{id} | GetWorkflowProperties
+[**GetWorkflows**](WorkflowsAPI.md#GetWorkflows) | **Get** /v1/workflows | GetWorkflows
+[**GetWorkflowsId**](WorkflowsAPI.md#GetWorkflowsId) | **Get** /v1/workflows/{id} | GetWorkflowProperties
 
 
 
-## V1WorkflowsGet
+## GetWorkflows
 
-> map[string]interface{} V1WorkflowsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetWorkflows(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetWorkflows
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.V1WorkflowsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.GetWorkflows(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.V1WorkflowsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflows``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1WorkflowsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.V1WorkflowsGet`: %v\n", resp)
+	// response from `GetWorkflows`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflows`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1WorkflowsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkflowsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,9 +75,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1WorkflowsIdGet
+## GetWorkflowsId
 
-> map[string]interface{} V1WorkflowsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetWorkflowsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetWorkflowProperties
 
@@ -90,7 +90,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.V1WorkflowsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.GetWorkflowsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.V1WorkflowsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1WorkflowsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.V1WorkflowsIdGet`: %v\n", resp)
+	// response from `GetWorkflowsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowsId`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1WorkflowsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkflowsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

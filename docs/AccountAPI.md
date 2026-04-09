@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1AccountGet**](AccountAPI.md#V1AccountGet) | **Get** /v1/account | GetAccountProperties
+[**GetAccount**](AccountAPI.md#GetAccount) | **Get** /v1/account | GetAccountProperties
 
 
 
-## V1AccountGet
+## GetAccount
 
-> V1AccountGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetAccount(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetAccountProperties
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -32,9 +32,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccountAPI.V1AccountGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.AccountAPI.GetAccount(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.V1AccountGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.GetAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -46,7 +46,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1AccountGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAccountRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

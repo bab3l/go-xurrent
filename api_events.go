@@ -21,7 +21,7 @@ import (
 // EventsAPIService EventsAPI service
 type EventsAPIService service
 
-type ApiV1EventsPostRequest struct {
+type ApiPostEventsRequest struct {
 	ctx           context.Context
 	ApiService    *EventsAPIService
 	authorization *string
@@ -29,33 +29,33 @@ type ApiV1EventsPostRequest struct {
 	body          *map[string]interface{}
 }
 
-func (r ApiV1EventsPostRequest) Authorization(authorization string) ApiV1EventsPostRequest {
+func (r ApiPostEventsRequest) Authorization(authorization string) ApiPostEventsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1EventsPostRequest) X4meAccount(x4meAccount string) ApiV1EventsPostRequest {
+func (r ApiPostEventsRequest) X4meAccount(x4meAccount string) ApiPostEventsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1EventsPostRequest) Body(body map[string]interface{}) ApiV1EventsPostRequest {
+func (r ApiPostEventsRequest) Body(body map[string]interface{}) ApiPostEventsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EventsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1EventsPostExecute(r)
+func (r ApiPostEventsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostEventsExecute(r)
 }
 
 /*
-V1EventsPost CreateNewIncident (top impact)
+PostEvents CreateNewIncident (top impact)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EventsPostRequest
+	@return ApiPostEventsRequest
 */
-func (a *EventsAPIService) V1EventsPost(ctx context.Context) ApiV1EventsPostRequest {
-	return ApiV1EventsPostRequest{
+func (a *EventsAPIService) PostEvents(ctx context.Context) ApiPostEventsRequest {
+	return ApiPostEventsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -64,7 +64,7 @@ func (a *EventsAPIService) V1EventsPost(ctx context.Context) ApiV1EventsPostRequ
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *EventsAPIService) V1EventsPostExecute(r ApiV1EventsPostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *EventsAPIService) PostEventsExecute(r ApiPostEventsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -72,7 +72,7 @@ func (a *EventsAPIService) V1EventsPostExecute(r ApiV1EventsPostRequest) (map[st
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.V1EventsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.PostEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

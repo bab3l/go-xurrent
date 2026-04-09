@@ -22,7 +22,7 @@ import (
 // CustomCollectionsAPIService CustomCollectionsAPI service
 type CustomCollectionsAPIService service
 
-type ApiV1CustomCollectionElementsGetRequest struct {
+type ApiGetCustomCollectionElementsRequest struct {
 	ctx              context.Context
 	ApiService       *CustomCollectionsAPIService
 	authorization    *string
@@ -30,33 +30,33 @@ type ApiV1CustomCollectionElementsGetRequest struct {
 	customCollection *string
 }
 
-func (r ApiV1CustomCollectionElementsGetRequest) Authorization(authorization string) ApiV1CustomCollectionElementsGetRequest {
+func (r ApiGetCustomCollectionElementsRequest) Authorization(authorization string) ApiGetCustomCollectionElementsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CustomCollectionElementsGetRequest) X4meAccount(x4meAccount string) ApiV1CustomCollectionElementsGetRequest {
+func (r ApiGetCustomCollectionElementsRequest) X4meAccount(x4meAccount string) ApiGetCustomCollectionElementsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CustomCollectionElementsGetRequest) CustomCollection(customCollection string) ApiV1CustomCollectionElementsGetRequest {
+func (r ApiGetCustomCollectionElementsRequest) CustomCollection(customCollection string) ApiGetCustomCollectionElementsRequest {
 	r.customCollection = &customCollection
 	return r
 }
 
-func (r ApiV1CustomCollectionElementsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CustomCollectionElementsGetExecute(r)
+func (r ApiGetCustomCollectionElementsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCustomCollectionElementsExecute(r)
 }
 
 /*
-V1CustomCollectionElementsGet GetCustomCollectionElementsList (by custom_collection_id)
+GetCustomCollectionElements GetCustomCollectionElementsList (by custom_collection_id)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CustomCollectionElementsGetRequest
+	@return ApiGetCustomCollectionElementsRequest
 */
-func (a *CustomCollectionsAPIService) V1CustomCollectionElementsGet(ctx context.Context) ApiV1CustomCollectionElementsGetRequest {
-	return ApiV1CustomCollectionElementsGetRequest{
+func (a *CustomCollectionsAPIService) GetCustomCollectionElements(ctx context.Context) ApiGetCustomCollectionElementsRequest {
+	return ApiGetCustomCollectionElementsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -65,7 +65,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsGet(ctx context.
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CustomCollectionsAPIService) V1CustomCollectionElementsGetExecute(r ApiV1CustomCollectionElementsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomCollectionsAPIService) GetCustomCollectionElementsExecute(r ApiGetCustomCollectionElementsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -73,7 +73,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsGetExecute(r Api
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.V1CustomCollectionElementsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.GetCustomCollectionElements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -147,7 +147,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CustomCollectionElementsIdGetRequest struct {
+type ApiGetCustomCollectionElementsIdRequest struct {
 	ctx           context.Context
 	ApiService    *CustomCollectionsAPIService
 	id            int32
@@ -155,29 +155,29 @@ type ApiV1CustomCollectionElementsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1CustomCollectionElementsIdGetRequest) Authorization(authorization string) ApiV1CustomCollectionElementsIdGetRequest {
+func (r ApiGetCustomCollectionElementsIdRequest) Authorization(authorization string) ApiGetCustomCollectionElementsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CustomCollectionElementsIdGetRequest) X4meAccount(x4meAccount string) ApiV1CustomCollectionElementsIdGetRequest {
+func (r ApiGetCustomCollectionElementsIdRequest) X4meAccount(x4meAccount string) ApiGetCustomCollectionElementsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CustomCollectionElementsIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CustomCollectionElementsIdGetExecute(r)
+func (r ApiGetCustomCollectionElementsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCustomCollectionElementsIdExecute(r)
 }
 
 /*
-V1CustomCollectionElementsIdGet GetCustomCollectionElementsProperties
+GetCustomCollectionElementsId GetCustomCollectionElementsProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CustomCollectionElementsIdGetRequest
+	@return ApiGetCustomCollectionElementsIdRequest
 */
-func (a *CustomCollectionsAPIService) V1CustomCollectionElementsIdGet(ctx context.Context, id int32) ApiV1CustomCollectionElementsIdGetRequest {
-	return ApiV1CustomCollectionElementsIdGetRequest{
+func (a *CustomCollectionsAPIService) GetCustomCollectionElementsId(ctx context.Context, id int32) ApiGetCustomCollectionElementsIdRequest {
+	return ApiGetCustomCollectionElementsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -187,7 +187,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsIdGet(ctx contex
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CustomCollectionsAPIService) V1CustomCollectionElementsIdGetExecute(r ApiV1CustomCollectionElementsIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomCollectionsAPIService) GetCustomCollectionElementsIdExecute(r ApiGetCustomCollectionElementsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -195,7 +195,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsIdGetExecute(r A
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.V1CustomCollectionElementsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.GetCustomCollectionElementsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -267,35 +267,35 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionElementsIdGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CustomCollectionsGetRequest struct {
+type ApiGetCustomCollectionsRequest struct {
 	ctx           context.Context
 	ApiService    *CustomCollectionsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1CustomCollectionsGetRequest) Authorization(authorization string) ApiV1CustomCollectionsGetRequest {
+func (r ApiGetCustomCollectionsRequest) Authorization(authorization string) ApiGetCustomCollectionsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CustomCollectionsGetRequest) X4meAccount(x4meAccount string) ApiV1CustomCollectionsGetRequest {
+func (r ApiGetCustomCollectionsRequest) X4meAccount(x4meAccount string) ApiGetCustomCollectionsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CustomCollectionsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CustomCollectionsGetExecute(r)
+func (r ApiGetCustomCollectionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCustomCollectionsExecute(r)
 }
 
 /*
-V1CustomCollectionsGet GetCustomCollectionsList
+GetCustomCollections GetCustomCollectionsList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CustomCollectionsGetRequest
+	@return ApiGetCustomCollectionsRequest
 */
-func (a *CustomCollectionsAPIService) V1CustomCollectionsGet(ctx context.Context) ApiV1CustomCollectionsGetRequest {
-	return ApiV1CustomCollectionsGetRequest{
+func (a *CustomCollectionsAPIService) GetCustomCollections(ctx context.Context) ApiGetCustomCollectionsRequest {
+	return ApiGetCustomCollectionsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -304,7 +304,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionsGet(ctx context.Context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CustomCollectionsAPIService) V1CustomCollectionsGetExecute(r ApiV1CustomCollectionsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomCollectionsAPIService) GetCustomCollectionsExecute(r ApiGetCustomCollectionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -312,7 +312,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionsGetExecute(r ApiV1Custo
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.V1CustomCollectionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.GetCustomCollections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -383,7 +383,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionsGetExecute(r ApiV1Custo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CustomCollectionsIdGetRequest struct {
+type ApiGetCustomCollectionsIdRequest struct {
 	ctx           context.Context
 	ApiService    *CustomCollectionsAPIService
 	id            int32
@@ -391,29 +391,29 @@ type ApiV1CustomCollectionsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1CustomCollectionsIdGetRequest) Authorization(authorization string) ApiV1CustomCollectionsIdGetRequest {
+func (r ApiGetCustomCollectionsIdRequest) Authorization(authorization string) ApiGetCustomCollectionsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CustomCollectionsIdGetRequest) X4meAccount(x4meAccount string) ApiV1CustomCollectionsIdGetRequest {
+func (r ApiGetCustomCollectionsIdRequest) X4meAccount(x4meAccount string) ApiGetCustomCollectionsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CustomCollectionsIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CustomCollectionsIdGetExecute(r)
+func (r ApiGetCustomCollectionsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCustomCollectionsIdExecute(r)
 }
 
 /*
-V1CustomCollectionsIdGet GetCustomCollectionProperties
+GetCustomCollectionsId GetCustomCollectionProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CustomCollectionsIdGetRequest
+	@return ApiGetCustomCollectionsIdRequest
 */
-func (a *CustomCollectionsAPIService) V1CustomCollectionsIdGet(ctx context.Context, id int32) ApiV1CustomCollectionsIdGetRequest {
-	return ApiV1CustomCollectionsIdGetRequest{
+func (a *CustomCollectionsAPIService) GetCustomCollectionsId(ctx context.Context, id int32) ApiGetCustomCollectionsIdRequest {
+	return ApiGetCustomCollectionsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -423,7 +423,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionsIdGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CustomCollectionsAPIService) V1CustomCollectionsIdGetExecute(r ApiV1CustomCollectionsIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomCollectionsAPIService) GetCustomCollectionsIdExecute(r ApiGetCustomCollectionsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -431,7 +431,7 @@ func (a *CustomCollectionsAPIService) V1CustomCollectionsIdGetExecute(r ApiV1Cus
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.V1CustomCollectionsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCollectionsAPIService.GetCustomCollectionsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

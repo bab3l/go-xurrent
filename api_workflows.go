@@ -22,35 +22,35 @@ import (
 // WorkflowsAPIService WorkflowsAPI service
 type WorkflowsAPIService service
 
-type ApiV1WorkflowsGetRequest struct {
+type ApiGetWorkflowsRequest struct {
 	ctx           context.Context
 	ApiService    *WorkflowsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1WorkflowsGetRequest) Authorization(authorization string) ApiV1WorkflowsGetRequest {
+func (r ApiGetWorkflowsRequest) Authorization(authorization string) ApiGetWorkflowsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1WorkflowsGetRequest) X4meAccount(x4meAccount string) ApiV1WorkflowsGetRequest {
+func (r ApiGetWorkflowsRequest) X4meAccount(x4meAccount string) ApiGetWorkflowsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1WorkflowsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1WorkflowsGetExecute(r)
+func (r ApiGetWorkflowsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetWorkflowsExecute(r)
 }
 
 /*
-V1WorkflowsGet GetWorkflows
+GetWorkflows GetWorkflows
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1WorkflowsGetRequest
+	@return ApiGetWorkflowsRequest
 */
-func (a *WorkflowsAPIService) V1WorkflowsGet(ctx context.Context) ApiV1WorkflowsGetRequest {
-	return ApiV1WorkflowsGetRequest{
+func (a *WorkflowsAPIService) GetWorkflows(ctx context.Context) ApiGetWorkflowsRequest {
+	return ApiGetWorkflowsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -59,7 +59,7 @@ func (a *WorkflowsAPIService) V1WorkflowsGet(ctx context.Context) ApiV1Workflows
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *WorkflowsAPIService) V1WorkflowsGetExecute(r ApiV1WorkflowsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -67,7 +67,7 @@ func (a *WorkflowsAPIService) V1WorkflowsGetExecute(r ApiV1WorkflowsGetRequest) 
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.V1WorkflowsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflows")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -138,7 +138,7 @@ func (a *WorkflowsAPIService) V1WorkflowsGetExecute(r ApiV1WorkflowsGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1WorkflowsIdGetRequest struct {
+type ApiGetWorkflowsIdRequest struct {
 	ctx           context.Context
 	ApiService    *WorkflowsAPIService
 	id            int32
@@ -146,29 +146,29 @@ type ApiV1WorkflowsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1WorkflowsIdGetRequest) Authorization(authorization string) ApiV1WorkflowsIdGetRequest {
+func (r ApiGetWorkflowsIdRequest) Authorization(authorization string) ApiGetWorkflowsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1WorkflowsIdGetRequest) X4meAccount(x4meAccount string) ApiV1WorkflowsIdGetRequest {
+func (r ApiGetWorkflowsIdRequest) X4meAccount(x4meAccount string) ApiGetWorkflowsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1WorkflowsIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1WorkflowsIdGetExecute(r)
+func (r ApiGetWorkflowsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetWorkflowsIdExecute(r)
 }
 
 /*
-V1WorkflowsIdGet GetWorkflowProperties
+GetWorkflowsId GetWorkflowProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1WorkflowsIdGetRequest
+	@return ApiGetWorkflowsIdRequest
 */
-func (a *WorkflowsAPIService) V1WorkflowsIdGet(ctx context.Context, id int32) ApiV1WorkflowsIdGetRequest {
-	return ApiV1WorkflowsIdGetRequest{
+func (a *WorkflowsAPIService) GetWorkflowsId(ctx context.Context, id int32) ApiGetWorkflowsIdRequest {
+	return ApiGetWorkflowsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -178,7 +178,7 @@ func (a *WorkflowsAPIService) V1WorkflowsIdGet(ctx context.Context, id int32) Ap
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *WorkflowsAPIService) V1WorkflowsIdGetExecute(r ApiV1WorkflowsIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -186,7 +186,7 @@ func (a *WorkflowsAPIService) V1WorkflowsIdGetExecute(r ApiV1WorkflowsIdGetReque
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.V1WorkflowsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -21,35 +21,35 @@ import (
 // GeneralAPIService GeneralAPI service
 type GeneralAPIService service
 
-type ApiV1EnumsGetRequest struct {
+type ApiGetEnumsRequest struct {
 	ctx           context.Context
 	ApiService    *GeneralAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1EnumsGetRequest) Authorization(authorization string) ApiV1EnumsGetRequest {
+func (r ApiGetEnumsRequest) Authorization(authorization string) ApiGetEnumsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1EnumsGetRequest) X4meAccount(x4meAccount string) ApiV1EnumsGetRequest {
+func (r ApiGetEnumsRequest) X4meAccount(x4meAccount string) ApiGetEnumsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1EnumsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1EnumsGetExecute(r)
+func (r ApiGetEnumsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetEnumsExecute(r)
 }
 
 /*
-V1EnumsGet GetEnumerationsValues
+GetEnums GetEnumerationsValues
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EnumsGetRequest
+	@return ApiGetEnumsRequest
 */
-func (a *GeneralAPIService) V1EnumsGet(ctx context.Context) ApiV1EnumsGetRequest {
-	return ApiV1EnumsGetRequest{
+func (a *GeneralAPIService) GetEnums(ctx context.Context) ApiGetEnumsRequest {
+	return ApiGetEnumsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -58,7 +58,7 @@ func (a *GeneralAPIService) V1EnumsGet(ctx context.Context) ApiV1EnumsGetRequest
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *GeneralAPIService) V1EnumsGetExecute(r ApiV1EnumsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -66,7 +66,7 @@ func (a *GeneralAPIService) V1EnumsGetExecute(r ApiV1EnumsGetRequest) (map[strin
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.V1EnumsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetEnums")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -137,49 +137,49 @@ func (a *GeneralAPIService) V1EnumsGetExecute(r ApiV1EnumsGetRequest) (map[strin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MeGetRequest struct {
+type ApiGetMeRequest struct {
 	ctx           context.Context
 	ApiService    *GeneralAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1MeGetRequest) Authorization(authorization string) ApiV1MeGetRequest {
+func (r ApiGetMeRequest) Authorization(authorization string) ApiGetMeRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1MeGetRequest) X4meAccount(x4meAccount string) ApiV1MeGetRequest {
+func (r ApiGetMeRequest) X4meAccount(x4meAccount string) ApiGetMeRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1MeGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1MeGetExecute(r)
+func (r ApiGetMeRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetMeExecute(r)
 }
 
 /*
-V1MeGet GetMyData
+GetMe GetMyData
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MeGetRequest
+	@return ApiGetMeRequest
 */
-func (a *GeneralAPIService) V1MeGet(ctx context.Context) ApiV1MeGetRequest {
-	return ApiV1MeGetRequest{
+func (a *GeneralAPIService) GetMe(ctx context.Context) ApiGetMeRequest {
+	return ApiGetMeRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *GeneralAPIService) V1MeGetExecute(r ApiV1MeGetRequest) (*http.Response, error) {
+func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.V1MeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetMe")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

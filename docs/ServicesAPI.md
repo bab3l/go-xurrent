@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ServicesGet**](ServicesAPI.md#V1ServicesGet) | **Get** /v1/services | GetServiceByProvider
-[**V1ServicesIdGet**](ServicesAPI.md#V1ServicesIdGet) | **Get** /v1/services/{id} | GetServiceProperties
+[**GetServices**](ServicesAPI.md#GetServices) | **Get** /v1/services | GetServiceByProvider
+[**GetServicesId**](ServicesAPI.md#GetServicesId) | **Get** /v1/services/{id} | GetServiceProperties
 
 
 
-## V1ServicesGet
+## GetServices
 
-> map[string]interface{} V1ServicesGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Provider(provider).Execute()
+> []map[string]interface{} GetServices(ctx).Authorization(authorization).X4meAccount(x4meAccount).Provider(provider).Execute()
 
 GetServiceByProvider
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServicesAPI.V1ServicesGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Provider(provider).Execute()
+	resp, r, err := apiClient.ServicesAPI.GetServices(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Provider(provider).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServicesAPI.V1ServicesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServicesAPI.GetServices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ServicesGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ServicesAPI.V1ServicesGet`: %v\n", resp)
+	// response from `GetServices`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ServicesAPI.GetServices`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1ServicesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetServicesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**[]map[string]interface{}**
 
 ### Authorization
 
@@ -77,9 +77,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1ServicesIdGet
+## GetServicesId
 
-> map[string]interface{} V1ServicesIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetServicesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetServiceProperties
 
@@ -92,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -102,13 +102,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServicesAPI.V1ServicesIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ServicesAPI.GetServicesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServicesAPI.V1ServicesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServicesAPI.GetServicesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ServicesIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ServicesAPI.V1ServicesIdGet`: %v\n", resp)
+	// response from `GetServicesId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ServicesAPI.GetServicesId`: %v\n", resp)
 }
 ```
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1ServicesIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetServicesIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

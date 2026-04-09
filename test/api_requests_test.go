@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing RequestsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,14 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RequestsAPIService V1RequestsAssignedToMeGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService DeleteRequestsRequestIdCisCiId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsAssignedToMeGet(context.Background()).Execute()
+		var requestId int32
+		var ciId int32
+
+		resp, httpRes, err := apiClient.RequestsAPI.DeleteRequestsRequestIdCisCiId(context.Background(), requestId, ciId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +37,11 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsAssignedToMyTeamGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsAssignedToMe", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsAssignedToMyTeamGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsAssignedToMe(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +49,11 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsCompletedGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsAssignedToMyTeam", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsCompletedGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsAssignedToMyTeam(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,26 +61,25 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdAuditGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsCompleted", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsCompleted(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService GetRequestsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.RequestsAPI.V1RequestsIdAuditGet(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsIdCisGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdCisGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -85,13 +87,26 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdCisIdDelete", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsIdAudit", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdCisIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.RequestsAPI.GetRequestsIdAudit(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService GetRequestsIdCis", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsIdCis(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,26 +114,13 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdCisIdPost", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsIdGroupedRequests", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.RequestsAPI.V1RequestsIdCisIdPost(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsIdDissatisfiedPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdDissatisfiedPost(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsIdGroupedRequests(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,13 +128,61 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService GetRequestsOpen", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsOpen(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService GetRequestsRequestedByOrForMe", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsRequestedByOrForMe(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService GetRequestsRequestsOfMyOrganization", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RequestsAPI.GetRequestsRequestsOfMyOrganization(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService PostRequests", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RequestsAPI.PostRequests(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService PostRequestsIdDissatisfied", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.PostRequestsIdDissatisfied(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,13 +190,13 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdGroupedRequestsGet", func(t *testing.T) {
+	t.Run("Test RequestsAPIService PostRequestsIdNotes", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdGroupedRequestsGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RequestsAPI.PostRequestsIdNotes(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -154,78 +204,42 @@ func Test_xurrent_RequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdNotesPost", func(t *testing.T) {
+	t.Run("Test RequestsAPIService PostRequestsIdSatisfied", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsIdNotesPost(context.Background(), id).Execute()
+		httpRes, err := apiClient.RequestsAPI.PostRequestsIdSatisfied(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test RequestsAPIService V1RequestsIdPut", func(t *testing.T) {
+	t.Run("Test RequestsAPIService PostRequestsRequestIdCisCiId", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var requestId int32
+		var ciId int32
+
+		httpRes, err := apiClient.RequestsAPI.PostRequestsRequestIdCisCiId(context.Background(), requestId, ciId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RequestsAPIService PutRequestsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.RequestsAPI.V1RequestsIdPut(context.Background(), id).Execute()
+		httpRes, err := apiClient.RequestsAPI.PutRequestsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsIdSatisfiedPost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		httpRes, err := apiClient.RequestsAPI.V1RequestsIdSatisfiedPost(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsOpenGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsOpenGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsRequestedByOrForMeGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsRequestedByOrForMeGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RequestsAPIService V1RequestsRequestsOfMyOrganizationGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.RequestsAPI.V1RequestsRequestsOfMyOrganizationGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

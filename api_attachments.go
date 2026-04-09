@@ -23,199 +23,35 @@ import (
 // AttachmentsAPIService AttachmentsAPI service
 type AttachmentsAPIService service
 
-type ApiV1AttachmentsPostRequest struct {
-	ctx            context.Context
-	ApiService     *AttachmentsAPIService
-	authorization  *string
-	x4meAccount    *string
-	key            *string
-	x4meExpiration *string
-	x4meSignature  *string
-	file           *os.File
-}
-
-func (r ApiV1AttachmentsPostRequest) Authorization(authorization string) ApiV1AttachmentsPostRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) X4meAccount(x4meAccount string) ApiV1AttachmentsPostRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) Key(key string) ApiV1AttachmentsPostRequest {
-	r.key = &key
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) X4meExpiration(x4meExpiration string) ApiV1AttachmentsPostRequest {
-	r.x4meExpiration = &x4meExpiration
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) X4meSignature(x4meSignature string) ApiV1AttachmentsPostRequest {
-	r.x4meSignature = &x4meSignature
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) File(file *os.File) ApiV1AttachmentsPostRequest {
-	r.file = file
-	return r
-}
-
-func (r ApiV1AttachmentsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1AttachmentsPostExecute(r)
-}
-
-/*
-V1AttachmentsPost Add Attach - PutAttachToStorageAndGetURL
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AttachmentsPostRequest
-*/
-func (a *AttachmentsAPIService) V1AttachmentsPost(ctx context.Context) ApiV1AttachmentsPostRequest {
-	return ApiV1AttachmentsPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *AttachmentsAPIService) V1AttachmentsPostExecute(r ApiV1AttachmentsPostRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.V1AttachmentsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/attachments"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "", "")
-	}
-	if r.x4meExpiration != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "x-4me-expiration", r.x4meExpiration, "", "")
-	}
-	if r.x4meSignature != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "x-4me-signature", r.x4meSignature, "", "")
-	}
-	var fileLocalVarFormFileName string
-	var fileLocalVarFileName string
-	var fileLocalVarFileBytes []byte
-
-	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
-
-	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1AttachmentsStorageGetRequest struct {
+type ApiGetAttachmentsStorageRequest struct {
 	ctx           context.Context
 	ApiService    *AttachmentsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1AttachmentsStorageGetRequest) Authorization(authorization string) ApiV1AttachmentsStorageGetRequest {
+func (r ApiGetAttachmentsStorageRequest) Authorization(authorization string) ApiGetAttachmentsStorageRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1AttachmentsStorageGetRequest) X4meAccount(x4meAccount string) ApiV1AttachmentsStorageGetRequest {
+func (r ApiGetAttachmentsStorageRequest) X4meAccount(x4meAccount string) ApiGetAttachmentsStorageRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1AttachmentsStorageGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1AttachmentsStorageGetExecute(r)
+func (r ApiGetAttachmentsStorageRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetAttachmentsStorageExecute(r)
 }
 
 /*
-V1AttachmentsStorageGet Add Attach - ReservePlaceForAttachment
+GetAttachmentsStorage Add Attach - ReservePlaceForAttachment
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AttachmentsStorageGetRequest
+	@return ApiGetAttachmentsStorageRequest
 */
-func (a *AttachmentsAPIService) V1AttachmentsStorageGet(ctx context.Context) ApiV1AttachmentsStorageGetRequest {
-	return ApiV1AttachmentsStorageGetRequest{
+func (a *AttachmentsAPIService) GetAttachmentsStorage(ctx context.Context) ApiGetAttachmentsStorageRequest {
+	return ApiGetAttachmentsStorageRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -224,7 +60,7 @@ func (a *AttachmentsAPIService) V1AttachmentsStorageGet(ctx context.Context) Api
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *AttachmentsAPIService) V1AttachmentsStorageGetExecute(r ApiV1AttachmentsStorageGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AttachmentsAPIService) GetAttachmentsStorageExecute(r ApiGetAttachmentsStorageRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -232,7 +68,7 @@ func (a *AttachmentsAPIService) V1AttachmentsStorageGetExecute(r ApiV1Attachment
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.V1AttachmentsStorageGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.GetAttachmentsStorage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -303,49 +139,49 @@ func (a *AttachmentsAPIService) V1AttachmentsStorageGetExecute(r ApiV1Attachment
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AttachmentsUploadGetRequest struct {
+type ApiGetAttachmentsUploadRequest struct {
 	ctx           context.Context
 	ApiService    *AttachmentsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1AttachmentsUploadGetRequest) Authorization(authorization string) ApiV1AttachmentsUploadGetRequest {
+func (r ApiGetAttachmentsUploadRequest) Authorization(authorization string) ApiGetAttachmentsUploadRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1AttachmentsUploadGetRequest) X4meAccount(x4meAccount string) ApiV1AttachmentsUploadGetRequest {
+func (r ApiGetAttachmentsUploadRequest) X4meAccount(x4meAccount string) ApiGetAttachmentsUploadRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1AttachmentsUploadGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1AttachmentsUploadGetExecute(r)
+func (r ApiGetAttachmentsUploadRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetAttachmentsUploadExecute(r)
 }
 
 /*
-V1AttachmentsUploadGet Get Attach
+GetAttachmentsUpload Get Attach
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AttachmentsUploadGetRequest
+	@return ApiGetAttachmentsUploadRequest
 */
-func (a *AttachmentsAPIService) V1AttachmentsUploadGet(ctx context.Context) ApiV1AttachmentsUploadGetRequest {
-	return ApiV1AttachmentsUploadGetRequest{
+func (a *AttachmentsAPIService) GetAttachmentsUpload(ctx context.Context) ApiGetAttachmentsUploadRequest {
+	return ApiGetAttachmentsUploadRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AttachmentsAPIService) V1AttachmentsUploadGetExecute(r ApiV1AttachmentsUploadGetRequest) (*http.Response, error) {
+func (a *AttachmentsAPIService) GetAttachmentsUploadExecute(r ApiGetAttachmentsUploadRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.V1AttachmentsUploadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.GetAttachmentsUpload")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -407,7 +243,7 @@ func (a *AttachmentsAPIService) V1AttachmentsUploadGetExecute(r ApiV1Attachments
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1RequestsIdPatchRequest struct {
+type ApiPatchRequestsIdRequest struct {
 	ctx           context.Context
 	ApiService    *AttachmentsAPIService
 	id            int32
@@ -416,34 +252,34 @@ type ApiV1RequestsIdPatchRequest struct {
 	body          *map[string]interface{}
 }
 
-func (r ApiV1RequestsIdPatchRequest) Authorization(authorization string) ApiV1RequestsIdPatchRequest {
+func (r ApiPatchRequestsIdRequest) Authorization(authorization string) ApiPatchRequestsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1RequestsIdPatchRequest) X4meAccount(x4meAccount string) ApiV1RequestsIdPatchRequest {
+func (r ApiPatchRequestsIdRequest) X4meAccount(x4meAccount string) ApiPatchRequestsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1RequestsIdPatchRequest) Body(body map[string]interface{}) ApiV1RequestsIdPatchRequest {
+func (r ApiPatchRequestsIdRequest) Body(body map[string]interface{}) ApiPatchRequestsIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1RequestsIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1RequestsIdPatchExecute(r)
+func (r ApiPatchRequestsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchRequestsIdExecute(r)
 }
 
 /*
-V1RequestsIdPatch Add Attach (multi) - AddAttachmentsToRequest
+PatchRequestsId Add Attach (multi) - AddAttachmentsToRequest
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1RequestsIdPatchRequest
+	@return ApiPatchRequestsIdRequest
 */
-func (a *AttachmentsAPIService) V1RequestsIdPatch(ctx context.Context, id int32) ApiV1RequestsIdPatchRequest {
-	return ApiV1RequestsIdPatchRequest{
+func (a *AttachmentsAPIService) PatchRequestsId(ctx context.Context, id int32) ApiPatchRequestsIdRequest {
+	return ApiPatchRequestsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -453,7 +289,7 @@ func (a *AttachmentsAPIService) V1RequestsIdPatch(ctx context.Context, id int32)
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *AttachmentsAPIService) V1RequestsIdPatchExecute(r ApiV1RequestsIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AttachmentsAPIService) PatchRequestsIdExecute(r ApiPatchRequestsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -461,7 +297,7 @@ func (a *AttachmentsAPIService) V1RequestsIdPatchExecute(r ApiV1RequestsIdPatchR
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.V1RequestsIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.PatchRequestsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -498,6 +334,170 @@ func (a *AttachmentsAPIService) V1RequestsIdPatchExecute(r ApiV1RequestsIdPatchR
 	}
 	// body params
 	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostAttachmentsRequest struct {
+	ctx            context.Context
+	ApiService     *AttachmentsAPIService
+	authorization  *string
+	x4meAccount    *string
+	key            *string
+	x4meExpiration *string
+	x4meSignature  *string
+	file           *os.File
+}
+
+func (r ApiPostAttachmentsRequest) Authorization(authorization string) ApiPostAttachmentsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) X4meAccount(x4meAccount string) ApiPostAttachmentsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) Key(key string) ApiPostAttachmentsRequest {
+	r.key = &key
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) X4meExpiration(x4meExpiration string) ApiPostAttachmentsRequest {
+	r.x4meExpiration = &x4meExpiration
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) X4meSignature(x4meSignature string) ApiPostAttachmentsRequest {
+	r.x4meSignature = &x4meSignature
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) File(file *os.File) ApiPostAttachmentsRequest {
+	r.file = file
+	return r
+}
+
+func (r ApiPostAttachmentsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostAttachmentsExecute(r)
+}
+
+/*
+PostAttachments Add Attach - PutAttachToStorageAndGetURL
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostAttachmentsRequest
+*/
+func (a *AttachmentsAPIService) PostAttachments(ctx context.Context) ApiPostAttachmentsRequest {
+	return ApiPostAttachmentsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *AttachmentsAPIService) PostAttachmentsExecute(r ApiPostAttachmentsRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttachmentsAPIService.PostAttachments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/attachments"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "", "")
+	}
+	if r.x4meExpiration != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "x-4me-expiration", r.x4meExpiration, "", "")
+	}
+	if r.x4meSignature != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "x-4me-signature", r.x4meSignature, "", "")
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

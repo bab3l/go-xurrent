@@ -21,7 +21,7 @@ import (
 // SearchAPIService SearchAPI service
 type SearchAPIService service
 
-type ApiV1RequestsGetRequest struct {
+type ApiGetRequestsRequest struct {
 	ctx           context.Context
 	ApiService    *SearchAPIService
 	authorization *string
@@ -29,33 +29,33 @@ type ApiV1RequestsGetRequest struct {
 	template      *string
 }
 
-func (r ApiV1RequestsGetRequest) Authorization(authorization string) ApiV1RequestsGetRequest {
+func (r ApiGetRequestsRequest) Authorization(authorization string) ApiGetRequestsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1RequestsGetRequest) X4meAccount(x4meAccount string) ApiV1RequestsGetRequest {
+func (r ApiGetRequestsRequest) X4meAccount(x4meAccount string) ApiGetRequestsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1RequestsGetRequest) Template(template string) ApiV1RequestsGetRequest {
+func (r ApiGetRequestsRequest) Template(template string) ApiGetRequestsRequest {
 	r.template = &template
 	return r
 }
 
-func (r ApiV1RequestsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1RequestsGetExecute(r)
+func (r ApiGetRequestsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetRequestsExecute(r)
 }
 
 /*
-V1RequestsGet GetIssuesList (several templates) Copy
+GetRequests GetIssuesList (several templates) Copy
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1RequestsGetRequest
+	@return ApiGetRequestsRequest
 */
-func (a *SearchAPIService) V1RequestsGet(ctx context.Context) ApiV1RequestsGetRequest {
-	return ApiV1RequestsGetRequest{
+func (a *SearchAPIService) GetRequests(ctx context.Context) ApiGetRequestsRequest {
+	return ApiGetRequestsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -64,7 +64,7 @@ func (a *SearchAPIService) V1RequestsGet(ctx context.Context) ApiV1RequestsGetRe
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *SearchAPIService) V1RequestsGetExecute(r ApiV1RequestsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SearchAPIService) GetRequestsExecute(r ApiGetRequestsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -72,7 +72,7 @@ func (a *SearchAPIService) V1RequestsGetExecute(r ApiV1RequestsGetRequest) (map[
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.V1RequestsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.GetRequests")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -146,7 +146,7 @@ func (a *SearchAPIService) V1RequestsGetExecute(r ApiV1RequestsGetRequest) (map[
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SearchGetRequest struct {
+type ApiGetSearchRequest struct {
 	ctx           context.Context
 	ApiService    *SearchAPIService
 	authorization *string
@@ -155,52 +155,52 @@ type ApiV1SearchGetRequest struct {
 	types         *string
 }
 
-func (r ApiV1SearchGetRequest) Authorization(authorization string) ApiV1SearchGetRequest {
+func (r ApiGetSearchRequest) Authorization(authorization string) ApiGetSearchRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1SearchGetRequest) X4meAccount(x4meAccount string) ApiV1SearchGetRequest {
+func (r ApiGetSearchRequest) X4meAccount(x4meAccount string) ApiGetSearchRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1SearchGetRequest) Q(q string) ApiV1SearchGetRequest {
+func (r ApiGetSearchRequest) Q(q string) ApiGetSearchRequest {
 	r.q = &q
 	return r
 }
 
-func (r ApiV1SearchGetRequest) Types(types string) ApiV1SearchGetRequest {
+func (r ApiGetSearchRequest) Types(types string) ApiGetSearchRequest {
 	r.types = &types
 	return r
 }
 
-func (r ApiV1SearchGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1SearchGetExecute(r)
+func (r ApiGetSearchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetSearchExecute(r)
 }
 
 /*
-V1SearchGet SearchRecords
+GetSearch SearchRecords
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SearchGetRequest
+	@return ApiGetSearchRequest
 */
-func (a *SearchAPIService) V1SearchGet(ctx context.Context) ApiV1SearchGetRequest {
-	return ApiV1SearchGetRequest{
+func (a *SearchAPIService) GetSearch(ctx context.Context) ApiGetSearchRequest {
+	return ApiGetSearchRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SearchAPIService) V1SearchGetExecute(r ApiV1SearchGetRequest) (*http.Response, error) {
+func (a *SearchAPIService) GetSearchExecute(r ApiGetSearchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.V1SearchGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.GetSearch")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

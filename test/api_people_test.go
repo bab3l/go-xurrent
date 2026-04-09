@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing PeopleAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PeopleAPIService V1PeopleDisabledGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeople", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleDisabledGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeople(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleEnabledGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleDisabled", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleEnabledGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleDisabled(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleEnabled", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleEnabled(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,40 +58,40 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdCiGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.PeopleAPI.V1PeopleIdCiGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdContactsGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdCi", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdContactsGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.PeopleAPI.GetPeopleIdCi(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdContactsPost", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdContacts", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdContactsPost(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleIdContacts(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,13 +99,13 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdPermissions", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleIdPermissions(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -113,40 +113,40 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdPermissionsGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdServiceCoverages", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdPermissionsGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.PeopleAPI.GetPeopleIdServiceCoverages(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdServiceCoveragesGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdSkillPools", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.PeopleAPI.V1PeopleIdServiceCoveragesGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleIdSkillPools(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdSkillPoolsGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleIdTeams", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdSkillPoolsGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleIdTeams(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -154,49 +154,49 @@ func Test_xurrent_PeopleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PeopleAPIService V1PeopleIdTeamsGet", func(t *testing.T) {
+	t.Run("Test PeopleAPIService GetPeopleInternal", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleInternal(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PeopleAPIService GetPeopleSupportDomain", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PeopleAPI.GetPeopleSupportDomain(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PeopleAPIService PostPeople", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PeopleAPI.PostPeople(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PeopleAPIService PostPeopleIdContacts", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleIdTeamsGet(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PeopleAPIService V1PeopleInternalGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleInternalGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PeopleAPIService V1PeoplePost", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeoplePost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PeopleAPIService V1PeopleSupportDomainGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.PeopleAPI.V1PeopleSupportDomainGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PeopleAPI.PostPeopleIdContacts(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

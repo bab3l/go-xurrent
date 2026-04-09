@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing AttachmentsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_AttachmentsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AttachmentsAPIService V1AttachmentsPost", func(t *testing.T) {
+	t.Run("Test AttachmentsAPIService GetAttachmentsStorage", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AttachmentsAPI.V1AttachmentsPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AttachmentsAPI.GetAttachmentsStorage(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,36 +34,36 @@ func Test_xurrent_AttachmentsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AttachmentsAPIService V1AttachmentsStorageGet", func(t *testing.T) {
+	t.Run("Test AttachmentsAPIService GetAttachmentsUpload", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AttachmentsAPI.V1AttachmentsStorageGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AttachmentsAPIService V1AttachmentsUploadGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.AttachmentsAPI.V1AttachmentsUploadGet(context.Background()).Execute()
+		httpRes, err := apiClient.AttachmentsAPI.GetAttachmentsUpload(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AttachmentsAPIService V1RequestsIdPatch", func(t *testing.T) {
+	t.Run("Test AttachmentsAPIService PatchRequestsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.AttachmentsAPI.V1RequestsIdPatch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AttachmentsAPI.PatchRequestsId(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AttachmentsAPIService PostAttachments", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AttachmentsAPI.PostAttachments(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1CalendarsGet**](CalendarsAPI.md#V1CalendarsGet) | **Get** /v1/calendars | GetCalendars
+[**GetCalendars**](CalendarsAPI.md#GetCalendars) | **Get** /v1/calendars | GetCalendars
 
 
 
-## V1CalendarsGet
+## GetCalendars
 
-> map[string]interface{} V1CalendarsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []map[string]interface{} GetCalendars(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetCalendars
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -32,13 +32,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CalendarsAPI.V1CalendarsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.CalendarsAPI.GetCalendars(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CalendarsAPI.V1CalendarsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CalendarsAPI.GetCalendars``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1CalendarsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `CalendarsAPI.V1CalendarsGet`: %v\n", resp)
+	// response from `GetCalendars`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CalendarsAPI.GetCalendars`: %v\n", resp)
 }
 ```
 
@@ -48,7 +48,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1CalendarsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCalendarsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**[]map[string]interface{}**
 
 ### Authorization
 

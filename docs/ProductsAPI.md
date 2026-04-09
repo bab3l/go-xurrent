@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ProductsGet**](ProductsAPI.md#V1ProductsGet) | **Get** /v1/products | GetProductsList
-[**V1ProductsIdGet**](ProductsAPI.md#V1ProductsIdGet) | **Get** /v1/products/{id} | GetProductProperties
+[**GetProducts**](ProductsAPI.md#GetProducts) | **Get** /v1/products | GetProductsList
+[**GetProductsId**](ProductsAPI.md#GetProductsId) | **Get** /v1/products/{id} | GetProductProperties
 
 
 
-## V1ProductsGet
+## GetProducts
 
-> map[string]interface{} V1ProductsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> []map[string]interface{} GetProducts(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetProductsList
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductsAPI.V1ProductsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ProductsAPI.GetProducts(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.V1ProductsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.GetProducts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ProductsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.V1ProductsGet`: %v\n", resp)
+	// response from `GetProducts`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.GetProducts`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1ProductsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProductsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**[]map[string]interface{}**
 
 ### Authorization
 
@@ -75,9 +75,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1ProductsIdGet
+## GetProductsId
 
-> map[string]interface{} V1ProductsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetProductsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetProductProperties
 
@@ -90,7 +90,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductsAPI.V1ProductsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.ProductsAPI.GetProductsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.V1ProductsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.GetProductsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ProductsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.V1ProductsIdGet`: %v\n", resp)
+	// response from `GetProductsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.GetProductsId`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1ProductsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProductsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

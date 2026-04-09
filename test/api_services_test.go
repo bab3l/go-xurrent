@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ServicesAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_ServicesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ServicesAPIService V1ServicesGet", func(t *testing.T) {
+	t.Run("Test ServicesAPIService GetServices", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ServicesAPI.V1ServicesGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServicesAPI.GetServices(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_xurrent_ServicesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServicesAPIService V1ServicesIdGet", func(t *testing.T) {
+	t.Run("Test ServicesAPIService GetServicesId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ServicesAPI.V1ServicesIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ServicesAPI.GetServicesId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

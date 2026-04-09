@@ -37,6 +37,7 @@ tags:
 paths:
   /v1/events:
     post:
+      operationId: post_events
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -619,6 +620,7 @@ paths:
       - Events
   /v1/requests/{id}:
     get:
+      operationId: get_requests_id
       parameters:
       - explode: false
         in: path
@@ -912,6 +914,7 @@ paths:
       tags:
       - Requests
     patch:
+      operationId: patch_requests_id
       parameters:
       - explode: false
         in: path
@@ -1225,6 +1228,7 @@ paths:
       tags:
       - Attachments
     put:
+      operationId: put_requests_id
       parameters:
       - explode: false
         in: path
@@ -1268,6 +1272,7 @@ paths:
       - Requests
   /v1/requests:
     get:
+      operationId: get_requests
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -2007,6 +2012,7 @@ paths:
       tags:
       - Search
     post:
+      operationId: post_requests
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -2572,11 +2578,12 @@ paths:
                 example: keep-alive
                 type: string
               style: simple
-      summary: Create a reservation
+      summary: Create request
       tags:
-      - Reservations
+      - Requests
   /v1/requests/{id}/notes:
     get:
+      operationId: get_requests_id_notes
       parameters:
       - explode: false
         in: path
@@ -3371,6 +3378,7 @@ paths:
       tags:
       - Notes
     post:
+      operationId: post_requests_id_notes
       parameters:
       - explode: false
         in: path
@@ -3520,6 +3528,7 @@ paths:
       - Requests
   /v1/requests/{id}/satisfied:
     post:
+      operationId: post_requests_id_satisfied
       parameters:
       - explode: false
         in: path
@@ -3562,6 +3571,7 @@ paths:
       - Requests
   /v1/requests/{id}/dissatisfied:
     post:
+      operationId: post_requests_id_dissatisfied
       parameters:
       - explode: false
         in: path
@@ -3684,12 +3694,20 @@ paths:
       summary: ReturnToWork - Decline Execution
       tags:
       - Requests
-  /v1/requests/{id}/cis/{id}:
+  /v1/requests/{request_id}/cis/{ci_id}:
     delete:
+      operationId: delete_requests_request_id_cis_ci_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: request_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: ci_id
         required: true
         schema:
           type: integer
@@ -3819,10 +3837,18 @@ paths:
       tags:
       - Requests
     post:
+      operationId: post_requests_request_id_cis_ci_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: request_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: ci_id
         required: true
         schema:
           type: integer
@@ -3859,6 +3885,7 @@ paths:
       - Requests
   /v1/requests/completed:
     get:
+      operationId: get_requests_completed
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -4614,6 +4641,7 @@ paths:
       - Requests
   /v1/requests/open:
     get:
+      operationId: get_requests_open
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -5183,7 +5211,9 @@ paths:
                 updated_at: 2022-09-01T16:39:04+03:00
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzE0NTkz
               schema:
-                type: object
+                items:
+                  type: object
+                type: array
           description: OK
           headers:
             Server:
@@ -5342,6 +5372,7 @@ paths:
       - Requests
   /v1/requests/requested_by_or_for_me:
     get:
+      operationId: get_requests_requested_by_or_for_me
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -5878,6 +5909,7 @@ paths:
       - Requests
   /v1/requests/requests_of_my_organization:
     get:
+      operationId: get_requests_requests_of_my_organization
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -6414,6 +6446,7 @@ paths:
       - Requests
   /v1/requests/assigned_to_my_team:
     get:
+      operationId: get_requests_assigned_to_my_team
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -6701,6 +6734,7 @@ paths:
       - Requests
   /v1/requests/assigned_to_me:
     get:
+      operationId: get_requests_assigned_to_me
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -7505,6 +7539,7 @@ paths:
       - Requests
   /v1/requests/{id}/audit:
     get:
+      operationId: get_requests_id_audit
       parameters:
       - explode: false
         in: path
@@ -7539,6 +7574,7 @@ paths:
       - Requests
   /v1/requests/{id}/cis:
     get:
+      operationId: get_requests_id_cis
       parameters:
       - explode: false
         in: path
@@ -7763,6 +7799,7 @@ paths:
       - Requests
   /v1/requests/{id}/grouped_requests:
     get:
+      operationId: get_requests_id_grouped_requests
       parameters:
       - explode: false
         in: path
@@ -8041,6 +8078,7 @@ paths:
       - Requests
   /v1/people:
     get:
+      operationId: get_people
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -8236,6 +8274,7 @@ paths:
       tags:
       - People
     post:
+      operationId: post_people
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -8521,6 +8560,7 @@ paths:
       - People
   /v1/people/{id}/contacts:
     get:
+      operationId: get_people_id_contacts
       parameters:
       - explode: false
         in: path
@@ -8715,6 +8755,7 @@ paths:
       tags:
       - People
     post:
+      operationId: post_people_id_contacts
       parameters:
       - explode: false
         in: path
@@ -8861,6 +8902,7 @@ paths:
       - People
   /v1/people/{id}:
     get:
+      operationId: get_people_id
       parameters:
       - explode: false
         in: path
@@ -9056,6 +9098,7 @@ paths:
       - People
   /v1/people/support_domain:
     get:
+      operationId: get_people_support_domain
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -9244,6 +9287,7 @@ paths:
       - People
   /v1/people/internal:
     get:
+      operationId: get_people_internal
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -9432,6 +9476,7 @@ paths:
       - People
   /v1/people/enabled:
     get:
+      operationId: get_people_enabled
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -9620,6 +9665,7 @@ paths:
       - People
   /v1/people/disabled:
     get:
+      operationId: get_people_disabled
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -9808,6 +9854,7 @@ paths:
       - People
   /v1/people/{id}/ci:
     get:
+      operationId: get_people_id_ci
       parameters:
       - explode: false
         in: path
@@ -9842,6 +9889,7 @@ paths:
       - People
   /v1/people/{id}/teams:
     get:
+      operationId: get_people_id_teams
       parameters:
       - explode: false
         in: path
@@ -10037,6 +10085,7 @@ paths:
       - People
   /v1/people/{id}/skill_pools:
     get:
+      operationId: get_people_id_skill_pools
       parameters:
       - explode: false
         in: path
@@ -10232,6 +10281,7 @@ paths:
       - People
   /v1/me:
     get:
+      operationId: get_me
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -10259,6 +10309,7 @@ paths:
       - General
   /v1/people/{id}/permissions:
     get:
+      operationId: get_people_id_permissions
       parameters:
       - explode: false
         in: path
@@ -10454,6 +10505,7 @@ paths:
       - People
   /v1/people/{id}/service_coverages:
     get:
+      operationId: get_people_id_service_coverages
       parameters:
       - explode: false
         in: path
@@ -10488,6 +10540,7 @@ paths:
       - People
   /v1/attachments/upload:
     get:
+      operationId: get_attachments_upload
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -10515,6 +10568,7 @@ paths:
       - Attachments
   /v1/attachments/storage:
     get:
+      operationId: get_attachments_storage
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -10650,6 +10704,7 @@ paths:
       - Attachments
   /v1/attachments:
     post:
+      operationId: post_attachments
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -10671,7 +10726,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: "#/components/schemas/_v1_attachments_post_request"
+              $ref: '#/components/schemas/post_attachments_request'
       responses:
         "200":
           content:
@@ -10783,6 +10838,7 @@ paths:
       - Attachments
   /v1/tasks/{id}:
     get:
+      operationId: get_tasks_id
       parameters:
       - explode: false
         in: path
@@ -10816,6 +10872,7 @@ paths:
       tags:
       - Tasks
     patch:
+      operationId: patch_tasks_id
       parameters:
       - explode: false
         in: path
@@ -10861,6 +10918,7 @@ paths:
       - Tasks
   /v1/teams/{id}:
     get:
+      operationId: get_teams_id
       parameters:
       - explode: false
         in: path
@@ -11600,6 +11658,7 @@ paths:
       - Teams
   /v1/teams/{id}/members:
     get:
+      operationId: get_teams_id_members
       parameters:
       - explode: false
         in: path
@@ -12345,6 +12404,7 @@ paths:
         List all configuration items which support team is one of the teams that the API user is a member of
 
         EndFragme
+      operationId: get_cis
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -12985,6 +13045,7 @@ paths:
       - Configuration Items
     post:
       description: Example Description
+      operationId: post_cis
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -13021,12 +13082,20 @@ paths:
       summary: CreateNewCI
       tags:
       - Configuration Items
-  /v1/cis/{id}/users/{id}:
+  /v1/cis/{ci_id}/users/{person_id}:
     delete:
+      operationId: delete_cis_ci_id_users_person_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: person_id
         required: true
         schema:
           type: integer
@@ -13056,10 +13125,18 @@ paths:
       tags:
       - Configuration Item Relations
     post:
+      operationId: post_cis_ci_id_users_person_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: person_id
         required: true
         schema:
           type: integer
@@ -13206,6 +13283,7 @@ paths:
       - Configuration Item Relations
   /v1/cis/active:
     get:
+      operationId: get_cis_active
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -13838,6 +13916,7 @@ paths:
       - Configuration Items
   /v1/cis/{id}/users:
     delete:
+      operationId: delete_cis_id_users
       parameters:
       - explode: false
         in: path
@@ -13871,6 +13950,7 @@ paths:
       tags:
       - Configuration Item Relations
     get:
+      operationId: get_cis_id_users
       parameters:
       - explode: false
         in: path
@@ -14203,6 +14283,7 @@ paths:
       - Configuration Item Relations
   /v1/cis/inactive:
     get:
+      operationId: get_cis_inactive
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -14360,6 +14441,7 @@ paths:
         List all configuration items which support team is one of the teams that the API user is a member of
 
         EndFragme
+      operationId: get_cis_supported_by_my_teams
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -14511,6 +14593,7 @@ paths:
       - Configuration Items
   /v1/cis/{id}:
     get:
+      operationId: get_cis_id
       parameters:
       - explode: false
         in: path
@@ -14734,6 +14817,7 @@ paths:
       - Configuration Items
   /v1/cis/{id}/ci_relations:
     delete:
+      operationId: delete_cis_id_ci_relations
       parameters:
       - explode: false
         in: path
@@ -14861,6 +14945,7 @@ paths:
       tags:
       - Configuration Item Relations
     get:
+      operationId: get_cis_id_ci_relations
       parameters:
       - explode: false
         in: path
@@ -15192,6 +15277,7 @@ paths:
       tags:
       - Configuration Item Relations
     post:
+      operationId: post_cis_id_ci_relations
       parameters:
       - explode: false
         in: path
@@ -15340,12 +15426,20 @@ paths:
       summary: SetRelationWithCI
       tags:
       - Configuration Item Relations
-  /v1/cis/{id}/ci_relations/{id}:
+  /v1/cis/{ci_id}/ci_relations/{relation_id}:
     delete:
+      operationId: delete_cis_ci_id_ci_relations_relation_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: relation_id
         required: true
         schema:
           type: integer
@@ -15470,6 +15564,7 @@ paths:
       - Configuration Item Relations
   /v1/services:
     get:
+      operationId: get_services
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -15581,7 +15676,9 @@ paths:
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzMxNw
               schema:
-                type: object
+                items:
+                  type: object
+                type: array
           description: OK
           headers:
             Server:
@@ -15697,6 +15794,7 @@ paths:
       - Services
   /v1/services/{id}:
     get:
+      operationId: get_services_id
       parameters:
       - explode: false
         in: path
@@ -15923,6 +16021,7 @@ paths:
       - Services
   /v1/calendars:
     get:
+      operationId: get_calendars
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -16054,7 +16153,9 @@ paths:
                 localized_name: Example Localized_name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzE4NQ
               schema:
-                type: object
+                items:
+                  type: object
+                type: array
           description: OK
           headers:
             Server:
@@ -16206,6 +16307,7 @@ paths:
       - Calendars
   /v1/service_offerings:
     get:
+      operationId: get_service_offerings
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -16233,6 +16335,7 @@ paths:
       - Service Offerings
   /v1/service_offerings/{id}:
     get:
+      operationId: get_service_offerings_id
       parameters:
       - explode: false
         in: path
@@ -16267,6 +16370,7 @@ paths:
       - Service Offerings
   /v1/service_offerings/{id}/audit:
     get:
+      operationId: get_service_offerings_id_audit
       parameters:
       - explode: false
         in: path
@@ -16301,6 +16405,7 @@ paths:
       - Service Offerings
   /v1/organizations:
     get:
+      operationId: get_organizations
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -16321,12 +16426,17 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Organization'
+                type: array
           description: Successful response
       summary: GetOrganizationsList
       tags:
       - Organizations
     post:
+      operationId: post_organizations
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -16348,17 +16458,20 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Organization'
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
           description: Successful response
       summary: CreateOrganization
       tags:
       - Organizations
   /v1/organizations/{id}:
     get:
+      operationId: get_organizations_id
       parameters:
       - explode: false
         in: path
@@ -16386,13 +16499,55 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
           description: Successful response
       summary: GetOrganizationProperties
       tags:
       - Organizations
+    patch:
+      operationId: patch_organizations_id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: Successful response
+      summary: UpdateOrganization
+      tags:
+      - Organizations
   /v1/workflows:
     get:
+      operationId: get_workflows
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -17195,6 +17350,7 @@ paths:
       - Workflows
   /v1/workflows/{id}:
     get:
+      operationId: get_workflows_id
       parameters:
       - explode: false
         in: path
@@ -18004,6 +18160,7 @@ paths:
       - Workflows
   /v1/tasks/{id}/notes:
     post:
+      operationId: post_tasks_id_notes
       parameters:
       - explode: false
         in: path
@@ -18152,6 +18309,7 @@ paths:
       - Tasks
   /v1/tasks:
     get:
+      operationId: get_tasks
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -18187,6 +18345,7 @@ paths:
       - Tasks
   /v1/tasks/open:
     get:
+      operationId: get_tasks_open
       responses:
         "200":
           content:
@@ -18197,6 +18356,7 @@ paths:
       - Tasks
   /v1/tasks/managed_by_me:
     get:
+      operationId: get_tasks_managed_by_me
       responses:
         "200":
           content:
@@ -18207,6 +18367,7 @@ paths:
       - Tasks
   /v1/tasks/assigned_to_my_team:
     get:
+      operationId: get_tasks_assigned_to_my_team
       responses:
         "200":
           content:
@@ -18217,6 +18378,7 @@ paths:
       - Tasks
   /v1/tasks/assigned_to_me:
     get:
+      operationId: get_tasks_assigned_to_me
       responses:
         "200":
           content:
@@ -18227,6 +18389,7 @@ paths:
       - Tasks
   /v1/tasks/assigned_by_me:
     get:
+      operationId: get_tasks_assigned_by_me
       responses:
         "200":
           content:
@@ -18237,6 +18400,7 @@ paths:
       - Tasks
   /v1/sites/{id}:
     get:
+      operationId: get_sites_id
       parameters:
       - explode: false
         in: path
@@ -18271,6 +18435,7 @@ paths:
       - Sites
   /v1/products:
     get:
+      operationId: get_products
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -18474,7 +18639,9 @@ paths:
                 updated_at: 2022-10-20T15:37:09+03:00
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC84OTIx
               schema:
-                type: object
+                items:
+                  type: object
+                type: array
           description: OK
           headers:
             Server:
@@ -18633,6 +18800,7 @@ paths:
       - Products
   /v1/products/{id}:
     get:
+      operationId: get_products_id
       parameters:
       - explode: false
         in: path
@@ -18826,6 +18994,7 @@ paths:
       - Products
   /v1/product_categories:
     get:
+      operationId: get_product_categories
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -19216,6 +19385,7 @@ paths:
       - Product Categories
   /v1/product_categories/{id}:
     get:
+      operationId: get_product_categories_id
       parameters:
       - explode: false
         in: path
@@ -19250,6 +19420,7 @@ paths:
       - Product Categories
   /v1/ui_extensions/{id}:
     get:
+      operationId: get_ui_extensions_id
       parameters:
       - explode: false
         in: path
@@ -20079,6 +20250,7 @@ paths:
       - UI Extensions
   /v1/ui_extensions:
     get:
+      operationId: get_ui_extensions
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -20901,6 +21073,7 @@ paths:
       - UI Extensions
   /v1/slas:
     get:
+      operationId: get_slas
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -21176,6 +21349,7 @@ paths:
       - Service Level Agreements
   /v1/slas/active:
     get:
+      operationId: get_slas_active
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -21443,6 +21617,7 @@ paths:
       - Service Level Agreements
   /v1/slas/inactive:
     get:
+      operationId: get_slas_inactive
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -21710,6 +21885,7 @@ paths:
       - Service Level Agreements
   /v1/slas/{id}:
     get:
+      operationId: get_slas_id
       parameters:
       - explode: false
         in: path
@@ -21744,6 +21920,7 @@ paths:
       - Service Level Agreements
   /v1/request_templates:
     get:
+      operationId: get_request_templates
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -22354,6 +22531,7 @@ paths:
       - Request Templates
   /v1/request_templates/{id}:
     get:
+      operationId: get_request_templates_id
       parameters:
       - explode: false
         in: path
@@ -22588,8 +22766,27 @@ paths:
       summary: GetRequestTemplatesProperties
       tags:
       - Request Templates
-  /v1:
+  /v1/reservations:
     get:
+      description: See https://developer.xurrent.com/v1/reservations/
+      operationId: get_reservations
+      parameters:
+      - example: "Bearer {{token}}"
+        explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - example: "{{account}}"
+        explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -22598,8 +22795,165 @@ paths:
       summary: List reservations
       tags:
       - Reservations
+    post:
+      description: https://developer.xurrent.com/v1/reservations/
+      operationId: post_reservations
+      parameters:
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Reservation fields per API documentation
+              type: object
+      responses:
+        "201":
+          content:
+            application/json: {}
+          description: Created
+      summary: Create reservation
+      tags:
+      - Reservations
+  /v1/reservations/open:
+    get:
+      description: Predefined filter per https://developer.xurrent.com/v1/reservations/
+      operationId: get_reservations_open
+      parameters:
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: List open reservations
+      tags:
+      - Reservations
+  /v1/reservations/completed:
+    get:
+      description: Predefined filter per https://developer.xurrent.com/v1/reservations/
+      operationId: get_reservations_completed
+      parameters:
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: List completed reservations
+      tags:
+      - Reservations
+  /v1/reservations/{id}:
+    get:
+      operationId: get_reservations_id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Get a single reservation
+      tags:
+      - Reservations
+    patch:
+      operationId: patch_reservations_id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-4me-Account
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Update reservation
+      tags:
+      - Reservations
   /v1/automation_rules:
     get:
+      operationId: get_automation_rules
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -22627,6 +22981,7 @@ paths:
       - Automation Rules
   /v1/automation_rules/{id}:
     get:
+      operationId: get_automation_rules_id
       parameters:
       - explode: false
         in: path
@@ -22661,6 +23016,7 @@ paths:
       - Automation Rules
   /v1/search:
     get:
+      operationId: get_search
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -22704,6 +23060,7 @@ paths:
       - Search
   /v1/custom_collections:
     get:
+      operationId: get_custom_collections
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -23066,6 +23423,7 @@ paths:
       - Custom Collections
   /v1/custom_collections/{id}:
     get:
+      operationId: get_custom_collections_id
       parameters:
       - explode: false
         in: path
@@ -23259,6 +23617,7 @@ paths:
       - Custom Collections
   /v1/custom_collection_elements:
     get:
+      operationId: get_custom_collection_elements
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -23453,6 +23812,7 @@ paths:
       - Custom Collections
   /v1/custom_collection_elements/{id}:
     get:
+      operationId: get_custom_collection_elements_id
       parameters:
       - explode: false
         in: path
@@ -23646,6 +24006,7 @@ paths:
       - Custom Collections
   /v1/import:
     get:
+      operationId: get_import
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -23672,6 +24033,7 @@ paths:
       tags:
       - Export
     post:
+      operationId: post_import
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -23709,6 +24071,7 @@ paths:
       - Import
   /v1/import/{token}:
     get:
+      operationId: get_import_token
       parameters:
       - explode: false
         in: path
@@ -23743,6 +24106,7 @@ paths:
       - Export
   /v1/export:
     post:
+      operationId: post_export
       parameters:
       - example: Bearer <oauth-token>
         explode: false
@@ -23764,7 +24128,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: "#/components/schemas/_v1_export_post_request"
+              $ref: '#/components/schemas/post_export_request'
       responses:
         "200":
           content:
@@ -23775,6 +24139,7 @@ paths:
       - Export
   /v1/account:
     get:
+      operationId: get_account
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -23802,6 +24167,7 @@ paths:
       - Account
   /v1/problems:
     get:
+      operationId: get_problems
       parameters:
       - example: school
         explode: false
@@ -23822,6 +24188,7 @@ paths:
       tags:
       - Problems
     post:
+      operationId: post_problems
       parameters:
       - example: school
         explode: false
@@ -23855,12 +24222,20 @@ paths:
       summary: CreateNewProblem
       tags:
       - Problems
-  /v1/problems/{id}/requests/{id}:
+  /v1/problems/{problem_id}/requests/{request_id}:
     post:
+      operationId: post_problems_problem_id_requests_request_id
       parameters:
       - explode: false
         in: path
-        name: id
+        name: problem_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: request_id
         required: true
         schema:
           type: integer
@@ -23890,6 +24265,7 @@ paths:
       - Problems
   /v1/problems/{id}:
     patch:
+      operationId: patch_problems_id
       parameters:
       - explode: false
         in: path
@@ -23926,6 +24302,7 @@ paths:
       - Problems
   /v1/enums:
     get:
+      operationId: get_enums
       parameters:
       - example: "Bearer {{system_user acess token}}"
         explode: false
@@ -29012,22 +29389,40 @@ paths:
       - General
 components:
   schemas:
-    _v1_export_post_request:
+    Organization:
+      example:
+        sourceID: sourceID
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        disabled: true
+        id: 0
+        region: region
+        remarks: remarks
       properties:
-        type:
-          example: "sites,teams"
-          type: string
-        from:
-          example: 20121231
+        id:
           type: integer
-        export_format:
-          example: csv
+        sourceID:
+          nullable: true
           type: string
-        line_separator:
-          example: lf
+        name:
+          type: string
+        disabled:
+          type: boolean
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        remarks:
+          nullable: true
+          type: string
+        region:
+          nullable: true
           type: string
       type: object
-    _v1_attachments_post_request:
+    post_attachments_request:
       properties:
         key:
           example: "{{key to send attachment}}"
@@ -29040,6 +29435,21 @@ components:
           type: string
         file:
           format: binary
+          type: string
+      type: object
+    post_export_request:
+      properties:
+        type:
+          example: "sites,teams"
+          type: string
+        from:
+          example: 20121231
+          type: integer
+        export_format:
+          example: csv
+          type: string
+        line_separator:
+          example: lf
           type: string
       type: object
   securitySchemes:

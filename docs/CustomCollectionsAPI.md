@@ -4,16 +4,16 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1CustomCollectionElementsGet**](CustomCollectionsAPI.md#V1CustomCollectionElementsGet) | **Get** /v1/custom_collection_elements | GetCustomCollectionElementsList (by custom_collection_id)
-[**V1CustomCollectionElementsIdGet**](CustomCollectionsAPI.md#V1CustomCollectionElementsIdGet) | **Get** /v1/custom_collection_elements/{id} | GetCustomCollectionElementsProperties
-[**V1CustomCollectionsGet**](CustomCollectionsAPI.md#V1CustomCollectionsGet) | **Get** /v1/custom_collections | GetCustomCollectionsList
-[**V1CustomCollectionsIdGet**](CustomCollectionsAPI.md#V1CustomCollectionsIdGet) | **Get** /v1/custom_collections/{id} | GetCustomCollectionProperties
+[**GetCustomCollectionElements**](CustomCollectionsAPI.md#GetCustomCollectionElements) | **Get** /v1/custom_collection_elements | GetCustomCollectionElementsList (by custom_collection_id)
+[**GetCustomCollectionElementsId**](CustomCollectionsAPI.md#GetCustomCollectionElementsId) | **Get** /v1/custom_collection_elements/{id} | GetCustomCollectionElementsProperties
+[**GetCustomCollections**](CustomCollectionsAPI.md#GetCustomCollections) | **Get** /v1/custom_collections | GetCustomCollectionsList
+[**GetCustomCollectionsId**](CustomCollectionsAPI.md#GetCustomCollectionsId) | **Get** /v1/custom_collections/{id} | GetCustomCollectionProperties
 
 
 
-## V1CustomCollectionElementsGet
+## GetCustomCollectionElements
 
-> map[string]interface{} V1CustomCollectionElementsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).Execute()
+> map[string]interface{} GetCustomCollectionElements(ctx).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).Execute()
 
 GetCustomCollectionElementsList (by custom_collection_id)
 
@@ -26,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomCollectionsAPI.V1CustomCollectionElementsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).Execute()
+	resp, r, err := apiClient.CustomCollectionsAPI.GetCustomCollectionElements(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.V1CustomCollectionElementsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionElements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1CustomCollectionElementsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.V1CustomCollectionElementsGet`: %v\n", resp)
+	// response from `GetCustomCollectionElements`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionElements`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1CustomCollectionElementsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomCollectionElementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1CustomCollectionElementsIdGet
+## GetCustomCollectionElementsId
 
-> map[string]interface{} V1CustomCollectionElementsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCustomCollectionElementsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetCustomCollectionElementsProperties
 
@@ -94,7 +94,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomCollectionsAPI.V1CustomCollectionElementsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.CustomCollectionsAPI.GetCustomCollectionElementsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.V1CustomCollectionElementsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionElementsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1CustomCollectionElementsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.V1CustomCollectionElementsIdGet`: %v\n", resp)
+	// response from `GetCustomCollectionElementsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionElementsId`: %v\n", resp)
 }
 ```
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1CustomCollectionElementsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomCollectionElementsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,9 +151,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1CustomCollectionsGet
+## GetCustomCollections
 
-> map[string]interface{} V1CustomCollectionsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCustomCollections(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetCustomCollectionsList
 
@@ -166,7 +166,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -175,13 +175,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomCollectionsAPI.V1CustomCollectionsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.CustomCollectionsAPI.GetCustomCollections(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.V1CustomCollectionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollections``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1CustomCollectionsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.V1CustomCollectionsGet`: %v\n", resp)
+	// response from `GetCustomCollections`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollections`: %v\n", resp)
 }
 ```
 
@@ -191,7 +191,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1CustomCollectionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomCollectionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -217,9 +217,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1CustomCollectionsIdGet
+## GetCustomCollectionsId
 
-> map[string]interface{} V1CustomCollectionsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetCustomCollectionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetCustomCollectionProperties
 
@@ -232,7 +232,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -242,13 +242,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomCollectionsAPI.V1CustomCollectionsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.CustomCollectionsAPI.GetCustomCollectionsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.V1CustomCollectionsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1CustomCollectionsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.V1CustomCollectionsIdGet`: %v\n", resp)
+	// response from `GetCustomCollectionsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionsId`: %v\n", resp)
 }
 ```
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1CustomCollectionsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomCollectionsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

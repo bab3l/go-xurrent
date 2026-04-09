@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing RequestTemplatesAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_RequestTemplatesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RequestTemplatesAPIService V1RequestTemplatesGet", func(t *testing.T) {
+	t.Run("Test RequestTemplatesAPIService GetRequestTemplates", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RequestTemplatesAPI.V1RequestTemplatesGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RequestTemplatesAPI.GetRequestTemplates(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_xurrent_RequestTemplatesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RequestTemplatesAPIService V1RequestTemplatesIdGet", func(t *testing.T) {
+	t.Run("Test RequestTemplatesAPIService GetRequestTemplatesId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.RequestTemplatesAPI.V1RequestTemplatesIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RequestTemplatesAPI.GetRequestTemplatesId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

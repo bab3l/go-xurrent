@@ -22,49 +22,49 @@ import (
 // ServiceOfferingsAPIService ServiceOfferingsAPI service
 type ServiceOfferingsAPIService service
 
-type ApiV1ServiceOfferingsGetRequest struct {
+type ApiGetServiceOfferingsRequest struct {
 	ctx           context.Context
 	ApiService    *ServiceOfferingsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1ServiceOfferingsGetRequest) Authorization(authorization string) ApiV1ServiceOfferingsGetRequest {
+func (r ApiGetServiceOfferingsRequest) Authorization(authorization string) ApiGetServiceOfferingsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ServiceOfferingsGetRequest) X4meAccount(x4meAccount string) ApiV1ServiceOfferingsGetRequest {
+func (r ApiGetServiceOfferingsRequest) X4meAccount(x4meAccount string) ApiGetServiceOfferingsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ServiceOfferingsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ServiceOfferingsGetExecute(r)
+func (r ApiGetServiceOfferingsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetServiceOfferingsExecute(r)
 }
 
 /*
-V1ServiceOfferingsGet GetServiceOfferList
+GetServiceOfferings GetServiceOfferList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ServiceOfferingsGetRequest
+	@return ApiGetServiceOfferingsRequest
 */
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsGet(ctx context.Context) ApiV1ServiceOfferingsGetRequest {
-	return ApiV1ServiceOfferingsGetRequest{
+func (a *ServiceOfferingsAPIService) GetServiceOfferings(ctx context.Context) ApiGetServiceOfferingsRequest {
+	return ApiGetServiceOfferingsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsGetExecute(r ApiV1ServiceOfferingsGetRequest) (*http.Response, error) {
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsExecute(r ApiGetServiceOfferingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.V1ServiceOfferingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferings")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -126,7 +126,7 @@ func (a *ServiceOfferingsAPIService) V1ServiceOfferingsGetExecute(r ApiV1Service
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1ServiceOfferingsIdAuditGetRequest struct {
+type ApiGetServiceOfferingsIdRequest struct {
 	ctx           context.Context
 	ApiService    *ServiceOfferingsAPIService
 	id            int32
@@ -134,29 +134,29 @@ type ApiV1ServiceOfferingsIdAuditGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1ServiceOfferingsIdAuditGetRequest) Authorization(authorization string) ApiV1ServiceOfferingsIdAuditGetRequest {
+func (r ApiGetServiceOfferingsIdRequest) Authorization(authorization string) ApiGetServiceOfferingsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ServiceOfferingsIdAuditGetRequest) X4meAccount(x4meAccount string) ApiV1ServiceOfferingsIdAuditGetRequest {
+func (r ApiGetServiceOfferingsIdRequest) X4meAccount(x4meAccount string) ApiGetServiceOfferingsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ServiceOfferingsIdAuditGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ServiceOfferingsIdAuditGetExecute(r)
+func (r ApiGetServiceOfferingsIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetServiceOfferingsIdExecute(r)
 }
 
 /*
-V1ServiceOfferingsIdAuditGet GetServiceOfferAuditEntries
+GetServiceOfferingsId GetServiceOfferById
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1ServiceOfferingsIdAuditGetRequest
+	@return ApiGetServiceOfferingsIdRequest
 */
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdAuditGet(ctx context.Context, id int32) ApiV1ServiceOfferingsIdAuditGetRequest {
-	return ApiV1ServiceOfferingsIdAuditGetRequest{
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsId(ctx context.Context, id int32) ApiGetServiceOfferingsIdRequest {
+	return ApiGetServiceOfferingsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -164,19 +164,19 @@ func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdAuditGet(ctx context.Co
 }
 
 // Execute executes the request
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdAuditGetExecute(r ApiV1ServiceOfferingsIdAuditGetRequest) (*http.Response, error) {
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServiceOfferingsIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.V1ServiceOfferingsIdAuditGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/service_offerings/{id}/audit"
+	localVarPath := localBasePath + "/v1/service_offerings/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -234,7 +234,7 @@ func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdAuditGetExecute(r ApiV1
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1ServiceOfferingsIdGetRequest struct {
+type ApiGetServiceOfferingsIdAuditRequest struct {
 	ctx           context.Context
 	ApiService    *ServiceOfferingsAPIService
 	id            int32
@@ -242,29 +242,29 @@ type ApiV1ServiceOfferingsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1ServiceOfferingsIdGetRequest) Authorization(authorization string) ApiV1ServiceOfferingsIdGetRequest {
+func (r ApiGetServiceOfferingsIdAuditRequest) Authorization(authorization string) ApiGetServiceOfferingsIdAuditRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ServiceOfferingsIdGetRequest) X4meAccount(x4meAccount string) ApiV1ServiceOfferingsIdGetRequest {
+func (r ApiGetServiceOfferingsIdAuditRequest) X4meAccount(x4meAccount string) ApiGetServiceOfferingsIdAuditRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ServiceOfferingsIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ServiceOfferingsIdGetExecute(r)
+func (r ApiGetServiceOfferingsIdAuditRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetServiceOfferingsIdAuditExecute(r)
 }
 
 /*
-V1ServiceOfferingsIdGet GetServiceOfferById
+GetServiceOfferingsIdAudit GetServiceOfferAuditEntries
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1ServiceOfferingsIdGetRequest
+	@return ApiGetServiceOfferingsIdAuditRequest
 */
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdGet(ctx context.Context, id int32) ApiV1ServiceOfferingsIdGetRequest {
-	return ApiV1ServiceOfferingsIdGetRequest{
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAudit(ctx context.Context, id int32) ApiGetServiceOfferingsIdAuditRequest {
+	return ApiGetServiceOfferingsIdAuditRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -272,19 +272,19 @@ func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdGet(ctx context.Context
 }
 
 // Execute executes the request
-func (a *ServiceOfferingsAPIService) V1ServiceOfferingsIdGetExecute(r ApiV1ServiceOfferingsIdGetRequest) (*http.Response, error) {
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAuditExecute(r ApiGetServiceOfferingsIdAuditRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.V1ServiceOfferingsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsIdAudit")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/service_offerings/{id}"
+	localVarPath := localBasePath + "/v1/service_offerings/{id}/audit"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

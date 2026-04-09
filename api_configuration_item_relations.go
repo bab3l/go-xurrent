@@ -22,7 +22,241 @@ import (
 // ConfigurationItemRelationsAPIService ConfigurationItemRelationsAPI service
 type ConfigurationItemRelationsAPIService service
 
-type ApiV1CisIdCiRelationsDeleteRequest struct {
+type ApiDeleteCisCiIdCiRelationsRelationIdRequest struct {
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	ciId          int32
+	relationId    int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiDeleteCisCiIdCiRelationsRelationIdRequest) Authorization(authorization string) ApiDeleteCisCiIdCiRelationsRelationIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiDeleteCisCiIdCiRelationsRelationIdRequest) X4meAccount(x4meAccount string) ApiDeleteCisCiIdCiRelationsRelationIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiDeleteCisCiIdCiRelationsRelationIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCisCiIdCiRelationsRelationIdExecute(r)
+}
+
+/*
+DeleteCisCiIdCiRelationsRelationId DeleteRelationWithCI
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param ciId
+	@param relationId
+	@return ApiDeleteCisCiIdCiRelationsRelationIdRequest
+*/
+func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationId(ctx context.Context, ciId int32, relationId int32) ApiDeleteCisCiIdCiRelationsRelationIdRequest {
+	return ApiDeleteCisCiIdCiRelationsRelationIdRequest{
+		ApiService: a,
+		ctx:        ctx,
+		ciId:       ciId,
+		relationId: relationId,
+	}
+}
+
+// Execute executes the request
+func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationIdExecute(r ApiDeleteCisCiIdCiRelationsRelationIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisCiIdCiRelationsRelationId")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cis/{ci_id}/ci_relations/{relation_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"ci_id"+"}", url.PathEscape(parameterValueToString(r.ciId, "ciId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"relation_id"+"}", url.PathEscape(parameterValueToString(r.relationId, "relationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteCisCiIdUsersPersonIdRequest struct {
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	ciId          int32
+	personId      int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiDeleteCisCiIdUsersPersonIdRequest) Authorization(authorization string) ApiDeleteCisCiIdUsersPersonIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiDeleteCisCiIdUsersPersonIdRequest) X4meAccount(x4meAccount string) ApiDeleteCisCiIdUsersPersonIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiDeleteCisCiIdUsersPersonIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCisCiIdUsersPersonIdExecute(r)
+}
+
+/*
+DeleteCisCiIdUsersPersonId DeleteLinkCIwithPerson
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param ciId
+	@param personId
+	@return ApiDeleteCisCiIdUsersPersonIdRequest
+*/
+func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdUsersPersonId(ctx context.Context, ciId int32, personId int32) ApiDeleteCisCiIdUsersPersonIdRequest {
+	return ApiDeleteCisCiIdUsersPersonIdRequest{
+		ApiService: a,
+		ctx:        ctx,
+		ciId:       ciId,
+		personId:   personId,
+	}
+}
+
+// Execute executes the request
+func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdUsersPersonIdExecute(r ApiDeleteCisCiIdUsersPersonIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisCiIdUsersPersonId")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cis/{ci_id}/users/{person_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"ci_id"+"}", url.PathEscape(parameterValueToString(r.ciId, "ciId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"person_id"+"}", url.PathEscape(parameterValueToString(r.personId, "personId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteCisIdCiRelationsRequest struct {
 	ctx           context.Context
 	ApiService    *ConfigurationItemRelationsAPIService
 	id            int32
@@ -30,29 +264,29 @@ type ApiV1CisIdCiRelationsDeleteRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1CisIdCiRelationsDeleteRequest) Authorization(authorization string) ApiV1CisIdCiRelationsDeleteRequest {
+func (r ApiDeleteCisIdCiRelationsRequest) Authorization(authorization string) ApiDeleteCisIdCiRelationsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsDeleteRequest) X4meAccount(x4meAccount string) ApiV1CisIdCiRelationsDeleteRequest {
+func (r ApiDeleteCisIdCiRelationsRequest) X4meAccount(x4meAccount string) ApiDeleteCisIdCiRelationsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1CisIdCiRelationsDeleteExecute(r)
+func (r ApiDeleteCisIdCiRelationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCisIdCiRelationsExecute(r)
 }
 
 /*
-V1CisIdCiRelationsDelete DeleteAllRelationsWithCI
+DeleteCisIdCiRelations DeleteAllRelationsWithCI
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CisIdCiRelationsDeleteRequest
+	@return ApiDeleteCisIdCiRelationsRequest
 */
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsDelete(ctx context.Context, id int32) ApiV1CisIdCiRelationsDeleteRequest {
-	return ApiV1CisIdCiRelationsDeleteRequest{
+func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelations(ctx context.Context, id int32) ApiDeleteCisIdCiRelationsRequest {
+	return ApiDeleteCisIdCiRelationsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -60,14 +294,14 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsDelete(ctx cont
 }
 
 // Execute executes the request
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsDeleteExecute(r ApiV1CisIdCiRelationsDeleteRequest) (*http.Response, error) {
+func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelationsExecute(r ApiDeleteCisIdCiRelationsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdCiRelationsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisIdCiRelations")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -140,7 +374,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsDeleteExecute(r
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1CisIdCiRelationsGetRequest struct {
+type ApiDeleteCisIdUsersRequest struct {
 	ctx           context.Context
 	ApiService    *ConfigurationItemRelationsAPIService
 	id            int32
@@ -148,29 +382,137 @@ type ApiV1CisIdCiRelationsGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1CisIdCiRelationsGetRequest) Authorization(authorization string) ApiV1CisIdCiRelationsGetRequest {
+func (r ApiDeleteCisIdUsersRequest) Authorization(authorization string) ApiDeleteCisIdUsersRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsGetRequest) X4meAccount(x4meAccount string) ApiV1CisIdCiRelationsGetRequest {
+func (r ApiDeleteCisIdUsersRequest) X4meAccount(x4meAccount string) ApiDeleteCisIdUsersRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CisIdCiRelationsGetExecute(r)
+func (r ApiDeleteCisIdUsersRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCisIdUsersExecute(r)
 }
 
 /*
-V1CisIdCiRelationsGet GetRelatedCIList
+DeleteCisIdUsers DeleteLinkCIwithAllPersons
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CisIdCiRelationsGetRequest
+	@return ApiDeleteCisIdUsersRequest
 */
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsGet(ctx context.Context, id int32) ApiV1CisIdCiRelationsGetRequest {
-	return ApiV1CisIdCiRelationsGetRequest{
+func (a *ConfigurationItemRelationsAPIService) DeleteCisIdUsers(ctx context.Context, id int32) ApiDeleteCisIdUsersRequest {
+	return ApiDeleteCisIdUsersRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ConfigurationItemRelationsAPIService) DeleteCisIdUsersExecute(r ApiDeleteCisIdUsersRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisIdUsers")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cis/{id}/users"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetCisIdCiRelationsRequest struct {
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	id            int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetCisIdCiRelationsRequest) Authorization(authorization string) ApiGetCisIdCiRelationsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetCisIdCiRelationsRequest) X4meAccount(x4meAccount string) ApiGetCisIdCiRelationsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetCisIdCiRelationsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCisIdCiRelationsExecute(r)
+}
+
+/*
+GetCisIdCiRelations GetRelatedCIList
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetCisIdCiRelationsRequest
+*/
+func (a *ConfigurationItemRelationsAPIService) GetCisIdCiRelations(ctx context.Context, id int32) ApiGetCisIdCiRelationsRequest {
+	return ApiGetCisIdCiRelationsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -180,7 +522,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsGet(ctx context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsGetExecute(r ApiV1CisIdCiRelationsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ConfigurationItemRelationsAPIService) GetCisIdCiRelationsExecute(r ApiGetCisIdCiRelationsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -188,7 +530,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsGetExecute(r Ap
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdCiRelationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.GetCisIdCiRelations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -260,7 +602,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CisIdCiRelationsIdDeleteRequest struct {
+type ApiGetCisIdUsersRequest struct {
 	ctx           context.Context
 	ApiService    *ConfigurationItemRelationsAPIService
 	id            int32
@@ -268,29 +610,29 @@ type ApiV1CisIdCiRelationsIdDeleteRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1CisIdCiRelationsIdDeleteRequest) Authorization(authorization string) ApiV1CisIdCiRelationsIdDeleteRequest {
+func (r ApiGetCisIdUsersRequest) Authorization(authorization string) ApiGetCisIdUsersRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsIdDeleteRequest) X4meAccount(x4meAccount string) ApiV1CisIdCiRelationsIdDeleteRequest {
+func (r ApiGetCisIdUsersRequest) X4meAccount(x4meAccount string) ApiGetCisIdUsersRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1CisIdCiRelationsIdDeleteExecute(r)
+func (r ApiGetCisIdUsersRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCisIdUsersExecute(r)
 }
 
 /*
-V1CisIdCiRelationsIdDelete DeleteRelationWithCI
+GetCisIdUsers GetAllUsersLinkedWithCI
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CisIdCiRelationsIdDeleteRequest
+	@return ApiGetCisIdUsersRequest
 */
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsIdDelete(ctx context.Context, id int32) ApiV1CisIdCiRelationsIdDeleteRequest {
-	return ApiV1CisIdCiRelationsIdDeleteRequest{
+func (a *ConfigurationItemRelationsAPIService) GetCisIdUsers(ctx context.Context, id int32) ApiGetCisIdUsersRequest {
+	return ApiGetCisIdUsersRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -298,19 +640,22 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsIdDelete(ctx co
 }
 
 // Execute executes the request
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsIdDeleteExecute(r ApiV1CisIdCiRelationsIdDeleteRequest) (*http.Response, error) {
+//
+//	@return map[string]interface{}
+func (a *ConfigurationItemRelationsAPIService) GetCisIdUsersExecute(r ApiGetCisIdUsersRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdCiRelationsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.GetCisIdUsers")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/cis/{id}/ci_relations/{id}"
+	localVarPath := localBasePath + "/v1/cis/{id}/users"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -342,19 +687,19 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsIdDeleteExecute
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -362,69 +707,71 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsIdDeleteExecute
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CisIdCiRelationsPostRequest struct {
+type ApiPostCisCiIdUsersPersonIdRequest struct {
 	ctx           context.Context
 	ApiService    *ConfigurationItemRelationsAPIService
-	id            int32
+	ciId          int32
+	personId      int32
 	authorization *string
 	x4meAccount   *string
 	body          *map[string]interface{}
 }
 
-func (r ApiV1CisIdCiRelationsPostRequest) Authorization(authorization string) ApiV1CisIdCiRelationsPostRequest {
+func (r ApiPostCisCiIdUsersPersonIdRequest) Authorization(authorization string) ApiPostCisCiIdUsersPersonIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsPostRequest) X4meAccount(x4meAccount string) ApiV1CisIdCiRelationsPostRequest {
+func (r ApiPostCisCiIdUsersPersonIdRequest) X4meAccount(x4meAccount string) ApiPostCisCiIdUsersPersonIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsPostRequest) Body(body map[string]interface{}) ApiV1CisIdCiRelationsPostRequest {
+func (r ApiPostCisCiIdUsersPersonIdRequest) Body(body map[string]interface{}) ApiPostCisCiIdUsersPersonIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1CisIdCiRelationsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CisIdCiRelationsPostExecute(r)
+func (r ApiPostCisCiIdUsersPersonIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostCisCiIdUsersPersonIdExecute(r)
 }
 
 /*
-V1CisIdCiRelationsPost SetRelationWithCI
+PostCisCiIdUsersPersonId LinkCIwithPerson
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1CisIdCiRelationsPostRequest
+	@param ciId
+	@param personId
+	@return ApiPostCisCiIdUsersPersonIdRequest
 */
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsPost(ctx context.Context, id int32) ApiV1CisIdCiRelationsPostRequest {
-	return ApiV1CisIdCiRelationsPostRequest{
+func (a *ConfigurationItemRelationsAPIService) PostCisCiIdUsersPersonId(ctx context.Context, ciId int32, personId int32) ApiPostCisCiIdUsersPersonIdRequest {
+	return ApiPostCisCiIdUsersPersonIdRequest{
 		ApiService: a,
 		ctx:        ctx,
-		id:         id,
+		ciId:       ciId,
+		personId:   personId,
 	}
 }
 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsPostExecute(r ApiV1CisIdCiRelationsPostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ConfigurationItemRelationsAPIService) PostCisCiIdUsersPersonIdExecute(r ApiPostCisCiIdUsersPersonIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -432,13 +779,14 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsPostExecute(r A
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdCiRelationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.PostCisCiIdUsersPersonId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/cis/{id}/ci_relations"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/v1/cis/{ci_id}/users/{person_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"ci_id"+"}", url.PathEscape(parameterValueToString(r.ciId, "ciId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"person_id"+"}", url.PathEscape(parameterValueToString(r.personId, "personId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -506,343 +854,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdCiRelationsPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CisIdUsersDeleteRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemRelationsAPIService
-	id            int32
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1CisIdUsersDeleteRequest) Authorization(authorization string) ApiV1CisIdUsersDeleteRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1CisIdUsersDeleteRequest) X4meAccount(x4meAccount string) ApiV1CisIdUsersDeleteRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1CisIdUsersDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1CisIdUsersDeleteExecute(r)
-}
-
-/*
-V1CisIdUsersDelete DeleteLinkCIwithAllPersons
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1CisIdUsersDeleteRequest
-*/
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersDelete(ctx context.Context, id int32) ApiV1CisIdUsersDeleteRequest {
-	return ApiV1CisIdUsersDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersDeleteExecute(r ApiV1CisIdUsersDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdUsersDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cis/{id}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1CisIdUsersGetRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemRelationsAPIService
-	id            int32
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1CisIdUsersGetRequest) Authorization(authorization string) ApiV1CisIdUsersGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1CisIdUsersGetRequest) X4meAccount(x4meAccount string) ApiV1CisIdUsersGetRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1CisIdUsersGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CisIdUsersGetExecute(r)
-}
-
-/*
-V1CisIdUsersGet GetAllUsersLinkedWithCI
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1CisIdUsersGetRequest
-*/
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersGet(ctx context.Context, id int32) ApiV1CisIdUsersGetRequest {
-	return ApiV1CisIdUsersGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersGetExecute(r ApiV1CisIdUsersGetRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdUsersGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cis/{id}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CisIdUsersIdDeleteRequest struct {
-	ctx           context.Context
-	ApiService    *ConfigurationItemRelationsAPIService
-	id            int32
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1CisIdUsersIdDeleteRequest) Authorization(authorization string) ApiV1CisIdUsersIdDeleteRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1CisIdUsersIdDeleteRequest) X4meAccount(x4meAccount string) ApiV1CisIdUsersIdDeleteRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1CisIdUsersIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1CisIdUsersIdDeleteExecute(r)
-}
-
-/*
-V1CisIdUsersIdDelete DeleteLinkCIwithPerson
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1CisIdUsersIdDeleteRequest
-*/
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdDelete(ctx context.Context, id int32) ApiV1CisIdUsersIdDeleteRequest {
-	return ApiV1CisIdUsersIdDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdDeleteExecute(r ApiV1CisIdUsersIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdUsersIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cis/{id}/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1CisIdUsersIdPostRequest struct {
+type ApiPostCisIdCiRelationsRequest struct {
 	ctx           context.Context
 	ApiService    *ConfigurationItemRelationsAPIService
 	id            int32
@@ -851,34 +863,34 @@ type ApiV1CisIdUsersIdPostRequest struct {
 	body          *map[string]interface{}
 }
 
-func (r ApiV1CisIdUsersIdPostRequest) Authorization(authorization string) ApiV1CisIdUsersIdPostRequest {
+func (r ApiPostCisIdCiRelationsRequest) Authorization(authorization string) ApiPostCisIdCiRelationsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CisIdUsersIdPostRequest) X4meAccount(x4meAccount string) ApiV1CisIdUsersIdPostRequest {
+func (r ApiPostCisIdCiRelationsRequest) X4meAccount(x4meAccount string) ApiPostCisIdCiRelationsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CisIdUsersIdPostRequest) Body(body map[string]interface{}) ApiV1CisIdUsersIdPostRequest {
+func (r ApiPostCisIdCiRelationsRequest) Body(body map[string]interface{}) ApiPostCisIdCiRelationsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1CisIdUsersIdPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CisIdUsersIdPostExecute(r)
+func (r ApiPostCisIdCiRelationsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostCisIdCiRelationsExecute(r)
 }
 
 /*
-V1CisIdUsersIdPost LinkCIwithPerson
+PostCisIdCiRelations SetRelationWithCI
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1CisIdUsersIdPostRequest
+	@return ApiPostCisIdCiRelationsRequest
 */
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdPost(ctx context.Context, id int32) ApiV1CisIdUsersIdPostRequest {
-	return ApiV1CisIdUsersIdPostRequest{
+func (a *ConfigurationItemRelationsAPIService) PostCisIdCiRelations(ctx context.Context, id int32) ApiPostCisIdCiRelationsRequest {
+	return ApiPostCisIdCiRelationsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -888,7 +900,7 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdPost(ctx context.Co
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdPostExecute(r ApiV1CisIdUsersIdPostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ConfigurationItemRelationsAPIService) PostCisIdCiRelationsExecute(r ApiPostCisIdCiRelationsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -896,12 +908,12 @@ func (a *ConfigurationItemRelationsAPIService) V1CisIdUsersIdPostExecute(r ApiV1
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.V1CisIdUsersIdPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.PostCisIdCiRelations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/cis/{id}/users/{id}"
+	localVarPath := localBasePath + "/v1/cis/{id}/ci_relations"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

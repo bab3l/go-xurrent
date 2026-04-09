@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ProblemsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,48 +22,49 @@ func Test_xurrent_ProblemsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ProblemsAPIService V1ProblemsGet", func(t *testing.T) {
+	t.Run("Test ProblemsAPIService GetProblems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ProblemsAPI.V1ProblemsGet(context.Background()).Execute()
+		httpRes, err := apiClient.ProblemsAPI.GetProblems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ProblemsAPIService V1ProblemsIdPatch", func(t *testing.T) {
+	t.Run("Test ProblemsAPIService PatchProblemsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ProblemsAPI.V1ProblemsIdPatch(context.Background(), id).Execute()
+		httpRes, err := apiClient.ProblemsAPI.PatchProblemsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ProblemsAPIService V1ProblemsIdRequestsIdPost", func(t *testing.T) {
+	t.Run("Test ProblemsAPIService PostProblems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var id int32
-
-		httpRes, err := apiClient.ProblemsAPI.V1ProblemsIdRequestsIdPost(context.Background(), id).Execute()
+		httpRes, err := apiClient.ProblemsAPI.PostProblems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ProblemsAPIService V1ProblemsPost", func(t *testing.T) {
+	t.Run("Test ProblemsAPIService PostProblemsProblemIdRequestsRequestId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ProblemsAPI.V1ProblemsPost(context.Background()).Execute()
+		var problemId int32
+		var requestId int32
+
+		httpRes, err := apiClient.ProblemsAPI.PostProblemsProblemIdRequestsRequestId(context.Background(), problemId, requestId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

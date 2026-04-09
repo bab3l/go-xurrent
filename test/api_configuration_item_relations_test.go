@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ConfigurationItemRelationsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,80 +22,67 @@ func Test_xurrent_ConfigurationItemRelationsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdCiRelationsDelete", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService DeleteCisCiIdCiRelationsRelationId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var id int32
+		var ciId int32
+		var relationId int32
 
-		httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdCiRelationsDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationItemRelationsAPI.DeleteCisCiIdCiRelationsRelationId(context.Background(), ciId, relationId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdCiRelationsGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService DeleteCisCiIdUsersPersonId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var id int32
+		var ciId int32
+		var personId int32
 
-		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdCiRelationsGet(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdCiRelationsIdDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdCiRelationsIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationItemRelationsAPI.DeleteCisCiIdUsersPersonId(context.Background(), ciId, personId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdCiRelationsPost", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService DeleteCisIdCiRelations", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdCiRelationsPost(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdUsersDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdUsersDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationItemRelationsAPI.DeleteCisIdCiRelations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdUsersGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService DeleteCisIdUsers", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdUsersGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationItemRelationsAPI.DeleteCisIdUsers(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationItemRelationsAPIService GetCisIdCiRelations", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.GetCisIdCiRelations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,26 +90,42 @@ func Test_xurrent_ConfigurationItemRelationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdUsersIdDelete", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService GetCisIdUsers", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdUsersIdDelete(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.GetCisIdUsers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConfigurationItemRelationsAPIService V1CisIdUsersIdPost", func(t *testing.T) {
+	t.Run("Test ConfigurationItemRelationsAPIService PostCisCiIdUsersPersonId", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var ciId int32
+		var personId int32
+
+		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.PostCisCiIdUsersPersonId(context.Background(), ciId, personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationItemRelationsAPIService PostCisIdCiRelations", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.V1CisIdUsersIdPost(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemRelationsAPI.PostCisIdCiRelations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

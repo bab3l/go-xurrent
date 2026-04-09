@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing GeneralAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_GeneralAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GeneralAPIService V1EnumsGet", func(t *testing.T) {
+	t.Run("Test GeneralAPIService GetEnums", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GeneralAPI.V1EnumsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GeneralAPI.GetEnums(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_xurrent_GeneralAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GeneralAPIService V1MeGet", func(t *testing.T) {
+	t.Run("Test GeneralAPIService GetMe", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.GeneralAPI.V1MeGet(context.Background()).Execute()
+		httpRes, err := apiClient.GeneralAPI.GetMe(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

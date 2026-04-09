@@ -4,192 +4,21 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TasksAssignedByMeGet**](TasksAPI.md#V1TasksAssignedByMeGet) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
-[**V1TasksAssignedToMeGet**](TasksAPI.md#V1TasksAssignedToMeGet) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
-[**V1TasksAssignedToMyTeamGet**](TasksAPI.md#V1TasksAssignedToMyTeamGet) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
-[**V1TasksGet**](TasksAPI.md#V1TasksGet) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
-[**V1TasksIdGet**](TasksAPI.md#V1TasksIdGet) | **Get** /v1/tasks/{id} | GetTasksProperties
-[**V1TasksIdNotesPost**](TasksAPI.md#V1TasksIdNotesPost) | **Post** /v1/tasks/{id}/notes | AddCommentToTask
-[**V1TasksIdPatch**](TasksAPI.md#V1TasksIdPatch) | **Patch** /v1/tasks/{id} | SetNewStatus Copy
-[**V1TasksManagedByMeGet**](TasksAPI.md#V1TasksManagedByMeGet) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
-[**V1TasksOpenGet**](TasksAPI.md#V1TasksOpenGet) | **Get** /v1/tasks/open | GetListOfTasks (opened)
+[**GetTasks**](TasksAPI.md#GetTasks) | **Get** /v1/tasks | GetListOfTasks (by workflow id)
+[**GetTasksAssignedByMe**](TasksAPI.md#GetTasksAssignedByMe) | **Get** /v1/tasks/assigned_by_me | GetListOfTasks (managed_by_me) Copy 3
+[**GetTasksAssignedToMe**](TasksAPI.md#GetTasksAssignedToMe) | **Get** /v1/tasks/assigned_to_me | GetListOfTasks (managed_by_me) Copy 2
+[**GetTasksAssignedToMyTeam**](TasksAPI.md#GetTasksAssignedToMyTeam) | **Get** /v1/tasks/assigned_to_my_team | GetListOfTasks (managed_by_me) Copy
+[**GetTasksId**](TasksAPI.md#GetTasksId) | **Get** /v1/tasks/{id} | GetTasksProperties
+[**GetTasksManagedByMe**](TasksAPI.md#GetTasksManagedByMe) | **Get** /v1/tasks/managed_by_me | GetListOfTasks (managed_by_me)
+[**GetTasksOpen**](TasksAPI.md#GetTasksOpen) | **Get** /v1/tasks/open | GetListOfTasks (opened)
+[**PatchTasksId**](TasksAPI.md#PatchTasksId) | **Patch** /v1/tasks/{id} | SetNewStatus Copy
+[**PostTasksIdNotes**](TasksAPI.md#PostTasksIdNotes) | **Post** /v1/tasks/{id}/notes | AddCommentToTask
 
 
 
-## V1TasksAssignedByMeGet
+## GetTasks
 
-> V1TasksAssignedByMeGet(ctx).Execute()
-
-GetListOfTasks (managed_by_me) Copy 3
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksAssignedByMeGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksAssignedByMeGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1TasksAssignedByMeGetRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1TasksAssignedToMeGet
-
-> V1TasksAssignedToMeGet(ctx).Execute()
-
-GetListOfTasks (managed_by_me) Copy 2
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksAssignedToMeGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksAssignedToMeGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1TasksAssignedToMeGetRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1TasksAssignedToMyTeamGet
-
-> V1TasksAssignedToMyTeamGet(ctx).Execute()
-
-GetListOfTasks (managed_by_me) Copy
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksAssignedToMyTeamGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksAssignedToMyTeamGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1TasksAssignedToMyTeamGetRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1TasksGet
-
-> V1TasksGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
+> GetTasks(ctx).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
 
 GetListOfTasks (by workflow id)
 
@@ -202,7 +31,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -212,9 +41,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
+	r, err := apiClient.TasksAPI.GetTasks(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Workflow(workflow).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -226,7 +55,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TasksGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTasksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -253,9 +82,180 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1TasksIdGet
+## GetTasksAssignedByMe
 
-> V1TasksIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetTasksAssignedByMe(ctx).Execute()
+
+GetListOfTasks (managed_by_me) Copy 3
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TasksAPI.GetTasksAssignedByMe(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedByMe``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksAssignedByMeRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTasksAssignedToMe
+
+> GetTasksAssignedToMe(ctx).Execute()
+
+GetListOfTasks (managed_by_me) Copy 2
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TasksAPI.GetTasksAssignedToMe(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedToMe``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksAssignedToMeRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTasksAssignedToMyTeam
+
+> GetTasksAssignedToMyTeam(ctx).Execute()
+
+GetListOfTasks (managed_by_me) Copy
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TasksAPI.GetTasksAssignedToMyTeam(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksAssignedToMyTeam``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksAssignedToMyTeamRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTasksId
+
+> GetTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetTasksProperties
 
@@ -268,7 +268,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -278,9 +278,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TasksIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTasksIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -323,11 +323,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1TasksIdNotesPost
+## GetTasksManagedByMe
 
-> map[string]interface{} V1TasksIdNotesPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> GetTasksManagedByMe(ctx).Execute()
 
-AddCommentToTask
+GetListOfTasks (managed_by_me)
 
 ### Example
 
@@ -338,50 +338,33 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TasksAPI.V1TasksIdNotesPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	r, err := apiClient.TasksAPI.GetTasksManagedByMe(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksIdNotesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksManagedByMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1TasksIdNotesPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.V1TasksIdNotesPost`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TasksIdNotesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTasksManagedByMeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -389,7 +372,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -397,9 +380,66 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1TasksIdPatch
+## GetTasksOpen
 
-> string V1TasksIdPatch(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> GetTasksOpen(ctx).Execute()
+
+GetListOfTasks (opened)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TasksAPI.GetTasksOpen(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksOpen``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTasksOpenRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchTasksId
+
+> string PatchTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 SetNewStatus Copy
 
@@ -412,7 +452,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -423,13 +463,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TasksAPI.V1TasksIdPatch(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.TasksAPI.PatchTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.PatchTasksId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1TasksIdPatch`: string
-	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.V1TasksIdPatch`: %v\n", resp)
+	// response from `PatchTasksId`: string
+	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.PatchTasksId`: %v\n", resp)
 }
 ```
 
@@ -443,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TasksIdPatchRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchTasksIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -471,68 +511,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1TasksManagedByMeGet
+## PostTasksIdNotes
 
-> V1TasksManagedByMeGet(ctx).Execute()
+> map[string]interface{} PostTasksIdNotes(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
-GetListOfTasks (managed_by_me)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksManagedByMeGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksManagedByMeGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1TasksManagedByMeGetRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1TasksOpenGet
-
-> V1TasksOpenGet(ctx).Execute()
-
-GetListOfTasks (opened)
+AddCommentToTask
 
 ### Example
 
@@ -543,33 +526,50 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
+	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.V1TasksOpenGet(context.Background()).Execute()
+	resp, r, err := apiClient.TasksAPI.PostTasksIdNotes(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.V1TasksOpenGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.PostTasksIdNotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `PostTasksIdNotes`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.PostTasksIdNotes`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TasksOpenGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostTasksIdNotesRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -577,7 +577,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

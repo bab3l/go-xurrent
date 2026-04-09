@@ -4,158 +4,26 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1PeopleDisabledGet**](PeopleAPI.md#V1PeopleDisabledGet) | **Get** /v1/people/disabled | GetUsers (disabled)
-[**V1PeopleEnabledGet**](PeopleAPI.md#V1PeopleEnabledGet) | **Get** /v1/people/enabled | GetUsers (enabled)
-[**V1PeopleGet**](PeopleAPI.md#V1PeopleGet) | **Get** /v1/people | GetUsersByPermision
-[**V1PeopleIdCiGet**](PeopleAPI.md#V1PeopleIdCiGet) | **Get** /v1/people/{id}/ci | GetUsersCIList
-[**V1PeopleIdContactsGet**](PeopleAPI.md#V1PeopleIdContactsGet) | **Get** /v1/people/{id}/contacts | GetUsersContacts
-[**V1PeopleIdContactsPost**](PeopleAPI.md#V1PeopleIdContactsPost) | **Post** /v1/people/{id}/contacts | CreateNewContactToUser
-[**V1PeopleIdGet**](PeopleAPI.md#V1PeopleIdGet) | **Get** /v1/people/{id} | GetUser (by Id)
-[**V1PeopleIdPermissionsGet**](PeopleAPI.md#V1PeopleIdPermissionsGet) | **Get** /v1/people/{id}/permissions | GetUsersPermissions
-[**V1PeopleIdServiceCoveragesGet**](PeopleAPI.md#V1PeopleIdServiceCoveragesGet) | **Get** /v1/people/{id}/service_coverages | GetUsersServiceCoverages
-[**V1PeopleIdSkillPoolsGet**](PeopleAPI.md#V1PeopleIdSkillPoolsGet) | **Get** /v1/people/{id}/skill_pools | GetUsersSkillPools
-[**V1PeopleIdTeamsGet**](PeopleAPI.md#V1PeopleIdTeamsGet) | **Get** /v1/people/{id}/teams | GetUsersTeamList
-[**V1PeopleInternalGet**](PeopleAPI.md#V1PeopleInternalGet) | **Get** /v1/people/internal | GetUsers (internal)
-[**V1PeoplePost**](PeopleAPI.md#V1PeoplePost) | **Post** /v1/people | CreateNewUser
-[**V1PeopleSupportDomainGet**](PeopleAPI.md#V1PeopleSupportDomainGet) | **Get** /v1/people/support_domain | GetUsers (by directory)
+[**GetPeople**](PeopleAPI.md#GetPeople) | **Get** /v1/people | GetUsersByPermision
+[**GetPeopleDisabled**](PeopleAPI.md#GetPeopleDisabled) | **Get** /v1/people/disabled | GetUsers (disabled)
+[**GetPeopleEnabled**](PeopleAPI.md#GetPeopleEnabled) | **Get** /v1/people/enabled | GetUsers (enabled)
+[**GetPeopleId**](PeopleAPI.md#GetPeopleId) | **Get** /v1/people/{id} | GetUser (by Id)
+[**GetPeopleIdCi**](PeopleAPI.md#GetPeopleIdCi) | **Get** /v1/people/{id}/ci | GetUsersCIList
+[**GetPeopleIdContacts**](PeopleAPI.md#GetPeopleIdContacts) | **Get** /v1/people/{id}/contacts | GetUsersContacts
+[**GetPeopleIdPermissions**](PeopleAPI.md#GetPeopleIdPermissions) | **Get** /v1/people/{id}/permissions | GetUsersPermissions
+[**GetPeopleIdServiceCoverages**](PeopleAPI.md#GetPeopleIdServiceCoverages) | **Get** /v1/people/{id}/service_coverages | GetUsersServiceCoverages
+[**GetPeopleIdSkillPools**](PeopleAPI.md#GetPeopleIdSkillPools) | **Get** /v1/people/{id}/skill_pools | GetUsersSkillPools
+[**GetPeopleIdTeams**](PeopleAPI.md#GetPeopleIdTeams) | **Get** /v1/people/{id}/teams | GetUsersTeamList
+[**GetPeopleInternal**](PeopleAPI.md#GetPeopleInternal) | **Get** /v1/people/internal | GetUsers (internal)
+[**GetPeopleSupportDomain**](PeopleAPI.md#GetPeopleSupportDomain) | **Get** /v1/people/support_domain | GetUsers (by directory)
+[**PostPeople**](PeopleAPI.md#PostPeople) | **Post** /v1/people | CreateNewUser
+[**PostPeopleIdContacts**](PeopleAPI.md#PostPeopleIdContacts) | **Post** /v1/people/{id}/contacts | CreateNewContactToUser
 
 
 
-## V1PeopleDisabledGet
+## GetPeople
 
-> map[string]interface{} V1PeopleDisabledGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetUsers (disabled)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleDisabledGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleDisabledGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1PeopleDisabledGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleDisabledGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1PeopleDisabledGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1PeopleEnabledGet
-
-> map[string]interface{} V1PeopleEnabledGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetUsers (enabled)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleEnabledGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleEnabledGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1PeopleEnabledGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleEnabledGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1PeopleEnabledGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1PeopleGet
-
-> map[string]interface{} V1PeopleGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
+> map[string]interface{} GetPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
 
 GetUsersByPermision
 
@@ -168,7 +36,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -178,13 +46,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeople(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeople``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleGet`: %v\n", resp)
+	// response from `GetPeople`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeople`: %v\n", resp)
 }
 ```
 
@@ -194,7 +62,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -221,81 +89,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdCiGet
+## GetPeopleDisabled
 
-> V1PeopleIdCiGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
-GetUsersCIList
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PeopleAPI.V1PeopleIdCiGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdCiGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1PeopleIdCiGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1PeopleIdContactsGet
-
-> map[string]interface{} V1PeopleIdContactsGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetUsersContacts
+GetUsers (disabled)
 
 ### Example
 
@@ -306,42 +104,36 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
-	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdContactsGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleDisabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdContactsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDisabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleIdContactsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdContactsGet`: %v\n", resp)
+	// response from `GetPeopleDisabled`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleDisabled`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdContactsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleDisabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
 
@@ -363,11 +155,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdContactsPost
+## GetPeopleEnabled
 
-> map[string]interface{} V1PeopleIdContactsPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> map[string]interface{} GetPeopleEnabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
-CreateNewContactToUser
+GetUsers (enabled)
 
 ### Example
 
@@ -378,46 +170,38 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
-	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdContactsPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleEnabled(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdContactsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleEnabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleIdContactsPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdContactsPost`: %v\n", resp)
+	// response from `GetPeopleEnabled`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleEnabled`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdContactsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleEnabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -429,7 +213,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -437,9 +221,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdGet
+## GetPeopleId
 
-> map[string]interface{} V1PeopleIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUser (by Id)
 
@@ -452,7 +236,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -462,13 +246,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdGet`: %v\n", resp)
+	// response from `GetPeopleId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleId`: %v\n", resp)
 }
 ```
 
@@ -482,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -509,83 +293,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdPermissionsGet
+## GetPeopleIdCi
 
-> map[string]interface{} V1PeopleIdPermissionsGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetPeopleIdCi(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
-GetUsersPermissions
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdPermissionsGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdPermissionsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1PeopleIdPermissionsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdPermissionsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1PeopleIdPermissionsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1PeopleIdServiceCoveragesGet
-
-> V1PeopleIdServiceCoveragesGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetUsersServiceCoverages
+GetUsersCIList
 
 ### Example
 
@@ -596,7 +308,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -606,9 +318,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PeopleAPI.V1PeopleIdServiceCoveragesGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.PeopleAPI.GetPeopleIdCi(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdServiceCoveragesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdCi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -624,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdServiceCoveragesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleIdCiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -651,9 +363,223 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdSkillPoolsGet
+## GetPeopleIdContacts
 
-> map[string]interface{} V1PeopleIdSkillPoolsGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetUsersContacts
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdContacts(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdContacts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPeopleIdContacts`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdContacts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPeopleIdContactsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPeopleIdPermissions
+
+> map[string]interface{} GetPeopleIdPermissions(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetUsersPermissions
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdPermissions(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdPermissions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPeopleIdPermissions`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdPermissions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPeopleIdPermissionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPeopleIdServiceCoverages
+
+> GetPeopleIdServiceCoverages(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetUsersServiceCoverages
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PeopleAPI.GetPeopleIdServiceCoverages(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdServiceCoverages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPeopleIdServiceCoveragesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPeopleIdSkillPools
+
+> map[string]interface{} GetPeopleIdSkillPools(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUsersSkillPools
 
@@ -666,7 +592,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -676,13 +602,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdSkillPoolsGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdSkillPools(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdSkillPoolsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdSkillPools``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleIdSkillPoolsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdSkillPoolsGet`: %v\n", resp)
+	// response from `GetPeopleIdSkillPools`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdSkillPools`: %v\n", resp)
 }
 ```
 
@@ -696,7 +622,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdSkillPoolsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleIdSkillPoolsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -723,9 +649,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleIdTeamsGet
+## GetPeopleIdTeams
 
-> map[string]interface{} V1PeopleIdTeamsGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleIdTeams(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUsersTeamList
 
@@ -738,7 +664,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -748,13 +674,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleIdTeamsGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleIdTeams(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleIdTeamsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleIdTeamsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleIdTeamsGet`: %v\n", resp)
+	// response from `GetPeopleIdTeams`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdTeams`: %v\n", resp)
 }
 ```
 
@@ -768,7 +694,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleIdTeamsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleIdTeamsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -795,9 +721,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleInternalGet
+## GetPeopleInternal
 
-> map[string]interface{} V1PeopleInternalGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetPeopleInternal(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetUsers (internal)
 
@@ -810,7 +736,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -819,13 +745,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleInternalGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.GetPeopleInternal(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleInternalGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleInternal``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleInternalGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleInternalGet`: %v\n", resp)
+	// response from `GetPeopleInternal`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleInternal`: %v\n", resp)
 }
 ```
 
@@ -835,7 +761,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleInternalGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeopleInternalRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -861,9 +787,75 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeoplePost
+## GetPeopleSupportDomain
 
-> map[string]interface{} V1PeoplePost(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> map[string]interface{} GetPeopleSupportDomain(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetUsers (by directory)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PeopleAPI.GetPeopleSupportDomain(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleSupportDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPeopleSupportDomain`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleSupportDomain`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPeopleSupportDomainRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostPeople
+
+> map[string]interface{} PostPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 CreateNewUser
 
@@ -876,7 +868,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -886,13 +878,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeoplePost(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.PeopleAPI.PostPeople(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeoplePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeople``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeoplePost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeoplePost`: %v\n", resp)
+	// response from `PostPeople`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeople`: %v\n", resp)
 }
 ```
 
@@ -902,7 +894,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeoplePostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostPeopleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -929,11 +921,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1PeopleSupportDomainGet
+## PostPeopleIdContacts
 
-> map[string]interface{} V1PeopleSupportDomainGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} PostPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
-GetUsers (by directory)
+CreateNewContactToUser
 
 ### Example
 
@@ -944,38 +936,46 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
+	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PeopleAPI.V1PeopleSupportDomainGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.PeopleAPI.PostPeopleIdContacts(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.V1PeopleSupportDomainGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeopleIdContacts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1PeopleSupportDomainGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.V1PeopleSupportDomainGet`: %v\n", resp)
+	// response from `PostPeopleIdContacts`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeopleIdContacts`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1PeopleSupportDomainGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostPeopleIdContactsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -987,7 +987,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

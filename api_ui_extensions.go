@@ -22,35 +22,35 @@ import (
 // UIExtensionsAPIService UIExtensionsAPI service
 type UIExtensionsAPIService service
 
-type ApiV1UiExtensionsGetRequest struct {
+type ApiGetUiExtensionsRequest struct {
 	ctx           context.Context
 	ApiService    *UIExtensionsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1UiExtensionsGetRequest) Authorization(authorization string) ApiV1UiExtensionsGetRequest {
+func (r ApiGetUiExtensionsRequest) Authorization(authorization string) ApiGetUiExtensionsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1UiExtensionsGetRequest) X4meAccount(x4meAccount string) ApiV1UiExtensionsGetRequest {
+func (r ApiGetUiExtensionsRequest) X4meAccount(x4meAccount string) ApiGetUiExtensionsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1UiExtensionsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1UiExtensionsGetExecute(r)
+func (r ApiGetUiExtensionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetUiExtensionsExecute(r)
 }
 
 /*
-V1UiExtensionsGet GetUIExtensionPropertiesList
+GetUiExtensions GetUIExtensionPropertiesList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1UiExtensionsGetRequest
+	@return ApiGetUiExtensionsRequest
 */
-func (a *UIExtensionsAPIService) V1UiExtensionsGet(ctx context.Context) ApiV1UiExtensionsGetRequest {
-	return ApiV1UiExtensionsGetRequest{
+func (a *UIExtensionsAPIService) GetUiExtensions(ctx context.Context) ApiGetUiExtensionsRequest {
+	return ApiGetUiExtensionsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -59,7 +59,7 @@ func (a *UIExtensionsAPIService) V1UiExtensionsGet(ctx context.Context) ApiV1UiE
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *UIExtensionsAPIService) V1UiExtensionsGetExecute(r ApiV1UiExtensionsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *UIExtensionsAPIService) GetUiExtensionsExecute(r ApiGetUiExtensionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -67,7 +67,7 @@ func (a *UIExtensionsAPIService) V1UiExtensionsGetExecute(r ApiV1UiExtensionsGet
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.V1UiExtensionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.GetUiExtensions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -138,7 +138,7 @@ func (a *UIExtensionsAPIService) V1UiExtensionsGetExecute(r ApiV1UiExtensionsGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1UiExtensionsIdGetRequest struct {
+type ApiGetUiExtensionsIdRequest struct {
 	ctx           context.Context
 	ApiService    *UIExtensionsAPIService
 	id            int32
@@ -146,29 +146,29 @@ type ApiV1UiExtensionsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1UiExtensionsIdGetRequest) Authorization(authorization string) ApiV1UiExtensionsIdGetRequest {
+func (r ApiGetUiExtensionsIdRequest) Authorization(authorization string) ApiGetUiExtensionsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1UiExtensionsIdGetRequest) X4meAccount(x4meAccount string) ApiV1UiExtensionsIdGetRequest {
+func (r ApiGetUiExtensionsIdRequest) X4meAccount(x4meAccount string) ApiGetUiExtensionsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1UiExtensionsIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1UiExtensionsIdGetExecute(r)
+func (r ApiGetUiExtensionsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetUiExtensionsIdExecute(r)
 }
 
 /*
-V1UiExtensionsIdGet GetUIExtensionProperties Copy
+GetUiExtensionsId GetUIExtensionProperties Copy
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1UiExtensionsIdGetRequest
+	@return ApiGetUiExtensionsIdRequest
 */
-func (a *UIExtensionsAPIService) V1UiExtensionsIdGet(ctx context.Context, id int32) ApiV1UiExtensionsIdGetRequest {
-	return ApiV1UiExtensionsIdGetRequest{
+func (a *UIExtensionsAPIService) GetUiExtensionsId(ctx context.Context, id int32) ApiGetUiExtensionsIdRequest {
+	return ApiGetUiExtensionsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -178,7 +178,7 @@ func (a *UIExtensionsAPIService) V1UiExtensionsIdGet(ctx context.Context, id int
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *UIExtensionsAPIService) V1UiExtensionsIdGetExecute(r ApiV1UiExtensionsIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *UIExtensionsAPIService) GetUiExtensionsIdExecute(r ApiGetUiExtensionsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -186,7 +186,7 @@ func (a *UIExtensionsAPIService) V1UiExtensionsIdGetExecute(r ApiV1UiExtensionsI
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.V1UiExtensionsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIExtensionsAPIService.GetUiExtensionsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

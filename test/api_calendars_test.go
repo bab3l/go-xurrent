@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing CalendarsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_CalendarsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CalendarsAPIService V1CalendarsGet", func(t *testing.T) {
+	t.Run("Test CalendarsAPIService GetCalendars", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CalendarsAPI.V1CalendarsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CalendarsAPI.GetCalendars(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

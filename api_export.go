@@ -22,189 +22,49 @@ import (
 // ExportAPIService ExportAPI service
 type ExportAPIService service
 
-type ApiV1ExportPostRequest struct {
-	ctx           context.Context
-	ApiService    *ExportAPIService
-	authorization *string
-	x4meAccount   *string
-	type_         *string
-	from          *int32
-	exportFormat  *string
-	lineSeparator *string
-}
-
-func (r ApiV1ExportPostRequest) Authorization(authorization string) ApiV1ExportPostRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1ExportPostRequest) X4meAccount(x4meAccount string) ApiV1ExportPostRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1ExportPostRequest) Type_(type_ string) ApiV1ExportPostRequest {
-	r.type_ = &type_
-	return r
-}
-
-func (r ApiV1ExportPostRequest) From(from int32) ApiV1ExportPostRequest {
-	r.from = &from
-	return r
-}
-
-func (r ApiV1ExportPostRequest) ExportFormat(exportFormat string) ApiV1ExportPostRequest {
-	r.exportFormat = &exportFormat
-	return r
-}
-
-func (r ApiV1ExportPostRequest) LineSeparator(lineSeparator string) ApiV1ExportPostRequest {
-	r.lineSeparator = &lineSeparator
-	return r
-}
-
-func (r ApiV1ExportPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ExportPostExecute(r)
-}
-
-/*
-V1ExportPost RunNewExport (sites, teams)
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ExportPostRequest
-*/
-func (a *ExportAPIService) V1ExportPost(ctx context.Context) ApiV1ExportPostRequest {
-	return ApiV1ExportPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-func (a *ExportAPIService) V1ExportPostExecute(r ApiV1ExportPostRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.V1ExportPost")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/export"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "type", r.type_, "", "")
-	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "from", r.from, "", "")
-	}
-	if r.exportFormat != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "export_format", r.exportFormat, "", "")
-	}
-	if r.lineSeparator != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "line_separator", r.lineSeparator, "", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1ImportGetRequest struct {
+type ApiGetImportRequest struct {
 	ctx           context.Context
 	ApiService    *ExportAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1ImportGetRequest) Authorization(authorization string) ApiV1ImportGetRequest {
+func (r ApiGetImportRequest) Authorization(authorization string) ApiGetImportRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ImportGetRequest) X4meAccount(x4meAccount string) ApiV1ImportGetRequest {
+func (r ApiGetImportRequest) X4meAccount(x4meAccount string) ApiGetImportRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ImportGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ImportGetExecute(r)
+func (r ApiGetImportRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetImportExecute(r)
 }
 
 /*
-V1ImportGet GetExportJobsList (all)
+GetImport GetExportJobsList (all)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ImportGetRequest
+	@return ApiGetImportRequest
 */
-func (a *ExportAPIService) V1ImportGet(ctx context.Context) ApiV1ImportGetRequest {
-	return ApiV1ImportGetRequest{
+func (a *ExportAPIService) GetImport(ctx context.Context) ApiGetImportRequest {
+	return ApiGetImportRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ExportAPIService) V1ImportGetExecute(r ApiV1ImportGetRequest) (*http.Response, error) {
+func (a *ExportAPIService) GetImportExecute(r ApiGetImportRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.V1ImportGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.GetImport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -266,7 +126,7 @@ func (a *ExportAPIService) V1ImportGetExecute(r ApiV1ImportGetRequest) (*http.Re
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1ImportTokenGetRequest struct {
+type ApiGetImportTokenRequest struct {
 	ctx           context.Context
 	ApiService    *ExportAPIService
 	token         string
@@ -274,29 +134,29 @@ type ApiV1ImportTokenGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1ImportTokenGetRequest) Authorization(authorization string) ApiV1ImportTokenGetRequest {
+func (r ApiGetImportTokenRequest) Authorization(authorization string) ApiGetImportTokenRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ImportTokenGetRequest) X4meAccount(x4meAccount string) ApiV1ImportTokenGetRequest {
+func (r ApiGetImportTokenRequest) X4meAccount(x4meAccount string) ApiGetImportTokenRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ImportTokenGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ImportTokenGetExecute(r)
+func (r ApiGetImportTokenRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetImportTokenExecute(r)
 }
 
 /*
-V1ImportTokenGet GetExportJobProperties
+GetImportToken GetExportJobProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param token
-	@return ApiV1ImportTokenGetRequest
+	@return ApiGetImportTokenRequest
 */
-func (a *ExportAPIService) V1ImportTokenGet(ctx context.Context, token string) ApiV1ImportTokenGetRequest {
-	return ApiV1ImportTokenGetRequest{
+func (a *ExportAPIService) GetImportToken(ctx context.Context, token string) ApiGetImportTokenRequest {
+	return ApiGetImportTokenRequest{
 		ApiService: a,
 		ctx:        ctx,
 		token:      token,
@@ -304,14 +164,14 @@ func (a *ExportAPIService) V1ImportTokenGet(ctx context.Context, token string) A
 }
 
 // Execute executes the request
-func (a *ExportAPIService) V1ImportTokenGetExecute(r ApiV1ImportTokenGetRequest) (*http.Response, error) {
+func (a *ExportAPIService) GetImportTokenExecute(r ApiGetImportTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.V1ImportTokenGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.GetImportToken")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -345,6 +205,146 @@ func (a *ExportAPIService) V1ImportTokenGetExecute(r ApiV1ImportTokenGetRequest)
 	}
 	if r.x4meAccount != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPostExportRequest struct {
+	ctx           context.Context
+	ApiService    *ExportAPIService
+	authorization *string
+	x4meAccount   *string
+	type_         *string
+	from          *int32
+	exportFormat  *string
+	lineSeparator *string
+}
+
+func (r ApiPostExportRequest) Authorization(authorization string) ApiPostExportRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostExportRequest) X4meAccount(x4meAccount string) ApiPostExportRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostExportRequest) Type_(type_ string) ApiPostExportRequest {
+	r.type_ = &type_
+	return r
+}
+
+func (r ApiPostExportRequest) From(from int32) ApiPostExportRequest {
+	r.from = &from
+	return r
+}
+
+func (r ApiPostExportRequest) ExportFormat(exportFormat string) ApiPostExportRequest {
+	r.exportFormat = &exportFormat
+	return r
+}
+
+func (r ApiPostExportRequest) LineSeparator(lineSeparator string) ApiPostExportRequest {
+	r.lineSeparator = &lineSeparator
+	return r
+}
+
+func (r ApiPostExportRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PostExportExecute(r)
+}
+
+/*
+PostExport RunNewExport (sites, teams)
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostExportRequest
+*/
+func (a *ExportAPIService) PostExport(ctx context.Context) ApiPostExportRequest {
+	return ApiPostExportRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ExportAPIService) PostExportExecute(r ApiPostExportRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.PostExport")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/export"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "type", r.type_, "", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "from", r.from, "", "")
+	}
+	if r.exportFormat != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "export_format", r.exportFormat, "", "")
+	}
+	if r.lineSeparator != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "line_separator", r.lineSeparator, "", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

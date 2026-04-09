@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing SearchAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_SearchAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SearchAPIService V1RequestsGet", func(t *testing.T) {
+	t.Run("Test SearchAPIService GetRequests", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SearchAPI.V1RequestsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SearchAPI.GetRequests(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_xurrent_SearchAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SearchAPIService V1SearchGet", func(t *testing.T) {
+	t.Run("Test SearchAPIService GetSearch", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.SearchAPI.V1SearchGet(context.Background()).Execute()
+		httpRes, err := apiClient.SearchAPI.GetSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

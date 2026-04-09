@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ExportAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,35 +22,35 @@ func Test_xurrent_ExportAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ExportAPIService V1ExportPost", func(t *testing.T) {
+	t.Run("Test ExportAPIService GetImport", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ExportAPI.V1ExportPost(context.Background()).Execute()
+		httpRes, err := apiClient.ExportAPI.GetImport(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ExportAPIService V1ImportGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.ExportAPI.V1ImportGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ExportAPIService V1ImportTokenGet", func(t *testing.T) {
+	t.Run("Test ExportAPIService GetImportToken", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var token string
 
-		httpRes, err := apiClient.ExportAPI.V1ImportTokenGet(context.Background(), token).Execute()
+		httpRes, err := apiClient.ExportAPI.GetImportToken(context.Background(), token).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ExportAPIService PostExport", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		httpRes, err := apiClient.ExportAPI.PostExport(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1RequestsGet**](SearchAPI.md#V1RequestsGet) | **Get** /v1/requests | GetIssuesList (several templates) Copy
-[**V1SearchGet**](SearchAPI.md#V1SearchGet) | **Get** /v1/search | SearchRecords
+[**GetRequests**](SearchAPI.md#GetRequests) | **Get** /v1/requests | GetIssuesList (several templates) Copy
+[**GetSearch**](SearchAPI.md#GetSearch) | **Get** /v1/search | SearchRecords
 
 
 
-## V1RequestsGet
+## GetRequests
 
-> map[string]interface{} V1RequestsGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Template(template).Execute()
+> map[string]interface{} GetRequests(ctx).Authorization(authorization).X4meAccount(x4meAccount).Template(template).Execute()
 
 GetIssuesList (several templates) Copy
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAPI.V1RequestsGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Template(template).Execute()
+	resp, r, err := apiClient.SearchAPI.GetRequests(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Template(template).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.V1RequestsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.GetRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.V1RequestsGet`: %v\n", resp)
+	// response from `GetRequests`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.GetRequests`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -77,9 +77,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1SearchGet
+## GetSearch
 
-> V1SearchGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Q(q).Types(types).Execute()
+> GetSearch(ctx).Authorization(authorization).X4meAccount(x4meAccount).Q(q).Types(types).Execute()
 
 SearchRecords
 
@@ -92,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SearchAPI.V1SearchGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Q(q).Types(types).Execute()
+	r, err := apiClient.SearchAPI.GetSearch(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Q(q).Types(types).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.V1SearchGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.GetSearch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -117,7 +117,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1SearchGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -22,239 +22,7 @@ import (
 // PeopleAPIService PeopleAPI service
 type PeopleAPIService service
 
-type ApiV1PeopleDisabledGetRequest struct {
-	ctx           context.Context
-	ApiService    *PeopleAPIService
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1PeopleDisabledGetRequest) Authorization(authorization string) ApiV1PeopleDisabledGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1PeopleDisabledGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleDisabledGetRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1PeopleDisabledGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleDisabledGetExecute(r)
-}
-
-/*
-V1PeopleDisabledGet GetUsers (disabled)
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeopleDisabledGetRequest
-*/
-func (a *PeopleAPIService) V1PeopleDisabledGet(ctx context.Context) ApiV1PeopleDisabledGetRequest {
-	return ApiV1PeopleDisabledGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleDisabledGetExecute(r ApiV1PeopleDisabledGetRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleDisabledGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/people/disabled"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1PeopleEnabledGetRequest struct {
-	ctx           context.Context
-	ApiService    *PeopleAPIService
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1PeopleEnabledGetRequest) Authorization(authorization string) ApiV1PeopleEnabledGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1PeopleEnabledGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleEnabledGetRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1PeopleEnabledGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleEnabledGetExecute(r)
-}
-
-/*
-V1PeopleEnabledGet GetUsers (enabled)
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeopleEnabledGetRequest
-*/
-func (a *PeopleAPIService) V1PeopleEnabledGet(ctx context.Context) ApiV1PeopleEnabledGetRequest {
-	return ApiV1PeopleEnabledGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleEnabledGetExecute(r ApiV1PeopleEnabledGetRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleEnabledGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/people/enabled"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1PeopleGetRequest struct {
+type ApiGetPeopleRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	authorization *string
@@ -262,33 +30,33 @@ type ApiV1PeopleGetRequest struct {
 	roles         *string
 }
 
-func (r ApiV1PeopleGetRequest) Authorization(authorization string) ApiV1PeopleGetRequest {
+func (r ApiGetPeopleRequest) Authorization(authorization string) ApiGetPeopleRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleGetRequest {
+func (r ApiGetPeopleRequest) X4meAccount(x4meAccount string) ApiGetPeopleRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleGetRequest) Roles(roles string) ApiV1PeopleGetRequest {
+func (r ApiGetPeopleRequest) Roles(roles string) ApiGetPeopleRequest {
 	r.roles = &roles
 	return r
 }
 
-func (r ApiV1PeopleGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleGetExecute(r)
+func (r ApiGetPeopleRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleExecute(r)
 }
 
 /*
-V1PeopleGet GetUsersByPermision
+GetPeople GetUsersByPermision
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeopleGetRequest
+	@return ApiGetPeopleRequest
 */
-func (a *PeopleAPIService) V1PeopleGet(ctx context.Context) ApiV1PeopleGetRequest {
-	return ApiV1PeopleGetRequest{
+func (a *PeopleAPIService) GetPeople(ctx context.Context) ApiGetPeopleRequest {
+	return ApiGetPeopleRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -297,7 +65,7 @@ func (a *PeopleAPIService) V1PeopleGet(ctx context.Context) ApiV1PeopleGetReques
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleGetExecute(r ApiV1PeopleGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleExecute(r ApiGetPeopleRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -305,7 +73,7 @@ func (a *PeopleAPIService) V1PeopleGetExecute(r ApiV1PeopleGetRequest) (map[stri
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeople")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -379,155 +147,44 @@ func (a *PeopleAPIService) V1PeopleGetExecute(r ApiV1PeopleGetRequest) (map[stri
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdCiGetRequest struct {
+type ApiGetPeopleDisabledRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
-	id            int32
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdCiGetRequest) Authorization(authorization string) ApiV1PeopleIdCiGetRequest {
+func (r ApiGetPeopleDisabledRequest) Authorization(authorization string) ApiGetPeopleDisabledRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdCiGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdCiGetRequest {
+func (r ApiGetPeopleDisabledRequest) X4meAccount(x4meAccount string) ApiGetPeopleDisabledRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdCiGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1PeopleIdCiGetExecute(r)
+func (r ApiGetPeopleDisabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleDisabledExecute(r)
 }
 
 /*
-V1PeopleIdCiGet GetUsersCIList
+GetPeopleDisabled GetUsers (disabled)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1PeopleIdCiGetRequest
+	@return ApiGetPeopleDisabledRequest
 */
-func (a *PeopleAPIService) V1PeopleIdCiGet(ctx context.Context, id int32) ApiV1PeopleIdCiGetRequest {
-	return ApiV1PeopleIdCiGetRequest{
+func (a *PeopleAPIService) GetPeopleDisabled(ctx context.Context) ApiGetPeopleDisabledRequest {
+	return ApiGetPeopleDisabledRequest{
 		ApiService: a,
 		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *PeopleAPIService) V1PeopleIdCiGetExecute(r ApiV1PeopleIdCiGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdCiGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/people/{id}/ci"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1PeopleIdContactsGetRequest struct {
-	ctx           context.Context
-	ApiService    *PeopleAPIService
-	id            int32
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1PeopleIdContactsGetRequest) Authorization(authorization string) ApiV1PeopleIdContactsGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1PeopleIdContactsGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdContactsGetRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1PeopleIdContactsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdContactsGetExecute(r)
-}
-
-/*
-V1PeopleIdContactsGet GetUsersContacts
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1PeopleIdContactsGetRequest
-*/
-func (a *PeopleAPIService) V1PeopleIdContactsGet(ctx context.Context, id int32) ApiV1PeopleIdContactsGetRequest {
-	return ApiV1PeopleIdContactsGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
 	}
 }
 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdContactsGetExecute(r ApiV1PeopleIdContactsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleDisabledExecute(r ApiGetPeopleDisabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -535,13 +192,12 @@ func (a *PeopleAPIService) V1PeopleIdContactsGetExecute(r ApiV1PeopleIdContactsG
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdContactsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleDisabled")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/people/{id}/contacts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/v1/people/disabled"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -607,74 +263,64 @@ func (a *PeopleAPIService) V1PeopleIdContactsGetExecute(r ApiV1PeopleIdContactsG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdContactsPostRequest struct {
+type ApiGetPeopleEnabledRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
-	id            int32
 	authorization *string
 	x4meAccount   *string
-	body          *map[string]interface{}
 }
 
-func (r ApiV1PeopleIdContactsPostRequest) Authorization(authorization string) ApiV1PeopleIdContactsPostRequest {
+func (r ApiGetPeopleEnabledRequest) Authorization(authorization string) ApiGetPeopleEnabledRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdContactsPostRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdContactsPostRequest {
+func (r ApiGetPeopleEnabledRequest) X4meAccount(x4meAccount string) ApiGetPeopleEnabledRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdContactsPostRequest) Body(body map[string]interface{}) ApiV1PeopleIdContactsPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1PeopleIdContactsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdContactsPostExecute(r)
+func (r ApiGetPeopleEnabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleEnabledExecute(r)
 }
 
 /*
-V1PeopleIdContactsPost CreateNewContactToUser
+GetPeopleEnabled GetUsers (enabled)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiV1PeopleIdContactsPostRequest
+	@return ApiGetPeopleEnabledRequest
 */
-func (a *PeopleAPIService) V1PeopleIdContactsPost(ctx context.Context, id int32) ApiV1PeopleIdContactsPostRequest {
-	return ApiV1PeopleIdContactsPostRequest{
+func (a *PeopleAPIService) GetPeopleEnabled(ctx context.Context) ApiGetPeopleEnabledRequest {
+	return ApiGetPeopleEnabledRequest{
 		ApiService: a,
 		ctx:        ctx,
-		id:         id,
 	}
 }
 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdContactsPostExecute(r ApiV1PeopleIdContactsPostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleEnabledExecute(r ApiGetPeopleEnabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdContactsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleEnabled")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/people/{id}/contacts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/v1/people/enabled"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -696,8 +342,6 @@ func (a *PeopleAPIService) V1PeopleIdContactsPostExecute(r ApiV1PeopleIdContacts
 	if r.x4meAccount != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
 	}
-	// body params
-	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -735,7 +379,7 @@ func (a *PeopleAPIService) V1PeopleIdContactsPostExecute(r ApiV1PeopleIdContacts
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdGetRequest struct {
+type ApiGetPeopleIdRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	id            int32
@@ -743,29 +387,29 @@ type ApiV1PeopleIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdGetRequest) Authorization(authorization string) ApiV1PeopleIdGetRequest {
+func (r ApiGetPeopleIdRequest) Authorization(authorization string) ApiGetPeopleIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdGetRequest {
+func (r ApiGetPeopleIdRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdGetExecute(r)
+func (r ApiGetPeopleIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleIdExecute(r)
 }
 
 /*
-V1PeopleIdGet GetUser (by Id)
+GetPeopleId GetUser (by Id)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1PeopleIdGetRequest
+	@return ApiGetPeopleIdRequest
 */
-func (a *PeopleAPIService) V1PeopleIdGet(ctx context.Context, id int32) ApiV1PeopleIdGetRequest {
-	return ApiV1PeopleIdGetRequest{
+func (a *PeopleAPIService) GetPeopleId(ctx context.Context, id int32) ApiGetPeopleIdRequest {
+	return ApiGetPeopleIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -775,7 +419,7 @@ func (a *PeopleAPIService) V1PeopleIdGet(ctx context.Context, id int32) ApiV1Peo
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdGetExecute(r ApiV1PeopleIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleIdExecute(r ApiGetPeopleIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -783,7 +427,7 @@ func (a *PeopleAPIService) V1PeopleIdGetExecute(r ApiV1PeopleIdGetRequest) (map[
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -855,7 +499,7 @@ func (a *PeopleAPIService) V1PeopleIdGetExecute(r ApiV1PeopleIdGetRequest) (map[
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdPermissionsGetRequest struct {
+type ApiGetPeopleIdCiRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	id            int32
@@ -863,29 +507,137 @@ type ApiV1PeopleIdPermissionsGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdPermissionsGetRequest) Authorization(authorization string) ApiV1PeopleIdPermissionsGetRequest {
+func (r ApiGetPeopleIdCiRequest) Authorization(authorization string) ApiGetPeopleIdCiRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdPermissionsGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdPermissionsGetRequest {
+func (r ApiGetPeopleIdCiRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdCiRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdPermissionsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdPermissionsGetExecute(r)
+func (r ApiGetPeopleIdCiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetPeopleIdCiExecute(r)
 }
 
 /*
-V1PeopleIdPermissionsGet GetUsersPermissions
+GetPeopleIdCi GetUsersCIList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1PeopleIdPermissionsGetRequest
+	@return ApiGetPeopleIdCiRequest
 */
-func (a *PeopleAPIService) V1PeopleIdPermissionsGet(ctx context.Context, id int32) ApiV1PeopleIdPermissionsGetRequest {
-	return ApiV1PeopleIdPermissionsGetRequest{
+func (a *PeopleAPIService) GetPeopleIdCi(ctx context.Context, id int32) ApiGetPeopleIdCiRequest {
+	return ApiGetPeopleIdCiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *PeopleAPIService) GetPeopleIdCiExecute(r ApiGetPeopleIdCiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdCi")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/people/{id}/ci"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetPeopleIdContactsRequest struct {
+	ctx           context.Context
+	ApiService    *PeopleAPIService
+	id            int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetPeopleIdContactsRequest) Authorization(authorization string) ApiGetPeopleIdContactsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetPeopleIdContactsRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdContactsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetPeopleIdContactsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleIdContactsExecute(r)
+}
+
+/*
+GetPeopleIdContacts GetUsersContacts
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetPeopleIdContactsRequest
+*/
+func (a *PeopleAPIService) GetPeopleIdContacts(ctx context.Context, id int32) ApiGetPeopleIdContactsRequest {
+	return ApiGetPeopleIdContactsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -895,7 +647,7 @@ func (a *PeopleAPIService) V1PeopleIdPermissionsGet(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdPermissionsGetExecute(r ApiV1PeopleIdPermissionsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleIdContactsExecute(r ApiGetPeopleIdContactsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -903,7 +655,127 @@ func (a *PeopleAPIService) V1PeopleIdPermissionsGetExecute(r ApiV1PeopleIdPermis
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdPermissionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdContacts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/people/{id}/contacts"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetPeopleIdPermissionsRequest struct {
+	ctx           context.Context
+	ApiService    *PeopleAPIService
+	id            int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetPeopleIdPermissionsRequest) Authorization(authorization string) ApiGetPeopleIdPermissionsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetPeopleIdPermissionsRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdPermissionsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetPeopleIdPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleIdPermissionsExecute(r)
+}
+
+/*
+GetPeopleIdPermissions GetUsersPermissions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetPeopleIdPermissionsRequest
+*/
+func (a *PeopleAPIService) GetPeopleIdPermissions(ctx context.Context, id int32) ApiGetPeopleIdPermissionsRequest {
+	return ApiGetPeopleIdPermissionsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *PeopleAPIService) GetPeopleIdPermissionsExecute(r ApiGetPeopleIdPermissionsRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdPermissions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -975,7 +847,7 @@ func (a *PeopleAPIService) V1PeopleIdPermissionsGetExecute(r ApiV1PeopleIdPermis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdServiceCoveragesGetRequest struct {
+type ApiGetPeopleIdServiceCoveragesRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	id            int32
@@ -983,29 +855,29 @@ type ApiV1PeopleIdServiceCoveragesGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdServiceCoveragesGetRequest) Authorization(authorization string) ApiV1PeopleIdServiceCoveragesGetRequest {
+func (r ApiGetPeopleIdServiceCoveragesRequest) Authorization(authorization string) ApiGetPeopleIdServiceCoveragesRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdServiceCoveragesGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdServiceCoveragesGetRequest {
+func (r ApiGetPeopleIdServiceCoveragesRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdServiceCoveragesRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdServiceCoveragesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1PeopleIdServiceCoveragesGetExecute(r)
+func (r ApiGetPeopleIdServiceCoveragesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetPeopleIdServiceCoveragesExecute(r)
 }
 
 /*
-V1PeopleIdServiceCoveragesGet GetUsersServiceCoverages
+GetPeopleIdServiceCoverages GetUsersServiceCoverages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1PeopleIdServiceCoveragesGetRequest
+	@return ApiGetPeopleIdServiceCoveragesRequest
 */
-func (a *PeopleAPIService) V1PeopleIdServiceCoveragesGet(ctx context.Context, id int32) ApiV1PeopleIdServiceCoveragesGetRequest {
-	return ApiV1PeopleIdServiceCoveragesGetRequest{
+func (a *PeopleAPIService) GetPeopleIdServiceCoverages(ctx context.Context, id int32) ApiGetPeopleIdServiceCoveragesRequest {
+	return ApiGetPeopleIdServiceCoveragesRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1013,14 +885,14 @@ func (a *PeopleAPIService) V1PeopleIdServiceCoveragesGet(ctx context.Context, id
 }
 
 // Execute executes the request
-func (a *PeopleAPIService) V1PeopleIdServiceCoveragesGetExecute(r ApiV1PeopleIdServiceCoveragesGetRequest) (*http.Response, error) {
+func (a *PeopleAPIService) GetPeopleIdServiceCoveragesExecute(r ApiGetPeopleIdServiceCoveragesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdServiceCoveragesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdServiceCoverages")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1083,7 +955,7 @@ func (a *PeopleAPIService) V1PeopleIdServiceCoveragesGetExecute(r ApiV1PeopleIdS
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdSkillPoolsGetRequest struct {
+type ApiGetPeopleIdSkillPoolsRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	id            int32
@@ -1091,29 +963,29 @@ type ApiV1PeopleIdSkillPoolsGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdSkillPoolsGetRequest) Authorization(authorization string) ApiV1PeopleIdSkillPoolsGetRequest {
+func (r ApiGetPeopleIdSkillPoolsRequest) Authorization(authorization string) ApiGetPeopleIdSkillPoolsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdSkillPoolsGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdSkillPoolsGetRequest {
+func (r ApiGetPeopleIdSkillPoolsRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdSkillPoolsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdSkillPoolsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdSkillPoolsGetExecute(r)
+func (r ApiGetPeopleIdSkillPoolsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleIdSkillPoolsExecute(r)
 }
 
 /*
-V1PeopleIdSkillPoolsGet GetUsersSkillPools
+GetPeopleIdSkillPools GetUsersSkillPools
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1PeopleIdSkillPoolsGetRequest
+	@return ApiGetPeopleIdSkillPoolsRequest
 */
-func (a *PeopleAPIService) V1PeopleIdSkillPoolsGet(ctx context.Context, id int32) ApiV1PeopleIdSkillPoolsGetRequest {
-	return ApiV1PeopleIdSkillPoolsGetRequest{
+func (a *PeopleAPIService) GetPeopleIdSkillPools(ctx context.Context, id int32) ApiGetPeopleIdSkillPoolsRequest {
+	return ApiGetPeopleIdSkillPoolsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1123,7 +995,7 @@ func (a *PeopleAPIService) V1PeopleIdSkillPoolsGet(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdSkillPoolsGetExecute(r ApiV1PeopleIdSkillPoolsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleIdSkillPoolsExecute(r ApiGetPeopleIdSkillPoolsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1131,7 +1003,7 @@ func (a *PeopleAPIService) V1PeopleIdSkillPoolsGetExecute(r ApiV1PeopleIdSkillPo
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdSkillPoolsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdSkillPools")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1203,7 +1075,7 @@ func (a *PeopleAPIService) V1PeopleIdSkillPoolsGetExecute(r ApiV1PeopleIdSkillPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleIdTeamsGetRequest struct {
+type ApiGetPeopleIdTeamsRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	id            int32
@@ -1211,29 +1083,29 @@ type ApiV1PeopleIdTeamsGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleIdTeamsGetRequest) Authorization(authorization string) ApiV1PeopleIdTeamsGetRequest {
+func (r ApiGetPeopleIdTeamsRequest) Authorization(authorization string) ApiGetPeopleIdTeamsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleIdTeamsGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleIdTeamsGetRequest {
+func (r ApiGetPeopleIdTeamsRequest) X4meAccount(x4meAccount string) ApiGetPeopleIdTeamsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleIdTeamsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleIdTeamsGetExecute(r)
+func (r ApiGetPeopleIdTeamsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleIdTeamsExecute(r)
 }
 
 /*
-V1PeopleIdTeamsGet GetUsersTeamList
+GetPeopleIdTeams GetUsersTeamList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1PeopleIdTeamsGetRequest
+	@return ApiGetPeopleIdTeamsRequest
 */
-func (a *PeopleAPIService) V1PeopleIdTeamsGet(ctx context.Context, id int32) ApiV1PeopleIdTeamsGetRequest {
-	return ApiV1PeopleIdTeamsGetRequest{
+func (a *PeopleAPIService) GetPeopleIdTeams(ctx context.Context, id int32) ApiGetPeopleIdTeamsRequest {
+	return ApiGetPeopleIdTeamsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1243,7 +1115,7 @@ func (a *PeopleAPIService) V1PeopleIdTeamsGet(ctx context.Context, id int32) Api
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleIdTeamsGetExecute(r ApiV1PeopleIdTeamsGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleIdTeamsExecute(r ApiGetPeopleIdTeamsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1251,7 +1123,7 @@ func (a *PeopleAPIService) V1PeopleIdTeamsGetExecute(r ApiV1PeopleIdTeamsGetRequ
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleIdTeamsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleIdTeams")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1323,35 +1195,35 @@ func (a *PeopleAPIService) V1PeopleIdTeamsGetExecute(r ApiV1PeopleIdTeamsGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleInternalGetRequest struct {
+type ApiGetPeopleInternalRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1PeopleInternalGetRequest) Authorization(authorization string) ApiV1PeopleInternalGetRequest {
+func (r ApiGetPeopleInternalRequest) Authorization(authorization string) ApiGetPeopleInternalRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleInternalGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleInternalGetRequest {
+func (r ApiGetPeopleInternalRequest) X4meAccount(x4meAccount string) ApiGetPeopleInternalRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleInternalGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleInternalGetExecute(r)
+func (r ApiGetPeopleInternalRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleInternalExecute(r)
 }
 
 /*
-V1PeopleInternalGet GetUsers (internal)
+GetPeopleInternal GetUsers (internal)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeopleInternalGetRequest
+	@return ApiGetPeopleInternalRequest
 */
-func (a *PeopleAPIService) V1PeopleInternalGet(ctx context.Context) ApiV1PeopleInternalGetRequest {
-	return ApiV1PeopleInternalGetRequest{
+func (a *PeopleAPIService) GetPeopleInternal(ctx context.Context) ApiGetPeopleInternalRequest {
+	return ApiGetPeopleInternalRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1360,7 +1232,7 @@ func (a *PeopleAPIService) V1PeopleInternalGet(ctx context.Context) ApiV1PeopleI
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleInternalGetExecute(r ApiV1PeopleInternalGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleInternalExecute(r ApiGetPeopleInternalRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1368,7 +1240,7 @@ func (a *PeopleAPIService) V1PeopleInternalGetExecute(r ApiV1PeopleInternalGetRe
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleInternalGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleInternal")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1439,41 +1311,35 @@ func (a *PeopleAPIService) V1PeopleInternalGetExecute(r ApiV1PeopleInternalGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeoplePostRequest struct {
+type ApiGetPeopleSupportDomainRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
 	authorization *string
 	x4meAccount   *string
-	body          *map[string]interface{}
 }
 
-func (r ApiV1PeoplePostRequest) Authorization(authorization string) ApiV1PeoplePostRequest {
+func (r ApiGetPeopleSupportDomainRequest) Authorization(authorization string) ApiGetPeopleSupportDomainRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeoplePostRequest) X4meAccount(x4meAccount string) ApiV1PeoplePostRequest {
+func (r ApiGetPeopleSupportDomainRequest) X4meAccount(x4meAccount string) ApiGetPeopleSupportDomainRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeoplePostRequest) Body(body map[string]interface{}) ApiV1PeoplePostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1PeoplePostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeoplePostExecute(r)
+func (r ApiGetPeopleSupportDomainRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetPeopleSupportDomainExecute(r)
 }
 
 /*
-V1PeoplePost CreateNewUser
+GetPeopleSupportDomain GetUsers (by directory)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeoplePostRequest
+	@return ApiGetPeopleSupportDomainRequest
 */
-func (a *PeopleAPIService) V1PeoplePost(ctx context.Context) ApiV1PeoplePostRequest {
-	return ApiV1PeoplePostRequest{
+func (a *PeopleAPIService) GetPeopleSupportDomain(ctx context.Context) ApiGetPeopleSupportDomainRequest {
+	return ApiGetPeopleSupportDomainRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1482,7 +1348,129 @@ func (a *PeopleAPIService) V1PeoplePost(ctx context.Context) ApiV1PeoplePostRequ
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeoplePostExecute(r ApiV1PeoplePostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) GetPeopleSupportDomainExecute(r ApiGetPeopleSupportDomainRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.GetPeopleSupportDomain")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/people/support_domain"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostPeopleRequest struct {
+	ctx           context.Context
+	ApiService    *PeopleAPIService
+	authorization *string
+	x4meAccount   *string
+	body          *map[string]interface{}
+}
+
+func (r ApiPostPeopleRequest) Authorization(authorization string) ApiPostPeopleRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostPeopleRequest) X4meAccount(x4meAccount string) ApiPostPeopleRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostPeopleRequest) Body(body map[string]interface{}) ApiPostPeopleRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostPeopleRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostPeopleExecute(r)
+}
+
+/*
+PostPeople CreateNewUser
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostPeopleRequest
+*/
+func (a *PeopleAPIService) PostPeople(ctx context.Context) ApiPostPeopleRequest {
+	return ApiPostPeopleRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *PeopleAPIService) PostPeopleExecute(r ApiPostPeopleRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1490,7 +1478,7 @@ func (a *PeopleAPIService) V1PeoplePostExecute(r ApiV1PeoplePostRequest) (map[st
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeoplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.PostPeople")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1573,64 +1561,74 @@ func (a *PeopleAPIService) V1PeoplePostExecute(r ApiV1PeoplePostRequest) (map[st
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PeopleSupportDomainGetRequest struct {
+type ApiPostPeopleIdContactsRequest struct {
 	ctx           context.Context
 	ApiService    *PeopleAPIService
+	id            int32
 	authorization *string
 	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
-func (r ApiV1PeopleSupportDomainGetRequest) Authorization(authorization string) ApiV1PeopleSupportDomainGetRequest {
+func (r ApiPostPeopleIdContactsRequest) Authorization(authorization string) ApiPostPeopleIdContactsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1PeopleSupportDomainGetRequest) X4meAccount(x4meAccount string) ApiV1PeopleSupportDomainGetRequest {
+func (r ApiPostPeopleIdContactsRequest) X4meAccount(x4meAccount string) ApiPostPeopleIdContactsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1PeopleSupportDomainGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1PeopleSupportDomainGetExecute(r)
+func (r ApiPostPeopleIdContactsRequest) Body(body map[string]interface{}) ApiPostPeopleIdContactsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostPeopleIdContactsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PostPeopleIdContactsExecute(r)
 }
 
 /*
-V1PeopleSupportDomainGet GetUsers (by directory)
+PostPeopleIdContacts CreateNewContactToUser
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PeopleSupportDomainGetRequest
+	@param id
+	@return ApiPostPeopleIdContactsRequest
 */
-func (a *PeopleAPIService) V1PeopleSupportDomainGet(ctx context.Context) ApiV1PeopleSupportDomainGetRequest {
-	return ApiV1PeopleSupportDomainGetRequest{
+func (a *PeopleAPIService) PostPeopleIdContacts(ctx context.Context, id int32) ApiPostPeopleIdContactsRequest {
+	return ApiPostPeopleIdContactsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *PeopleAPIService) V1PeopleSupportDomainGetExecute(r ApiV1PeopleSupportDomainGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *PeopleAPIService) PostPeopleIdContactsExecute(r ApiPostPeopleIdContactsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.V1PeopleSupportDomainGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PeopleAPIService.PostPeopleIdContacts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/people/support_domain"
+	localVarPath := localBasePath + "/v1/people/{id}/contacts"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1652,6 +1650,8 @@ func (a *PeopleAPIService) V1PeopleSupportDomainGetExecute(r ApiV1PeopleSupportD
 	if r.x4meAccount != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

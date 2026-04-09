@@ -9,6 +9,31 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+        sourceID:
+          type: string
+          nullable: true
+        name:
+          type: string
+        disabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        remarks:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
 tags:
 - name: Events
 - name: Requests
@@ -483,10 +508,10 @@ paths:
             text/plain:
               schema:
                 type: string
-              example: "<html>\n    <head>\n        <title>502 Bad Gateway</title>\n\
-                \    </head>\n    <body>\n        <center>\n            <h1>502 Bad\
-                \ Gateway</h1>\n        </center>\n        <hr>\n        <center>nginx/1.20.1</center>\n\
+              example: "<html>\n    <head>\n        <title>502 Bad Gateway</title>\n    </head>\n    <body>\n        <center>\n\
+                \            <h1>502 Bad Gateway</h1>\n        </center>\n        <hr>\n        <center>nginx/1.20.1</center>\n\
                 \    </body>\n</html>"
+      operationId: post_events
   /v1/requests/{id}:
     patch:
       tags:
@@ -757,6 +782,7 @@ paths:
                   subject: Example Subject
                   nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy8xNTE4NA
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvNzkwMzg
+      operationId: patch_requests_id
     put:
       tags:
       - Requests
@@ -791,6 +817,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: put_requests_id
     get:
       tags:
       - Requests
@@ -1040,11 +1067,12 @@ paths:
                   subject: Example Subject
                   nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy8xNDg2NA
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvNzgyODg
+      operationId: get_requests_id
   /v1/requests:
     post:
       tags:
-      - Reservations
-      summary: Create a reservation
+      - Requests
+      summary: Create request
       requestBody:
         content:
           application/json:
@@ -1471,10 +1499,10 @@ paths:
             text/plain:
               schema:
                 type: string
-              example: "<html>\n    <head>\n        <title>502 Bad Gateway</title>\n\
-                \    </head>\n    <body>\n        <center>\n            <h1>502 Bad\
-                \ Gateway</h1>\n        </center>\n        <hr>\n        <center>nginx/1.20.1</center>\n\
+              example: "<html>\n    <head>\n        <title>502 Bad Gateway</title>\n    </head>\n    <body>\n        <center>\n\
+                \            <h1>502 Bad Gateway</h1>\n        </center>\n        <hr>\n        <center>nginx/1.20.1</center>\n\
                 \    </body>\n</html>"
+      operationId: post_requests
     get:
       tags:
       - Search
@@ -2155,6 +2183,7 @@ paths:
                 created_at: '2022-09-12T14:45:46+03:00'
                 updated_at: '2022-09-12T14:46:12+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzYyNTIz
+      operationId: get_requests
   /v1/requests/{id}/notes:
     post:
       tags:
@@ -2262,6 +2291,7 @@ paths:
                 type: object
               example:
                 id: 2387253
+      operationId: post_requests_id_notes
     get:
       tags:
       - Notes
@@ -3000,6 +3030,7 @@ paths:
                 created_at: '2022-08-23T12:07:09+03:00'
                 updated_at: '2022-08-26T16:20:57+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMjc2MzI5
+      operationId: get_requests_id_notes
   /v1/requests/{id}/satisfied:
     post:
       tags:
@@ -3034,6 +3065,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_requests_id_satisfied
   /v1/requests/{id}/dissatisfied:
     post:
       tags:
@@ -3124,7 +3156,8 @@ paths:
               schema:
                 type: string
               example: ''
-  /v1/requests/{id}/cis/{id}:
+      operationId: post_requests_id_dissatisfied
+  /v1/requests/{request_id}/cis/{ci_id}:
     post:
       tags:
       - Requests
@@ -3137,7 +3170,12 @@ paths:
               example: ''
       parameters:
       - in: path
-        name: id
+        name: request_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: ci_id
         required: true
         schema:
           type: integer
@@ -3156,13 +3194,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_requests_request_id_cis_ci_id
     delete:
       tags:
       - Requests
       summary: RemoveLinkWithCi
       parameters:
       - in: path
-        name: id
+        name: request_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: ci_id
         required: true
         schema:
           type: integer
@@ -3249,6 +3293,7 @@ paths:
               schema:
                 type: object
               example: {}
+      operationId: delete_requests_request_id_cis_ci_id
   /v1/requests/completed:
     get:
       tags:
@@ -3948,6 +3993,7 @@ paths:
                   id: its
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzM0MzQx
+      operationId: get_requests_completed
   /v1/requests/open:
     get:
       tags:
@@ -4072,7 +4118,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
               example:
               - id: 370417
                 sourceID: null
@@ -4620,6 +4668,7 @@ paths:
                 created_at: '2022-09-01T16:38:29+03:00'
                 updated_at: '2022-09-01T16:39:04+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzE0NTkz
+      operationId: get_requests_open
   /v1/requests/requested_by_or_for_me:
     get:
       tags:
@@ -5102,6 +5151,7 @@ paths:
                 created_at: '2022-08-23T12:07:05+03:00'
                 updated_at: '2022-09-01T16:34:04+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMjc2MzI3
+      operationId: get_requests_requested_by_or_for_me
   /v1/requests/requests_of_my_organization:
     get:
       tags:
@@ -5584,6 +5634,7 @@ paths:
                 created_at: '2022-08-23T12:07:05+03:00'
                 updated_at: '2022-09-01T16:34:04+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMjc2MzI3
+      operationId: get_requests_requests_of_my_organization
   /v1/requests/assigned_to_my_team:
     get:
       tags:
@@ -5829,6 +5880,7 @@ paths:
                   subject: Example Subject
                   nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy8xNDg2NA
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvNzgyODg
+      operationId: get_requests_assigned_to_my_team
   /v1/requests/assigned_to_me:
     get:
       tags:
@@ -6573,6 +6625,7 @@ paths:
                 created_at: '2022-08-23T12:07:09+03:00'
                 updated_at: '2022-08-26T16:20:57+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMjc2MzI5
+      operationId: get_requests_assigned_to_me
   /v1/requests/{id}/audit:
     get:
       tags:
@@ -6599,6 +6652,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_requests_id_audit
   /v1/requests/{id}/cis:
     get:
       tags:
@@ -6771,6 +6825,7 @@ paths:
                 created_at: '2022-11-09T20:11:41+03:00'
                 updated_at: '2023-08-24T16:16:06+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9DaS8xNjQ3MDk
+      operationId: get_requests_id_cis
   /v1/requests/{id}/grouped_requests:
     get:
       tags:
@@ -6997,6 +7052,7 @@ paths:
                   id: ext-school
                   name: Example Name
                 nodeID: aXRzbS1xYS5tb3MucnUvUmVxLzMxNzM4Mzg
+      operationId: get_requests_id_grouped_requests
   /v1/people:
     post:
       tags:
@@ -7212,6 +7268,7 @@ paths:
                 errors:
                 - - primary_email
                   - Example Errors
+      operationId: post_people
     get:
       tags:
       - People
@@ -7354,6 +7411,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people
   /v1/people/{id}/contacts:
     post:
       tags:
@@ -7460,6 +7518,7 @@ paths:
                 nodeID: NG1lLXFhLm1vcy5ydS9Db250YWN0Lzg1NjAy
                 label: mobile
                 telephone: '111111'
+      operationId: post_people_id_contacts
     get:
       tags:
       - People
@@ -7602,6 +7661,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people_id_contacts
   /v1/people/{id}:
     get:
       tags:
@@ -7745,6 +7805,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people_id
   /v1/people/support_domain:
     get:
       tags:
@@ -7883,6 +7944,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNDM1OA
+      operationId: get_people_support_domain
   /v1/people/internal:
     get:
       tags:
@@ -8021,6 +8083,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNDM1OA
+      operationId: get_people_internal
   /v1/people/enabled:
     get:
       tags:
@@ -8159,6 +8222,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNDM1OA
+      operationId: get_people_enabled
   /v1/people/disabled:
     get:
       tags:
@@ -8297,6 +8361,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNDM1OA
+      operationId: get_people_disabled
   /v1/people/{id}/ci:
     get:
       tags:
@@ -8323,6 +8388,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_people_id_ci
   /v1/people/{id}/teams:
     get:
       tags:
@@ -8466,6 +8532,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people_id_teams
   /v1/people/{id}/skill_pools:
     get:
       tags:
@@ -8609,6 +8676,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people_id_skill_pools
   /v1/me:
     get:
       tags:
@@ -8630,6 +8698,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_me
   /v1/people/{id}/permissions:
     get:
       tags:
@@ -8773,6 +8842,7 @@ paths:
                   id: moscow
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9QZXJzb24vNjc2NA
+      operationId: get_people_id_permissions
   /v1/people/{id}/service_coverages:
     get:
       tags:
@@ -8799,6 +8869,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_people_id_service_coverages
   /v1/attachments/upload:
     get:
       tags:
@@ -8820,6 +8891,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_attachments_upload
   /v1/attachments/storage:
     get:
       tags:
@@ -8917,6 +8989,7 @@ paths:
                   key: attachments/369/2022/08/01/128702/1659338397.1782348-8f4a2011e47ab8f38f6af3bd7575d00a80218a347f46ba71e40ce65a945a9a04/${filename}
                   x-4me-expiration: '2022-08-01T07:19:57Z'
                   x-4me-signature: 3e5e821552a53a28a25a3629fbd314b1b9ef8cf0dec3dadfdf58f3bf9746aafa
+      operationId: get_attachments_storage
   /v1/attachments:
     post:
       tags:
@@ -9025,6 +9098,7 @@ paths:
                 type: object
               example:
                 key: attachments/369/2022/08/09/128702/1660061940.2560534-d551944ae48215963e94cce2d058efeed0eebb20ad08d2c663365c97fb57e896/addInfoRequest_eng_txt.txt
+      operationId: post_attachments
   /v1/tasks/{id}:
     patch:
       tags:
@@ -9062,6 +9136,7 @@ paths:
                 type: string
               example: null
           description: No description provided
+      operationId: patch_tasks_id
     get:
       tags:
       - Tasks
@@ -9087,6 +9162,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_id
   /v1/teams/{id}:
     get:
       tags:
@@ -9768,6 +9844,7 @@ paths:
                 created_at: '2022-09-12T14:45:46+03:00'
                 updated_at: '2022-09-12T14:46:12+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzYyNTIz
+      operationId: get_teams_id
   /v1/teams/{id}/members:
     get:
       tags:
@@ -10449,6 +10526,7 @@ paths:
                 created_at: '2022-09-12T14:45:46+03:00'
                 updated_at: '2022-09-12T14:46:12+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXEvMzYyNTIz
+      operationId: get_teams_id_members
   /v1/cis:
     post:
       tags:
@@ -10460,12 +10538,10 @@ paths:
           application/json:
             schema:
               type: object
-              example: "{\r\n    \"source\": \"4me\",\r\n    \"systemID\": \"{{some_system_id}}\"\
-                ,\r\n    \"label\": \"{{some ci_label}}\",\r\n    \"name\": \"{{some\
-                \ ci_name}}\",\r\n    \"status\": \"{{cis_status}}\",\r\n    \"product_id\"\
-                : \"{{some ci product id}}\",\r\n    \"service\": \"{{some service\
-                \ id}}\",\r\n    \"support_team_id\": {{some team id}}\r\n    }\r\n\
-                \r\n"
+              example: "{\r\n    \"source\": \"4me\",\r\n    \"systemID\": \"{{some_system_id}}\",\r\n    \"label\": \"{{some\
+                \ ci_label}}\",\r\n    \"name\": \"{{some ci_name}}\",\r\n    \"status\": \"{{cis_status}}\",\r\n    \"product_id\"\
+                : \"{{some ci product id}}\",\r\n    \"service\": \"{{some service id}}\",\r\n    \"support_team_id\": {{some\
+                \ team id}}\r\n    }\r\n\r\n"
       parameters:
       - name: Authorization
         in: header
@@ -10482,6 +10558,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_cis
     get:
       tags:
       - Configuration Items
@@ -10489,8 +10566,7 @@ paths:
       description: 'StartFragment
 
 
-        List all configuration items which support team is one of the teams that the
-        API user is a member of
+        List all configuration items which support team is one of the teams that the API user is a member of
 
 
         EndFragme'
@@ -11070,7 +11146,8 @@ paths:
                 created_at: '2022-11-30T14:02:01+03:00'
                 updated_at: '2022-11-30T14:02:01+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9DaS8xNzE3NzU
-  /v1/cis/{id}/users/{id}:
+      operationId: get_cis
+  /v1/cis/{ci_id}/users/{person_id}:
     post:
       tags:
       - Configuration Item Relations
@@ -11085,7 +11162,12 @@ paths:
                 relation_type: parent
       parameters:
       - in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: person_id
         required: true
         schema:
           type: integer
@@ -11180,13 +11262,19 @@ paths:
                   name: filippov-10.15.179.6
                   nodeID: NG1lLWRldi5tb3MucnUvQ2kvMjAxNjI
                 relation_type: parent
+      operationId: post_cis_ci_id_users_person_id
     delete:
       tags:
       - Configuration Item Relations
       summary: DeleteLinkCIwithPerson
       parameters:
       - in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: person_id
         required: true
         schema:
           type: integer
@@ -11205,6 +11293,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: delete_cis_ci_id_users_person_id
   /v1/cis/active:
     get:
       tags:
@@ -11781,6 +11870,7 @@ paths:
                 created_at: '2022-11-30T14:02:01+03:00'
                 updated_at: '2022-11-30T14:02:01+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9DaS8xNzE3NzU
+      operationId: get_cis_active
   /v1/cis/{id}/users:
     get:
       tags:
@@ -12065,6 +12155,7 @@ paths:
                       name: ubp-k8worker02-t-10.15.230.195
                       nodeID: NG1lLXFhLm1vcy5ydS9DaS82MDAzMw
                     relation_type: child
+      operationId: get_cis_id_users
     delete:
       tags:
       - Configuration Item Relations
@@ -12090,6 +12181,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: delete_cis_id_users
   /v1/cis/inactive:
     get:
       tags:
@@ -12195,6 +12287,7 @@ paths:
               schema:
                 type: object
               example: []
+      operationId: get_cis_inactive
   /v1/cis/supported_by_my_teams:
     get:
       tags:
@@ -12203,8 +12296,7 @@ paths:
       description: 'StartFragment
 
 
-        List all configuration items which support team is one of the teams that the
-        API user is a member of
+        List all configuration items which support team is one of the teams that the API user is a member of
 
 
         EndFragme'
@@ -12308,6 +12400,7 @@ paths:
               schema:
                 type: object
               example: []
+      operationId: get_cis_supported_by_my_teams
   /v1/cis/{id}:
     get:
       tags:
@@ -12487,6 +12580,7 @@ paths:
                 updated_at: '2022-11-30T15:41:02+03:00'
                 warranty_expiry_date: null
                 nodeID: NG1lLXFhLm1vcy5ydS9DaS8xNzE5NzM
+      operationId: get_cis_id
   /v1/cis/{id}/ci_relations:
     get:
       tags:
@@ -12771,6 +12865,7 @@ paths:
                       name: ubp-k8worker02-t-10.15.230.195
                       nodeID: NG1lLXFhLm1vcy5ydS9DaS82MDAzMw
                     relation_type: child
+      operationId: get_cis_id_ci_relations
     post:
       tags:
       - Configuration Item Relations
@@ -12880,6 +12975,7 @@ paths:
                   name: filippov-10.15.179.6
                   nodeID: NG1lLWRldi5tb3MucnUvQ2kvMjAxNjI
                 relation_type: parent
+      operationId: post_cis_id_ci_relations
     delete:
       tags:
       - Configuration Item Relations
@@ -12969,14 +13065,20 @@ paths:
               schema:
                 type: object
               example: {}
-  /v1/cis/{id}/ci_relations/{id}:
+      operationId: delete_cis_id_ci_relations
+  /v1/cis/{ci_id}/ci_relations/{relation_id}:
     delete:
       tags:
       - Configuration Item Relations
       summary: DeleteRelationWithCI
       parameters:
       - in: path
-        name: id
+        name: ci_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: relation_id
         required: true
         schema:
           type: integer
@@ -13059,6 +13161,7 @@ paths:
               schema:
                 type: object
               example: {}
+      operationId: delete_cis_ci_id_ci_relations_relation_id
   /v1/services:
     get:
       tags:
@@ -13159,7 +13262,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
               example:
                 attachments: []
                 availability_manager:
@@ -13241,6 +13346,7 @@ paths:
                   id: it-aktiv
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzMxNw
+      operationId: get_services
   /v1/services/{id}:
     get:
       tags:
@@ -13423,6 +13529,7 @@ paths:
                   id: it-aktiv
                   name: Example Name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzMxNw
+      operationId: get_services_id
   /v1/calendars:
     get:
       tags:
@@ -13542,7 +13649,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
               example:
               - id: 181
                 sourceID: null
@@ -13652,6 +13761,7 @@ paths:
                 updated_at: '2022-02-16T17:06:51+03:00'
                 localized_name: Example Localized_name
                 nodeID: NG1lLXFhLm1vcy5ydS9TZXJ2aWNlLzE4NQ
+      operationId: get_calendars
   /v1/service_offerings:
     get:
       tags:
@@ -13673,6 +13783,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_service_offerings
   /v1/service_offerings/{id}:
     get:
       tags:
@@ -13699,6 +13810,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_service_offerings_id
   /v1/service_offerings/{id}/audit:
     get:
       tags:
@@ -13725,6 +13837,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_service_offerings_id_audit
   /v1/organizations:
     post:
       tags:
@@ -13734,7 +13847,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Organization'
       parameters:
       - name: Authorization
         in: header
@@ -13750,7 +13863,10 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+      operationId: post_organizations
     get:
       tags:
       - Organizations
@@ -13770,7 +13886,12 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+      operationId: get_organizations
   /v1/organizations/{id}:
     get:
       tags:
@@ -13796,7 +13917,41 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+      operationId: get_organizations_id
+    patch:
+      tags:
+      - Organizations
+      summary: UpdateOrganization
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+      operationId: patch_organizations_id
   /v1/workflows:
     get:
       tags:
@@ -13872,8 +14027,7 @@ paths:
             Link:
               schema:
                 type: string
-                example: <https://api.4me-qa.mos.ru/v1/workflows?search_after=eyJvZmZzZXQiOjE5LCJjdXJzb3IiOls1NDk5OV19>;
-                  rel="next"
+                example: <https://api.4me-qa.mos.ru/v1/workflows?search_after=eyJvZmZzZXQiOjE5LCJjdXJzb3IiOls1NDk5OV19>; rel="next"
             Content-Security-Policy:
               schema:
                 type: string
@@ -14543,6 +14697,7 @@ paths:
                 created_at: '2022-11-08T12:05:07+03:00'
                 updated_at: '2022-11-08T12:32:18+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy81NDk5OQ
+      operationId: get_workflows
   /v1/workflows/{id}:
     get:
       tags:
@@ -14623,8 +14778,7 @@ paths:
             Link:
               schema:
                 type: string
-                example: <https://api.4me-qa.mos.ru/v1/workflows?search_after=eyJvZmZzZXQiOjE5LCJjdXJzb3IiOls1NDk5OV19>;
-                  rel="next"
+                example: <https://api.4me-qa.mos.ru/v1/workflows?search_after=eyJvZmZzZXQiOjE5LCJjdXJzb3IiOls1NDk5OV19>; rel="next"
             Content-Security-Policy:
               schema:
                 type: string
@@ -15294,6 +15448,7 @@ paths:
                 created_at: '2022-11-08T12:05:07+03:00'
                 updated_at: '2022-11-08T12:32:18+03:00'
                 nodeID: NG1lLXFhLm1vcy5ydS9Xb3JrZmxvdy81NDk5OQ
+      operationId: get_workflows_id
   /v1/tasks/{id}/notes:
     post:
       tags:
@@ -15400,6 +15555,7 @@ paths:
                 type: object
               example:
                 id: 2507725
+      operationId: post_tasks_id_notes
   /v1/tasks:
     get:
       tags:
@@ -15426,6 +15582,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks
   /v1/tasks/open:
     get:
       tags:
@@ -15436,6 +15593,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_open
   /v1/tasks/managed_by_me:
     get:
       tags:
@@ -15446,6 +15604,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_managed_by_me
   /v1/tasks/assigned_to_my_team:
     get:
       tags:
@@ -15456,6 +15615,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_assigned_to_my_team
   /v1/tasks/assigned_to_me:
     get:
       tags:
@@ -15466,6 +15626,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_assigned_to_me
   /v1/tasks/assigned_by_me:
     get:
       tags:
@@ -15476,6 +15637,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_tasks_assigned_by_me
   /v1/sites/{id}:
     get:
       tags:
@@ -15502,6 +15664,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_sites_id
   /v1/products:
     get:
       tags:
@@ -15626,7 +15789,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
               example:
               - id: 8681
                 sourceID: null
@@ -15808,6 +15973,7 @@ paths:
                 created_at: '2022-10-20T15:37:09+03:00'
                 updated_at: '2022-10-20T15:37:09+03:00'
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC84OTIx
+      operationId: get_products
   /v1/products/{id}:
     get:
       tags:
@@ -15957,6 +16123,7 @@ paths:
                 updated_at: '2022-10-04T17:29:38+03:00'
                 useful_life: null
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC83MTk4
+      operationId: get_products_id
   /v1/product_categories:
     get:
       tags:
@@ -16024,8 +16191,7 @@ paths:
             Link:
               schema:
                 type: string
-                example: <https://api.4me-dev.mos.ru/v1/product_categories?search_after=2>;
-                  rel="next"
+                example: <https://api.4me-dev.mos.ru/v1/product_categories?search_after=2>; rel="next"
             Content-Security-Policy:
               schema:
                 type: string
@@ -16295,6 +16461,7 @@ paths:
                 localized_group: Computer
                 localized_name: Server
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdENhdGVnb3J5LzE0NDQ
+      operationId: get_product_categories
   /v1/product_categories/{id}:
     get:
       tags:
@@ -16321,6 +16488,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_product_categories_id
   /v1/ui_extensions/{id}:
     get:
       tags:
@@ -17092,6 +17260,7 @@ paths:
                     localized_title: Example Localized_title
                     nodeID: NG1lLXFhLm1vcy5ydS9VaUV4dGVuc2lvbi8xNTU5
                   nodeID: NG1lLXFhLm1vcy5ydS9VaUV4dGVuc2lvblZlcnNpb24vMTI3OTU
+      operationId: get_ui_extensions_id
   /v1/ui_extensions:
     get:
       tags:
@@ -17858,6 +18027,7 @@ paths:
                     localized_title: Example Localized_title
                     nodeID: NG1lLXFhLm1vcy5ydS9VaUV4dGVuc2lvbi8xNTU5
                   nodeID: NG1lLXFhLm1vcy5ydS9VaUV4dGVuc2lvblZlcnNpb24vMTI3OTU
+      operationId: get_ui_extensions
   /v1/slas:
     get:
       tags:
@@ -17980,35 +18150,24 @@ paths:
                 disabled: false
                 html: Example Html
                 id: 426
-                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension\
-                  \ = $(this);  // The UI Extension container with custom HTML\n\n\
-                  /**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\"\
-                  ).find(\"i\").hide();\n  $(\"#\"+id).find(\".input-container\").find(\"\
-                  #\"+id+\"_suggest\").attr('readonly', true);\n}\nsetReadOnly(\"\
-                  manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\n\
-                  setReadOnly(\"opo_admin\");\nfunction updateFromSystemCI(id){\n\
-                  \  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function\
-                  \ _getCF(id){\n      var _val = data.custom_fields.find(function(field){\n\
-                  \        return field.id == id;\n      });\n      return _val.value;\n\
-                  \    }\n    console.log(data);\n    var manager = _getCF(\"manager\"\
-                  );\n    var ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"\
-                  spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\");\n    var\
-                  \ product = _getCF(\"product\");\n    var flinesupport = _getCF(\"\
-                  flinesupport\");\n    var spo_slsupport = _getCF(\"spo_slsupport\"\
-                  );\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n \
-                  \   var tlinesupport = _getCF(\"tlinesupport\");\n    $extension.find(\"\
-                  #manager\").val(manager);\n    $extension.find(\"#ib\").val(ib);\n\
-                  \    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"\
-                  #opo_admin\").val(opo_admin);\n    $extension.find(\"#product\"\
-                  ).val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
-                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n \
-                  \   $extension.find(\"#opo_slinesupport\").val(opo_slinesupport);\n\
-                  \    $extension.find(\"#tlinesupport\").val(tlinesupport);\n   \
-                  \ setReadOnly(\"#manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"\
-                  #spo_admin\");\n    setReadOnly(\"#opo_admin\");\n\n  });\n}\n\n\
-                  $extension.find(\"#component\").on('change', function(data) {\n\
-                  \  //console.log($extension.find(\"#system\").val());\n  updateFromSystemCI($extension.find(\"\
-                  #component\").val());\n});**/"
+                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension = $(this);  // The UI Extension container\
+                  \ with custom HTML\n\n/**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\").find(\"i\"\
+                  ).hide();\n  $(\"#\"+id).find(\".input-container\").find(\"#\"+id+\"_suggest\").attr('readonly', true);\n\
+                  }\nsetReadOnly(\"manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\nsetReadOnly(\"opo_admin\"\
+                  );\nfunction updateFromSystemCI(id){\n  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function _getCF(id){\n\
+                  \      var _val = data.custom_fields.find(function(field){\n        return field.id == id;\n      });\n\
+                  \      return _val.value;\n    }\n    console.log(data);\n    var manager = _getCF(\"manager\");\n    var\
+                  \ ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\"\
+                  );\n    var product = _getCF(\"product\");\n    var flinesupport = _getCF(\"flinesupport\");\n    var spo_slsupport\
+                  \ = _getCF(\"spo_slsupport\");\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n    var tlinesupport\
+                  \ = _getCF(\"tlinesupport\");\n    $extension.find(\"#manager\").val(manager);\n    $extension.find(\"#ib\"\
+                  ).val(ib);\n    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"#opo_admin\").val(opo_admin);\n\
+                  \    $extension.find(\"#product\").val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
+                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n    $extension.find(\"#opo_slinesupport\"\
+                  ).val(opo_slinesupport);\n    $extension.find(\"#tlinesupport\").val(tlinesupport);\n    setReadOnly(\"\
+                  #manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"#spo_admin\");\n    setReadOnly(\"#opo_admin\"\
+                  );\n\n  });\n}\n\n$extension.find(\"#component\").on('change', function(data) {\n  //console.log($extension.find(\"\
+                  #system\").val());\n  updateFromSystemCI($extension.find(\"#component\").val());\n});**/"
                 localized_html: Example Localized_html
                 name: Example Name
                 phrases:
@@ -18066,6 +18225,7 @@ paths:
                 updated_at: '2022-08-24T16:36:38+03:00'
                 localized_title: Example Localized_title
                 nodeID: NG1lLWRldi5tb3MucnUvVWlFeHRlbnNpb24vNDI2
+      operationId: get_slas
   /v1/slas/active:
     get:
       tags:
@@ -18183,35 +18343,24 @@ paths:
                 disabled: false
                 html: Example Html
                 id: 426
-                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension\
-                  \ = $(this);  // The UI Extension container with custom HTML\n\n\
-                  /**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\"\
-                  ).find(\"i\").hide();\n  $(\"#\"+id).find(\".input-container\").find(\"\
-                  #\"+id+\"_suggest\").attr('readonly', true);\n}\nsetReadOnly(\"\
-                  manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\n\
-                  setReadOnly(\"opo_admin\");\nfunction updateFromSystemCI(id){\n\
-                  \  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function\
-                  \ _getCF(id){\n      var _val = data.custom_fields.find(function(field){\n\
-                  \        return field.id == id;\n      });\n      return _val.value;\n\
-                  \    }\n    console.log(data);\n    var manager = _getCF(\"manager\"\
-                  );\n    var ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"\
-                  spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\");\n    var\
-                  \ product = _getCF(\"product\");\n    var flinesupport = _getCF(\"\
-                  flinesupport\");\n    var spo_slsupport = _getCF(\"spo_slsupport\"\
-                  );\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n \
-                  \   var tlinesupport = _getCF(\"tlinesupport\");\n    $extension.find(\"\
-                  #manager\").val(manager);\n    $extension.find(\"#ib\").val(ib);\n\
-                  \    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"\
-                  #opo_admin\").val(opo_admin);\n    $extension.find(\"#product\"\
-                  ).val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
-                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n \
-                  \   $extension.find(\"#opo_slinesupport\").val(opo_slinesupport);\n\
-                  \    $extension.find(\"#tlinesupport\").val(tlinesupport);\n   \
-                  \ setReadOnly(\"#manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"\
-                  #spo_admin\");\n    setReadOnly(\"#opo_admin\");\n\n  });\n}\n\n\
-                  $extension.find(\"#component\").on('change', function(data) {\n\
-                  \  //console.log($extension.find(\"#system\").val());\n  updateFromSystemCI($extension.find(\"\
-                  #component\").val());\n});**/"
+                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension = $(this);  // The UI Extension container\
+                  \ with custom HTML\n\n/**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\").find(\"i\"\
+                  ).hide();\n  $(\"#\"+id).find(\".input-container\").find(\"#\"+id+\"_suggest\").attr('readonly', true);\n\
+                  }\nsetReadOnly(\"manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\nsetReadOnly(\"opo_admin\"\
+                  );\nfunction updateFromSystemCI(id){\n  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function _getCF(id){\n\
+                  \      var _val = data.custom_fields.find(function(field){\n        return field.id == id;\n      });\n\
+                  \      return _val.value;\n    }\n    console.log(data);\n    var manager = _getCF(\"manager\");\n    var\
+                  \ ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\"\
+                  );\n    var product = _getCF(\"product\");\n    var flinesupport = _getCF(\"flinesupport\");\n    var spo_slsupport\
+                  \ = _getCF(\"spo_slsupport\");\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n    var tlinesupport\
+                  \ = _getCF(\"tlinesupport\");\n    $extension.find(\"#manager\").val(manager);\n    $extension.find(\"#ib\"\
+                  ).val(ib);\n    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"#opo_admin\").val(opo_admin);\n\
+                  \    $extension.find(\"#product\").val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
+                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n    $extension.find(\"#opo_slinesupport\"\
+                  ).val(opo_slinesupport);\n    $extension.find(\"#tlinesupport\").val(tlinesupport);\n    setReadOnly(\"\
+                  #manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"#spo_admin\");\n    setReadOnly(\"#opo_admin\"\
+                  );\n\n  });\n}\n\n$extension.find(\"#component\").on('change', function(data) {\n  //console.log($extension.find(\"\
+                  #system\").val());\n  updateFromSystemCI($extension.find(\"#component\").val());\n});**/"
                 localized_html: Example Localized_html
                 name: Example Name
                 phrases:
@@ -18269,6 +18418,7 @@ paths:
                 updated_at: '2022-08-24T16:36:38+03:00'
                 localized_title: Example Localized_title
                 nodeID: NG1lLWRldi5tb3MucnUvVWlFeHRlbnNpb24vNDI2
+      operationId: get_slas_active
   /v1/slas/inactive:
     get:
       tags:
@@ -18386,35 +18536,24 @@ paths:
                 disabled: false
                 html: Example Html
                 id: 426
-                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension\
-                  \ = $(this);  // The UI Extension container with custom HTML\n\n\
-                  /**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\"\
-                  ).find(\"i\").hide();\n  $(\"#\"+id).find(\".input-container\").find(\"\
-                  #\"+id+\"_suggest\").attr('readonly', true);\n}\nsetReadOnly(\"\
-                  manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\n\
-                  setReadOnly(\"opo_admin\");\nfunction updateFromSystemCI(id){\n\
-                  \  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function\
-                  \ _getCF(id){\n      var _val = data.custom_fields.find(function(field){\n\
-                  \        return field.id == id;\n      });\n      return _val.value;\n\
-                  \    }\n    console.log(data);\n    var manager = _getCF(\"manager\"\
-                  );\n    var ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"\
-                  spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\");\n    var\
-                  \ product = _getCF(\"product\");\n    var flinesupport = _getCF(\"\
-                  flinesupport\");\n    var spo_slsupport = _getCF(\"spo_slsupport\"\
-                  );\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n \
-                  \   var tlinesupport = _getCF(\"tlinesupport\");\n    $extension.find(\"\
-                  #manager\").val(manager);\n    $extension.find(\"#ib\").val(ib);\n\
-                  \    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"\
-                  #opo_admin\").val(opo_admin);\n    $extension.find(\"#product\"\
-                  ).val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
-                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n \
-                  \   $extension.find(\"#opo_slinesupport\").val(opo_slinesupport);\n\
-                  \    $extension.find(\"#tlinesupport\").val(tlinesupport);\n   \
-                  \ setReadOnly(\"#manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"\
-                  #spo_admin\");\n    setReadOnly(\"#opo_admin\");\n\n  });\n}\n\n\
-                  $extension.find(\"#component\").on('change', function(data) {\n\
-                  \  //console.log($extension.find(\"#system\").val());\n  updateFromSystemCI($extension.find(\"\
-                  #component\").val());\n});**/"
+                javascript: "var $ = ITRP.$;            // jQuery\nvar $extension = $(this);  // The UI Extension container\
+                  \ with custom HTML\n\n/**function setReadOnly(id){\n  $(\"#\"+id).find(\".input-container\").find(\"i\"\
+                  ).hide();\n  $(\"#\"+id).find(\".input-container\").find(\"#\"+id+\"_suggest\").attr('readonly', true);\n\
+                  }\nsetReadOnly(\"manager\");\nsetReadOnly(\"ib\");\nsetReadOnly(\"spo_admin\");\nsetReadOnly(\"opo_admin\"\
+                  );\nfunction updateFromSystemCI(id){\n  $.getJSON( \"/v1/cis/\"+id, function( data ) {\n    function _getCF(id){\n\
+                  \      var _val = data.custom_fields.find(function(field){\n        return field.id == id;\n      });\n\
+                  \      return _val.value;\n    }\n    console.log(data);\n    var manager = _getCF(\"manager\");\n    var\
+                  \ ib = _getCF(\"ib\");\n    var spo_admin = _getCF(\"spo_admin\");\n    var opo_admin = _getCF(\"opo_admin\"\
+                  );\n    var product = _getCF(\"product\");\n    var flinesupport = _getCF(\"flinesupport\");\n    var spo_slsupport\
+                  \ = _getCF(\"spo_slsupport\");\n    var opo_slinesupport = _getCF(\"opo_slinesupport\");\n    var tlinesupport\
+                  \ = _getCF(\"tlinesupport\");\n    $extension.find(\"#manager\").val(manager);\n    $extension.find(\"#ib\"\
+                  ).val(ib);\n    $extension.find(\"#spo_admin\").val(spo_admin);\n    $extension.find(\"#opo_admin\").val(opo_admin);\n\
+                  \    $extension.find(\"#product\").val(product);\n    $extension.find(\"#flinesupport\").val(flinesupport);\n\
+                  \    $extension.find(\"#spo_slsupport\").val(spo_slsupport);\n    $extension.find(\"#opo_slinesupport\"\
+                  ).val(opo_slinesupport);\n    $extension.find(\"#tlinesupport\").val(tlinesupport);\n    setReadOnly(\"\
+                  #manager\");\n    setReadOnly(\"#ib\");\n    setReadOnly(\"#spo_admin\");\n    setReadOnly(\"#opo_admin\"\
+                  );\n\n  });\n}\n\n$extension.find(\"#component\").on('change', function(data) {\n  //console.log($extension.find(\"\
+                  #system\").val());\n  updateFromSystemCI($extension.find(\"#component\").val());\n});**/"
                 localized_html: Example Localized_html
                 name: Example Name
                 phrases:
@@ -18472,6 +18611,7 @@ paths:
                 updated_at: '2022-08-24T16:36:38+03:00'
                 localized_title: Example Localized_title
                 nodeID: NG1lLWRldi5tb3MucnUvVWlFeHRlbnNpb24vNDI2
+      operationId: get_slas_inactive
   /v1/slas/{id}:
     get:
       tags:
@@ -18498,6 +18638,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_slas_id
   /v1/request_templates:
     get:
       tags:
@@ -19049,6 +19190,7 @@ paths:
                 updated_at: '2023-03-13T11:18:43+03:00'
                 localized_subject: Example Localized_subject
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXF1ZXN0VGVtcGxhdGUvMzEyNw
+      operationId: get_request_templates
   /v1/request_templates/{id}:
     get:
       tags:
@@ -19241,16 +19383,152 @@ paths:
                 localized_registration_hints: Example Localized_registration_hints
                 localized_subject: Example Localized_subject
                 nodeID: NG1lLXFhLm1vcy5ydS9SZXF1ZXN0VGVtcGxhdGUvMjA4NQ
-  /v1:
+      operationId: get_request_templates_id
+  /v1/reservations:
     get:
       tags:
       - Reservations
       summary: List reservations
+      description: See https://developer.xurrent.com/v1/reservations/
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+        example: Bearer {{token}}
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+        example: '{{account}}'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+      operationId: get_reservations
+    post:
+      tags:
+      - Reservations
+      summary: Create reservation
+      description: https://developer.xurrent.com/v1/reservations/
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Reservation fields per API documentation
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json: {}
+      operationId: post_reservations
+  /v1/reservations/open:
+    get:
+      tags:
+      - Reservations
+      summary: List open reservations
+      description: Predefined filter per https://developer.xurrent.com/v1/reservations/
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+      operationId: get_reservations_open
+  /v1/reservations/completed:
+    get:
+      tags:
+      - Reservations
+      summary: List completed reservations
+      description: Predefined filter per https://developer.xurrent.com/v1/reservations/
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+      operationId: get_reservations_completed
+  /v1/reservations/{id}:
+    get:
+      tags:
+      - Reservations
+      summary: Get a single reservation
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+      operationId: get_reservations_id
+    patch:
+      tags:
+      - Reservations
+      summary: Update reservation
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+      operationId: patch_reservations_id
   /v1/automation_rules:
     get:
       tags:
@@ -19272,6 +19550,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_automation_rules
   /v1/automation_rules/{id}:
     get:
       tags:
@@ -19298,6 +19577,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_automation_rules_id
   /v1/search:
     get:
       tags:
@@ -19329,6 +19609,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_search
   /v1/custom_collections:
     get:
       tags:
@@ -19635,6 +19916,7 @@ paths:
                 created_at: '2022-10-20T15:37:09+03:00'
                 updated_at: '2022-10-20T15:37:09+03:00'
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC84OTIx
+      operationId: get_custom_collections
   /v1/custom_collections/{id}:
     get:
       tags:
@@ -19784,6 +20066,7 @@ paths:
                 updated_at: '2022-10-04T17:29:38+03:00'
                 useful_life: null
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC83MTk4
+      operationId: get_custom_collections_id
   /v1/custom_collection_elements:
     get:
       tags:
@@ -19933,6 +20216,7 @@ paths:
                 updated_at: '2022-10-04T17:29:38+03:00'
                 useful_life: null
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC83MTk4
+      operationId: get_custom_collection_elements
   /v1/custom_collection_elements/{id}:
     get:
       tags:
@@ -20082,6 +20366,7 @@ paths:
                 updated_at: '2022-10-04T17:29:38+03:00'
                 useful_life: null
                 nodeID: NG1lLWRldi5tb3MucnUvUHJvZHVjdC83MTk4
+      operationId: get_custom_collection_elements_id
   /v1/import:
     post:
       tags:
@@ -20113,6 +20398,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_import
     get:
       tags:
       - Export
@@ -20133,6 +20419,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_import
   /v1/import/{token}:
     get:
       tags:
@@ -20159,6 +20446,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_import_token
   /v1/export:
     post:
       tags:
@@ -20198,6 +20486,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_export
   /v1/account:
     get:
       tags:
@@ -20219,6 +20508,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: get_account
   /v1/problems:
     post:
       tags:
@@ -20251,6 +20541,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_problems
     get:
       tags:
       - Problems
@@ -20268,7 +20559,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /v1/problems/{id}/requests/{id}:
+      operationId: get_problems
+  /v1/problems/{problem_id}/requests/{request_id}:
     post:
       tags:
       - Problems
@@ -20282,7 +20574,12 @@ paths:
       - bearerAuth: []
       parameters:
       - in: path
-        name: id
+        name: problem_id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: request_id
         required: true
         schema:
           type: integer
@@ -20296,6 +20593,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: post_problems_problem_id_requests_request_id
   /v1/problems/{id}:
     patch:
       tags:
@@ -20327,6 +20625,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: patch_problems_id
   /v1/enums:
     get:
       tags:
@@ -23189,20 +23488,16 @@ paths:
                   txt: Organizations by Region
                   code: 101427
                 - id: number_of_request_customer_response_target_breaches_by_creation_date
-                  txt: Number of Request Customer Response Target Breaches By Creation
-                    Date
+                  txt: Number of Request Customer Response Target Breaches By Creation Date
                   code: 101428
                 - id: number_of_request_customer_resolution_target_breaches_by_creation_date
-                  txt: Number of Request Customer Resolution Target Breaches By Creation
-                    Date
+                  txt: Number of Request Customer Resolution Target Breaches By Creation Date
                   code: 101429
                 - id: percentage_of_request_customer_response_target_breaches_by_creation_date
-                  txt: Percentage of Request Customer Response Target Breaches By
-                    Creation Date
+                  txt: Percentage of Request Customer Response Target Breaches By Creation Date
                   code: 101430
                 - id: percentage_of_request_customer_resolution_target_breaches_by_creation_date
-                  txt: Percentage of Request Customer Resolution Target Breaches By
-                    Creation Date
+                  txt: Percentage of Request Customer Resolution Target Breaches By Creation Date
                   code: 101431
                 - id: request_customer_response_targets_met_and_breached
                   txt: Request Customer Response Targets Met and Breached
@@ -25371,3 +25666,4 @@ paths:
                   txt: Example Txt
                 - id: JP
                   txt: Example Txt
+      operationId: get_enums

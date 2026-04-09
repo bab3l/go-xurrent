@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TeamsIdGet**](TeamsAPI.md#V1TeamsIdGet) | **Get** /v1/teams/{id} | GetTeamProperties
-[**V1TeamsIdMembersGet**](TeamsAPI.md#V1TeamsIdMembersGet) | **Get** /v1/teams/{id}/members | GetTeamMembersList
+[**GetTeamsId**](TeamsAPI.md#GetTeamsId) | **Get** /v1/teams/{id} | GetTeamProperties
+[**GetTeamsIdMembers**](TeamsAPI.md#GetTeamsIdMembers) | **Get** /v1/teams/{id}/members | GetTeamMembersList
 
 
 
-## V1TeamsIdGet
+## GetTeamsId
 
-> map[string]interface{} V1TeamsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetTeamsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetTeamProperties
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TeamsAPI.V1TeamsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.TeamsAPI.GetTeamsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.V1TeamsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeamsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1TeamsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.V1TeamsIdGet`: %v\n", resp)
+	// response from `GetTeamsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeamsId`: %v\n", resp)
 }
 ```
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TeamsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTeamsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1TeamsIdMembersGet
+## GetTeamsIdMembers
 
-> map[string]interface{} V1TeamsIdMembersGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetTeamsIdMembers(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetTeamMembersList
 
@@ -96,7 +96,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -106,13 +106,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TeamsAPI.V1TeamsIdMembersGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.TeamsAPI.GetTeamsIdMembers(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.V1TeamsIdMembersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeamsIdMembers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1TeamsIdMembersGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.V1TeamsIdMembersGet`: %v\n", resp)
+	// response from `GetTeamsIdMembers`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeamsIdMembers`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1TeamsIdMembersGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTeamsIdMembersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

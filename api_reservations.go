@@ -16,47 +16,62 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // ReservationsAPIService ReservationsAPI service
 type ReservationsAPIService service
 
-type ApiV1GetRequest struct {
-	ctx        context.Context
-	ApiService *ReservationsAPIService
+type ApiGetReservationsRequest struct {
+	ctx           context.Context
+	ApiService    *ReservationsAPIService
+	authorization *string
+	x4meAccount   *string
 }
 
-func (r ApiV1GetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1GetExecute(r)
+func (r ApiGetReservationsRequest) Authorization(authorization string) ApiGetReservationsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetReservationsRequest) X4meAccount(x4meAccount string) ApiGetReservationsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetReservationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetReservationsExecute(r)
 }
 
 /*
-V1Get List reservations
+GetReservations List reservations
+
+See https://developer.xurrent.com/v1/reservations/
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1GetRequest
+	@return ApiGetReservationsRequest
 */
-func (a *ReservationsAPIService) V1Get(ctx context.Context) ApiV1GetRequest {
-	return ApiV1GetRequest{
+func (a *ReservationsAPIService) GetReservations(ctx context.Context) ApiGetReservationsRequest {
+	return ApiGetReservationsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ReservationsAPIService) V1GetExecute(r ApiV1GetRequest) (*http.Response, error) {
+func (a *ReservationsAPIService) GetReservationsExecute(r ApiGetReservationsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.V1Get")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservations")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1"
+	localVarPath := localBasePath + "/v1/reservations"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -78,6 +93,12 @@ func (a *ReservationsAPIService) V1GetExecute(r ApiV1GetRequest) (*http.Response
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -107,63 +128,384 @@ func (a *ReservationsAPIService) V1GetExecute(r ApiV1GetRequest) (*http.Response
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1RequestsPostRequest struct {
+type ApiGetReservationsCompletedRequest struct {
 	ctx           context.Context
 	ApiService    *ReservationsAPIService
 	authorization *string
 	x4meAccount   *string
-	body          *map[string]interface{}
 }
 
-func (r ApiV1RequestsPostRequest) Authorization(authorization string) ApiV1RequestsPostRequest {
+func (r ApiGetReservationsCompletedRequest) Authorization(authorization string) ApiGetReservationsCompletedRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1RequestsPostRequest) X4meAccount(x4meAccount string) ApiV1RequestsPostRequest {
+func (r ApiGetReservationsCompletedRequest) X4meAccount(x4meAccount string) ApiGetReservationsCompletedRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1RequestsPostRequest) Body(body map[string]interface{}) ApiV1RequestsPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1RequestsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1RequestsPostExecute(r)
+func (r ApiGetReservationsCompletedRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetReservationsCompletedExecute(r)
 }
 
 /*
-V1RequestsPost Create a reservation
+GetReservationsCompleted List completed reservations
+
+Predefined filter per https://developer.xurrent.com/v1/reservations/
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1RequestsPostRequest
+	@return ApiGetReservationsCompletedRequest
 */
-func (a *ReservationsAPIService) V1RequestsPost(ctx context.Context) ApiV1RequestsPostRequest {
-	return ApiV1RequestsPostRequest{
+func (a *ReservationsAPIService) GetReservationsCompleted(ctx context.Context) ApiGetReservationsCompletedRequest {
+	return ApiGetReservationsCompletedRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *ReservationsAPIService) V1RequestsPostExecute(r ApiV1RequestsPostRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ReservationsAPIService) GetReservationsCompletedExecute(r ApiGetReservationsCompletedRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.V1RequestsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsCompleted")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/requests"
+	localVarPath := localBasePath + "/v1/reservations/completed"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetReservationsIdRequest struct {
+	ctx           context.Context
+	ApiService    *ReservationsAPIService
+	id            int32
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetReservationsIdRequest) Authorization(authorization string) ApiGetReservationsIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetReservationsIdRequest) X4meAccount(x4meAccount string) ApiGetReservationsIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetReservationsIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetReservationsIdExecute(r)
+}
+
+/*
+GetReservationsId Get a single reservation
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetReservationsIdRequest
+*/
+func (a *ReservationsAPIService) GetReservationsId(ctx context.Context, id int32) ApiGetReservationsIdRequest {
+	return ApiGetReservationsIdRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ReservationsAPIService) GetReservationsIdExecute(r ApiGetReservationsIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsId")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/reservations/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetReservationsOpenRequest struct {
+	ctx           context.Context
+	ApiService    *ReservationsAPIService
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetReservationsOpenRequest) Authorization(authorization string) ApiGetReservationsOpenRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetReservationsOpenRequest) X4meAccount(x4meAccount string) ApiGetReservationsOpenRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetReservationsOpenRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetReservationsOpenExecute(r)
+}
+
+/*
+GetReservationsOpen List open reservations
+
+Predefined filter per https://developer.xurrent.com/v1/reservations/
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetReservationsOpenRequest
+*/
+func (a *ReservationsAPIService) GetReservationsOpen(ctx context.Context) ApiGetReservationsOpenRequest {
+	return ApiGetReservationsOpenRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ReservationsAPIService) GetReservationsOpenExecute(r ApiGetReservationsOpenRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.GetReservationsOpen")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/reservations/open"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPatchReservationsIdRequest struct {
+	ctx           context.Context
+	ApiService    *ReservationsAPIService
+	id            int32
+	authorization *string
+	x4meAccount   *string
+	body          *map[string]interface{}
+}
+
+func (r ApiPatchReservationsIdRequest) Authorization(authorization string) ApiPatchReservationsIdRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPatchReservationsIdRequest) X4meAccount(x4meAccount string) ApiPatchReservationsIdRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPatchReservationsIdRequest) Body(body map[string]interface{}) ApiPatchReservationsIdRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPatchReservationsIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PatchReservationsIdExecute(r)
+}
+
+/*
+PatchReservationsId Update reservation
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchReservationsIdRequest
+*/
+func (a *ReservationsAPIService) PatchReservationsId(ctx context.Context, id int32) ApiPatchReservationsIdRequest {
+	return ApiPatchReservationsIdRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ReservationsAPIService) PatchReservationsIdExecute(r ApiPatchReservationsIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPatch
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.PatchReservationsId")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/reservations/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -179,7 +521,7 @@ func (a *ReservationsAPIService) V1RequestsPostExecute(r ApiV1RequestsPostReques
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -196,19 +538,19 @@ func (a *ReservationsAPIService) V1RequestsPostExecute(r ApiV1RequestsPostReques
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -216,60 +558,122 @@ func (a *ReservationsAPIService) V1RequestsPostExecute(r ApiV1RequestsPostReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 422 {
-			var v map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 502 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	return localVarHTTPResponse, nil
+}
+
+type ApiPostReservationsRequest struct {
+	ctx           context.Context
+	ApiService    *ReservationsAPIService
+	authorization *string
+	x4meAccount   *string
+	body          *map[string]interface{}
+}
+
+func (r ApiPostReservationsRequest) Authorization(authorization string) ApiPostReservationsRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiPostReservationsRequest) X4meAccount(x4meAccount string) ApiPostReservationsRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiPostReservationsRequest) Body(body map[string]interface{}) ApiPostReservationsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiPostReservationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PostReservationsExecute(r)
+}
+
+/*
+PostReservations Create reservation
+
+https://developer.xurrent.com/v1/reservations/
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostReservationsRequest
+*/
+func (a *ReservationsAPIService) PostReservations(ctx context.Context) ApiPostReservationsRequest {
+	return ApiPostReservationsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ReservationsAPIService) PostReservationsExecute(r ApiPostReservationsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReservationsAPIService.PostReservations")
 	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/reservations"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
-			error: err.Error(),
+			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }

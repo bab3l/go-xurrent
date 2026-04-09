@@ -22,7 +22,7 @@ import (
 // SitesAPIService SitesAPI service
 type SitesAPIService service
 
-type ApiV1SitesIdGetRequest struct {
+type ApiGetSitesIdRequest struct {
 	ctx           context.Context
 	ApiService    *SitesAPIService
 	id            int32
@@ -30,29 +30,29 @@ type ApiV1SitesIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1SitesIdGetRequest) Authorization(authorization string) ApiV1SitesIdGetRequest {
+func (r ApiGetSitesIdRequest) Authorization(authorization string) ApiGetSitesIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1SitesIdGetRequest) X4meAccount(x4meAccount string) ApiV1SitesIdGetRequest {
+func (r ApiGetSitesIdRequest) X4meAccount(x4meAccount string) ApiGetSitesIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1SitesIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1SitesIdGetExecute(r)
+func (r ApiGetSitesIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetSitesIdExecute(r)
 }
 
 /*
-V1SitesIdGet GetSiteProperties
+GetSitesId GetSiteProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1SitesIdGetRequest
+	@return ApiGetSitesIdRequest
 */
-func (a *SitesAPIService) V1SitesIdGet(ctx context.Context, id int32) ApiV1SitesIdGetRequest {
-	return ApiV1SitesIdGetRequest{
+func (a *SitesAPIService) GetSitesId(ctx context.Context, id int32) ApiGetSitesIdRequest {
+	return ApiGetSitesIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -60,14 +60,14 @@ func (a *SitesAPIService) V1SitesIdGet(ctx context.Context, id int32) ApiV1Sites
 }
 
 // Execute executes the request
-func (a *SitesAPIService) V1SitesIdGetExecute(r ApiV1SitesIdGetRequest) (*http.Response, error) {
+func (a *SitesAPIService) GetSitesIdExecute(r ApiGetSitesIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.V1SitesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.GetSitesId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

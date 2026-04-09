@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ServiceLevelAgreementsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_ServiceLevelAgreementsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ServiceLevelAgreementsAPIService V1SlasActiveGet", func(t *testing.T) {
+	t.Run("Test ServiceLevelAgreementsAPIService GetSlas", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.V1SlasActiveGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.GetSlas(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_xurrent_ServiceLevelAgreementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceLevelAgreementsAPIService V1SlasGet", func(t *testing.T) {
+	t.Run("Test ServiceLevelAgreementsAPIService GetSlasActive", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.V1SlasGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.GetSlasActive(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,24 +46,24 @@ func Test_xurrent_ServiceLevelAgreementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceLevelAgreementsAPIService V1SlasIdGet", func(t *testing.T) {
+	t.Run("Test ServiceLevelAgreementsAPIService GetSlasId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ServiceLevelAgreementsAPI.V1SlasIdGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.ServiceLevelAgreementsAPI.GetSlasId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ServiceLevelAgreementsAPIService V1SlasInactiveGet", func(t *testing.T) {
+	t.Run("Test ServiceLevelAgreementsAPIService GetSlasInactive", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.V1SlasInactiveGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceLevelAgreementsAPI.GetSlasInactive(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ConfigurationItemsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,11 +22,11 @@ func Test_xurrent_ConfigurationItemsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ConfigurationItemsAPIService V1CisActiveGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService GetCis", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConfigurationItemsAPI.V1CisActiveGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemsAPI.GetCis(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_xurrent_ConfigurationItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationItemsAPIService V1CisGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService GetCisActive", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConfigurationItemsAPI.V1CisGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemsAPI.GetCisActive(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,13 +46,13 @@ func Test_xurrent_ConfigurationItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationItemsAPIService V1CisIdGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService GetCisId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ConfigurationItemsAPI.V1CisIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemsAPI.GetCisId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_xurrent_ConfigurationItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationItemsAPIService V1CisInactiveGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService GetCisInactive", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConfigurationItemsAPI.V1CisInactiveGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemsAPI.GetCisInactive(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,25 +72,25 @@ func Test_xurrent_ConfigurationItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationItemsAPIService V1CisPost", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService GetCisSupportedByMyTeams", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ConfigurationItemsAPI.V1CisPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationItemsAPI.GetCisSupportedByMyTeams(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConfigurationItemsAPIService V1CisSupportedByMyTeamsGet", func(t *testing.T) {
+	t.Run("Test ConfigurationItemsAPIService PostCis", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConfigurationItemsAPI.V1CisSupportedByMyTeamsGet(context.Background()).Execute()
+		httpRes, err := apiClient.ConfigurationItemsAPI.PostCis(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

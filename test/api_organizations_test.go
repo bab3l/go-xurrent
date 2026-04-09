@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing OrganizationsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,37 +22,54 @@ func Test_xurrent_OrganizationsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test OrganizationsAPIService V1OrganizationsGet", func(t *testing.T) {
+	t.Run("Test OrganizationsAPIService GetOrganizations", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.V1OrganizationsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.GetOrganizations(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OrganizationsAPIService V1OrganizationsIdGet", func(t *testing.T) {
+	t.Run("Test OrganizationsAPIService GetOrganizationsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.OrganizationsAPI.V1OrganizationsIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.GetOrganizationsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OrganizationsAPIService V1OrganizationsPost", func(t *testing.T) {
+	t.Run("Test OrganizationsAPIService PatchOrganizationsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.V1OrganizationsPost(context.Background()).Execute()
+		var id int32
+
+		resp, httpRes, err := apiClient.OrganizationsAPI.PatchOrganizationsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationsAPIService PostOrganizations", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.OrganizationsAPI.PostOrganizations(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

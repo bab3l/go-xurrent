@@ -22,123 +22,7 @@ import (
 // ServiceLevelAgreementsAPIService ServiceLevelAgreementsAPI service
 type ServiceLevelAgreementsAPIService service
 
-type ApiV1SlasActiveGetRequest struct {
-	ctx           context.Context
-	ApiService    *ServiceLevelAgreementsAPIService
-	authorization *string
-	x4meAccount   *string
-}
-
-func (r ApiV1SlasActiveGetRequest) Authorization(authorization string) ApiV1SlasActiveGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1SlasActiveGetRequest) X4meAccount(x4meAccount string) ApiV1SlasActiveGetRequest {
-	r.x4meAccount = &x4meAccount
-	return r
-}
-
-func (r ApiV1SlasActiveGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1SlasActiveGetExecute(r)
-}
-
-/*
-V1SlasActiveGet GetSLAListActive
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SlasActiveGetRequest
-*/
-func (a *ServiceLevelAgreementsAPIService) V1SlasActiveGet(ctx context.Context) ApiV1SlasActiveGetRequest {
-	return ApiV1SlasActiveGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *ServiceLevelAgreementsAPIService) V1SlasActiveGetExecute(r ApiV1SlasActiveGetRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.V1SlasActiveGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/slas/active"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
-	}
-	if r.x4meAccount != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1SlasGetRequest struct {
+type ApiGetSlasRequest struct {
 	ctx             context.Context
 	ApiService      *ServiceLevelAgreementsAPIService
 	authorization   *string
@@ -146,33 +30,33 @@ type ApiV1SlasGetRequest struct {
 	serviceInstance *int32
 }
 
-func (r ApiV1SlasGetRequest) Authorization(authorization string) ApiV1SlasGetRequest {
+func (r ApiGetSlasRequest) Authorization(authorization string) ApiGetSlasRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1SlasGetRequest) X4meAccount(x4meAccount string) ApiV1SlasGetRequest {
+func (r ApiGetSlasRequest) X4meAccount(x4meAccount string) ApiGetSlasRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1SlasGetRequest) ServiceInstance(serviceInstance int32) ApiV1SlasGetRequest {
+func (r ApiGetSlasRequest) ServiceInstance(serviceInstance int32) ApiGetSlasRequest {
 	r.serviceInstance = &serviceInstance
 	return r
 }
 
-func (r ApiV1SlasGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1SlasGetExecute(r)
+func (r ApiGetSlasRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetSlasExecute(r)
 }
 
 /*
-V1SlasGet GetSLAListAllByService
+GetSlas GetSLAListAllByService
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SlasGetRequest
+	@return ApiGetSlasRequest
 */
-func (a *ServiceLevelAgreementsAPIService) V1SlasGet(ctx context.Context) ApiV1SlasGetRequest {
-	return ApiV1SlasGetRequest{
+func (a *ServiceLevelAgreementsAPIService) GetSlas(ctx context.Context) ApiGetSlasRequest {
+	return ApiGetSlasRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -181,7 +65,7 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasGet(ctx context.Context) ApiV1S
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServiceLevelAgreementsAPIService) V1SlasGetExecute(r ApiV1SlasGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServiceLevelAgreementsAPIService) GetSlasExecute(r ApiGetSlasRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -189,7 +73,7 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasGetExecute(r ApiV1SlasGetReques
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.V1SlasGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.GetSlas")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -263,7 +147,123 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasGetExecute(r ApiV1SlasGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SlasIdGetRequest struct {
+type ApiGetSlasActiveRequest struct {
+	ctx           context.Context
+	ApiService    *ServiceLevelAgreementsAPIService
+	authorization *string
+	x4meAccount   *string
+}
+
+func (r ApiGetSlasActiveRequest) Authorization(authorization string) ApiGetSlasActiveRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetSlasActiveRequest) X4meAccount(x4meAccount string) ApiGetSlasActiveRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+func (r ApiGetSlasActiveRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetSlasActiveExecute(r)
+}
+
+/*
+GetSlasActive GetSLAListActive
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetSlasActiveRequest
+*/
+func (a *ServiceLevelAgreementsAPIService) GetSlasActive(ctx context.Context) ApiGetSlasActiveRequest {
+	return ApiGetSlasActiveRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *ServiceLevelAgreementsAPIService) GetSlasActiveExecute(r ApiGetSlasActiveRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.GetSlasActive")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/slas/active"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetSlasIdRequest struct {
 	ctx           context.Context
 	ApiService    *ServiceLevelAgreementsAPIService
 	id            int32
@@ -271,29 +271,29 @@ type ApiV1SlasIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1SlasIdGetRequest) Authorization(authorization string) ApiV1SlasIdGetRequest {
+func (r ApiGetSlasIdRequest) Authorization(authorization string) ApiGetSlasIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1SlasIdGetRequest) X4meAccount(x4meAccount string) ApiV1SlasIdGetRequest {
+func (r ApiGetSlasIdRequest) X4meAccount(x4meAccount string) ApiGetSlasIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1SlasIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1SlasIdGetExecute(r)
+func (r ApiGetSlasIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetSlasIdExecute(r)
 }
 
 /*
-V1SlasIdGet GetSLAProperties
+GetSlasId GetSLAProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1SlasIdGetRequest
+	@return ApiGetSlasIdRequest
 */
-func (a *ServiceLevelAgreementsAPIService) V1SlasIdGet(ctx context.Context, id int32) ApiV1SlasIdGetRequest {
-	return ApiV1SlasIdGetRequest{
+func (a *ServiceLevelAgreementsAPIService) GetSlasId(ctx context.Context, id int32) ApiGetSlasIdRequest {
+	return ApiGetSlasIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -301,14 +301,14 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasIdGet(ctx context.Context, id i
 }
 
 // Execute executes the request
-func (a *ServiceLevelAgreementsAPIService) V1SlasIdGetExecute(r ApiV1SlasIdGetRequest) (*http.Response, error) {
+func (a *ServiceLevelAgreementsAPIService) GetSlasIdExecute(r ApiGetSlasIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.V1SlasIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.GetSlasId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -371,35 +371,35 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasIdGetExecute(r ApiV1SlasIdGetRe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SlasInactiveGetRequest struct {
+type ApiGetSlasInactiveRequest struct {
 	ctx           context.Context
 	ApiService    *ServiceLevelAgreementsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1SlasInactiveGetRequest) Authorization(authorization string) ApiV1SlasInactiveGetRequest {
+func (r ApiGetSlasInactiveRequest) Authorization(authorization string) ApiGetSlasInactiveRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1SlasInactiveGetRequest) X4meAccount(x4meAccount string) ApiV1SlasInactiveGetRequest {
+func (r ApiGetSlasInactiveRequest) X4meAccount(x4meAccount string) ApiGetSlasInactiveRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1SlasInactiveGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1SlasInactiveGetExecute(r)
+func (r ApiGetSlasInactiveRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetSlasInactiveExecute(r)
 }
 
 /*
-V1SlasInactiveGet GetSLAListInactive
+GetSlasInactive GetSLAListInactive
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SlasInactiveGetRequest
+	@return ApiGetSlasInactiveRequest
 */
-func (a *ServiceLevelAgreementsAPIService) V1SlasInactiveGet(ctx context.Context) ApiV1SlasInactiveGetRequest {
-	return ApiV1SlasInactiveGetRequest{
+func (a *ServiceLevelAgreementsAPIService) GetSlasInactive(ctx context.Context) ApiGetSlasInactiveRequest {
+	return ApiGetSlasInactiveRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -408,7 +408,7 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasInactiveGet(ctx context.Context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServiceLevelAgreementsAPIService) V1SlasInactiveGetExecute(r ApiV1SlasInactiveGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServiceLevelAgreementsAPIService) GetSlasInactiveExecute(r ApiGetSlasInactiveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -416,7 +416,7 @@ func (a *ServiceLevelAgreementsAPIService) V1SlasInactiveGetExecute(r ApiV1SlasI
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.V1SlasInactiveGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceLevelAgreementsAPIService.GetSlasInactive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

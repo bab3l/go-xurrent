@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing TasksAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,70 +22,92 @@ func Test_xurrent_TasksAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TasksAPIService V1TasksAssignedByMeGet", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasks", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.TasksAPI.V1TasksAssignedByMeGet(context.Background()).Execute()
+		httpRes, err := apiClient.TasksAPI.GetTasks(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksAssignedToMeGet", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasksAssignedByMe", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.TasksAPI.V1TasksAssignedToMeGet(context.Background()).Execute()
+		httpRes, err := apiClient.TasksAPI.GetTasksAssignedByMe(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksAssignedToMyTeamGet", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasksAssignedToMe", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.TasksAPI.V1TasksAssignedToMyTeamGet(context.Background()).Execute()
+		httpRes, err := apiClient.TasksAPI.GetTasksAssignedToMe(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksGet", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasksAssignedToMyTeam", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.TasksAPI.V1TasksGet(context.Background()).Execute()
+		httpRes, err := apiClient.TasksAPI.GetTasksAssignedToMyTeam(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksIdGet", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasksId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.TasksAPI.V1TasksIdGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksIdNotesPost", func(t *testing.T) {
+	t.Run("Test TasksAPIService GetTasksManagedByMe", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		httpRes, err := apiClient.TasksAPI.GetTasksManagedByMe(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TasksAPIService GetTasksOpen", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		httpRes, err := apiClient.TasksAPI.GetTasksOpen(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TasksAPIService PatchTasksId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.TasksAPI.V1TasksIdNotesPost(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TasksAPI.PatchTasksId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,38 +115,16 @@ func Test_xurrent_TasksAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TasksAPIService V1TasksIdPatch", func(t *testing.T) {
+	t.Run("Test TasksAPIService PostTasksIdNotes", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.TasksAPI.V1TasksIdPatch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TasksAPI.PostTasksIdNotes(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TasksAPIService V1TasksManagedByMeGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.TasksAPI.V1TasksManagedByMeGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TasksAPIService V1TasksOpenGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.TasksAPI.V1TasksOpenGet(context.Background()).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

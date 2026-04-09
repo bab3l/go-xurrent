@@ -4,28 +4,104 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1RequestsAssignedToMeGet**](RequestsAPI.md#V1RequestsAssignedToMeGet) | **Get** /v1/requests/assigned_to_me | GetIssuesList (assigned to ...)
-[**V1RequestsAssignedToMyTeamGet**](RequestsAPI.md#V1RequestsAssignedToMyTeamGet) | **Get** /v1/requests/assigned_to_my_team | GetIssuesList (assigned to my team)
-[**V1RequestsCompletedGet**](RequestsAPI.md#V1RequestsCompletedGet) | **Get** /v1/requests/completed | GetIssuesList (in status \&quot;completed\&quot;)
-[**V1RequestsIdAuditGet**](RequestsAPI.md#V1RequestsIdAuditGet) | **Get** /v1/requests/{id}/audit | GetIssuesAuditEntries
-[**V1RequestsIdCisGet**](RequestsAPI.md#V1RequestsIdCisGet) | **Get** /v1/requests/{id}/cis | GetIssueAllRelatedCiList
-[**V1RequestsIdCisIdDelete**](RequestsAPI.md#V1RequestsIdCisIdDelete) | **Delete** /v1/requests/{id}/cis/{id} | RemoveLinkWithCi
-[**V1RequestsIdCisIdPost**](RequestsAPI.md#V1RequestsIdCisIdPost) | **Post** /v1/requests/{id}/cis/{id} | SetCIToRequest
-[**V1RequestsIdDissatisfiedPost**](RequestsAPI.md#V1RequestsIdDissatisfiedPost) | **Post** /v1/requests/{id}/dissatisfied | ReturnToWork - Decline Execution
-[**V1RequestsIdGet**](RequestsAPI.md#V1RequestsIdGet) | **Get** /v1/requests/{id} | GetIssuesProperties
-[**V1RequestsIdGroupedRequestsGet**](RequestsAPI.md#V1RequestsIdGroupedRequestsGet) | **Get** /v1/requests/{id}/grouped_requests | GetGroupedRequestLinkedRecordsList
-[**V1RequestsIdNotesPost**](RequestsAPI.md#V1RequestsIdNotesPost) | **Post** /v1/requests/{id}/notes | AddInternalComment
-[**V1RequestsIdPut**](RequestsAPI.md#V1RequestsIdPut) | **Put** /v1/requests/{id} | SetNewStatus (no_reply)
-[**V1RequestsIdSatisfiedPost**](RequestsAPI.md#V1RequestsIdSatisfiedPost) | **Post** /v1/requests/{id}/satisfied | CloseRequest - Satisfied
-[**V1RequestsOpenGet**](RequestsAPI.md#V1RequestsOpenGet) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
-[**V1RequestsRequestedByOrForMeGet**](RequestsAPI.md#V1RequestsRequestedByOrForMeGet) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
-[**V1RequestsRequestsOfMyOrganizationGet**](RequestsAPI.md#V1RequestsRequestsOfMyOrganizationGet) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
+[**DeleteRequestsRequestIdCisCiId**](RequestsAPI.md#DeleteRequestsRequestIdCisCiId) | **Delete** /v1/requests/{request_id}/cis/{ci_id} | RemoveLinkWithCi
+[**GetRequestsAssignedToMe**](RequestsAPI.md#GetRequestsAssignedToMe) | **Get** /v1/requests/assigned_to_me | GetIssuesList (assigned to ...)
+[**GetRequestsAssignedToMyTeam**](RequestsAPI.md#GetRequestsAssignedToMyTeam) | **Get** /v1/requests/assigned_to_my_team | GetIssuesList (assigned to my team)
+[**GetRequestsCompleted**](RequestsAPI.md#GetRequestsCompleted) | **Get** /v1/requests/completed | GetIssuesList (in status \&quot;completed\&quot;)
+[**GetRequestsId**](RequestsAPI.md#GetRequestsId) | **Get** /v1/requests/{id} | GetIssuesProperties
+[**GetRequestsIdAudit**](RequestsAPI.md#GetRequestsIdAudit) | **Get** /v1/requests/{id}/audit | GetIssuesAuditEntries
+[**GetRequestsIdCis**](RequestsAPI.md#GetRequestsIdCis) | **Get** /v1/requests/{id}/cis | GetIssueAllRelatedCiList
+[**GetRequestsIdGroupedRequests**](RequestsAPI.md#GetRequestsIdGroupedRequests) | **Get** /v1/requests/{id}/grouped_requests | GetGroupedRequestLinkedRecordsList
+[**GetRequestsOpen**](RequestsAPI.md#GetRequestsOpen) | **Get** /v1/requests/open | GetIssuesList (in status \&quot;open\&quot;)
+[**GetRequestsRequestedByOrForMe**](RequestsAPI.md#GetRequestsRequestedByOrForMe) | **Get** /v1/requests/requested_by_or_for_me | GetIssuesList (requested by or for current user)
+[**GetRequestsRequestsOfMyOrganization**](RequestsAPI.md#GetRequestsRequestsOfMyOrganization) | **Get** /v1/requests/requests_of_my_organization | GetIssuesList (requests_of_my_organization)
+[**PostRequests**](RequestsAPI.md#PostRequests) | **Post** /v1/requests | Create request
+[**PostRequestsIdDissatisfied**](RequestsAPI.md#PostRequestsIdDissatisfied) | **Post** /v1/requests/{id}/dissatisfied | ReturnToWork - Decline Execution
+[**PostRequestsIdNotes**](RequestsAPI.md#PostRequestsIdNotes) | **Post** /v1/requests/{id}/notes | AddInternalComment
+[**PostRequestsIdSatisfied**](RequestsAPI.md#PostRequestsIdSatisfied) | **Post** /v1/requests/{id}/satisfied | CloseRequest - Satisfied
+[**PostRequestsRequestIdCisCiId**](RequestsAPI.md#PostRequestsRequestIdCisCiId) | **Post** /v1/requests/{request_id}/cis/{ci_id} | SetCIToRequest
+[**PutRequestsId**](RequestsAPI.md#PutRequestsId) | **Put** /v1/requests/{id} | SetNewStatus (no_reply)
 
 
 
-## V1RequestsAssignedToMeGet
+## DeleteRequestsRequestIdCisCiId
 
-> map[string]interface{} V1RequestsAssignedToMeGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).Execute()
+> map[string]interface{} DeleteRequestsRequestIdCisCiId(ctx, requestId, ciId).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+RemoveLinkWithCi
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	requestId := int32(56) // int32 | 
+	ciId := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.DeleteRequestsRequestIdCisCiId(context.Background(), requestId, ciId).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.DeleteRequestsRequestIdCisCiId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteRequestsRequestIdCisCiId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.DeleteRequestsRequestIdCisCiId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**requestId** | **int32** |  | 
+**ciId** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteRequestsRequestIdCisCiIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsAssignedToMe
+
+> map[string]interface{} GetRequestsAssignedToMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).Execute()
 
 GetIssuesList (assigned to ...)
 
@@ -38,7 +114,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -49,13 +125,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsAssignedToMeGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).Execute()
+	resp, r, err := apiClient.RequestsAPI.GetRequestsAssignedToMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsAssignedToMeGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsAssignedToMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsAssignedToMeGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsAssignedToMeGet`: %v\n", resp)
+	// response from `GetRequestsAssignedToMe`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsAssignedToMe`: %v\n", resp)
 }
 ```
 
@@ -65,7 +141,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsAssignedToMeGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsAssignedToMeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -93,9 +169,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsAssignedToMyTeamGet
+## GetRequestsAssignedToMyTeam
 
-> map[string]interface{} V1RequestsAssignedToMyTeamGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsAssignedToMyTeam(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetIssuesList (assigned to my team)
 
@@ -108,7 +184,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -117,13 +193,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsAssignedToMyTeamGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.RequestsAPI.GetRequestsAssignedToMyTeam(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsAssignedToMyTeamGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsAssignedToMyTeam``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsAssignedToMyTeamGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsAssignedToMyTeamGet`: %v\n", resp)
+	// response from `GetRequestsAssignedToMyTeam`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsAssignedToMyTeam`: %v\n", resp)
 }
 ```
 
@@ -133,7 +209,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsAssignedToMyTeamGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsAssignedToMyTeamRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -159,9 +235,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsCompletedGet
+## GetRequestsCompleted
 
-> map[string]interface{} V1RequestsCompletedGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsCompleted(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetIssuesList (in status \"completed\")
 
@@ -174,7 +250,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -183,13 +259,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsCompletedGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.RequestsAPI.GetRequestsCompleted(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsCompletedGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsCompleted``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsCompletedGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsCompletedGet`: %v\n", resp)
+	// response from `GetRequestsCompleted`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsCompleted`: %v\n", resp)
 }
 ```
 
@@ -199,7 +275,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsCompletedGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsCompletedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -225,9 +301,81 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdAuditGet
+## GetRequestsId
 
-> V1RequestsIdAuditGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetIssuesProperties
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsId`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsIdAudit
+
+> GetRequestsIdAudit(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetIssuesAuditEntries
 
@@ -240,7 +388,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -250,9 +398,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RequestsAPI.V1RequestsIdAuditGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.RequestsAPI.GetRequestsIdAudit(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdAuditGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdAudit``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -268,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdAuditGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsIdAuditRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -295,9 +443,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdCisGet
+## GetRequestsIdCis
 
-> map[string]interface{} V1RequestsIdCisGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsIdCis(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetIssueAllRelatedCiList
 
@@ -310,7 +458,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -320,13 +468,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdCisGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdCis(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdCisGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdCis``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsIdCisGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdCisGet`: %v\n", resp)
+	// response from `GetRequestsIdCis`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdCis`: %v\n", resp)
 }
 ```
 
@@ -340,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdCisGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsIdCisRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -367,11 +515,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdCisIdDelete
+## GetRequestsIdGroupedRequests
 
-> map[string]interface{} V1RequestsIdCisIdDelete(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsIdGroupedRequests(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
-RemoveLinkWithCi
+GetGroupedRequestLinkedRecordsList
 
 ### Example
 
@@ -382,7 +530,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -392,13 +540,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdCisIdDelete(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.RequestsAPI.GetRequestsIdGroupedRequests(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdCisIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdGroupedRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsIdCisIdDelete`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdCisIdDelete`: %v\n", resp)
+	// response from `GetRequestsIdGroupedRequests`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdGroupedRequests`: %v\n", resp)
 }
 ```
 
@@ -412,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdCisIdDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsIdGroupedRequestsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -439,11 +587,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdCisIdPost
+## GetRequestsOpen
 
-> V1RequestsIdCisIdPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> []map[string]interface{} GetRequestsOpen(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
-SetCIToRequest
+GetIssuesList (in status \"open\")
 
 ### Example
 
@@ -454,48 +602,242 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
-	id := int32(56) // int32 | 
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsOpen(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsOpen``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsOpen`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsOpen`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsOpenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsRequestedByOrForMe
+
+> map[string]interface{} GetRequestsRequestedByOrForMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetIssuesList (requested by or for current user)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsRequestedByOrForMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsRequestedByOrForMe``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsRequestedByOrForMe`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsRequestedByOrForMe`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsRequestedByOrForMeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRequestsRequestsOfMyOrganization
+
+> map[string]interface{} GetRequestsRequestsOfMyOrganization(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+
+GetIssuesList (requests_of_my_organization)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
+	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
+	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.GetRequestsRequestsOfMyOrganization(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsRequestsOfMyOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRequestsRequestsOfMyOrganization`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsRequestsOfMyOrganization`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRequestsRequestsOfMyOrganizationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostRequests
+
+> map[string]interface{} PostRequests(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+
+Create request
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/bab3l/go-xurrent"
+)
+
+func main() {
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
 	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RequestsAPI.V1RequestsIdCisIdPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.RequestsAPI.PostRequests(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdCisIdPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `PostRequests`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequests`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdCisIdPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -504,16 +846,16 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdDissatisfiedPost
+## PostRequestsIdDissatisfied
 
-> string V1RequestsIdDissatisfiedPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> string PostRequestsIdDissatisfied(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 ReturnToWork - Decline Execution
 
@@ -526,7 +868,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -537,13 +879,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdDissatisfiedPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.RequestsAPI.PostRequestsIdDissatisfied(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdDissatisfiedPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdDissatisfied``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsIdDissatisfiedPost`: string
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdDissatisfiedPost`: %v\n", resp)
+	// response from `PostRequestsIdDissatisfied`: string
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequestsIdDissatisfied`: %v\n", resp)
 }
 ```
 
@@ -557,7 +899,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdDissatisfiedPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestsIdDissatisfiedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -585,153 +927,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdGet
+## PostRequestsIdNotes
 
-> map[string]interface{} V1RequestsIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetIssuesProperties
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1RequestsIdGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1RequestsIdGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1RequestsIdGroupedRequestsGet
-
-> map[string]interface{} V1RequestsIdGroupedRequestsGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetGroupedRequestLinkedRecordsList
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdGroupedRequestsGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdGroupedRequestsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1RequestsIdGroupedRequestsGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdGroupedRequestsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1RequestsIdGroupedRequestsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1RequestsIdNotesPost
-
-> map[string]interface{} V1RequestsIdNotesPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> map[string]interface{} PostRequestsIdNotes(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 AddInternalComment
 
@@ -744,7 +942,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -755,13 +953,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsIdNotesPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	resp, r, err := apiClient.RequestsAPI.PostRequestsIdNotes(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdNotesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdNotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsIdNotesPost`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsIdNotesPost`: %v\n", resp)
+	// response from `PostRequestsIdNotes`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.PostRequestsIdNotes`: %v\n", resp)
 }
 ```
 
@@ -775,7 +973,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdNotesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestsIdNotesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -803,81 +1001,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsIdPut
+## PostRequestsIdSatisfied
 
-> V1RequestsIdPut(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
-
-SetNewStatus (no_reply)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	id := int32(56) // int32 | 
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RequestsAPI.V1RequestsIdPut(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdPut``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1RequestsIdPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1RequestsIdSatisfiedPost
-
-> V1RequestsIdSatisfiedPost(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostRequestsIdSatisfied(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 CloseRequest - Satisfied
 
@@ -890,7 +1016,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -901,9 +1027,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RequestsAPI.V1RequestsIdSatisfiedPost(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	r, err := apiClient.RequestsAPI.PostRequestsIdSatisfied(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsIdSatisfiedPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsIdSatisfied``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -919,7 +1045,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdSatisfiedPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestsIdSatisfiedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -947,11 +1073,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsOpenGet
+## PostRequestsRequestIdCisCiId
 
-> map[string]interface{} V1RequestsOpenGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> PostRequestsRequestIdCisCiId(ctx, requestId, ciId).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
-GetIssuesList (in status \"open\")
+SetCIToRequest
 
 ### Example
 
@@ -962,42 +1088,51 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
+	requestId := int32(56) // int32 | 
+	ciId := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsOpenGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.RequestsAPI.PostRequestsRequestIdCisCiId(context.Background(), requestId, ciId).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsOpenGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PostRequestsRequestIdCisCiId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsOpenGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsOpenGet`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**requestId** | **int32** |  | 
+**ciId** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsOpenGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestsRequestIdCisCiIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -1005,7 +1140,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1013,77 +1148,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1RequestsRequestedByOrForMeGet
+## PutRequestsId
 
-> map[string]interface{} V1RequestsRequestedByOrForMeGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> PutRequestsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
-GetIssuesList (requested by or for current user)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
-)
-
-func main() {
-	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
-	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsRequestedByOrForMeGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsRequestedByOrForMeGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1RequestsRequestedByOrForMeGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsRequestedByOrForMeGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1RequestsRequestedByOrForMeGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** |  | 
- **x4meAccount** | **string** |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1RequestsRequestsOfMyOrganizationGet
-
-> map[string]interface{} V1RequestsRequestsOfMyOrganizationGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
-
-GetIssuesList (requests_of_my_organization)
+SetNewStatus (no_reply)
 
 ### Example
 
@@ -1094,42 +1163,48 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
+	id := int32(56) // int32 | 
 	authorization := "Bearer {{system_user acess token}}" // string |  (optional)
 	x4meAccount := "{{X-4me-Account}}" // string |  (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.V1RequestsRequestsOfMyOrganizationGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.RequestsAPI.PutRequestsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.V1RequestsRequestsOfMyOrganizationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.PutRequestsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsRequestsOfMyOrganizationGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.V1RequestsRequestsOfMyOrganizationGet`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsRequestsOfMyOrganizationGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutRequestsIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **authorization** | **string** |  | 
  **x4meAccount** | **string** |  | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -1137,7 +1212,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

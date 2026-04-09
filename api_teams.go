@@ -22,7 +22,7 @@ import (
 // TeamsAPIService TeamsAPI service
 type TeamsAPIService service
 
-type ApiV1TeamsIdGetRequest struct {
+type ApiGetTeamsIdRequest struct {
 	ctx           context.Context
 	ApiService    *TeamsAPIService
 	id            int32
@@ -30,29 +30,29 @@ type ApiV1TeamsIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1TeamsIdGetRequest) Authorization(authorization string) ApiV1TeamsIdGetRequest {
+func (r ApiGetTeamsIdRequest) Authorization(authorization string) ApiGetTeamsIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1TeamsIdGetRequest) X4meAccount(x4meAccount string) ApiV1TeamsIdGetRequest {
+func (r ApiGetTeamsIdRequest) X4meAccount(x4meAccount string) ApiGetTeamsIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1TeamsIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1TeamsIdGetExecute(r)
+func (r ApiGetTeamsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetTeamsIdExecute(r)
 }
 
 /*
-V1TeamsIdGet GetTeamProperties
+GetTeamsId GetTeamProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1TeamsIdGetRequest
+	@return ApiGetTeamsIdRequest
 */
-func (a *TeamsAPIService) V1TeamsIdGet(ctx context.Context, id int32) ApiV1TeamsIdGetRequest {
-	return ApiV1TeamsIdGetRequest{
+func (a *TeamsAPIService) GetTeamsId(ctx context.Context, id int32) ApiGetTeamsIdRequest {
+	return ApiGetTeamsIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -62,7 +62,7 @@ func (a *TeamsAPIService) V1TeamsIdGet(ctx context.Context, id int32) ApiV1Teams
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *TeamsAPIService) V1TeamsIdGetExecute(r ApiV1TeamsIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -70,7 +70,7 @@ func (a *TeamsAPIService) V1TeamsIdGetExecute(r ApiV1TeamsIdGetRequest) (map[str
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.V1TeamsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,7 +142,7 @@ func (a *TeamsAPIService) V1TeamsIdGetExecute(r ApiV1TeamsIdGetRequest) (map[str
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1TeamsIdMembersGetRequest struct {
+type ApiGetTeamsIdMembersRequest struct {
 	ctx           context.Context
 	ApiService    *TeamsAPIService
 	id            int32
@@ -150,29 +150,29 @@ type ApiV1TeamsIdMembersGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1TeamsIdMembersGetRequest) Authorization(authorization string) ApiV1TeamsIdMembersGetRequest {
+func (r ApiGetTeamsIdMembersRequest) Authorization(authorization string) ApiGetTeamsIdMembersRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1TeamsIdMembersGetRequest) X4meAccount(x4meAccount string) ApiV1TeamsIdMembersGetRequest {
+func (r ApiGetTeamsIdMembersRequest) X4meAccount(x4meAccount string) ApiGetTeamsIdMembersRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1TeamsIdMembersGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1TeamsIdMembersGetExecute(r)
+func (r ApiGetTeamsIdMembersRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetTeamsIdMembersExecute(r)
 }
 
 /*
-V1TeamsIdMembersGet GetTeamMembersList
+GetTeamsIdMembers GetTeamMembersList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1TeamsIdMembersGetRequest
+	@return ApiGetTeamsIdMembersRequest
 */
-func (a *TeamsAPIService) V1TeamsIdMembersGet(ctx context.Context, id int32) ApiV1TeamsIdMembersGetRequest {
-	return ApiV1TeamsIdMembersGetRequest{
+func (a *TeamsAPIService) GetTeamsIdMembers(ctx context.Context, id int32) ApiGetTeamsIdMembersRequest {
+	return ApiGetTeamsIdMembersRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -182,7 +182,7 @@ func (a *TeamsAPIService) V1TeamsIdMembersGet(ctx context.Context, id int32) Api
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *TeamsAPIService) V1TeamsIdMembersGetExecute(r ApiV1TeamsIdMembersGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -190,7 +190,7 @@ func (a *TeamsAPIService) V1TeamsIdMembersGetExecute(r ApiV1TeamsIdMembersGetReq
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.V1TeamsIdMembersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsIdMembers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

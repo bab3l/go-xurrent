@@ -8,10 +8,13 @@ $OutputDir = $ProjectRoot
 
 Write-Host "Generating Go client from $InputFile..."
 
+# Pin image tag for reproducible builds (see .openapi-generator/VERSION for last generated toolchain).
+$OpenApiGenImage = "openapitools/openapi-generator-cli:v7.8.0"
+
 # Run OpenAPI Generator via Docker
 docker run --rm `
     -v "${ProjectRoot}:/local" `
-    openapitools/openapi-generator-cli generate `
+    "${OpenApiGenImage}" generate `
     -i /local/openapi/openapi.yaml `
     -g go `
     -o /local `
@@ -19,7 +22,7 @@ docker run --rm `
     --git-repo-id "go-xurrent" `
     --package-name "xurrent" `
     -p packageName=xurrent `
-    -p isGoSubmodule=true `
+    -p isGoSubmodule=false `
     -p enumClassPrefix=true `
     -p useOneOfDiscriminatorLookup=true
 

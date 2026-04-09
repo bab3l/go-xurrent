@@ -21,35 +21,35 @@ import (
 // CalendarsAPIService CalendarsAPI service
 type CalendarsAPIService service
 
-type ApiV1CalendarsGetRequest struct {
+type ApiGetCalendarsRequest struct {
 	ctx           context.Context
 	ApiService    *CalendarsAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1CalendarsGetRequest) Authorization(authorization string) ApiV1CalendarsGetRequest {
+func (r ApiGetCalendarsRequest) Authorization(authorization string) ApiGetCalendarsRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1CalendarsGetRequest) X4meAccount(x4meAccount string) ApiV1CalendarsGetRequest {
+func (r ApiGetCalendarsRequest) X4meAccount(x4meAccount string) ApiGetCalendarsRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1CalendarsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1CalendarsGetExecute(r)
+func (r ApiGetCalendarsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetCalendarsExecute(r)
 }
 
 /*
-V1CalendarsGet GetCalendars
+GetCalendars GetCalendars
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CalendarsGetRequest
+	@return ApiGetCalendarsRequest
 */
-func (a *CalendarsAPIService) V1CalendarsGet(ctx context.Context) ApiV1CalendarsGetRequest {
-	return ApiV1CalendarsGetRequest{
+func (a *CalendarsAPIService) GetCalendars(ctx context.Context) ApiGetCalendarsRequest {
+	return ApiGetCalendarsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -57,16 +57,16 @@ func (a *CalendarsAPIService) V1CalendarsGet(ctx context.Context) ApiV1Calendars
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CalendarsAPIService) V1CalendarsGetExecute(r ApiV1CalendarsGetRequest) (map[string]interface{}, *http.Response, error) {
+//	@return []map[string]interface{}
+func (a *CalendarsAPIService) GetCalendarsExecute(r ApiGetCalendarsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue []map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.V1CalendarsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.GetCalendars")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing TeamsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,13 +22,13 @@ func Test_xurrent_TeamsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TeamsAPIService V1TeamsIdGet", func(t *testing.T) {
+	t.Run("Test TeamsAPIService GetTeamsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.TeamsAPI.V1TeamsIdGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TeamsAPI.GetTeamsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_xurrent_TeamsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TeamsAPIService V1TeamsIdMembersGet", func(t *testing.T) {
+	t.Run("Test TeamsAPIService GetTeamsIdMembers", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.TeamsAPI.V1TeamsIdMembersGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TeamsAPI.GetTeamsIdMembers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

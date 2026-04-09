@@ -22,35 +22,35 @@ import (
 // ProductCategoriesAPIService ProductCategoriesAPI service
 type ProductCategoriesAPIService service
 
-type ApiV1ProductCategoriesGetRequest struct {
+type ApiGetProductCategoriesRequest struct {
 	ctx           context.Context
 	ApiService    *ProductCategoriesAPIService
 	authorization *string
 	x4meAccount   *string
 }
 
-func (r ApiV1ProductCategoriesGetRequest) Authorization(authorization string) ApiV1ProductCategoriesGetRequest {
+func (r ApiGetProductCategoriesRequest) Authorization(authorization string) ApiGetProductCategoriesRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ProductCategoriesGetRequest) X4meAccount(x4meAccount string) ApiV1ProductCategoriesGetRequest {
+func (r ApiGetProductCategoriesRequest) X4meAccount(x4meAccount string) ApiGetProductCategoriesRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ProductCategoriesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1ProductCategoriesGetExecute(r)
+func (r ApiGetProductCategoriesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetProductCategoriesExecute(r)
 }
 
 /*
-V1ProductCategoriesGet GetProductCategoriesList
+GetProductCategories GetProductCategoriesList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ProductCategoriesGetRequest
+	@return ApiGetProductCategoriesRequest
 */
-func (a *ProductCategoriesAPIService) V1ProductCategoriesGet(ctx context.Context) ApiV1ProductCategoriesGetRequest {
-	return ApiV1ProductCategoriesGetRequest{
+func (a *ProductCategoriesAPIService) GetProductCategories(ctx context.Context) ApiGetProductCategoriesRequest {
+	return ApiGetProductCategoriesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -59,7 +59,7 @@ func (a *ProductCategoriesAPIService) V1ProductCategoriesGet(ctx context.Context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProductCategoriesAPIService) V1ProductCategoriesGetExecute(r ApiV1ProductCategoriesGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProductCategoriesAPIService) GetProductCategoriesExecute(r ApiGetProductCategoriesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -67,7 +67,7 @@ func (a *ProductCategoriesAPIService) V1ProductCategoriesGetExecute(r ApiV1Produ
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductCategoriesAPIService.V1ProductCategoriesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductCategoriesAPIService.GetProductCategories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -138,7 +138,7 @@ func (a *ProductCategoriesAPIService) V1ProductCategoriesGetExecute(r ApiV1Produ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ProductCategoriesIdGetRequest struct {
+type ApiGetProductCategoriesIdRequest struct {
 	ctx           context.Context
 	ApiService    *ProductCategoriesAPIService
 	id            int32
@@ -146,29 +146,29 @@ type ApiV1ProductCategoriesIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1ProductCategoriesIdGetRequest) Authorization(authorization string) ApiV1ProductCategoriesIdGetRequest {
+func (r ApiGetProductCategoriesIdRequest) Authorization(authorization string) ApiGetProductCategoriesIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1ProductCategoriesIdGetRequest) X4meAccount(x4meAccount string) ApiV1ProductCategoriesIdGetRequest {
+func (r ApiGetProductCategoriesIdRequest) X4meAccount(x4meAccount string) ApiGetProductCategoriesIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1ProductCategoriesIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ProductCategoriesIdGetExecute(r)
+func (r ApiGetProductCategoriesIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetProductCategoriesIdExecute(r)
 }
 
 /*
-V1ProductCategoriesIdGet GetProductCategoriesProperties
+GetProductCategoriesId GetProductCategoriesProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1ProductCategoriesIdGetRequest
+	@return ApiGetProductCategoriesIdRequest
 */
-func (a *ProductCategoriesAPIService) V1ProductCategoriesIdGet(ctx context.Context, id int32) ApiV1ProductCategoriesIdGetRequest {
-	return ApiV1ProductCategoriesIdGetRequest{
+func (a *ProductCategoriesAPIService) GetProductCategoriesId(ctx context.Context, id int32) ApiGetProductCategoriesIdRequest {
+	return ApiGetProductCategoriesIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -176,14 +176,14 @@ func (a *ProductCategoriesAPIService) V1ProductCategoriesIdGet(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *ProductCategoriesAPIService) V1ProductCategoriesIdGetExecute(r ApiV1ProductCategoriesIdGetRequest) (*http.Response, error) {
+func (a *ProductCategoriesAPIService) GetProductCategoriesIdExecute(r ApiGetProductCategoriesIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductCategoriesAPIService.V1ProductCategoriesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductCategoriesAPIService.GetProductCategoriesId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

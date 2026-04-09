@@ -22,7 +22,7 @@ import (
 // RequestTemplatesAPIService RequestTemplatesAPI service
 type RequestTemplatesAPIService service
 
-type ApiV1RequestTemplatesGetRequest struct {
+type ApiGetRequestTemplatesRequest struct {
 	ctx           context.Context
 	ApiService    *RequestTemplatesAPIService
 	authorization *string
@@ -30,33 +30,33 @@ type ApiV1RequestTemplatesGetRequest struct {
 	service       *string
 }
 
-func (r ApiV1RequestTemplatesGetRequest) Authorization(authorization string) ApiV1RequestTemplatesGetRequest {
+func (r ApiGetRequestTemplatesRequest) Authorization(authorization string) ApiGetRequestTemplatesRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1RequestTemplatesGetRequest) X4meAccount(x4meAccount string) ApiV1RequestTemplatesGetRequest {
+func (r ApiGetRequestTemplatesRequest) X4meAccount(x4meAccount string) ApiGetRequestTemplatesRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1RequestTemplatesGetRequest) Service(service string) ApiV1RequestTemplatesGetRequest {
+func (r ApiGetRequestTemplatesRequest) Service(service string) ApiGetRequestTemplatesRequest {
 	r.service = &service
 	return r
 }
 
-func (r ApiV1RequestTemplatesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1RequestTemplatesGetExecute(r)
+func (r ApiGetRequestTemplatesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetRequestTemplatesExecute(r)
 }
 
 /*
-V1RequestTemplatesGet GetRequestTemplatesListByService
+GetRequestTemplates GetRequestTemplatesListByService
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1RequestTemplatesGetRequest
+	@return ApiGetRequestTemplatesRequest
 */
-func (a *RequestTemplatesAPIService) V1RequestTemplatesGet(ctx context.Context) ApiV1RequestTemplatesGetRequest {
-	return ApiV1RequestTemplatesGetRequest{
+func (a *RequestTemplatesAPIService) GetRequestTemplates(ctx context.Context) ApiGetRequestTemplatesRequest {
+	return ApiGetRequestTemplatesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -65,7 +65,7 @@ func (a *RequestTemplatesAPIService) V1RequestTemplatesGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *RequestTemplatesAPIService) V1RequestTemplatesGetExecute(r ApiV1RequestTemplatesGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *RequestTemplatesAPIService) GetRequestTemplatesExecute(r ApiGetRequestTemplatesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -73,7 +73,7 @@ func (a *RequestTemplatesAPIService) V1RequestTemplatesGetExecute(r ApiV1Request
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.V1RequestTemplatesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.GetRequestTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -147,7 +147,7 @@ func (a *RequestTemplatesAPIService) V1RequestTemplatesGetExecute(r ApiV1Request
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1RequestTemplatesIdGetRequest struct {
+type ApiGetRequestTemplatesIdRequest struct {
 	ctx           context.Context
 	ApiService    *RequestTemplatesAPIService
 	id            int32
@@ -155,29 +155,29 @@ type ApiV1RequestTemplatesIdGetRequest struct {
 	x4meAccount   *string
 }
 
-func (r ApiV1RequestTemplatesIdGetRequest) Authorization(authorization string) ApiV1RequestTemplatesIdGetRequest {
+func (r ApiGetRequestTemplatesIdRequest) Authorization(authorization string) ApiGetRequestTemplatesIdRequest {
 	r.authorization = &authorization
 	return r
 }
 
-func (r ApiV1RequestTemplatesIdGetRequest) X4meAccount(x4meAccount string) ApiV1RequestTemplatesIdGetRequest {
+func (r ApiGetRequestTemplatesIdRequest) X4meAccount(x4meAccount string) ApiGetRequestTemplatesIdRequest {
 	r.x4meAccount = &x4meAccount
 	return r
 }
 
-func (r ApiV1RequestTemplatesIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.V1RequestTemplatesIdGetExecute(r)
+func (r ApiGetRequestTemplatesIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GetRequestTemplatesIdExecute(r)
 }
 
 /*
-V1RequestTemplatesIdGet GetRequestTemplatesProperties
+GetRequestTemplatesId GetRequestTemplatesProperties
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
-	@return ApiV1RequestTemplatesIdGetRequest
+	@return ApiGetRequestTemplatesIdRequest
 */
-func (a *RequestTemplatesAPIService) V1RequestTemplatesIdGet(ctx context.Context, id int32) ApiV1RequestTemplatesIdGetRequest {
-	return ApiV1RequestTemplatesIdGetRequest{
+func (a *RequestTemplatesAPIService) GetRequestTemplatesId(ctx context.Context, id int32) ApiGetRequestTemplatesIdRequest {
+	return ApiGetRequestTemplatesIdRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -187,7 +187,7 @@ func (a *RequestTemplatesAPIService) V1RequestTemplatesIdGet(ctx context.Context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *RequestTemplatesAPIService) V1RequestTemplatesIdGetExecute(r ApiV1RequestTemplatesIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *RequestTemplatesAPIService) GetRequestTemplatesIdExecute(r ApiGetRequestTemplatesIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -195,7 +195,7 @@ func (a *RequestTemplatesAPIService) V1RequestTemplatesIdGetExecute(r ApiV1Reque
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.V1RequestTemplatesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.GetRequestTemplatesId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

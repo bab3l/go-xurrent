@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1RequestsIdNotesGet**](NotesAPI.md#V1RequestsIdNotesGet) | **Get** /v1/requests/{id}/notes | GetIssuesNotesList
+[**GetRequestsIdNotes**](NotesAPI.md#GetRequestsIdNotes) | **Get** /v1/requests/{id}/notes | GetIssuesNotesList
 
 
 
-## V1RequestsIdNotesGet
+## GetRequestsIdNotes
 
-> map[string]interface{} V1RequestsIdNotesGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> map[string]interface{} GetRequestsIdNotes(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetIssuesNotesList
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NotesAPI.V1RequestsIdNotesGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	resp, r, err := apiClient.NotesAPI.GetRequestsIdNotes(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotesAPI.V1RequestsIdNotesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NotesAPI.GetRequestsIdNotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1RequestsIdNotesGet`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `NotesAPI.V1RequestsIdNotesGet`: %v\n", resp)
+	// response from `GetRequestsIdNotes`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `NotesAPI.GetRequestsIdNotes`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1RequestsIdNotesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRequestsIdNotesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

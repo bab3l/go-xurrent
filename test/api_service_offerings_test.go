@@ -1,5 +1,5 @@
 /*
-DIT PUBLIC 4ME REST API REQUEST EXAMPLES
+Xurrent REST API
 
 Testing ServiceOfferingsAPIService
 
@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
+	openapiclient "github.com/bab3l/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/bab3l/go-xurrent"
 	"testing"
 )
 
@@ -22,37 +22,37 @@ func Test_xurrent_ServiceOfferingsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ServiceOfferingsAPIService V1ServiceOfferingsGet", func(t *testing.T) {
+	t.Run("Test ServiceOfferingsAPIService GetServiceOfferings", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ServiceOfferingsAPI.V1ServiceOfferingsGet(context.Background()).Execute()
+		httpRes, err := apiClient.ServiceOfferingsAPI.GetServiceOfferings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ServiceOfferingsAPIService V1ServiceOfferingsIdAuditGet", func(t *testing.T) {
+	t.Run("Test ServiceOfferingsAPIService GetServiceOfferingsId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ServiceOfferingsAPI.V1ServiceOfferingsIdAuditGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.ServiceOfferingsAPI.GetServiceOfferingsId(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ServiceOfferingsAPIService V1ServiceOfferingsIdGet", func(t *testing.T) {
+	t.Run("Test ServiceOfferingsAPIService GetServiceOfferingsIdAudit", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ServiceOfferingsAPI.V1ServiceOfferingsIdGet(context.Background(), id).Execute()
+		httpRes, err := apiClient.ServiceOfferingsAPI.GetServiceOfferingsIdAudit(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

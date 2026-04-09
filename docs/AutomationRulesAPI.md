@@ -4,14 +4,14 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1AutomationRulesGet**](AutomationRulesAPI.md#V1AutomationRulesGet) | **Get** /v1/automation_rules | GetAutomationuRulesList
-[**V1AutomationRulesIdGet**](AutomationRulesAPI.md#V1AutomationRulesIdGet) | **Get** /v1/automation_rules/{id} | GetAutomationuRulesProperties
+[**GetAutomationRules**](AutomationRulesAPI.md#GetAutomationRules) | **Get** /v1/automation_rules | GetAutomationuRulesList
+[**GetAutomationRulesId**](AutomationRulesAPI.md#GetAutomationRulesId) | **Get** /v1/automation_rules/{id} | GetAutomationuRulesProperties
 
 
 
-## V1AutomationRulesGet
+## GetAutomationRules
 
-> V1AutomationRulesGet(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetAutomationRules(ctx).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetAutomationuRulesList
 
@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AutomationRulesAPI.V1AutomationRulesGet(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.AutomationRulesAPI.GetAutomationRules(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AutomationRulesAPI.V1AutomationRulesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AutomationRulesAPI.GetAutomationRules``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -47,7 +47,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1AutomationRulesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAutomationRulesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -73,9 +73,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V1AutomationRulesIdGet
+## GetAutomationRulesId
 
-> V1AutomationRulesIdGet(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+> GetAutomationRulesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 
 GetAutomationuRulesProperties
 
@@ -88,7 +88,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -98,9 +98,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AutomationRulesAPI.V1AutomationRulesIdGet(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
+	r, err := apiClient.AutomationRulesAPI.GetAutomationRulesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AutomationRulesAPI.V1AutomationRulesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AutomationRulesAPI.GetAutomationRulesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1AutomationRulesIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAutomationRulesIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

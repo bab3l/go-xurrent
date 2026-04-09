@@ -4,13 +4,13 @@ All URIs are relative to *https://api.xurrent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ImportPost**](ImportAPI.md#V1ImportPost) | **Post** /v1/import | RunNewImport
+[**PostImport**](ImportAPI.md#PostImport) | **Post** /v1/import | RunNewImport
 
 
 
-## V1ImportPost
+## PostImport
 
-> V1ImportPost(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostImport(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 RunNewImport
 
@@ -23,7 +23,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/xurrent/go-xurrent/xurrent"
+	openapiclient "github.com/bab3l/go-xurrent"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ImportAPI.V1ImportPost(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+	r, err := apiClient.ImportAPI.PostImport(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ImportAPI.V1ImportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ImportAPI.PostImport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -47,7 +47,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1ImportPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostImportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
