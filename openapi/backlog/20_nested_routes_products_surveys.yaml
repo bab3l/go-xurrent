@@ -1,0 +1,51 @@
+# Nested GETs: product linked CIs and survey questions (doc parity; live GET 200).
+
+paths:
+  /v1/products/{id}/cis:
+    get:
+      tags:
+      - Products
+      summary: List configuration items linked to a product
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /v1/surveys/{id}/survey_questions:
+    get:
+      tags:
+      - Surveys
+      summary: List questions for a survey
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}

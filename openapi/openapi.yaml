@@ -31896,3 +31896,151 @@ paths:
                 - 'true'
                 - 'false'
       operationId: get_flsas_id_audit
+  /v1/products/{id}/cis:
+    get:
+      tags:
+      - Products
+      summary: List configuration items linked to a product
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
+      operationId: get_products_id_cis
+  /v1/surveys/{id}/survey_questions:
+    get:
+      tags:
+      - Surveys
+      summary: List questions for a survey
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      - name: X-Xurrent-Language
+        in: header
+        description: Override response language for enums/errors (e.g. nl, fr). See API introduction.
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        description: Page size (max 100). See Pagination docs.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search_after
+        in: query
+        description: Cursor for next page (from Link rel=next).
+        schema:
+          type: string
+      - name: search_before
+        in: query
+        description: Cursor for previous page (from Link rel=prev).
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated fields for collections (field selection).
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Predefined filter name (alternative to path /state). See Filtering docs.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+          headers:
+            Link:
+              description: RFC5988 links for pagination (rel first, prev, next).
+              schema:
+                type: string
+            X-Pagination-Throttled:
+              description: true when collection capped (e.g. 100k audit cap).
+              schema:
+                type: string
+                enum:
+                - 'true'
+                - 'false'
+      operationId: get_surveys_id_survey_questions
