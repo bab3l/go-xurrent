@@ -69,6 +69,8 @@ type APIClient struct {
 
 	ExportAPI *ExportAPIService
 
+	FirstLineSupportAgreementsAPI *FirstLineSupportAgreementsAPIService
+
 	GeneralAPI *GeneralAPIService
 
 	ImportAPI *ImportAPIService
@@ -86,6 +88,8 @@ type APIClient struct {
 	ProductCategoriesAPI *ProductCategoriesAPIService
 
 	ProductsAPI *ProductsAPIService
+
+	ProjectsAPI *ProjectsAPIService
 
 	RequestTemplatesAPI *RequestTemplatesAPIService
 
@@ -138,6 +142,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomCollectionsAPI = (*CustomCollectionsAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.ExportAPI = (*ExportAPIService)(&c.common)
+	c.FirstLineSupportAgreementsAPI = (*FirstLineSupportAgreementsAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
 	c.ImportAPI = (*ImportAPIService)(&c.common)
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
@@ -147,6 +152,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProblemsAPI = (*ProblemsAPIService)(&c.common)
 	c.ProductCategoriesAPI = (*ProductCategoriesAPIService)(&c.common)
 	c.ProductsAPI = (*ProductsAPIService)(&c.common)
+	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.RequestTemplatesAPI = (*RequestTemplatesAPIService)(&c.common)
 	c.RequestsAPI = (*RequestsAPIService)(&c.common)
 	c.ReservationsAPI = (*ReservationsAPIService)(&c.common)

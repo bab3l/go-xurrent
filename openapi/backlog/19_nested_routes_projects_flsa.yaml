@@ -1,0 +1,51 @@
+# Nested GETs: project and FLSA audit trails (doc parity; live GET 200).
+
+paths:
+  /v1/projects/{id}/audit:
+    get:
+      tags:
+      - Projects
+      summary: List audit entries for a project
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /v1/flsas/{id}/audit:
+    get:
+      tags:
+      - First Line Support Agreements
+      summary: List audit entries for a first line support agreement
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
