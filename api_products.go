@@ -717,6 +717,184 @@ func (a *ProductsAPIService) GetProductsIdExecute(r ApiGetProductsIdRequest) (ma
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetProductsIdCisRequest struct {
+	ctx context.Context
+	ApiService *ProductsAPIService
+	id int32
+	authorization *string
+	x4meAccount *string
+	xXurrentLanguage *string
+	perPage *int32
+	searchAfter *string
+	searchBefore *string
+	fields *string
+	sort *string
+	state *string
+}
+
+func (r ApiGetProductsIdCisRequest) Authorization(authorization string) ApiGetProductsIdCisRequest {
+	r.authorization = &authorization
+	return r
+}
+
+func (r ApiGetProductsIdCisRequest) X4meAccount(x4meAccount string) ApiGetProductsIdCisRequest {
+	r.x4meAccount = &x4meAccount
+	return r
+}
+
+// Override response language for enums/errors (e.g. nl, fr). See API introduction.
+func (r ApiGetProductsIdCisRequest) XXurrentLanguage(xXurrentLanguage string) ApiGetProductsIdCisRequest {
+	r.xXurrentLanguage = &xXurrentLanguage
+	return r
+}
+
+// Page size (max 100). See Pagination docs.
+func (r ApiGetProductsIdCisRequest) PerPage(perPage int32) ApiGetProductsIdCisRequest {
+	r.perPage = &perPage
+	return r
+}
+
+// Cursor for next page (from Link rel&#x3D;next).
+func (r ApiGetProductsIdCisRequest) SearchAfter(searchAfter string) ApiGetProductsIdCisRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
+// Cursor for previous page (from Link rel&#x3D;prev).
+func (r ApiGetProductsIdCisRequest) SearchBefore(searchBefore string) ApiGetProductsIdCisRequest {
+	r.searchBefore = &searchBefore
+	return r
+}
+
+// Comma-separated fields for collections (field selection).
+func (r ApiGetProductsIdCisRequest) Fields(fields string) ApiGetProductsIdCisRequest {
+	r.fields = &fields
+	return r
+}
+
+// Sort fields, comma-separated; prefix with - for descending. See Ordering docs.
+func (r ApiGetProductsIdCisRequest) Sort(sort string) ApiGetProductsIdCisRequest {
+	r.sort = &sort
+	return r
+}
+
+// Predefined filter name (alternative to path /state). See Filtering docs.
+func (r ApiGetProductsIdCisRequest) State(state string) ApiGetProductsIdCisRequest {
+	r.state = &state
+	return r
+}
+
+func (r ApiGetProductsIdCisRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetProductsIdCisExecute(r)
+}
+
+/*
+GetProductsIdCis List configuration items linked to a product
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetProductsIdCisRequest
+*/
+func (a *ProductsAPIService) GetProductsIdCis(ctx context.Context, id int32) ApiGetProductsIdCisRequest {
+	return ApiGetProductsIdCisRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ProductsAPIService) GetProductsIdCisExecute(r ApiGetProductsIdCisRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsIdCis")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/products/{id}/cis"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search_after", r.searchAfter, "form", "")
+	}
+	if r.searchBefore != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search_before", r.searchBefore, "form", "")
+	}
+	if r.fields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+	}
+	if r.state != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.authorization != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
+	}
+	if r.x4meAccount != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-4me-Account", r.x4meAccount, "simple", "")
+	}
+	if r.xXurrentLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Xurrent-Language", r.xXurrentLanguage, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetProductsSupportedByMyTeamsRequest struct {
 	ctx context.Context
 	ApiService *ProductsAPIService

@@ -107,6 +107,8 @@ type APIClient struct {
 
 	SitesAPI *SitesAPIService
 
+	SurveysAPI *SurveysAPIService
+
 	TasksAPI *TasksAPIService
 
 	TeamsAPI *TeamsAPIService
@@ -161,6 +163,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServiceOfferingsAPI = (*ServiceOfferingsAPIService)(&c.common)
 	c.ServicesAPI = (*ServicesAPIService)(&c.common)
 	c.SitesAPI = (*SitesAPIService)(&c.common)
+	c.SurveysAPI = (*SurveysAPIService)(&c.common)
 	c.TasksAPI = (*TasksAPIService)(&c.common)
 	c.TeamsAPI = (*TeamsAPIService)(&c.common)
 	c.UIExtensionsAPI = (*UIExtensionsAPIService)(&c.common)

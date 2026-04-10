@@ -31,6 +31,7 @@ api_service_level_agreements.go
 api_service_offerings.go
 api_services.go
 api_sites.go
+api_surveys.go
 api_tasks.go
 api_teams.go
 api_ui_extensions.go
@@ -67,6 +68,7 @@ docs/ServiceLevelAgreementsAPI.md
 docs/ServiceOfferingsAPI.md
 docs/ServicesAPI.md
 docs/SitesAPI.md
+docs/SurveysAPI.md
 docs/TasksAPI.md
 docs/TeamsAPI.md
 docs/UIExtensionsAPI.md
@@ -76,6 +78,5 @@ go.mod
 go.sum
 model_organization.go
 response.go
-test/api_first_line_support_agreements_test.go
-test/api_projects_test.go
+test/api_surveys_test.go
 utils.go
