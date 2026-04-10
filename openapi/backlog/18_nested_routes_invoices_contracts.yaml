@@ -1,0 +1,100 @@
+# Nested GETs: invoice and contract audit trails and linked CIs (doc parity; live GET 200).
+# After merge: python utils/merge_backlog_paths.py && python utils/inject_api_conventions.py && python utils/add_operation_ids.py
+
+paths:
+  /v1/invoices/{id}/audit:
+    get:
+      tags:
+      - Invoices
+      summary: List audit entries for an invoice
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /v1/invoices/{id}/cis:
+    get:
+      tags:
+      - Invoices
+      summary: List configuration items linked to an invoice
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /v1/contracts/{id}/audit:
+    get:
+      tags:
+      - Contracts
+      summary: List audit entries for a contract
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /v1/contracts/{id}/cis:
+    get:
+      tags:
+      - Contracts
+      summary: List configuration items linked to a contract
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: X-4me-Account
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
