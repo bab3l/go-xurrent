@@ -1,0 +1,178 @@
+# \InvoicesAPI
+
+All URIs are relative to *https://api.xurrent.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**GetInvoicesIdAudit**](InvoicesAPI.md#GetInvoicesIdAudit) | **Get** /v1/invoices/{id}/audit | List audit entries for an invoice
+[**GetInvoicesIdCis**](InvoicesAPI.md#GetInvoicesIdCis) | **Get** /v1/invoices/{id}/cis | List configuration items linked to an invoice
+
+
+
+## GetInvoicesIdAudit
+
+> GetInvoicesIdAudit(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+
+List audit entries for an invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InvoicesAPI.GetInvoicesIdAudit(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetInvoicesIdAudit``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoicesIdAuditRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInvoicesIdCis
+
+> GetInvoicesIdCis(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+
+List configuration items linked to an invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/xurrent/go-xurrent"
+)
+
+func main() {
+	id := int32(56) // int32 | 
+	authorization := "authorization_example" // string |  (optional)
+	x4meAccount := "x4meAccount_example" // string |  (optional)
+	xXurrentLanguage := "xXurrentLanguage_example" // string | Override response language for enums/errors (e.g. nl, fr). See API introduction. (optional)
+	perPage := int32(56) // int32 | Page size (max 100). See Pagination docs. (optional)
+	searchAfter := "searchAfter_example" // string | Cursor for next page (from Link rel=next). (optional)
+	searchBefore := "searchBefore_example" // string | Cursor for previous page (from Link rel=prev). (optional)
+	fields := "fields_example" // string | Comma-separated fields for collections (field selection). (optional)
+	sort := "sort_example" // string | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. (optional)
+	state := "state_example" // string | Predefined filter name (alternative to path /state). See Filtering docs. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InvoicesAPI.GetInvoicesIdCis(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetInvoicesIdCis``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoicesIdCisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorization** | **string** |  | 
+ **x4meAccount** | **string** |  | 
+ **xXurrentLanguage** | **string** | Override response language for enums/errors (e.g. nl, fr). See API introduction. | 
+ **perPage** | **int32** | Page size (max 100). See Pagination docs. | 
+ **searchAfter** | **string** | Cursor for next page (from Link rel&#x3D;next). | 
+ **searchBefore** | **string** | Cursor for previous page (from Link rel&#x3D;prev). | 
+ **fields** | **string** | Comma-separated fields for collections (field selection). | 
+ **sort** | **string** | Sort fields, comma-separated; prefix with - for descending. See Ordering docs. | 
+ **state** | **string** | Predefined filter name (alternative to path /state). See Filtering docs. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

@@ -61,6 +61,8 @@ type APIClient struct {
 
 	ConfigurationItemsAPI *ConfigurationItemsAPIService
 
+	ContractsAPI *ContractsAPIService
+
 	CustomCollectionsAPI *CustomCollectionsAPIService
 
 	EventsAPI *EventsAPIService
@@ -70,6 +72,8 @@ type APIClient struct {
 	GeneralAPI *GeneralAPIService
 
 	ImportAPI *ImportAPIService
+
+	InvoicesAPI *InvoicesAPIService
 
 	NotesAPI *NotesAPIService
 
@@ -130,11 +134,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CalendarsAPI = (*CalendarsAPIService)(&c.common)
 	c.ConfigurationItemRelationsAPI = (*ConfigurationItemRelationsAPIService)(&c.common)
 	c.ConfigurationItemsAPI = (*ConfigurationItemsAPIService)(&c.common)
+	c.ContractsAPI = (*ContractsAPIService)(&c.common)
 	c.CustomCollectionsAPI = (*CustomCollectionsAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.ExportAPI = (*ExportAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
 	c.ImportAPI = (*ImportAPIService)(&c.common)
+	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.NotesAPI = (*NotesAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.PeopleAPI = (*PeopleAPIService)(&c.common)

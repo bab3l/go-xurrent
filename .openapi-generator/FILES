@@ -8,11 +8,13 @@ api_automation_rules.go
 api_calendars.go
 api_configuration_item_relations.go
 api_configuration_items.go
+api_contracts.go
 api_custom_collections.go
 api_events.go
 api_export.go
 api_general.go
 api_import.go
+api_invoices.go
 api_notes.go
 api_organizations.go
 api_people.go
@@ -39,11 +41,13 @@ docs/AutomationRulesAPI.md
 docs/CalendarsAPI.md
 docs/ConfigurationItemRelationsAPI.md
 docs/ConfigurationItemsAPI.md
+docs/ContractsAPI.md
 docs/CustomCollectionsAPI.md
 docs/EventsAPI.md
 docs/ExportAPI.md
 docs/GeneralAPI.md
 docs/ImportAPI.md
+docs/InvoicesAPI.md
 docs/NotesAPI.md
 docs/Organization.md
 docs/OrganizationsAPI.md
@@ -68,4 +72,6 @@ go.mod
 go.sum
 model_organization.go
 response.go
+test/api_contracts_test.go
+test/api_invoices_test.go
 utils.go
