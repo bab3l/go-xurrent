@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
-	openapiclient "github.com/xurrent/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	openapiclient "github.com/xurrent/go-xurrent"
 	"testing"
 )
 

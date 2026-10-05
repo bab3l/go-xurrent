@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // ContractsAPIService ContractsAPI service
 type ContractsAPIService service
 
 type ApiGetContractsIdAuditRequest struct {
-	ctx context.Context
-	ApiService *ContractsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ContractsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetContractsIdAuditRequest) Authorization(authorization string) ApiGetContractsIdAuditRequest {
@@ -97,24 +96,24 @@ func (r ApiGetContractsIdAuditRequest) Execute() (*http.Response, error) {
 /*
 GetContractsIdAudit List audit entries for a contract
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetContractsIdAuditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetContractsIdAuditRequest
 */
 func (a *ContractsAPIService) GetContractsIdAudit(ctx context.Context, id int32) ApiGetContractsIdAuditRequest {
 	return ApiGetContractsIdAuditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ContractsAPIService) GetContractsIdAuditExecute(r ApiGetContractsIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContractsAPIService.GetContractsIdAudit")
@@ -202,18 +201,18 @@ func (a *ContractsAPIService) GetContractsIdAuditExecute(r ApiGetContractsIdAudi
 }
 
 type ApiGetContractsIdCisRequest struct {
-	ctx context.Context
-	ApiService *ContractsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ContractsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetContractsIdCisRequest) Authorization(authorization string) ApiGetContractsIdCisRequest {
@@ -275,24 +274,24 @@ func (r ApiGetContractsIdCisRequest) Execute() (*http.Response, error) {
 /*
 GetContractsIdCis List configuration items linked to a contract
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetContractsIdCisRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetContractsIdCisRequest
 */
 func (a *ContractsAPIService) GetContractsIdCis(ctx context.Context, id int32) ApiGetContractsIdCisRequest {
 	return ApiGetContractsIdCisRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ContractsAPIService) GetContractsIdCisExecute(r ApiGetContractsIdCisRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContractsAPIService.GetContractsIdCis")

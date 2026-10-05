@@ -34,7 +34,7 @@ The PowerShell build script was updated to orchestrate the entire process:
 *   **Spec**: `openapi/openapi.yaml` is a valid OpenAPI 3.0 document; CI runs `openapi-generator-cli validate`. Path parameters and key routes have been corrected (see git history / `docs/ROADMAP.md`).
 *   **Client**: Generated Go package at module root `github.com/bab3l/go-xurrent` (`package xurrent`); `go test ./...` passes (tests skipped by default).
 *   **CI**: `.github/workflows/ci.yml` runs `go vet`, `go test`, and OpenAPI validation.
-*   **Roadmap**: **[docs/ROADMAP.md](docs/ROADMAP.md)**. Route validation + **operationId** inventory: **[docs/ROUTE_VALIDATION_CHECKLIST.md](docs/ROUTE_VALIDATION_CHECKLIST.md)**. Helpers: `python utils/extract_openapi_paths.py` (list paths), `python utils/add_operation_ids.py` (fill missing `operationId`), `python utils/export_route_checklist.py` (emit inventory markdown). There is no obligation to preserve pre-release API shapes until you ship a stable tag.
+*   **Docs index**: **[docs/README.md](docs/README.md)**. **Roadmap**: **[docs/ROADMAP.md](docs/ROADMAP.md)**. Maintainer capture notes: **[docs/internal/README.md](docs/internal/README.md)**. Route validation + **operationId** inventory: **[docs/ROUTE_VALIDATION_CHECKLIST.md](docs/ROUTE_VALIDATION_CHECKLIST.md)**. **Changelog**: **[CHANGELOG.md](CHANGELOG.md)**. Helpers: `python utils/extract_openapi_paths.py` (list paths), `python utils/add_operation_ids.py` (fill missing `operationId`), `python utils/export_route_checklist.py` (emit inventory markdown). There is no obligation to preserve pre-release API shapes until you ship a stable tag.
 
 ## Usage
 To regenerate the client in the future (e.g., after a new export):

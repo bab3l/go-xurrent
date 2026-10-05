@@ -19,21 +19,20 @@ import (
 	"strings"
 )
 
-
 // ProblemsAPIService ProblemsAPI service
 type ProblemsAPIService service
 
 type ApiGetProblemsRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsRequest) X4meAccount(x4meAccount string) ApiGetProblemsRequest {
@@ -90,22 +89,22 @@ func (r ApiGetProblemsRequest) Execute() (*http.Response, error) {
 /*
 GetProblems GetProblemProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsRequest
 */
 func (a *ProblemsAPIService) GetProblems(ctx context.Context) ApiGetProblemsRequest {
 	return ApiGetProblemsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) GetProblemsExecute(r ApiGetProblemsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblems")
@@ -189,17 +188,17 @@ func (a *ProblemsAPIService) GetProblemsExecute(r ApiGetProblemsRequest) (*http.
 }
 
 type ApiGetProblemsActiveRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsActiveRequest) Authorization(authorization string) ApiGetProblemsActiveRequest {
@@ -261,24 +260,25 @@ func (r ApiGetProblemsActiveRequest) Execute() ([]map[string]interface{}, *http.
 /*
 GetProblemsActive List active problems
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsActiveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsActiveRequest
 */
 func (a *ProblemsAPIService) GetProblemsActive(ctx context.Context) ApiGetProblemsActiveRequest {
 	return ApiGetProblemsActiveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsActiveExecute(r ApiGetProblemsActiveRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsActive")
@@ -374,17 +374,17 @@ func (a *ProblemsAPIService) GetProblemsActiveExecute(r ApiGetProblemsActiveRequ
 }
 
 type ApiGetProblemsAssignedToMeRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsAssignedToMeRequest) Authorization(authorization string) ApiGetProblemsAssignedToMeRequest {
@@ -446,24 +446,25 @@ func (r ApiGetProblemsAssignedToMeRequest) Execute() ([]map[string]interface{}, 
 /*
 GetProblemsAssignedToMe List problems assigned to API user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsAssignedToMeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsAssignedToMeRequest
 */
 func (a *ProblemsAPIService) GetProblemsAssignedToMe(ctx context.Context) ApiGetProblemsAssignedToMeRequest {
 	return ApiGetProblemsAssignedToMeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsAssignedToMeExecute(r ApiGetProblemsAssignedToMeRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsAssignedToMe")
@@ -559,17 +560,17 @@ func (a *ProblemsAPIService) GetProblemsAssignedToMeExecute(r ApiGetProblemsAssi
 }
 
 type ApiGetProblemsAssignedToMyTeamRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsAssignedToMyTeamRequest) Authorization(authorization string) ApiGetProblemsAssignedToMyTeamRequest {
@@ -631,24 +632,25 @@ func (r ApiGetProblemsAssignedToMyTeamRequest) Execute() ([]map[string]interface
 /*
 GetProblemsAssignedToMyTeam List problems assigned to API user's teams
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsAssignedToMyTeamRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsAssignedToMyTeamRequest
 */
 func (a *ProblemsAPIService) GetProblemsAssignedToMyTeam(ctx context.Context) ApiGetProblemsAssignedToMyTeamRequest {
 	return ApiGetProblemsAssignedToMyTeamRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsAssignedToMyTeamExecute(r ApiGetProblemsAssignedToMyTeamRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsAssignedToMyTeam")
@@ -744,12 +746,12 @@ func (a *ProblemsAPIService) GetProblemsAssignedToMyTeamExecute(r ApiGetProblems
 }
 
 type ApiGetProblemsIdRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	id int32
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	id               int32
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetProblemsIdRequest) X4meAccount(x4meAccount string) ApiGetProblemsIdRequest {
@@ -769,33 +771,34 @@ func (r ApiGetProblemsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetProblemsI
 	return r
 }
 
-func (r ApiGetProblemsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetProblemsIdRequest) Execute() (*GetProblemsId200Response, *http.Response, error) {
 	return r.ApiService.GetProblemsIdExecute(r)
 }
 
 /*
 GetProblemsId Get a single problem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetProblemsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetProblemsIdRequest
 */
 func (a *ProblemsAPIService) GetProblemsId(ctx context.Context, id int32) ApiGetProblemsIdRequest {
 	return ApiGetProblemsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProblemsAPIService) GetProblemsIdExecute(r ApiGetProblemsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetProblemsId200Response
+func (a *ProblemsAPIService) GetProblemsIdExecute(r ApiGetProblemsIdRequest) (*GetProblemsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetProblemsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsId")
@@ -874,17 +877,17 @@ func (a *ProblemsAPIService) GetProblemsIdExecute(r ApiGetProblemsIdRequest) (ma
 }
 
 type ApiGetProblemsKnownErrorsRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsKnownErrorsRequest) Authorization(authorization string) ApiGetProblemsKnownErrorsRequest {
@@ -946,24 +949,25 @@ func (r ApiGetProblemsKnownErrorsRequest) Execute() ([]map[string]interface{}, *
 /*
 GetProblemsKnownErrors List known_errors problems
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsKnownErrorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsKnownErrorsRequest
 */
 func (a *ProblemsAPIService) GetProblemsKnownErrors(ctx context.Context) ApiGetProblemsKnownErrorsRequest {
 	return ApiGetProblemsKnownErrorsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsKnownErrorsExecute(r ApiGetProblemsKnownErrorsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsKnownErrors")
@@ -1059,17 +1063,17 @@ func (a *ProblemsAPIService) GetProblemsKnownErrorsExecute(r ApiGetProblemsKnown
 }
 
 type ApiGetProblemsManagedByMeRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsManagedByMeRequest) Authorization(authorization string) ApiGetProblemsManagedByMeRequest {
@@ -1131,24 +1135,25 @@ func (r ApiGetProblemsManagedByMeRequest) Execute() ([]map[string]interface{}, *
 /*
 GetProblemsManagedByMe List problems managed by API user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsManagedByMeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsManagedByMeRequest
 */
 func (a *ProblemsAPIService) GetProblemsManagedByMe(ctx context.Context) ApiGetProblemsManagedByMeRequest {
 	return ApiGetProblemsManagedByMeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsManagedByMeExecute(r ApiGetProblemsManagedByMeRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsManagedByMe")
@@ -1244,17 +1249,17 @@ func (a *ProblemsAPIService) GetProblemsManagedByMeExecute(r ApiGetProblemsManag
 }
 
 type ApiGetProblemsProgressHaltedRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsProgressHaltedRequest) Authorization(authorization string) ApiGetProblemsProgressHaltedRequest {
@@ -1316,24 +1321,25 @@ func (r ApiGetProblemsProgressHaltedRequest) Execute() ([]map[string]interface{}
 /*
 GetProblemsProgressHalted List progress_halted problems
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsProgressHaltedRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsProgressHaltedRequest
 */
 func (a *ProblemsAPIService) GetProblemsProgressHalted(ctx context.Context) ApiGetProblemsProgressHaltedRequest {
 	return ApiGetProblemsProgressHaltedRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsProgressHaltedExecute(r ApiGetProblemsProgressHaltedRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsProgressHalted")
@@ -1429,17 +1435,17 @@ func (a *ProblemsAPIService) GetProblemsProgressHaltedExecute(r ApiGetProblemsPr
 }
 
 type ApiGetProblemsSolvedRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProblemsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProblemsSolvedRequest) Authorization(authorization string) ApiGetProblemsSolvedRequest {
@@ -1501,24 +1507,25 @@ func (r ApiGetProblemsSolvedRequest) Execute() ([]map[string]interface{}, *http.
 /*
 GetProblemsSolved List solved problems
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProblemsSolvedRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProblemsSolvedRequest
 */
 func (a *ProblemsAPIService) GetProblemsSolved(ctx context.Context) ApiGetProblemsSolvedRequest {
 	return ApiGetProblemsSolvedRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProblemsAPIService) GetProblemsSolvedExecute(r ApiGetProblemsSolvedRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.GetProblemsSolved")
@@ -1614,11 +1621,11 @@ func (a *ProblemsAPIService) GetProblemsSolvedExecute(r ApiGetProblemsSolvedRequ
 }
 
 type ApiPatchProblemsIdRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	id int32
+	ctx         context.Context
+	ApiService  *ProblemsAPIService
+	id          int32
 	x4meAccount *string
-	body *map[string]interface{}
+	body        *map[string]interface{}
 }
 
 func (r ApiPatchProblemsIdRequest) X4meAccount(x4meAccount string) ApiPatchProblemsIdRequest {
@@ -1638,24 +1645,24 @@ func (r ApiPatchProblemsIdRequest) Execute() (*http.Response, error) {
 /*
 PatchProblemsId SetNewStatus (solved)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchProblemsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchProblemsIdRequest
 */
 func (a *ProblemsAPIService) PatchProblemsId(ctx context.Context, id int32) ApiPatchProblemsIdRequest {
 	return ApiPatchProblemsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PatchProblemsIdExecute(r ApiPatchProblemsIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPatch
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PatchProblemsId")
@@ -1721,10 +1728,10 @@ func (a *ProblemsAPIService) PatchProblemsIdExecute(r ApiPatchProblemsIdRequest)
 }
 
 type ApiPostProblemsRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
+	ctx         context.Context
+	ApiService  *ProblemsAPIService
 	x4meAccount *string
-	body *map[string]interface{}
+	body        *map[string]interface{}
 }
 
 func (r ApiPostProblemsRequest) X4meAccount(x4meAccount string) ApiPostProblemsRequest {
@@ -1744,22 +1751,22 @@ func (r ApiPostProblemsRequest) Execute() (*http.Response, error) {
 /*
 PostProblems CreateNewProblem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostProblemsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostProblemsRequest
 */
 func (a *ProblemsAPIService) PostProblems(ctx context.Context) ApiPostProblemsRequest {
 	return ApiPostProblemsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PostProblemsExecute(r ApiPostProblemsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblems")
@@ -1824,11 +1831,11 @@ func (a *ProblemsAPIService) PostProblemsExecute(r ApiPostProblemsRequest) (*htt
 }
 
 type ApiPostProblemsIdArchiveRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ProblemsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostProblemsIdArchiveRequest) Authorization(authorization string) ApiPostProblemsIdArchiveRequest {
@@ -1848,26 +1855,27 @@ func (r ApiPostProblemsIdArchiveRequest) Execute() (map[string]interface{}, *htt
 /*
 PostProblemsIdArchive Archive a problem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostProblemsIdArchiveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostProblemsIdArchiveRequest
 */
 func (a *ProblemsAPIService) PostProblemsIdArchive(ctx context.Context, id int32) ApiPostProblemsIdArchiveRequest {
 	return ApiPostProblemsIdArchiveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ProblemsAPIService) PostProblemsIdArchiveExecute(r ApiPostProblemsIdArchiveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblemsIdArchive")
@@ -1943,11 +1951,11 @@ func (a *ProblemsAPIService) PostProblemsIdArchiveExecute(r ApiPostProblemsIdArc
 }
 
 type ApiPostProblemsIdRestoreRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ProblemsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostProblemsIdRestoreRequest) Authorization(authorization string) ApiPostProblemsIdRestoreRequest {
@@ -1967,26 +1975,27 @@ func (r ApiPostProblemsIdRestoreRequest) Execute() (map[string]interface{}, *htt
 /*
 PostProblemsIdRestore Restore a problem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostProblemsIdRestoreRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostProblemsIdRestoreRequest
 */
 func (a *ProblemsAPIService) PostProblemsIdRestore(ctx context.Context, id int32) ApiPostProblemsIdRestoreRequest {
 	return ApiPostProblemsIdRestoreRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ProblemsAPIService) PostProblemsIdRestoreExecute(r ApiPostProblemsIdRestoreRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblemsIdRestore")
@@ -2062,11 +2071,11 @@ func (a *ProblemsAPIService) PostProblemsIdRestoreExecute(r ApiPostProblemsIdRes
 }
 
 type ApiPostProblemsIdTrashRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ProblemsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostProblemsIdTrashRequest) Authorization(authorization string) ApiPostProblemsIdTrashRequest {
@@ -2086,26 +2095,27 @@ func (r ApiPostProblemsIdTrashRequest) Execute() (map[string]interface{}, *http.
 /*
 PostProblemsIdTrash Trash a problem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostProblemsIdTrashRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostProblemsIdTrashRequest
 */
 func (a *ProblemsAPIService) PostProblemsIdTrash(ctx context.Context, id int32) ApiPostProblemsIdTrashRequest {
 	return ApiPostProblemsIdTrashRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ProblemsAPIService) PostProblemsIdTrashExecute(r ApiPostProblemsIdTrashRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblemsIdTrash")
@@ -2181,12 +2191,12 @@ func (a *ProblemsAPIService) PostProblemsIdTrashExecute(r ApiPostProblemsIdTrash
 }
 
 type ApiPostProblemsProblemIdRequestsRequestIdRequest struct {
-	ctx context.Context
-	ApiService *ProblemsAPIService
-	problemId int32
-	requestId int32
+	ctx         context.Context
+	ApiService  *ProblemsAPIService
+	problemId   int32
+	requestId   int32
 	x4meAccount *string
-	body *map[string]interface{}
+	body        *map[string]interface{}
 }
 
 func (r ApiPostProblemsProblemIdRequestsRequestIdRequest) X4meAccount(x4meAccount string) ApiPostProblemsProblemIdRequestsRequestIdRequest {
@@ -2206,26 +2216,26 @@ func (r ApiPostProblemsProblemIdRequestsRequestIdRequest) Execute() (*http.Respo
 /*
 PostProblemsProblemIdRequestsRequestId UpdateProblem - AddRequestToProblem
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param problemId
- @param requestId
- @return ApiPostProblemsProblemIdRequestsRequestIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param problemId
+	@param requestId
+	@return ApiPostProblemsProblemIdRequestsRequestIdRequest
 */
 func (a *ProblemsAPIService) PostProblemsProblemIdRequestsRequestId(ctx context.Context, problemId int32, requestId int32) ApiPostProblemsProblemIdRequestsRequestIdRequest {
 	return ApiPostProblemsProblemIdRequestsRequestIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		problemId: problemId,
-		requestId: requestId,
+		ctx:        ctx,
+		problemId:  problemId,
+		requestId:  requestId,
 	}
 }
 
 // Execute executes the request
 func (a *ProblemsAPIService) PostProblemsProblemIdRequestsRequestIdExecute(r ApiPostProblemsProblemIdRequestsRequestIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProblemsAPIService.PostProblemsProblemIdRequestsRequestId")

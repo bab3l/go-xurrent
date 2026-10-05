@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetCalendars
 
-> []map[string]interface{} GetCalendars(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetCalendars200ResponseInner GetCalendars(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCalendars
 
@@ -46,7 +46,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CalendarsAPI.GetCalendars``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCalendars`: []map[string]interface{}
+	// response from `GetCalendars`: []GetCalendars200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `CalendarsAPI.GetCalendars`: %v\n", resp)
 }
 ```
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetCalendars200ResponseInner**](GetCalendars200ResponseInner.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ No authorization required
 
 ## PatchCalendarsId
 
-> map[string]interface{} PatchCalendarsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostCalendars201Response PatchCalendarsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Update a calendar
 
@@ -121,7 +121,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CalendarsAPI.PatchCalendarsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchCalendarsId`: map[string]interface{}
+	// response from `PatchCalendarsId`: PostCalendars201Response
 	fmt.Fprintf(os.Stdout, "Response from `CalendarsAPI.PatchCalendarsId`: %v\n", resp)
 }
 ```
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostCalendars201Response**](PostCalendars201Response.md)
 
 ### Authorization
 
@@ -166,7 +166,7 @@ No authorization required
 
 ## PostCalendars
 
-> map[string]interface{} PostCalendars(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostCalendars201Response PostCalendars(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Create a calendar
 
@@ -194,7 +194,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CalendarsAPI.PostCalendars``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostCalendars`: map[string]interface{}
+	// response from `PostCalendars`: PostCalendars201Response
 	fmt.Fprintf(os.Stdout, "Response from `CalendarsAPI.PostCalendars`: %v\n", resp)
 }
 ```
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostCalendars201Response**](PostCalendars201Response.md)
 
 ### Authorization
 

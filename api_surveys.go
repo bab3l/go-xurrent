@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // SurveysAPIService SurveysAPI service
 type SurveysAPIService service
 
 type ApiGetSurveysIdSurveyQuestionsRequest struct {
-	ctx context.Context
-	ApiService *SurveysAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *SurveysAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetSurveysIdSurveyQuestionsRequest) Authorization(authorization string) ApiGetSurveysIdSurveyQuestionsRequest {
@@ -97,24 +96,24 @@ func (r ApiGetSurveysIdSurveyQuestionsRequest) Execute() (*http.Response, error)
 /*
 GetSurveysIdSurveyQuestions List questions for a survey
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetSurveysIdSurveyQuestionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetSurveysIdSurveyQuestionsRequest
 */
 func (a *SurveysAPIService) GetSurveysIdSurveyQuestions(ctx context.Context, id int32) ApiGetSurveysIdSurveyQuestionsRequest {
 	return ApiGetSurveysIdSurveyQuestionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SurveysAPIService) GetSurveysIdSurveyQuestionsExecute(r ApiGetSurveysIdSurveyQuestionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SurveysAPIService.GetSurveysIdSurveyQuestions")

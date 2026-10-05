@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## GetWorkflows
 
-> map[string]interface{} GetWorkflows(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetWorkflows(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetWorkflows
 
@@ -51,7 +51,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflows``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetWorkflows`: map[string]interface{}
+	// response from `GetWorkflows`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflows`: %v\n", resp)
 }
 ```
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 
 ## GetWorkflowsId
 
-> map[string]interface{} GetWorkflowsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetWorkflowsId200Response GetWorkflowsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetWorkflowProperties
 
@@ -127,7 +127,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetWorkflowsId`: map[string]interface{}
+	// response from `GetWorkflowsId`: GetWorkflowsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowsId`: %v\n", resp)
 }
 ```
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetWorkflowsId200Response**](GetWorkflowsId200Response.md)
 
 ### Authorization
 

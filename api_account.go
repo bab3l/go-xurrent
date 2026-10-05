@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // AccountAPIService AccountAPI service
 type AccountAPIService service
 
 type ApiGetAccountRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *AccountAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetAccountRequest) Authorization(authorization string) ApiGetAccountRequest {
@@ -54,34 +53,37 @@ func (r ApiGetAccountRequest) IfNoneMatch(ifNoneMatch string) ApiGetAccountReque
 	return r
 }
 
-func (r ApiGetAccountRequest) Execute() (*http.Response, error) {
+func (r ApiGetAccountRequest) Execute() (*GetAccount200Response, *http.Response, error) {
 	return r.ApiService.GetAccountExecute(r)
 }
 
 /*
 GetAccount GetAccountProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAccountRequest
 */
 func (a *AccountAPIService) GetAccount(ctx context.Context) ApiGetAccountRequest {
 	return ApiGetAccountRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AccountAPIService) GetAccountExecute(r ApiGetAccountRequest) (*http.Response, error) {
+//
+//	@return GetAccount200Response
+func (a *AccountAPIService) GetAccountExecute(r ApiGetAccountRequest) (*GetAccount200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetAccount200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.GetAccount")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/account"
@@ -121,19 +123,19 @@ func (a *AccountAPIService) GetAccountExecute(r ApiGetAccountRequest) (*http.Res
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -141,26 +143,35 @@ func (a *AccountAPIService) GetAccountExecute(r ApiGetAccountRequest) (*http.Res
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetAccountBillableUsersRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIService
-	authorization *string
-	x4meAccount *string
-	year *int32
-	month *int32
+	ctx              context.Context
+	ApiService       *AccountAPIService
+	authorization    *string
+	x4meAccount      *string
+	year             *int32
+	month            *int32
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetAccountBillableUsersRequest) Authorization(authorization string) ApiGetAccountBillableUsersRequest {
@@ -232,24 +243,25 @@ func (r ApiGetAccountBillableUsersRequest) Execute() ([]map[string]interface{}, 
 /*
 GetAccountBillableUsers List billable users
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAccountBillableUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAccountBillableUsersRequest
 */
 func (a *AccountAPIService) GetAccountBillableUsers(ctx context.Context) ApiGetAccountBillableUsersRequest {
 	return ApiGetAccountBillableUsersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *AccountAPIService) GetAccountBillableUsersExecute(r ApiGetAccountBillableUsersRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.GetAccountBillableUsers")
@@ -351,17 +363,17 @@ func (a *AccountAPIService) GetAccountBillableUsersExecute(r ApiGetAccountBillab
 }
 
 type ApiGetAccountUsageStatementsRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *AccountAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetAccountUsageStatementsRequest) Authorization(authorization string) ApiGetAccountUsageStatementsRequest {
@@ -416,31 +428,32 @@ func (r ApiGetAccountUsageStatementsRequest) State(state string) ApiGetAccountUs
 	return r
 }
 
-func (r ApiGetAccountUsageStatementsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetAccountUsageStatementsRequest) Execute() ([]GetAccountUsageStatements200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetAccountUsageStatementsExecute(r)
 }
 
 /*
 GetAccountUsageStatements List usage statements (account owner)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAccountUsageStatementsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAccountUsageStatementsRequest
 */
 func (a *AccountAPIService) GetAccountUsageStatements(ctx context.Context) ApiGetAccountUsageStatementsRequest {
 	return ApiGetAccountUsageStatementsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *AccountAPIService) GetAccountUsageStatementsExecute(r ApiGetAccountUsageStatementsRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetAccountUsageStatements200ResponseInner
+func (a *AccountAPIService) GetAccountUsageStatementsExecute(r ApiGetAccountUsageStatementsRequest) ([]GetAccountUsageStatements200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetAccountUsageStatements200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.GetAccountUsageStatements")
@@ -536,18 +549,18 @@ func (a *AccountAPIService) GetAccountUsageStatementsExecute(r ApiGetAccountUsag
 }
 
 type ApiGetAccountUsageStatementsIdRequest struct {
-	ctx context.Context
-	ApiService *AccountAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *AccountAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetAccountUsageStatementsIdRequest) Authorization(authorization string) ApiGetAccountUsageStatementsIdRequest {
@@ -602,33 +615,34 @@ func (r ApiGetAccountUsageStatementsIdRequest) State(state string) ApiGetAccount
 	return r
 }
 
-func (r ApiGetAccountUsageStatementsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetAccountUsageStatementsIdRequest) Execute() (*GetAccountUsageStatementsId200Response, *http.Response, error) {
 	return r.ApiService.GetAccountUsageStatementsIdExecute(r)
 }
 
 /*
 GetAccountUsageStatementsId Get a usage statement by id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetAccountUsageStatementsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetAccountUsageStatementsIdRequest
 */
 func (a *AccountAPIService) GetAccountUsageStatementsId(ctx context.Context, id int32) ApiGetAccountUsageStatementsIdRequest {
 	return ApiGetAccountUsageStatementsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AccountAPIService) GetAccountUsageStatementsIdExecute(r ApiGetAccountUsageStatementsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetAccountUsageStatementsId200Response
+func (a *AccountAPIService) GetAccountUsageStatementsIdExecute(r ApiGetAccountUsageStatementsIdRequest) (*GetAccountUsageStatementsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetAccountUsageStatementsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.GetAccountUsageStatementsId")

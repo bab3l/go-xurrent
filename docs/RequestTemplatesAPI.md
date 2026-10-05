@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetRequestTemplates
 
-> map[string]interface{} GetRequestTemplates(ctx).Authorization(authorization).X4meAccount(x4meAccount).Service(service).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestTemplates(ctx).Authorization(authorization).X4meAccount(x4meAccount).Service(service).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetRequestTemplatesListByService
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.GetRequestTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestTemplates`: map[string]interface{}
+	// response from `GetRequestTemplates`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.GetRequestTemplates`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -95,7 +95,7 @@ No authorization required
 
 ## GetRequestTemplatesId
 
-> map[string]interface{} GetRequestTemplatesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetRequestTemplatesId200Response GetRequestTemplatesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetRequestTemplatesProperties
 
@@ -125,7 +125,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestTemplatesAPI.GetRequestTemplatesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestTemplatesId`: map[string]interface{}
+	// response from `GetRequestTemplatesId`: GetRequestTemplatesId200Response
 	fmt.Fprintf(os.Stdout, "Response from `RequestTemplatesAPI.GetRequestTemplatesId`: %v\n", resp)
 }
 ```
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetRequestTemplatesId200Response**](GetRequestTemplatesId200Response.md)
 
 ### Authorization
 

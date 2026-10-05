@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // CalendarsAPIService CalendarsAPI service
 type CalendarsAPIService service
 
 type ApiGetCalendarsRequest struct {
-	ctx context.Context
-	ApiService *CalendarsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *CalendarsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetCalendarsRequest) Authorization(authorization string) ApiGetCalendarsRequest {
@@ -89,31 +88,32 @@ func (r ApiGetCalendarsRequest) State(state string) ApiGetCalendarsRequest {
 	return r
 }
 
-func (r ApiGetCalendarsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetCalendarsRequest) Execute() ([]GetCalendars200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetCalendarsExecute(r)
 }
 
 /*
 GetCalendars GetCalendars
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetCalendarsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetCalendarsRequest
 */
 func (a *CalendarsAPIService) GetCalendars(ctx context.Context) ApiGetCalendarsRequest {
 	return ApiGetCalendarsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *CalendarsAPIService) GetCalendarsExecute(r ApiGetCalendarsRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetCalendars200ResponseInner
+func (a *CalendarsAPIService) GetCalendarsExecute(r ApiGetCalendarsRequest) ([]GetCalendars200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetCalendars200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.GetCalendars")
@@ -209,12 +209,12 @@ func (a *CalendarsAPIService) GetCalendarsExecute(r ApiGetCalendarsRequest) ([]m
 }
 
 type ApiPatchCalendarsIdRequest struct {
-	ctx context.Context
-	ApiService *CalendarsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *CalendarsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchCalendarsIdRequest) Authorization(authorization string) ApiPatchCalendarsIdRequest {
@@ -232,33 +232,34 @@ func (r ApiPatchCalendarsIdRequest) Body(body map[string]interface{}) ApiPatchCa
 	return r
 }
 
-func (r ApiPatchCalendarsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPatchCalendarsIdRequest) Execute() (*PostCalendars201Response, *http.Response, error) {
 	return r.ApiService.PatchCalendarsIdExecute(r)
 }
 
 /*
 PatchCalendarsId Update a calendar
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchCalendarsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchCalendarsIdRequest
 */
 func (a *CalendarsAPIService) PatchCalendarsId(ctx context.Context, id int32) ApiPatchCalendarsIdRequest {
 	return ApiPatchCalendarsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *CalendarsAPIService) PatchCalendarsIdExecute(r ApiPatchCalendarsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostCalendars201Response
+func (a *CalendarsAPIService) PatchCalendarsIdExecute(r ApiPatchCalendarsIdRequest) (*PostCalendars201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostCalendars201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.PatchCalendarsId")
@@ -336,11 +337,11 @@ func (a *CalendarsAPIService) PatchCalendarsIdExecute(r ApiPatchCalendarsIdReque
 }
 
 type ApiPostCalendarsRequest struct {
-	ctx context.Context
-	ApiService *CalendarsAPIService
+	ctx           context.Context
+	ApiService    *CalendarsAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostCalendarsRequest) Authorization(authorization string) ApiPostCalendarsRequest {
@@ -358,31 +359,32 @@ func (r ApiPostCalendarsRequest) Body(body map[string]interface{}) ApiPostCalend
 	return r
 }
 
-func (r ApiPostCalendarsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPostCalendarsRequest) Execute() (*PostCalendars201Response, *http.Response, error) {
 	return r.ApiService.PostCalendarsExecute(r)
 }
 
 /*
 PostCalendars Create a calendar
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostCalendarsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostCalendarsRequest
 */
 func (a *CalendarsAPIService) PostCalendars(ctx context.Context) ApiPostCalendarsRequest {
 	return ApiPostCalendarsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *CalendarsAPIService) PostCalendarsExecute(r ApiPostCalendarsRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostCalendars201Response
+func (a *CalendarsAPIService) PostCalendarsExecute(r ApiPostCalendarsRequest) (*PostCalendars201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostCalendars201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.PostCalendars")

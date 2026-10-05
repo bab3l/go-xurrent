@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // SitesAPIService SitesAPI service
 type SitesAPIService service
 
 type ApiGetSitesRequest struct {
-	ctx context.Context
-	ApiService *SitesAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *SitesAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetSitesRequest) Authorization(authorization string) ApiGetSitesRequest {
@@ -89,31 +88,32 @@ func (r ApiGetSitesRequest) State(state string) ApiGetSitesRequest {
 	return r
 }
 
-func (r ApiGetSitesRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetSitesRequest) Execute() ([]GetSites200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetSitesExecute(r)
 }
 
 /*
 GetSites List sites
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetSitesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetSitesRequest
 */
 func (a *SitesAPIService) GetSites(ctx context.Context) ApiGetSitesRequest {
 	return ApiGetSitesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *SitesAPIService) GetSitesExecute(r ApiGetSitesRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetSites200ResponseInner
+func (a *SitesAPIService) GetSitesExecute(r ApiGetSitesRequest) ([]GetSites200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetSites200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.GetSites")
@@ -209,13 +209,13 @@ func (a *SitesAPIService) GetSitesExecute(r ApiGetSitesRequest) ([]map[string]in
 }
 
 type ApiGetSitesIdRequest struct {
-	ctx context.Context
-	ApiService *SitesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *SitesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetSitesIdRequest) Authorization(authorization string) ApiGetSitesIdRequest {
@@ -240,36 +240,39 @@ func (r ApiGetSitesIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetSitesIdReque
 	return r
 }
 
-func (r ApiGetSitesIdRequest) Execute() (*http.Response, error) {
+func (r ApiGetSitesIdRequest) Execute() (*GetSitesId200Response, *http.Response, error) {
 	return r.ApiService.GetSitesIdExecute(r)
 }
 
 /*
 GetSitesId GetSiteProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetSitesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetSitesIdRequest
 */
 func (a *SitesAPIService) GetSitesId(ctx context.Context, id int32) ApiGetSitesIdRequest {
 	return ApiGetSitesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-func (a *SitesAPIService) GetSitesIdExecute(r ApiGetSitesIdRequest) (*http.Response, error) {
+//
+//	@return GetSitesId200Response
+func (a *SitesAPIService) GetSitesIdExecute(r ApiGetSitesIdRequest) (*GetSitesId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetSitesId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.GetSitesId")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/sites/{id}"
@@ -310,19 +313,19 @@ func (a *SitesAPIService) GetSitesIdExecute(r ApiGetSitesIdRequest) (*http.Respo
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -330,19 +333,28 @@ func (a *SitesAPIService) GetSitesIdExecute(r ApiGetSitesIdRequest) (*http.Respo
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiPatchSitesIdRequest struct {
-	ctx context.Context
-	ApiService *SitesAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *SitesAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchSitesIdRequest) Authorization(authorization string) ApiPatchSitesIdRequest {
@@ -360,33 +372,34 @@ func (r ApiPatchSitesIdRequest) Body(body map[string]interface{}) ApiPatchSitesI
 	return r
 }
 
-func (r ApiPatchSitesIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPatchSitesIdRequest) Execute() (*GetSitesId200Response, *http.Response, error) {
 	return r.ApiService.PatchSitesIdExecute(r)
 }
 
 /*
 PatchSitesId Update a site
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchSitesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchSitesIdRequest
 */
 func (a *SitesAPIService) PatchSitesId(ctx context.Context, id int32) ApiPatchSitesIdRequest {
 	return ApiPatchSitesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *SitesAPIService) PatchSitesIdExecute(r ApiPatchSitesIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetSitesId200Response
+func (a *SitesAPIService) PatchSitesIdExecute(r ApiPatchSitesIdRequest) (*GetSitesId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetSitesId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.PatchSitesId")
@@ -464,11 +477,11 @@ func (a *SitesAPIService) PatchSitesIdExecute(r ApiPatchSitesIdRequest) (map[str
 }
 
 type ApiPostSitesRequest struct {
-	ctx context.Context
-	ApiService *SitesAPIService
+	ctx           context.Context
+	ApiService    *SitesAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostSitesRequest) Authorization(authorization string) ApiPostSitesRequest {
@@ -486,31 +499,32 @@ func (r ApiPostSitesRequest) Body(body map[string]interface{}) ApiPostSitesReque
 	return r
 }
 
-func (r ApiPostSitesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPostSitesRequest) Execute() (*PostSites201Response, *http.Response, error) {
 	return r.ApiService.PostSitesExecute(r)
 }
 
 /*
 PostSites Create a site
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostSitesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostSitesRequest
 */
 func (a *SitesAPIService) PostSites(ctx context.Context) ApiPostSitesRequest {
 	return ApiPostSitesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *SitesAPIService) PostSitesExecute(r ApiPostSitesRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostSites201Response
+func (a *SitesAPIService) PostSitesExecute(r ApiPostSitesRequest) (*PostSites201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostSites201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.PostSites")

@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 ## GetPeople
 
-> map[string]interface{} GetPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetPeople200ResponseInner GetPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Roles(roles).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersByPermision
 
@@ -63,7 +63,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeople``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeople`: map[string]interface{}
+	// response from `GetPeople`: []GetPeople200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeople`: %v\n", resp)
 }
 ```
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetPeople200ResponseInner**](GetPeople200ResponseInner.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ No authorization required
 
 ## GetPeopleDirectory
 
-> []map[string]interface{} GetPeopleDirectory(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetPeople200ResponseInner GetPeopleDirectory(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List people (directory predefined filter)
 
@@ -144,7 +144,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDirectory``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleDirectory`: []map[string]interface{}
+	// response from `GetPeopleDirectory`: []GetPeople200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleDirectory`: %v\n", resp)
 }
 ```
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetPeople200ResponseInner**](GetPeople200ResponseInner.md)
 
 ### Authorization
 
@@ -190,7 +190,7 @@ No authorization required
 
 ## GetPeopleDisabled
 
-> map[string]interface{} GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetPeopleDisabled200ResponseInner GetPeopleDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (disabled)
 
@@ -224,7 +224,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleDisabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleDisabled`: map[string]interface{}
+	// response from `GetPeopleDisabled`: []GetPeopleDisabled200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleDisabled`: %v\n", resp)
 }
 ```
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetPeopleDisabled200ResponseInner**](GetPeopleDisabled200ResponseInner.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ No authorization required
 
 ## GetPeopleEnabled
 
-> map[string]interface{} GetPeopleEnabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetPeople200ResponseInner GetPeopleEnabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (enabled)
 
@@ -304,7 +304,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleEnabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleEnabled`: map[string]interface{}
+	// response from `GetPeopleEnabled`: []GetPeople200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleEnabled`: %v\n", resp)
 }
 ```
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetPeople200ResponseInner**](GetPeople200ResponseInner.md)
 
 ### Authorization
 
@@ -350,7 +350,7 @@ No authorization required
 
 ## GetPeopleId
 
-> map[string]interface{} GetPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetPeopleId200Response GetPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetUser (by Id)
 
@@ -380,7 +380,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleId`: map[string]interface{}
+	// response from `GetPeopleId`: GetPeopleId200Response
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleId`: %v\n", resp)
 }
 ```
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetPeopleId200Response**](GetPeopleId200Response.md)
 
 ### Authorization
 
@@ -510,7 +510,7 @@ No authorization required
 
 ## GetPeopleIdContacts
 
-> map[string]interface{} GetPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetPeopleIdContacts200ResponseInner GetPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersContacts
 
@@ -545,7 +545,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdContacts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleIdContacts`: map[string]interface{}
+	// response from `GetPeopleIdContacts`: []GetPeopleIdContacts200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdContacts`: %v\n", resp)
 }
 ```
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetPeopleIdContacts200ResponseInner**](GetPeopleIdContacts200ResponseInner.md)
 
 ### Authorization
 
@@ -596,7 +596,7 @@ No authorization required
 
 ## GetPeopleIdPermissions
 
-> map[string]interface{} GetPeopleIdPermissions(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetPeopleIdPermissions(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersPermissions
 
@@ -631,7 +631,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdPermissions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleIdPermissions`: map[string]interface{}
+	// response from `GetPeopleIdPermissions`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdPermissions`: %v\n", resp)
 }
 ```
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -766,7 +766,7 @@ No authorization required
 
 ## GetPeopleIdSkillPools
 
-> map[string]interface{} GetPeopleIdSkillPools(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetPeopleIdSkillPools(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersSkillPools
 
@@ -801,7 +801,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdSkillPools``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleIdSkillPools`: map[string]interface{}
+	// response from `GetPeopleIdSkillPools`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdSkillPools`: %v\n", resp)
 }
 ```
@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -852,7 +852,7 @@ No authorization required
 
 ## GetPeopleIdTeams
 
-> map[string]interface{} GetPeopleIdTeams(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetPeopleIdTeams(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsersTeamList
 
@@ -887,7 +887,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleIdTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleIdTeams`: map[string]interface{}
+	// response from `GetPeopleIdTeams`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleIdTeams`: %v\n", resp)
 }
 ```
@@ -920,7 +920,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -938,7 +938,7 @@ No authorization required
 
 ## GetPeopleInternal
 
-> map[string]interface{} GetPeopleInternal(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetPeopleInternal(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (internal)
 
@@ -972,7 +972,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleInternal``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleInternal`: map[string]interface{}
+	// response from `GetPeopleInternal`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleInternal`: %v\n", resp)
 }
 ```
@@ -1000,7 +1000,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1018,7 +1018,7 @@ No authorization required
 
 ## GetPeopleSupportDomain
 
-> map[string]interface{} GetPeopleSupportDomain(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetPeopleSupportDomain(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUsers (by directory)
 
@@ -1052,7 +1052,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.GetPeopleSupportDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPeopleSupportDomain`: map[string]interface{}
+	// response from `GetPeopleSupportDomain`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.GetPeopleSupportDomain`: %v\n", resp)
 }
 ```
@@ -1080,7 +1080,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1098,7 +1098,7 @@ No authorization required
 
 ## PatchPeopleId
 
-> map[string]interface{} PatchPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PatchPeopleId200Response PatchPeopleId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Update a person
 
@@ -1127,7 +1127,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PatchPeopleId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchPeopleId`: map[string]interface{}
+	// response from `PatchPeopleId`: PatchPeopleId200Response
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PatchPeopleId`: %v\n", resp)
 }
 ```
@@ -1154,7 +1154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PatchPeopleId200Response**](PatchPeopleId200Response.md)
 
 ### Authorization
 
@@ -1172,7 +1172,7 @@ No authorization required
 
 ## PostPeople
 
-> map[string]interface{} PostPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostPeople201Response PostPeople(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 CreateNewUser
 
@@ -1200,7 +1200,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeople``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostPeople`: map[string]interface{}
+	// response from `PostPeople`: PostPeople201Response
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeople`: %v\n", resp)
 }
 ```
@@ -1222,7 +1222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostPeople201Response**](PostPeople201Response.md)
 
 ### Authorization
 
@@ -1312,7 +1312,7 @@ No authorization required
 
 ## PostPeopleIdContacts
 
-> map[string]interface{} PostPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostPeopleIdContacts200Response PostPeopleIdContacts(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 CreateNewContactToUser
 
@@ -1341,7 +1341,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PeopleAPI.PostPeopleIdContacts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostPeopleIdContacts`: map[string]interface{}
+	// response from `PostPeopleIdContacts`: PostPeopleIdContacts200Response
 	fmt.Fprintf(os.Stdout, "Response from `PeopleAPI.PostPeopleIdContacts`: %v\n", resp)
 }
 ```
@@ -1368,7 +1368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostPeopleIdContacts200Response**](PostPeopleIdContacts200Response.md)
 
 ### Authorization
 

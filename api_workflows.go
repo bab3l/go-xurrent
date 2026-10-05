@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // WorkflowsAPIService WorkflowsAPI service
 type WorkflowsAPIService service
 
 type ApiGetWorkflowsRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *WorkflowsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetWorkflowsRequest) Authorization(authorization string) ApiGetWorkflowsRequest {
@@ -89,31 +88,32 @@ func (r ApiGetWorkflowsRequest) State(state string) ApiGetWorkflowsRequest {
 	return r
 }
 
-func (r ApiGetWorkflowsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetWorkflowsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetWorkflowsExecute(r)
 }
 
 /*
 GetWorkflows GetWorkflows
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetWorkflowsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetWorkflowsRequest
 */
 func (a *WorkflowsAPIService) GetWorkflows(ctx context.Context) ApiGetWorkflowsRequest {
 	return ApiGetWorkflowsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return []map[string]interface{}
+func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflows")
@@ -209,13 +209,13 @@ func (a *WorkflowsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) (map
 }
 
 type ApiGetWorkflowsIdRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *WorkflowsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetWorkflowsIdRequest) Authorization(authorization string) ApiGetWorkflowsIdRequest {
@@ -240,33 +240,34 @@ func (r ApiGetWorkflowsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetWorkflow
 	return r
 }
 
-func (r ApiGetWorkflowsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetWorkflowsIdRequest) Execute() (*GetWorkflowsId200Response, *http.Response, error) {
 	return r.ApiService.GetWorkflowsIdExecute(r)
 }
 
 /*
 GetWorkflowsId GetWorkflowProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetWorkflowsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetWorkflowsIdRequest
 */
 func (a *WorkflowsAPIService) GetWorkflowsId(ctx context.Context, id int32) ApiGetWorkflowsIdRequest {
 	return ApiGetWorkflowsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetWorkflowsId200Response
+func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) (*GetWorkflowsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetWorkflowsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowsId")
@@ -348,12 +349,12 @@ func (a *WorkflowsAPIService) GetWorkflowsIdExecute(r ApiGetWorkflowsIdRequest) 
 }
 
 type ApiPatchWorkflowsIdRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchWorkflowsIdRequest) Authorization(authorization string) ApiPatchWorkflowsIdRequest {
@@ -378,26 +379,27 @@ func (r ApiPatchWorkflowsIdRequest) Execute() (map[string]interface{}, *http.Res
 /*
 PatchWorkflowsId Update a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchWorkflowsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchWorkflowsIdRequest
 */
 func (a *WorkflowsAPIService) PatchWorkflowsId(ctx context.Context, id int32) ApiPatchWorkflowsIdRequest {
 	return ApiPatchWorkflowsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PatchWorkflowsIdExecute(r ApiPatchWorkflowsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PatchWorkflowsId")
@@ -475,11 +477,11 @@ func (a *WorkflowsAPIService) PatchWorkflowsIdExecute(r ApiPatchWorkflowsIdReque
 }
 
 type ApiPostWorkflowsRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostWorkflowsRequest) Authorization(authorization string) ApiPostWorkflowsRequest {
@@ -504,24 +506,25 @@ func (r ApiPostWorkflowsRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 PostWorkflows Create a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostWorkflowsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostWorkflowsRequest
 */
 func (a *WorkflowsAPIService) PostWorkflows(ctx context.Context) ApiPostWorkflowsRequest {
 	return ApiPostWorkflowsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PostWorkflowsExecute(r ApiPostWorkflowsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflows")
@@ -598,11 +601,11 @@ func (a *WorkflowsAPIService) PostWorkflowsExecute(r ApiPostWorkflowsRequest) (m
 }
 
 type ApiPostWorkflowsIdArchiveRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostWorkflowsIdArchiveRequest) Authorization(authorization string) ApiPostWorkflowsIdArchiveRequest {
@@ -622,26 +625,27 @@ func (r ApiPostWorkflowsIdArchiveRequest) Execute() (map[string]interface{}, *ht
 /*
 PostWorkflowsIdArchive Archive a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostWorkflowsIdArchiveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostWorkflowsIdArchiveRequest
 */
 func (a *WorkflowsAPIService) PostWorkflowsIdArchive(ctx context.Context, id int32) ApiPostWorkflowsIdArchiveRequest {
 	return ApiPostWorkflowsIdArchiveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PostWorkflowsIdArchiveExecute(r ApiPostWorkflowsIdArchiveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdArchive")
@@ -717,11 +721,11 @@ func (a *WorkflowsAPIService) PostWorkflowsIdArchiveExecute(r ApiPostWorkflowsId
 }
 
 type ApiPostWorkflowsIdRestoreRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostWorkflowsIdRestoreRequest) Authorization(authorization string) ApiPostWorkflowsIdRestoreRequest {
@@ -741,26 +745,27 @@ func (r ApiPostWorkflowsIdRestoreRequest) Execute() (map[string]interface{}, *ht
 /*
 PostWorkflowsIdRestore Restore a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostWorkflowsIdRestoreRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostWorkflowsIdRestoreRequest
 */
 func (a *WorkflowsAPIService) PostWorkflowsIdRestore(ctx context.Context, id int32) ApiPostWorkflowsIdRestoreRequest {
 	return ApiPostWorkflowsIdRestoreRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PostWorkflowsIdRestoreExecute(r ApiPostWorkflowsIdRestoreRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdRestore")
@@ -836,12 +841,12 @@ func (a *WorkflowsAPIService) PostWorkflowsIdRestoreExecute(r ApiPostWorkflowsId
 }
 
 type ApiPostWorkflowsIdTasksRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
-	body *map[string]interface{}
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
+	id            int32
+	body          *map[string]interface{}
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostWorkflowsIdTasksRequest) Body(body map[string]interface{}) ApiPostWorkflowsIdTasksRequest {
@@ -866,26 +871,27 @@ func (r ApiPostWorkflowsIdTasksRequest) Execute() (map[string]interface{}, *http
 /*
 PostWorkflowsIdTasks Create a task on a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Workflow id
- @return ApiPostWorkflowsIdTasksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Workflow id
+	@return ApiPostWorkflowsIdTasksRequest
 */
 func (a *WorkflowsAPIService) PostWorkflowsIdTasks(ctx context.Context, id int32) ApiPostWorkflowsIdTasksRequest {
 	return ApiPostWorkflowsIdTasksRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PostWorkflowsIdTasksExecute(r ApiPostWorkflowsIdTasksRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdTasks")
@@ -966,11 +972,11 @@ func (a *WorkflowsAPIService) PostWorkflowsIdTasksExecute(r ApiPostWorkflowsIdTa
 }
 
 type ApiPostWorkflowsIdTrashRequest struct {
-	ctx context.Context
-	ApiService *WorkflowsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkflowsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiPostWorkflowsIdTrashRequest) Authorization(authorization string) ApiPostWorkflowsIdTrashRequest {
@@ -990,26 +996,27 @@ func (r ApiPostWorkflowsIdTrashRequest) Execute() (map[string]interface{}, *http
 /*
 PostWorkflowsIdTrash Trash a workflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostWorkflowsIdTrashRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostWorkflowsIdTrashRequest
 */
 func (a *WorkflowsAPIService) PostWorkflowsIdTrash(ctx context.Context, id int32) ApiPostWorkflowsIdTrashRequest {
 	return ApiPostWorkflowsIdTrashRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WorkflowsAPIService) PostWorkflowsIdTrashExecute(r ApiPostWorkflowsIdTrashRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowsIdTrash")

@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // RequestTemplatesAPIService RequestTemplatesAPI service
 type RequestTemplatesAPIService service
 
 type ApiGetRequestTemplatesRequest struct {
-	ctx context.Context
-	ApiService *RequestTemplatesAPIService
-	authorization *string
-	x4meAccount *string
-	service *string
+	ctx              context.Context
+	ApiService       *RequestTemplatesAPIService
+	authorization    *string
+	x4meAccount      *string
+	service          *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetRequestTemplatesRequest) Authorization(authorization string) ApiGetRequestTemplatesRequest {
@@ -95,31 +94,32 @@ func (r ApiGetRequestTemplatesRequest) State(state string) ApiGetRequestTemplate
 	return r
 }
 
-func (r ApiGetRequestTemplatesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetRequestTemplatesRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetRequestTemplatesExecute(r)
 }
 
 /*
 GetRequestTemplates GetRequestTemplatesListByService
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetRequestTemplatesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetRequestTemplatesRequest
 */
 func (a *RequestTemplatesAPIService) GetRequestTemplates(ctx context.Context) ApiGetRequestTemplatesRequest {
 	return ApiGetRequestTemplatesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *RequestTemplatesAPIService) GetRequestTemplatesExecute(r ApiGetRequestTemplatesRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return []map[string]interface{}
+func (a *RequestTemplatesAPIService) GetRequestTemplatesExecute(r ApiGetRequestTemplatesRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.GetRequestTemplates")
@@ -218,13 +218,13 @@ func (a *RequestTemplatesAPIService) GetRequestTemplatesExecute(r ApiGetRequestT
 }
 
 type ApiGetRequestTemplatesIdRequest struct {
-	ctx context.Context
-	ApiService *RequestTemplatesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *RequestTemplatesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetRequestTemplatesIdRequest) Authorization(authorization string) ApiGetRequestTemplatesIdRequest {
@@ -249,33 +249,34 @@ func (r ApiGetRequestTemplatesIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetR
 	return r
 }
 
-func (r ApiGetRequestTemplatesIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetRequestTemplatesIdRequest) Execute() (*GetRequestTemplatesId200Response, *http.Response, error) {
 	return r.ApiService.GetRequestTemplatesIdExecute(r)
 }
 
 /*
 GetRequestTemplatesId GetRequestTemplatesProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetRequestTemplatesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetRequestTemplatesIdRequest
 */
 func (a *RequestTemplatesAPIService) GetRequestTemplatesId(ctx context.Context, id int32) ApiGetRequestTemplatesIdRequest {
 	return ApiGetRequestTemplatesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *RequestTemplatesAPIService) GetRequestTemplatesIdExecute(r ApiGetRequestTemplatesIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetRequestTemplatesId200Response
+func (a *RequestTemplatesAPIService) GetRequestTemplatesIdExecute(r ApiGetRequestTemplatesIdRequest) (*GetRequestTemplatesId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetRequestTemplatesId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.GetRequestTemplatesId")
@@ -357,12 +358,12 @@ func (a *RequestTemplatesAPIService) GetRequestTemplatesIdExecute(r ApiGetReques
 }
 
 type ApiPatchRequestTemplatesIdRequest struct {
-	ctx context.Context
-	ApiService *RequestTemplatesAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *RequestTemplatesAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchRequestTemplatesIdRequest) Authorization(authorization string) ApiPatchRequestTemplatesIdRequest {
@@ -387,26 +388,27 @@ func (r ApiPatchRequestTemplatesIdRequest) Execute() (map[string]interface{}, *h
 /*
 PatchRequestTemplatesId Update a request template
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchRequestTemplatesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchRequestTemplatesIdRequest
 */
 func (a *RequestTemplatesAPIService) PatchRequestTemplatesId(ctx context.Context, id int32) ApiPatchRequestTemplatesIdRequest {
 	return ApiPatchRequestTemplatesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *RequestTemplatesAPIService) PatchRequestTemplatesIdExecute(r ApiPatchRequestTemplatesIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.PatchRequestTemplatesId")
@@ -484,11 +486,11 @@ func (a *RequestTemplatesAPIService) PatchRequestTemplatesIdExecute(r ApiPatchRe
 }
 
 type ApiPostRequestTemplatesRequest struct {
-	ctx context.Context
-	ApiService *RequestTemplatesAPIService
+	ctx           context.Context
+	ApiService    *RequestTemplatesAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostRequestTemplatesRequest) Authorization(authorization string) ApiPostRequestTemplatesRequest {
@@ -513,24 +515,25 @@ func (r ApiPostRequestTemplatesRequest) Execute() (map[string]interface{}, *http
 /*
 PostRequestTemplates Create a request template
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRequestTemplatesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostRequestTemplatesRequest
 */
 func (a *RequestTemplatesAPIService) PostRequestTemplates(ctx context.Context) ApiPostRequestTemplatesRequest {
 	return ApiPostRequestTemplatesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *RequestTemplatesAPIService) PostRequestTemplatesExecute(r ApiPostRequestTemplatesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestTemplatesAPIService.PostRequestTemplates")

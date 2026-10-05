@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetAccount
 
-> GetAccount(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetAccount200Response GetAccount(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetAccountProperties
 
@@ -37,11 +37,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccountAPI.GetAccount(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.AccountAPI.GetAccount(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.GetAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetAccount`: GetAccount200Response
+	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.GetAccount`: %v\n", resp)
 }
 ```
 
@@ -63,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetAccount200Response**](GetAccount200Response.md)
 
 ### Authorization
 
@@ -147,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -165,7 +167,7 @@ No authorization required
 
 ## GetAccountUsageStatements
 
-> []map[string]interface{} GetAccountUsageStatements(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetAccountUsageStatements200ResponseInner GetAccountUsageStatements(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List usage statements (account owner)
 
@@ -199,7 +201,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.GetAccountUsageStatements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAccountUsageStatements`: []map[string]interface{}
+	// response from `GetAccountUsageStatements`: []GetAccountUsageStatements200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.GetAccountUsageStatements`: %v\n", resp)
 }
 ```
@@ -227,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetAccountUsageStatements200ResponseInner**](GetAccountUsageStatements200ResponseInner.md)
 
 ### Authorization
 
@@ -245,7 +247,7 @@ No authorization required
 
 ## GetAccountUsageStatementsId
 
-> map[string]interface{} GetAccountUsageStatementsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> GetAccountUsageStatementsId200Response GetAccountUsageStatementsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 Get a usage statement by id
 
@@ -280,7 +282,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.GetAccountUsageStatementsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAccountUsageStatementsId`: map[string]interface{}
+	// response from `GetAccountUsageStatementsId`: GetAccountUsageStatementsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.GetAccountUsageStatementsId`: %v\n", resp)
 }
 ```
@@ -313,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetAccountUsageStatementsId200Response**](GetAccountUsageStatementsId200Response.md)
 
 ### Authorization
 

@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 // GeneralAPIService GeneralAPI service
 type GeneralAPIService service
 
 type ApiGetEnumsRequest struct {
-	ctx context.Context
-	ApiService *GeneralAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *GeneralAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetEnumsRequest) Authorization(authorization string) ApiGetEnumsRequest {
@@ -53,31 +52,32 @@ func (r ApiGetEnumsRequest) IfNoneMatch(ifNoneMatch string) ApiGetEnumsRequest {
 	return r
 }
 
-func (r ApiGetEnumsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetEnumsRequest) Execute() (*GetEnums200Response, *http.Response, error) {
 	return r.ApiService.GetEnumsExecute(r)
 }
 
 /*
 GetEnums GetEnumerationsValues
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetEnumsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetEnumsRequest
 */
 func (a *GeneralAPIService) GetEnums(ctx context.Context) ApiGetEnumsRequest {
 	return ApiGetEnumsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetEnums200Response
+func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (*GetEnums200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetEnums200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetEnums")
@@ -158,12 +158,12 @@ func (a *GeneralAPIService) GetEnumsExecute(r ApiGetEnumsRequest) (map[string]in
 }
 
 type ApiGetMeRequest struct {
-	ctx context.Context
-	ApiService *GeneralAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *GeneralAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetMeRequest) Authorization(authorization string) ApiGetMeRequest {
@@ -188,34 +188,37 @@ func (r ApiGetMeRequest) IfNoneMatch(ifNoneMatch string) ApiGetMeRequest {
 	return r
 }
 
-func (r ApiGetMeRequest) Execute() (*http.Response, error) {
+func (r ApiGetMeRequest) Execute() (*PatchPeopleId200Response, *http.Response, error) {
 	return r.ApiService.GetMeExecute(r)
 }
 
 /*
 GetMe GetMyData
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetMeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetMeRequest
 */
 func (a *GeneralAPIService) GetMe(ctx context.Context) ApiGetMeRequest {
 	return ApiGetMeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*http.Response, error) {
+//
+//	@return PatchPeopleId200Response
+func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*PatchPeopleId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PatchPeopleId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetMe")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/me"
@@ -255,19 +258,19 @@ func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*http.Response, err
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -275,17 +278,26 @@ func (a *GeneralAPIService) GetMeExecute(r ApiGetMeRequest) (*http.Response, err
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetRateLimitRequest struct {
-	ctx context.Context
-	ApiService *GeneralAPIService
+	ctx              context.Context
+	ApiService       *GeneralAPIService
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 // Override response language for enums/errors (e.g. nl, fr). See API introduction.
@@ -300,31 +312,32 @@ func (r ApiGetRateLimitRequest) IfNoneMatch(ifNoneMatch string) ApiGetRateLimitR
 	return r
 }
 
-func (r ApiGetRateLimitRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetRateLimitRequest) Execute() (*GetRateLimit200Response, *http.Response, error) {
 	return r.ApiService.GetRateLimitExecute(r)
 }
 
 /*
 GetRateLimit Get current rate limit status (does not consume quota)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetRateLimitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetRateLimitRequest
 */
 func (a *GeneralAPIService) GetRateLimit(ctx context.Context) ApiGetRateLimitRequest {
 	return ApiGetRateLimitRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *GeneralAPIService) GetRateLimitExecute(r ApiGetRateLimitRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetRateLimit200Response
+func (a *GeneralAPIService) GetRateLimitExecute(r ApiGetRateLimitRequest) (*GetRateLimit200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetRateLimit200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GeneralAPIService.GetRateLimit")

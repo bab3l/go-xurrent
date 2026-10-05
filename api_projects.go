@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // ProjectsAPIService ProjectsAPI service
 type ProjectsAPIService service
 
 type ApiGetProjectsIdAuditRequest struct {
-	ctx context.Context
-	ApiService *ProjectsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProjectsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProjectsIdAuditRequest) Authorization(authorization string) ApiGetProjectsIdAuditRequest {
@@ -97,24 +96,24 @@ func (r ApiGetProjectsIdAuditRequest) Execute() (*http.Response, error) {
 /*
 GetProjectsIdAudit List audit entries for a project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetProjectsIdAuditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetProjectsIdAuditRequest
 */
 func (a *ProjectsAPIService) GetProjectsIdAudit(ctx context.Context, id int32) ApiGetProjectsIdAuditRequest {
 	return ApiGetProjectsIdAuditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectsAPIService) GetProjectsIdAuditExecute(r ApiGetProjectsIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetProjectsIdAudit")

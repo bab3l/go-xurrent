@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetEnums
 
-> map[string]interface{} GetEnums(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetEnums200Response GetEnums(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetEnumerationsValues
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetEnums``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetEnums`: map[string]interface{}
+	// response from `GetEnums`: GetEnums200Response
 	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.GetEnums`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetEnums200Response**](GetEnums200Response.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ No authorization required
 
 ## GetMe
 
-> GetMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> PatchPeopleId200Response GetMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetMyData
 
@@ -106,11 +106,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GeneralAPI.GetMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.GeneralAPI.GetMe(context.Background()).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetMe`: PatchPeopleId200Response
+	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.GetMe`: %v\n", resp)
 }
 ```
 
@@ -132,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**PatchPeopleId200Response**](PatchPeopleId200Response.md)
 
 ### Authorization
 
@@ -150,7 +152,7 @@ No authorization required
 
 ## GetRateLimit
 
-> map[string]interface{} GetRateLimit(ctx).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetRateLimit200Response GetRateLimit(ctx).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 Get current rate limit status (does not consume quota)
 
@@ -177,7 +179,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GeneralAPI.GetRateLimit``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRateLimit`: map[string]interface{}
+	// response from `GetRateLimit`: GetRateLimit200Response
 	fmt.Fprintf(os.Stdout, "Response from `GeneralAPI.GetRateLimit`: %v\n", resp)
 }
 ```
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetRateLimit200Response**](GetRateLimit200Response.md)
 
 ### Authorization
 

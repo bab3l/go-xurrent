@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## GetProducts
 
-> []map[string]interface{} GetProducts(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetProducts200ResponseInner GetProducts(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetProductsList
 
@@ -51,7 +51,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.GetProducts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetProducts`: []map[string]interface{}
+	// response from `GetProducts`: []GetProducts200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.GetProducts`: %v\n", resp)
 }
 ```
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetProducts200ResponseInner**](GetProducts200ResponseInner.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 
 ## GetProductsDisabled
 
-> []map[string]interface{} GetProductsDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetProducts200ResponseInner GetProductsDisabled(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List disabled products
 
@@ -131,7 +131,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.GetProductsDisabled``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetProductsDisabled`: []map[string]interface{}
+	// response from `GetProductsDisabled`: []GetProducts200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.GetProductsDisabled`: %v\n", resp)
 }
 ```
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetProducts200ResponseInner**](GetProducts200ResponseInner.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ No authorization required
 
 ## GetProductsId
 
-> map[string]interface{} GetProductsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> PostProducts201Response GetProductsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetProductProperties
 
@@ -287,7 +287,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.GetProductsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetProductsId`: map[string]interface{}
+	// response from `GetProductsId`: PostProducts201Response
 	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.GetProductsId`: %v\n", resp)
 }
 ```
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostProducts201Response**](PostProducts201Response.md)
 
 ### Authorization
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -497,7 +497,7 @@ No authorization required
 
 ## PatchProductsId
 
-> map[string]interface{} PatchProductsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostProducts201Response PatchProductsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Update a product
 
@@ -526,7 +526,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.PatchProductsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchProductsId`: map[string]interface{}
+	// response from `PatchProductsId`: PostProducts201Response
 	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.PatchProductsId`: %v\n", resp)
 }
 ```
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostProducts201Response**](PostProducts201Response.md)
 
 ### Authorization
 
@@ -571,7 +571,7 @@ No authorization required
 
 ## PostProducts
 
-> map[string]interface{} PostProducts(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostProducts201Response PostProducts(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Create a product
 
@@ -599,7 +599,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductsAPI.PostProducts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostProducts`: map[string]interface{}
+	// response from `PostProducts`: PostProducts201Response
 	fmt.Fprintf(os.Stdout, "Response from `ProductsAPI.PostProducts`: %v\n", resp)
 }
 ```
@@ -621,7 +621,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostProducts201Response**](PostProducts201Response.md)
 
 ### Authorization
 

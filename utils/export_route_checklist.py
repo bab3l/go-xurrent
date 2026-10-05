@@ -30,7 +30,7 @@ def main() -> None:
             oid = op.get("operationId", "") if isinstance(op, dict) else ""
             rows.append((method.upper(), path_key, oid))
 
-    print("## Full operation inventory (Phase 1a complete)")
+    print("## Full operation inventory")
     print()
     print("| Method | Path | operationId | Status |")
     print("|--------|------|-------------|--------|")

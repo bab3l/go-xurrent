@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // InvoicesAPIService InvoicesAPI service
 type InvoicesAPIService service
 
 type ApiGetInvoicesIdAuditRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *InvoicesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetInvoicesIdAuditRequest) Authorization(authorization string) ApiGetInvoicesIdAuditRequest {
@@ -97,24 +96,24 @@ func (r ApiGetInvoicesIdAuditRequest) Execute() (*http.Response, error) {
 /*
 GetInvoicesIdAudit List audit entries for an invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetInvoicesIdAuditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetInvoicesIdAuditRequest
 */
 func (a *InvoicesAPIService) GetInvoicesIdAudit(ctx context.Context, id int32) ApiGetInvoicesIdAuditRequest {
 	return ApiGetInvoicesIdAuditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *InvoicesAPIService) GetInvoicesIdAuditExecute(r ApiGetInvoicesIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GetInvoicesIdAudit")
@@ -202,18 +201,18 @@ func (a *InvoicesAPIService) GetInvoicesIdAuditExecute(r ApiGetInvoicesIdAuditRe
 }
 
 type ApiGetInvoicesIdCisRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *InvoicesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetInvoicesIdCisRequest) Authorization(authorization string) ApiGetInvoicesIdCisRequest {
@@ -275,24 +274,24 @@ func (r ApiGetInvoicesIdCisRequest) Execute() (*http.Response, error) {
 /*
 GetInvoicesIdCis List configuration items linked to an invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetInvoicesIdCisRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetInvoicesIdCisRequest
 */
 func (a *InvoicesAPIService) GetInvoicesIdCis(ctx context.Context, id int32) ApiGetInvoicesIdCisRequest {
 	return ApiGetInvoicesIdCisRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *InvoicesAPIService) GetInvoicesIdCisExecute(r ApiGetInvoicesIdCisRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GetInvoicesIdCis")

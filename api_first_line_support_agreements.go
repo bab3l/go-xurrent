@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // FirstLineSupportAgreementsAPIService FirstLineSupportAgreementsAPI service
 type FirstLineSupportAgreementsAPIService service
 
 type ApiGetFlsasIdAuditRequest struct {
-	ctx context.Context
-	ApiService *FirstLineSupportAgreementsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *FirstLineSupportAgreementsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetFlsasIdAuditRequest) Authorization(authorization string) ApiGetFlsasIdAuditRequest {
@@ -97,24 +96,24 @@ func (r ApiGetFlsasIdAuditRequest) Execute() (*http.Response, error) {
 /*
 GetFlsasIdAudit List audit entries for a first line support agreement
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetFlsasIdAuditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetFlsasIdAuditRequest
 */
 func (a *FirstLineSupportAgreementsAPIService) GetFlsasIdAudit(ctx context.Context, id int32) ApiGetFlsasIdAuditRequest {
 	return ApiGetFlsasIdAuditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *FirstLineSupportAgreementsAPIService) GetFlsasIdAuditExecute(r ApiGetFlsasIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FirstLineSupportAgreementsAPIService.GetFlsasIdAudit")

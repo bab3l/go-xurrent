@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // ConfigurationItemRelationsAPIService ConfigurationItemRelationsAPI service
 type ConfigurationItemRelationsAPIService service
 
 type ApiDeleteCisCiIdCiRelationsRelationIdRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	ciId int32
-	relationId int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	ciId          int32
+	relationId    int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiDeleteCisCiIdCiRelationsRelationIdRequest) Authorization(authorization string) ApiDeleteCisCiIdCiRelationsRelationIdRequest {
@@ -49,16 +48,16 @@ func (r ApiDeleteCisCiIdCiRelationsRelationIdRequest) Execute() (*http.Response,
 /*
 DeleteCisCiIdCiRelationsRelationId DeleteRelationWithCI
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param ciId
- @param relationId
- @return ApiDeleteCisCiIdCiRelationsRelationIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param ciId
+	@param relationId
+	@return ApiDeleteCisCiIdCiRelationsRelationIdRequest
 */
 func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationId(ctx context.Context, ciId int32, relationId int32) ApiDeleteCisCiIdCiRelationsRelationIdRequest {
 	return ApiDeleteCisCiIdCiRelationsRelationIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		ciId: ciId,
+		ctx:        ctx,
+		ciId:       ciId,
 		relationId: relationId,
 	}
 }
@@ -66,9 +65,9 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationI
 // Execute executes the request
 func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationIdExecute(r ApiDeleteCisCiIdCiRelationsRelationIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisCiIdCiRelationsRelationId")
@@ -136,8 +135,8 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationI
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -146,12 +145,12 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdCiRelationsRelationI
 }
 
 type ApiDeleteCisCiIdUsersPersonIdRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	ciId int32
-	personId int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	ciId          int32
+	personId      int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiDeleteCisCiIdUsersPersonIdRequest) Authorization(authorization string) ApiDeleteCisCiIdUsersPersonIdRequest {
@@ -171,26 +170,26 @@ func (r ApiDeleteCisCiIdUsersPersonIdRequest) Execute() (*http.Response, error) 
 /*
 DeleteCisCiIdUsersPersonId DeleteLinkCIwithPerson
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param ciId
- @param personId
- @return ApiDeleteCisCiIdUsersPersonIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param ciId
+	@param personId
+	@return ApiDeleteCisCiIdUsersPersonIdRequest
 */
 func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdUsersPersonId(ctx context.Context, ciId int32, personId int32) ApiDeleteCisCiIdUsersPersonIdRequest {
 	return ApiDeleteCisCiIdUsersPersonIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		ciId: ciId,
-		personId: personId,
+		ctx:        ctx,
+		ciId:       ciId,
+		personId:   personId,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdUsersPersonIdExecute(r ApiDeleteCisCiIdUsersPersonIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisCiIdUsersPersonId")
@@ -258,11 +257,11 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisCiIdUsersPersonIdExecute
 }
 
 type ApiDeleteCisIdCiRelationsRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiDeleteCisIdCiRelationsRequest) Authorization(authorization string) ApiDeleteCisIdCiRelationsRequest {
@@ -282,24 +281,24 @@ func (r ApiDeleteCisIdCiRelationsRequest) Execute() (*http.Response, error) {
 /*
 DeleteCisIdCiRelations DeleteAllRelationsWithCI
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteCisIdCiRelationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteCisIdCiRelationsRequest
 */
 func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelations(ctx context.Context, id int32) ApiDeleteCisIdCiRelationsRequest {
 	return ApiDeleteCisIdCiRelationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelationsExecute(r ApiDeleteCisIdCiRelationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisIdCiRelations")
@@ -366,8 +365,8 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelationsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -376,11 +375,11 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisIdCiRelationsExecute(r A
 }
 
 type ApiDeleteCisIdUsersRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
+	x4meAccount   *string
 }
 
 func (r ApiDeleteCisIdUsersRequest) Authorization(authorization string) ApiDeleteCisIdUsersRequest {
@@ -400,24 +399,24 @@ func (r ApiDeleteCisIdUsersRequest) Execute() (*http.Response, error) {
 /*
 DeleteCisIdUsers DeleteLinkCIwithAllPersons
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteCisIdUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteCisIdUsersRequest
 */
 func (a *ConfigurationItemRelationsAPIService) DeleteCisIdUsers(ctx context.Context, id int32) ApiDeleteCisIdUsersRequest {
 	return ApiDeleteCisIdUsersRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationItemRelationsAPIService) DeleteCisIdUsersExecute(r ApiDeleteCisIdUsersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.DeleteCisIdUsers")
@@ -484,18 +483,18 @@ func (a *ConfigurationItemRelationsAPIService) DeleteCisIdUsersExecute(r ApiDele
 }
 
 type ApiGetCisIdCiRelationsRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ConfigurationItemRelationsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetCisIdCiRelationsRequest) Authorization(authorization string) ApiGetCisIdCiRelationsRequest {
@@ -557,26 +556,27 @@ func (r ApiGetCisIdCiRelationsRequest) Execute() (map[string]interface{}, *http.
 /*
 GetCisIdCiRelations GetRelatedCIList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetCisIdCiRelationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetCisIdCiRelationsRequest
 */
 func (a *ConfigurationItemRelationsAPIService) GetCisIdCiRelations(ctx context.Context, id int32) ApiGetCisIdCiRelationsRequest {
 	return ApiGetCisIdCiRelationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ConfigurationItemRelationsAPIService) GetCisIdCiRelationsExecute(r ApiGetCisIdCiRelationsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.GetCisIdCiRelations")
@@ -673,18 +673,18 @@ func (a *ConfigurationItemRelationsAPIService) GetCisIdCiRelationsExecute(r ApiG
 }
 
 type ApiGetCisIdUsersRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ConfigurationItemRelationsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetCisIdUsersRequest) Authorization(authorization string) ApiGetCisIdUsersRequest {
@@ -746,26 +746,27 @@ func (r ApiGetCisIdUsersRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 GetCisIdUsers GetAllUsersLinkedWithCI
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetCisIdUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetCisIdUsersRequest
 */
 func (a *ConfigurationItemRelationsAPIService) GetCisIdUsers(ctx context.Context, id int32) ApiGetCisIdUsersRequest {
 	return ApiGetCisIdUsersRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ConfigurationItemRelationsAPIService) GetCisIdUsersExecute(r ApiGetCisIdUsersRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.GetCisIdUsers")
@@ -862,13 +863,13 @@ func (a *ConfigurationItemRelationsAPIService) GetCisIdUsersExecute(r ApiGetCisI
 }
 
 type ApiPostCisCiIdUsersPersonIdRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	ciId int32
-	personId int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	ciId          int32
+	personId      int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostCisCiIdUsersPersonIdRequest) Authorization(authorization string) ApiPostCisCiIdUsersPersonIdRequest {
@@ -893,28 +894,29 @@ func (r ApiPostCisCiIdUsersPersonIdRequest) Execute() (map[string]interface{}, *
 /*
 PostCisCiIdUsersPersonId LinkCIwithPerson
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param ciId
- @param personId
- @return ApiPostCisCiIdUsersPersonIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param ciId
+	@param personId
+	@return ApiPostCisCiIdUsersPersonIdRequest
 */
 func (a *ConfigurationItemRelationsAPIService) PostCisCiIdUsersPersonId(ctx context.Context, ciId int32, personId int32) ApiPostCisCiIdUsersPersonIdRequest {
 	return ApiPostCisCiIdUsersPersonIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		ciId: ciId,
-		personId: personId,
+		ctx:        ctx,
+		ciId:       ciId,
+		personId:   personId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ConfigurationItemRelationsAPIService) PostCisCiIdUsersPersonIdExecute(r ApiPostCisCiIdUsersPersonIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.PostCisCiIdUsersPersonId")
@@ -993,12 +995,12 @@ func (a *ConfigurationItemRelationsAPIService) PostCisCiIdUsersPersonIdExecute(r
 }
 
 type ApiPostCisIdCiRelationsRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationItemRelationsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ConfigurationItemRelationsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostCisIdCiRelationsRequest) Authorization(authorization string) ApiPostCisIdCiRelationsRequest {
@@ -1023,26 +1025,27 @@ func (r ApiPostCisIdCiRelationsRequest) Execute() (map[string]interface{}, *http
 /*
 PostCisIdCiRelations SetRelationWithCI
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPostCisIdCiRelationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPostCisIdCiRelationsRequest
 */
 func (a *ConfigurationItemRelationsAPIService) PostCisIdCiRelations(ctx context.Context, id int32) ApiPostCisIdCiRelationsRequest {
 	return ApiPostCisIdCiRelationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ConfigurationItemRelationsAPIService) PostCisIdCiRelationsExecute(r ApiPostCisIdCiRelationsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationItemRelationsAPIService.PostCisIdCiRelations")

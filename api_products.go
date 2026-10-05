@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // ProductsAPIService ProductsAPI service
 type ProductsAPIService service
 
 type ApiGetProductsRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProductsRequest) Authorization(authorization string) ApiGetProductsRequest {
@@ -89,31 +88,32 @@ func (r ApiGetProductsRequest) State(state string) ApiGetProductsRequest {
 	return r
 }
 
-func (r ApiGetProductsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetProductsRequest) Execute() ([]GetProducts200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetProductsExecute(r)
 }
 
 /*
 GetProducts GetProductsList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProductsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProductsRequest
 */
 func (a *ProductsAPIService) GetProducts(ctx context.Context) ApiGetProductsRequest {
 	return ApiGetProductsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *ProductsAPIService) GetProductsExecute(r ApiGetProductsRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetProducts200ResponseInner
+func (a *ProductsAPIService) GetProductsExecute(r ApiGetProductsRequest) ([]GetProducts200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetProducts200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProducts")
@@ -209,17 +209,17 @@ func (a *ProductsAPIService) GetProductsExecute(r ApiGetProductsRequest) ([]map[
 }
 
 type ApiGetProductsDisabledRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProductsDisabledRequest) Authorization(authorization string) ApiGetProductsDisabledRequest {
@@ -274,31 +274,32 @@ func (r ApiGetProductsDisabledRequest) State(state string) ApiGetProductsDisable
 	return r
 }
 
-func (r ApiGetProductsDisabledRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetProductsDisabledRequest) Execute() ([]GetProducts200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetProductsDisabledExecute(r)
 }
 
 /*
 GetProductsDisabled List disabled products
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProductsDisabledRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProductsDisabledRequest
 */
 func (a *ProductsAPIService) GetProductsDisabled(ctx context.Context) ApiGetProductsDisabledRequest {
 	return ApiGetProductsDisabledRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *ProductsAPIService) GetProductsDisabledExecute(r ApiGetProductsDisabledRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetProducts200ResponseInner
+func (a *ProductsAPIService) GetProductsDisabledExecute(r ApiGetProductsDisabledRequest) ([]GetProducts200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetProducts200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsDisabled")
@@ -394,17 +395,17 @@ func (a *ProductsAPIService) GetProductsDisabledExecute(r ApiGetProductsDisabled
 }
 
 type ApiGetProductsEnabledRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProductsEnabledRequest) Authorization(authorization string) ApiGetProductsEnabledRequest {
@@ -466,24 +467,25 @@ func (r ApiGetProductsEnabledRequest) Execute() ([]map[string]interface{}, *http
 /*
 GetProductsEnabled List enabled products
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProductsEnabledRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProductsEnabledRequest
 */
 func (a *ProductsAPIService) GetProductsEnabled(ctx context.Context) ApiGetProductsEnabledRequest {
 	return ApiGetProductsEnabledRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProductsAPIService) GetProductsEnabledExecute(r ApiGetProductsEnabledRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsEnabled")
@@ -579,13 +581,13 @@ func (a *ProductsAPIService) GetProductsEnabledExecute(r ApiGetProductsEnabledRe
 }
 
 type ApiGetProductsIdRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetProductsIdRequest) Authorization(authorization string) ApiGetProductsIdRequest {
@@ -610,33 +612,34 @@ func (r ApiGetProductsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetProductsI
 	return r
 }
 
-func (r ApiGetProductsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetProductsIdRequest) Execute() (*PostProducts201Response, *http.Response, error) {
 	return r.ApiService.GetProductsIdExecute(r)
 }
 
 /*
 GetProductsId GetProductProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetProductsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetProductsIdRequest
 */
 func (a *ProductsAPIService) GetProductsId(ctx context.Context, id int32) ApiGetProductsIdRequest {
 	return ApiGetProductsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProductsAPIService) GetProductsIdExecute(r ApiGetProductsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostProducts201Response
+func (a *ProductsAPIService) GetProductsIdExecute(r ApiGetProductsIdRequest) (*PostProducts201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostProducts201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsId")
@@ -718,18 +721,18 @@ func (a *ProductsAPIService) GetProductsIdExecute(r ApiGetProductsIdRequest) (ma
 }
 
 type ApiGetProductsIdCisRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProductsIdCisRequest) Authorization(authorization string) ApiGetProductsIdCisRequest {
@@ -791,24 +794,24 @@ func (r ApiGetProductsIdCisRequest) Execute() (*http.Response, error) {
 /*
 GetProductsIdCis List configuration items linked to a product
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetProductsIdCisRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetProductsIdCisRequest
 */
 func (a *ProductsAPIService) GetProductsIdCis(ctx context.Context, id int32) ApiGetProductsIdCisRequest {
 	return ApiGetProductsIdCisRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ProductsAPIService) GetProductsIdCisExecute(r ApiGetProductsIdCisRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsIdCis")
@@ -896,17 +899,17 @@ func (a *ProductsAPIService) GetProductsIdCisExecute(r ApiGetProductsIdCisReques
 }
 
 type ApiGetProductsSupportedByMyTeamsRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ProductsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetProductsSupportedByMyTeamsRequest) Authorization(authorization string) ApiGetProductsSupportedByMyTeamsRequest {
@@ -968,24 +971,25 @@ func (r ApiGetProductsSupportedByMyTeamsRequest) Execute() ([]map[string]interfa
 /*
 GetProductsSupportedByMyTeams List products supported by API user teams
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProductsSupportedByMyTeamsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetProductsSupportedByMyTeamsRequest
 */
 func (a *ProductsAPIService) GetProductsSupportedByMyTeams(ctx context.Context) ApiGetProductsSupportedByMyTeamsRequest {
 	return ApiGetProductsSupportedByMyTeamsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ProductsAPIService) GetProductsSupportedByMyTeamsExecute(r ApiGetProductsSupportedByMyTeamsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.GetProductsSupportedByMyTeams")
@@ -1081,12 +1085,12 @@ func (a *ProductsAPIService) GetProductsSupportedByMyTeamsExecute(r ApiGetProduc
 }
 
 type ApiPatchProductsIdRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ProductsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchProductsIdRequest) Authorization(authorization string) ApiPatchProductsIdRequest {
@@ -1104,33 +1108,34 @@ func (r ApiPatchProductsIdRequest) Body(body map[string]interface{}) ApiPatchPro
 	return r
 }
 
-func (r ApiPatchProductsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPatchProductsIdRequest) Execute() (*PostProducts201Response, *http.Response, error) {
 	return r.ApiService.PatchProductsIdExecute(r)
 }
 
 /*
 PatchProductsId Update a product
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchProductsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchProductsIdRequest
 */
 func (a *ProductsAPIService) PatchProductsId(ctx context.Context, id int32) ApiPatchProductsIdRequest {
 	return ApiPatchProductsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProductsAPIService) PatchProductsIdExecute(r ApiPatchProductsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostProducts201Response
+func (a *ProductsAPIService) PatchProductsIdExecute(r ApiPatchProductsIdRequest) (*PostProducts201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostProducts201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.PatchProductsId")
@@ -1208,11 +1213,11 @@ func (a *ProductsAPIService) PatchProductsIdExecute(r ApiPatchProductsIdRequest)
 }
 
 type ApiPostProductsRequest struct {
-	ctx context.Context
-	ApiService *ProductsAPIService
+	ctx           context.Context
+	ApiService    *ProductsAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostProductsRequest) Authorization(authorization string) ApiPostProductsRequest {
@@ -1230,31 +1235,32 @@ func (r ApiPostProductsRequest) Body(body map[string]interface{}) ApiPostProduct
 	return r
 }
 
-func (r ApiPostProductsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPostProductsRequest) Execute() (*PostProducts201Response, *http.Response, error) {
 	return r.ApiService.PostProductsExecute(r)
 }
 
 /*
 PostProducts Create a product
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostProductsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostProductsRequest
 */
 func (a *ProductsAPIService) PostProducts(ctx context.Context) ApiPostProductsRequest {
 	return ApiPostProductsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProductsAPIService) PostProductsExecute(r ApiPostProductsRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostProducts201Response
+func (a *ProductsAPIService) PostProductsExecute(r ApiPostProductsRequest) (*PostProducts201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostProducts201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductsAPIService.PostProducts")

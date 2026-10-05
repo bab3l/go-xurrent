@@ -92,7 +92,7 @@ No authorization required
 
 ## GetServiceOfferingsId
 
-> GetServiceOfferingsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetServiceOfferingsId200Response GetServiceOfferingsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetServiceOfferById
 
@@ -117,11 +117,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServiceOfferingsAPI.GetServiceOfferingsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.ServiceOfferingsAPI.GetServiceOfferingsId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceOfferingsAPI.GetServiceOfferingsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetServiceOfferingsId`: GetServiceOfferingsId200Response
+	fmt.Fprintf(os.Stdout, "Response from `ServiceOfferingsAPI.GetServiceOfferingsId`: %v\n", resp)
 }
 ```
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetServiceOfferingsId200Response**](GetServiceOfferingsId200Response.md)
 
 ### Authorization
 

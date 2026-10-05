@@ -11,9 +11,9 @@ package xurrent
 
 import (
 	"context"
-	openapiclient "github.com/xurrent/go-xurrent"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	openapiclient "github.com/xurrent/go-xurrent"
 	"testing"
 )
 
@@ -38,7 +38,7 @@ func Test_xurrent_GeneralAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.GeneralAPI.GetMe(context.Background()).Execute()
+		_, httpRes, err := apiClient.GeneralAPI.GetMe(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

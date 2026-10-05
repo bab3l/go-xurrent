@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // ExportAPIService ExportAPI service
 type ExportAPIService service
 
 type ApiGetImportRequest struct {
-	ctx context.Context
-	ApiService *ExportAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ExportAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetImportRequest) Authorization(authorization string) ApiGetImportRequest {
@@ -96,22 +95,22 @@ func (r ApiGetImportRequest) Execute() (*http.Response, error) {
 /*
 GetImport GetExportJobsList (all)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetImportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetImportRequest
 */
 func (a *ExportAPIService) GetImport(ctx context.Context) ApiGetImportRequest {
 	return ApiGetImportRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExportAPIService) GetImportExecute(r ApiGetImportRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.GetImport")
@@ -198,13 +197,13 @@ func (a *ExportAPIService) GetImportExecute(r ApiGetImportRequest) (*http.Respon
 }
 
 type ApiGetImportTokenRequest struct {
-	ctx context.Context
-	ApiService *ExportAPIService
-	token string
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ExportAPIService
+	token            string
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetImportTokenRequest) Authorization(authorization string) ApiGetImportTokenRequest {
@@ -236,24 +235,24 @@ func (r ApiGetImportTokenRequest) Execute() (*http.Response, error) {
 /*
 GetImportToken GetExportJobProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param token
- @return ApiGetImportTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param token
+	@return ApiGetImportTokenRequest
 */
 func (a *ExportAPIService) GetImportToken(ctx context.Context, token string) ApiGetImportTokenRequest {
 	return ApiGetImportTokenRequest{
 		ApiService: a,
-		ctx: ctx,
-		token: token,
+		ctx:        ctx,
+		token:      token,
 	}
 }
 
 // Execute executes the request
 func (a *ExportAPIService) GetImportTokenExecute(r ApiGetImportTokenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.GetImportToken")
@@ -326,13 +325,13 @@ func (a *ExportAPIService) GetImportTokenExecute(r ApiGetImportTokenRequest) (*h
 }
 
 type ApiPostExportRequest struct {
-	ctx context.Context
-	ApiService *ExportAPIService
+	ctx           context.Context
+	ApiService    *ExportAPIService
 	authorization *string
-	x4meAccount *string
-	type_ *string
-	from *int32
-	exportFormat *string
+	x4meAccount   *string
+	type_         *string
+	from          *int32
+	exportFormat  *string
 	lineSeparator *string
 }
 
@@ -373,22 +372,22 @@ func (r ApiPostExportRequest) Execute() (*http.Response, error) {
 /*
 PostExport RunNewExport (sites, teams)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostExportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostExportRequest
 */
 func (a *ExportAPIService) PostExport(ctx context.Context) ApiPostExportRequest {
 	return ApiPostExportRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExportAPIService) PostExportExecute(r ApiPostExportRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportAPIService.PostExport")

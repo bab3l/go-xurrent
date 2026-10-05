@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetRequests
 
-> map[string]interface{} GetRequests(ctx).Authorization(authorization).X4meAccount(x4meAccount).Template(template).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequests(ctx).Authorization(authorization).X4meAccount(x4meAccount).Template(template).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesList (several templates) Copy
 
@@ -46,7 +46,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.GetRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequests`: map[string]interface{}
+	// response from `GetRequests`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.GetRequests`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 

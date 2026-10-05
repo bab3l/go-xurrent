@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // ServicesAPIService ServicesAPI service
 type ServicesAPIService service
 
 type ApiGetServicesRequest struct {
-	ctx context.Context
-	ApiService *ServicesAPIService
-	authorization *string
-	x4meAccount *string
-	provider *int32
+	ctx              context.Context
+	ApiService       *ServicesAPIService
+	authorization    *string
+	x4meAccount      *string
+	provider         *int32
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetServicesRequest) Authorization(authorization string) ApiGetServicesRequest {
@@ -102,24 +101,25 @@ func (r ApiGetServicesRequest) Execute() ([]map[string]interface{}, *http.Respon
 /*
 GetServices GetServiceByProvider
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetServicesRequest
 */
 func (a *ServicesAPIService) GetServices(ctx context.Context) ApiGetServicesRequest {
 	return ApiGetServicesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
+//
+//	@return []map[string]interface{}
 func (a *ServicesAPIService) GetServicesExecute(r ApiGetServicesRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.GetServices")
@@ -218,13 +218,13 @@ func (a *ServicesAPIService) GetServicesExecute(r ApiGetServicesRequest) ([]map[
 }
 
 type ApiGetServicesIdRequest struct {
-	ctx context.Context
-	ApiService *ServicesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ServicesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetServicesIdRequest) Authorization(authorization string) ApiGetServicesIdRequest {
@@ -249,33 +249,34 @@ func (r ApiGetServicesIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetServicesI
 	return r
 }
 
-func (r ApiGetServicesIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetServicesIdRequest) Execute() (*GetServicesId200Response, *http.Response, error) {
 	return r.ApiService.GetServicesIdExecute(r)
 }
 
 /*
 GetServicesId GetServiceProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetServicesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetServicesIdRequest
 */
 func (a *ServicesAPIService) GetServicesId(ctx context.Context, id int32) ApiGetServicesIdRequest {
 	return ApiGetServicesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ServicesAPIService) GetServicesIdExecute(r ApiGetServicesIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetServicesId200Response
+func (a *ServicesAPIService) GetServicesIdExecute(r ApiGetServicesIdRequest) (*GetServicesId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetServicesId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.GetServicesId")
@@ -357,12 +358,12 @@ func (a *ServicesAPIService) GetServicesIdExecute(r ApiGetServicesIdRequest) (ma
 }
 
 type ApiPatchServicesIdRequest struct {
-	ctx context.Context
-	ApiService *ServicesAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ServicesAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchServicesIdRequest) Authorization(authorization string) ApiPatchServicesIdRequest {
@@ -387,26 +388,27 @@ func (r ApiPatchServicesIdRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 PatchServicesId Update a service
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchServicesIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchServicesIdRequest
 */
 func (a *ServicesAPIService) PatchServicesId(ctx context.Context, id int32) ApiPatchServicesIdRequest {
 	return ApiPatchServicesIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ServicesAPIService) PatchServicesIdExecute(r ApiPatchServicesIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.PatchServicesId")
@@ -484,11 +486,11 @@ func (a *ServicesAPIService) PatchServicesIdExecute(r ApiPatchServicesIdRequest)
 }
 
 type ApiPostServicesRequest struct {
-	ctx context.Context
-	ApiService *ServicesAPIService
+	ctx           context.Context
+	ApiService    *ServicesAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostServicesRequest) Authorization(authorization string) ApiPostServicesRequest {
@@ -513,24 +515,25 @@ func (r ApiPostServicesRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 PostServices Create a service
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostServicesRequest
 */
 func (a *ServicesAPIService) PostServices(ctx context.Context) ApiPostServicesRequest {
 	return ApiPostServicesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ServicesAPIService) PostServicesExecute(r ApiPostServicesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.PostServices")

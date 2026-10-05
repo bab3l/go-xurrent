@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // TeamsAPIService TeamsAPI service
 type TeamsAPIService service
 
 type ApiGetTeamsRequest struct {
-	ctx context.Context
-	ApiService *TeamsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *TeamsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetTeamsRequest) Authorization(authorization string) ApiGetTeamsRequest {
@@ -89,31 +88,32 @@ func (r ApiGetTeamsRequest) State(state string) ApiGetTeamsRequest {
 	return r
 }
 
-func (r ApiGetTeamsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetTeamsRequest) Execute() ([]GetTeams200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetTeamsExecute(r)
 }
 
 /*
 GetTeams List teams
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetTeamsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetTeamsRequest
 */
 func (a *TeamsAPIService) GetTeams(ctx context.Context) ApiGetTeamsRequest {
 	return ApiGetTeamsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *TeamsAPIService) GetTeamsExecute(r ApiGetTeamsRequest) ([]map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetTeams200ResponseInner
+func (a *TeamsAPIService) GetTeamsExecute(r ApiGetTeamsRequest) ([]GetTeams200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetTeams200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeams")
@@ -209,13 +209,13 @@ func (a *TeamsAPIService) GetTeamsExecute(r ApiGetTeamsRequest) ([]map[string]in
 }
 
 type ApiGetTeamsIdRequest struct {
-	ctx context.Context
-	ApiService *TeamsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *TeamsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetTeamsIdRequest) Authorization(authorization string) ApiGetTeamsIdRequest {
@@ -240,33 +240,34 @@ func (r ApiGetTeamsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetTeamsIdReque
 	return r
 }
 
-func (r ApiGetTeamsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetTeamsIdRequest) Execute() (*GetTeamsId200Response, *http.Response, error) {
 	return r.ApiService.GetTeamsIdExecute(r)
 }
 
 /*
 GetTeamsId GetTeamProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetTeamsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetTeamsIdRequest
 */
 func (a *TeamsAPIService) GetTeamsId(ctx context.Context, id int32) ApiGetTeamsIdRequest {
 	return ApiGetTeamsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetTeamsId200Response
+func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (*GetTeamsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetTeamsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsId")
@@ -348,18 +349,18 @@ func (a *TeamsAPIService) GetTeamsIdExecute(r ApiGetTeamsIdRequest) (map[string]
 }
 
 type ApiGetTeamsIdMembersRequest struct {
-	ctx context.Context
-	ApiService *TeamsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *TeamsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetTeamsIdMembersRequest) Authorization(authorization string) ApiGetTeamsIdMembersRequest {
@@ -414,33 +415,34 @@ func (r ApiGetTeamsIdMembersRequest) State(state string) ApiGetTeamsIdMembersReq
 	return r
 }
 
-func (r ApiGetTeamsIdMembersRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetTeamsIdMembersRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetTeamsIdMembersExecute(r)
 }
 
 /*
 GetTeamsIdMembers GetTeamMembersList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetTeamsIdMembersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetTeamsIdMembersRequest
 */
 func (a *TeamsAPIService) GetTeamsIdMembers(ctx context.Context, id int32) ApiGetTeamsIdMembersRequest {
 	return ApiGetTeamsIdMembersRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return []map[string]interface{}
+func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamsIdMembers")
@@ -537,12 +539,12 @@ func (a *TeamsAPIService) GetTeamsIdMembersExecute(r ApiGetTeamsIdMembersRequest
 }
 
 type ApiPatchTeamsIdRequest struct {
-	ctx context.Context
-	ApiService *TeamsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *TeamsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchTeamsIdRequest) Authorization(authorization string) ApiPatchTeamsIdRequest {
@@ -560,33 +562,34 @@ func (r ApiPatchTeamsIdRequest) Body(body map[string]interface{}) ApiPatchTeamsI
 	return r
 }
 
-func (r ApiPatchTeamsIdRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPatchTeamsIdRequest) Execute() (*GetTeamsId200Response, *http.Response, error) {
 	return r.ApiService.PatchTeamsIdExecute(r)
 }
 
 /*
 PatchTeamsId Update a team
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchTeamsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchTeamsIdRequest
 */
 func (a *TeamsAPIService) PatchTeamsId(ctx context.Context, id int32) ApiPatchTeamsIdRequest {
 	return ApiPatchTeamsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *TeamsAPIService) PatchTeamsIdExecute(r ApiPatchTeamsIdRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return GetTeamsId200Response
+func (a *TeamsAPIService) PatchTeamsIdExecute(r ApiPatchTeamsIdRequest) (*GetTeamsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetTeamsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.PatchTeamsId")
@@ -664,11 +667,11 @@ func (a *TeamsAPIService) PatchTeamsIdExecute(r ApiPatchTeamsIdRequest) (map[str
 }
 
 type ApiPostTeamsRequest struct {
-	ctx context.Context
-	ApiService *TeamsAPIService
+	ctx           context.Context
+	ApiService    *TeamsAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostTeamsRequest) Authorization(authorization string) ApiPostTeamsRequest {
@@ -686,31 +689,32 @@ func (r ApiPostTeamsRequest) Body(body map[string]interface{}) ApiPostTeamsReque
 	return r
 }
 
-func (r ApiPostTeamsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiPostTeamsRequest) Execute() (*PostTeams201Response, *http.Response, error) {
 	return r.ApiService.PostTeamsExecute(r)
 }
 
 /*
 PostTeams Create a team
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostTeamsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostTeamsRequest
 */
 func (a *TeamsAPIService) PostTeams(ctx context.Context) ApiPostTeamsRequest {
 	return ApiPostTeamsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *TeamsAPIService) PostTeamsExecute(r ApiPostTeamsRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return PostTeams201Response
+func (a *TeamsAPIService) PostTeamsExecute(r ApiPostTeamsRequest) (*PostTeams201Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostTeams201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.PostTeams")

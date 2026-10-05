@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetOrganizations
 
-> []Organization GetOrganizations(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetOrganizations200ResponseInner GetOrganizations(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetOrganizationsList
 
@@ -47,7 +47,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrganizations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetOrganizations`: []Organization
+	// response from `GetOrganizations`: []GetOrganizations200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrganizations`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Organization**](Organization.md)
+[**[]GetOrganizations200ResponseInner**](GetOrganizations200ResponseInner.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ No authorization required
 
 ## GetOrganizationsId
 
-> Organization GetOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetOrganizationsId200Response GetOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetOrganizationProperties
 
@@ -123,7 +123,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrganizationsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetOrganizationsId`: Organization
+	// response from `GetOrganizationsId`: GetOrganizationsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrganizationsId`: %v\n", resp)
 }
 ```
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**GetOrganizationsId200Response**](GetOrganizationsId200Response.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ No authorization required
 
 ## PatchOrganizationsId
 
-> Organization PatchOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
+> GetOrganizationsId200Response PatchOrganizationsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Organization(organization).Execute()
 
 UpdateOrganization
 
@@ -198,7 +198,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.PatchOrganizationsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchOrganizationsId`: Organization
+	// response from `PatchOrganizationsId`: GetOrganizationsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.PatchOrganizationsId`: %v\n", resp)
 }
 ```
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**GetOrganizationsId200Response**](GetOrganizationsId200Response.md)
 
 ### Authorization
 

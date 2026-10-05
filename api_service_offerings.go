@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // ServiceOfferingsAPIService ServiceOfferingsAPI service
 type ServiceOfferingsAPIService service
 
 type ApiGetServiceOfferingsRequest struct {
-	ctx context.Context
-	ApiService *ServiceOfferingsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ServiceOfferingsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetServiceOfferingsRequest) Authorization(authorization string) ApiGetServiceOfferingsRequest {
@@ -96,22 +95,22 @@ func (r ApiGetServiceOfferingsRequest) Execute() (*http.Response, error) {
 /*
 GetServiceOfferings GetServiceOfferList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetServiceOfferingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetServiceOfferingsRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferings(ctx context.Context) ApiGetServiceOfferingsRequest {
 	return ApiGetServiceOfferingsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsExecute(r ApiGetServiceOfferingsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferings")
@@ -198,13 +197,13 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsExecute(r ApiGetServiceO
 }
 
 type ApiGetServiceOfferingsIdRequest struct {
-	ctx context.Context
-	ApiService *ServiceOfferingsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ServiceOfferingsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetServiceOfferingsIdRequest) Authorization(authorization string) ApiGetServiceOfferingsIdRequest {
@@ -229,36 +228,39 @@ func (r ApiGetServiceOfferingsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetS
 	return r
 }
 
-func (r ApiGetServiceOfferingsIdRequest) Execute() (*http.Response, error) {
+func (r ApiGetServiceOfferingsIdRequest) Execute() (*GetServiceOfferingsId200Response, *http.Response, error) {
 	return r.ApiService.GetServiceOfferingsIdExecute(r)
 }
 
 /*
 GetServiceOfferingsId GetServiceOfferById
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetServiceOfferingsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetServiceOfferingsIdRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsId(ctx context.Context, id int32) ApiGetServiceOfferingsIdRequest {
 	return ApiGetServiceOfferingsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServiceOfferingsIdRequest) (*http.Response, error) {
+//
+//	@return GetServiceOfferingsId200Response
+func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServiceOfferingsIdRequest) (*GetServiceOfferingsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetServiceOfferingsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsId")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/service_offerings/{id}"
@@ -299,19 +301,19 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServic
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -319,25 +321,34 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdExecute(r ApiGetServic
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetServiceOfferingsIdAuditRequest struct {
-	ctx context.Context
-	ApiService *ServiceOfferingsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *ServiceOfferingsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetServiceOfferingsIdAuditRequest) Authorization(authorization string) ApiGetServiceOfferingsIdAuditRequest {
@@ -399,24 +410,24 @@ func (r ApiGetServiceOfferingsIdAuditRequest) Execute() (*http.Response, error) 
 /*
 GetServiceOfferingsIdAudit GetServiceOfferAuditEntries
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetServiceOfferingsIdAuditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetServiceOfferingsIdAuditRequest
 */
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAudit(ctx context.Context, id int32) ApiGetServiceOfferingsIdAuditRequest {
 	return ApiGetServiceOfferingsIdAuditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAuditExecute(r ApiGetServiceOfferingsIdAuditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.GetServiceOfferingsIdAudit")
@@ -504,12 +515,12 @@ func (a *ServiceOfferingsAPIService) GetServiceOfferingsIdAuditExecute(r ApiGetS
 }
 
 type ApiPatchServiceOfferingsIdRequest struct {
-	ctx context.Context
-	ApiService *ServiceOfferingsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *ServiceOfferingsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPatchServiceOfferingsIdRequest) Authorization(authorization string) ApiPatchServiceOfferingsIdRequest {
@@ -534,26 +545,27 @@ func (r ApiPatchServiceOfferingsIdRequest) Execute() (map[string]interface{}, *h
 /*
 PatchServiceOfferingsId Update a service offering
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchServiceOfferingsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchServiceOfferingsIdRequest
 */
 func (a *ServiceOfferingsAPIService) PatchServiceOfferingsId(ctx context.Context, id int32) ApiPatchServiceOfferingsIdRequest {
 	return ApiPatchServiceOfferingsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ServiceOfferingsAPIService) PatchServiceOfferingsIdExecute(r ApiPatchServiceOfferingsIdRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.PatchServiceOfferingsId")
@@ -631,11 +643,11 @@ func (a *ServiceOfferingsAPIService) PatchServiceOfferingsIdExecute(r ApiPatchSe
 }
 
 type ApiPostServiceOfferingsRequest struct {
-	ctx context.Context
-	ApiService *ServiceOfferingsAPIService
+	ctx           context.Context
+	ApiService    *ServiceOfferingsAPIService
 	authorization *string
-	x4meAccount *string
-	body *map[string]interface{}
+	x4meAccount   *string
+	body          *map[string]interface{}
 }
 
 func (r ApiPostServiceOfferingsRequest) Authorization(authorization string) ApiPostServiceOfferingsRequest {
@@ -660,24 +672,25 @@ func (r ApiPostServiceOfferingsRequest) Execute() (map[string]interface{}, *http
 /*
 PostServiceOfferings Create a service offering
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostServiceOfferingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostServiceOfferingsRequest
 */
 func (a *ServiceOfferingsAPIService) PostServiceOfferings(ctx context.Context) ApiPostServiceOfferingsRequest {
 	return ApiPostServiceOfferingsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ServiceOfferingsAPIService) PostServiceOfferingsExecute(r ApiPostServiceOfferingsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceOfferingsAPIService.PostServiceOfferings")

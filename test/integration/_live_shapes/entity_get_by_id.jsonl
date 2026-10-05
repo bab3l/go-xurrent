@@ -1,0 +1,273 @@
+﻿
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T07:49:18.2443272Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T07:49:19.1219897Z"}
+{"kind":"request","method":"GET","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T07:49:19.1219897Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":{"account":{"id":"","name":""},"disabled":false,"id":0,"name":"","nodeID":""},"name":"","nodeID":"","picture_uri":null,"remarks":null,"scrum_workspace":null,"source":"","sourceID":null,"time_zone":"","ui_extension":null,"updated_at":"","work_hours":{"id":0,"name":"","nodeID":""}},"kind":"response","method":"GET","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T07:49:19.4299079Z"}
+{"kind":"request","method":"GET","path":"/v1/sites","query_param_names":["fields","per_page"],"ts":"2026-04-11T07:49:19.4328161Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/sites","status":200,"ts":"2026-04-11T07:49:19.7476724Z"}
+{"kind":"request","method":"GET","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T07:49:19.7476724Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"address":"","attachments":[],"city":"","country":"","created_at":"","custom_fields":[{"id":"","value":null}],"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":null,"source":"","sourceID":null,"state":"","time_zone":"","ui_extension":{"category":"","id":0,"localized_title":"","name":"","nodeID":"","title":""},"updated_at":"","zip":""},"kind":"response","method":"GET","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T07:49:20.0556498Z"}
+{"kind":"request","method":"GET","path":"/v1/slas/active","query_param_names":["fields","per_page"],"ts":"2026-04-11T07:49:20.0556498Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/slas/active","status":200,"ts":"2026-04-11T07:49:20.3718078Z"}
+{"kind":"request","method":"GET","path":"/v1/slas/{id}","query_param_names":null,"ts":"2026-04-11T07:49:20.3718078Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"activityID_case":null,"activityID_high":null,"activityID_low":null,"activityID_medium":null,"activityID_rfc":null,"activityID_rfi":null,"activityID_top":null,"agreementID":null,"attachments":[],"coverage":"","created_at":"","customer":{"account":{"id":"","name":""},"id":0,"name":"","nodeID":""},"customer_account":{"id":"","name":""},"customer_rep":{"account":{"id":"","name":""},"id":0,"name":"","nodeID":""},"expiry_date":null,"id":0,"name":"","nodeID":"","notice_date":null,"remarks":null,"service_instance":{"id":0,"localized_name":"","name":"","nodeID":""},"service_level_manager":{"account":{"id":"","name":""},"id":0,"name":"","nodeID":""},"service_offering":{"id":0,"name":"","nodeID":"","service":{"id":0,"localized_name":"","name":"","nodeID":"","provider":{"id":0,"name":"","nodeID":""}}},"source":"","sourceID":null,"start_date":"","status":"","updated_at":"","use_knowledge_from_service_provider":false},"kind":"response","method":"GET","path":"/v1/slas/{id}","status":200,"ts":"2026-04-11T07:49:20.699707Z"}
+{"kind":"request","method":"GET","path":"/v1/tasks/finished","query_param_names":["fields","per_page"],"ts":"2026-04-11T07:49:20.699707Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/tasks/finished","status":200,"ts":"2026-04-11T07:49:21.0394579Z"}
+{"kind":"request","method":"GET","path":"/v1/tasks/{id}","query_param_names":null,"ts":"2026-04-11T07:49:21.0394579Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"agile_board_column":null,"agile_board_column_position":null,"anticipated_assignment_at":null,"assigned_at":"","attachments":[],"category":"","checked_items":null,"completion_target_at":"","created_at":"","custom_fields":null,"failure_task":null,"finished_at":"","id":0,"impact":"","instructions":null,"manager":{"account":{"id":"","name":""},"id":0,"name":"","nodeID":""},"member":{"account":{"id":"","name":""},"id":0,"name":"","nodeID":""},"new_assignment":false,"nodeID":"","pdf_design":null,"phase":{"completed_at":null,"created_at":"","id":0,"name":"","nodeID":"","position":0,"started_at":"","status":"","updated_at":""},"planned_duration":0,"planned_effort":null,"provider_not_accountable":false,"rejection_count":0,"request":null,"request_service_instance":null,"request_template":null,"required_approvals":null,"resolution_duration":0,"skill_pool":null,"source":"","sourceID":null,"start_at":null,"status":"","subject":"","supplier":null,"supplier_requestID":null,"team":{"id":0,"name":"","nodeID":""},"template":null,"updated_at":"","urgent":false,"waiting_until":null,"work_hours_are_24x7":false,"workflow":{"id":0,"nodeID":"","subject":""}},"kind":"response","method":"GET","path":"/v1/tasks/{id}","status":200,"ts":"2026-04-11T07:49:21.3610008Z"}
+{"kind":"request","method":"GET","path":"/v1/organizations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:42.3763977Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/organizations","status":200,"ts":"2026-04-11T08:02:43.342714Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:43.342714Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:02:43.6579394Z"}
+{"kind":"request","method":"GET","path":"/v1/products/enabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:43.6579394Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/products/enabled","status":200,"ts":"2026-04-11T08:02:44.0588655Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:44.0601516Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:02:44.376907Z"}
+{"kind":"request","method":"GET","path":"/v1/slas","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:44.376907Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/slas","status":200,"ts":"2026-04-11T08:02:44.7764772Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:44.7768127Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:02:45.1860525Z"}
+{"kind":"request","method":"PATCH","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:02:45.1863748Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":"","scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"PATCH","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:02:45.6133468Z"}
+{"kind":"request","method":"GET","path":"/v1/sites","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:45.6133468Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/sites","status":200,"ts":"2026-04-11T08:02:45.9836846Z"}
+{"kind":"request","method":"PATCH","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:02:45.9836846Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"account":{"id":"","name":""},"address":"","attachments":[],"city":"","country":"","created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":"","source":null,"sourceID":null,"state":"","time_zone":"","ui_extension":null,"updated_at":"","zip":""},"kind":"response","method":"PATCH","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:02:46.4170605Z"}
+{"kind":"request","method":"GET","path":"/v1/service_offerings","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:46.4170605Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/service_offerings","status":200,"ts":"2026-04-11T08:02:46.7801789Z"}
+{"kind":"request","method":"GET","path":"/v1/request_templates","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:46.7801789Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/request_templates","status":200,"ts":"2026-04-11T08:02:47.1813327Z"}
+{"kind":"request","method":"GET","path":"/v1/calendars","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:47.1813327Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/calendars","status":200,"ts":"2026-04-11T08:02:47.5863995Z"}
+{"kind":"request","method":"PATCH","path":"/v1/calendars/{id}","query_param_names":null,"ts":"2026-04-11T08:02:47.5863995Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"calendar_hours":[],"created_at":"","disabled":false,"id":0,"name":"","nodeID":"","source":"","sourceID":null,"updated_at":""},"kind":"response","method":"PATCH","path":"/v1/calendars/{id}","status":200,"ts":"2026-04-11T08:02:48.0542082Z"}
+{"kind":"request","method":"GET","path":"/v1/problems","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:48.0542082Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"message":""},"kind":"response","method":"GET","path":"/v1/problems","status":404,"ts":"2026-04-11T08:02:48.5129849Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:48.5129849Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:48.8385071Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:48.8385071Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:49.2385843Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:49.2385843Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:49.6426309Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:49.6426309Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:50.0383689Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:50.0383689Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:02:50.4393782Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:50.4393782Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:02:50.8448223Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:50.8448223Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:51.2473422Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:51.2473422Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:51.6414327Z"}
+{"kind":"request","method":"GET","path":"/v1/reservations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:51.6414327Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/reservations","status":200,"ts":"2026-04-11T08:02:52.0338717Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:52.0344562Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:52.3607682Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:52.3607682Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:52.7625863Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:52.7632331Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:53.1619262Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:53.1619262Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:53.5591883Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:53.5591883Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:02:53.9622677Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:53.9622677Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:02:54.3643504Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:54.3643504Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:54.7632494Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:54.7632494Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:55.1620657Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:55.1627716Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:55.4903553Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:55.4903553Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:02:55.886715Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:55.886715Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:56.290892Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:56.290892Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:56.6870724Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:56.6870724Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:02:57.0889282Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:02:57.0889282Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:02:57.4916263Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:57.4916263Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:02:57.8931028Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:57.8931028Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:02:58.28687Z"}
+{"kind":"request","method":"GET","path":"/v1/tasks/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:02:58.28687Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/tasks/open","status":200,"ts":"2026-04-11T08:02:58.6873524Z"}
+{"kind":"request","method":"GET","path":"/v1/organizations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:09.4122844Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/organizations","status":200,"ts":"2026-04-11T08:04:10.4288119Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:10.4288119Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:04:10.7581718Z"}
+{"kind":"request","method":"GET","path":"/v1/products/enabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:10.7581718Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/products/enabled","status":200,"ts":"2026-04-11T08:04:11.149927Z"}
+{"kind":"request","method":"GET","path":"/v1/products/disabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:11.149927Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/products/disabled","status":200,"ts":"2026-04-11T08:04:11.5535437Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page","provider"],"ts":"2026-04-11T08:04:11.5535437Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:04:11.9531921Z"}
+{"kind":"request","method":"POST","path":"/v1/services","query_param_names":null,"ts":"2026-04-11T08:04:11.9531921Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"errors":[[""]],"message":""},"kind":"response","method":"POST","path":"/v1/services","status":422,"ts":"2026-04-11T08:04:12.3540957Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:12.3546402Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:04:12.6772046Z"}
+{"kind":"request","method":"GET","path":"/v1/slas","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:12.6772046Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/slas","status":200,"ts":"2026-04-11T08:04:13.0757535Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:13.0757535Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:04:13.4834966Z"}
+{"kind":"request","method":"PATCH","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:04:13.4834966Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":"","scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"PATCH","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:04:13.9863558Z"}
+{"kind":"request","method":"GET","path":"/v1/sites","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:13.9863558Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/sites","status":200,"ts":"2026-04-11T08:04:14.3105532Z"}
+{"kind":"request","method":"PATCH","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:04:14.3105532Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"account":{"id":"","name":""},"address":"","attachments":[],"city":"","country":"","created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":"","source":null,"sourceID":null,"state":"","time_zone":"","ui_extension":null,"updated_at":"","zip":""},"kind":"response","method":"PATCH","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:04:14.7358139Z"}
+{"kind":"request","method":"GET","path":"/v1/service_offerings","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:14.7358139Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/service_offerings","status":200,"ts":"2026-04-11T08:04:15.1063175Z"}
+{"kind":"request","method":"GET","path":"/v1/request_templates","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:15.1063175Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/request_templates","status":200,"ts":"2026-04-11T08:04:15.5079303Z"}
+{"kind":"request","method":"GET","path":"/v1/calendars","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:15.5079303Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/calendars","status":200,"ts":"2026-04-11T08:04:15.9140756Z"}
+{"kind":"request","method":"PATCH","path":"/v1/calendars/{id}","query_param_names":null,"ts":"2026-04-11T08:04:15.9140756Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"calendar_hours":[],"created_at":"","disabled":false,"id":0,"name":"","nodeID":"","source":"","sourceID":null,"updated_at":""},"kind":"response","method":"PATCH","path":"/v1/calendars/{id}","status":200,"ts":"2026-04-11T08:04:16.377122Z"}
+{"kind":"request","method":"GET","path":"/v1/problems","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:16.377122Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"message":""},"kind":"response","method":"GET","path":"/v1/problems","status":404,"ts":"2026-04-11T08:04:16.7027088Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:16.7027088Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:04:17.1231642Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:17.1231642Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:04:17.5225805Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:17.5225805Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:04:17.924775Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:17.924775Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:04:18.3189929Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:18.3189929Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:04:18.8023906Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:18.8023906Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:04:19.1396626Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:19.1396626Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:04:19.5572769Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:19.5572769Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:04:19.9361925Z"}
+{"kind":"request","method":"GET","path":"/v1/reservations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:19.9361925Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/reservations","status":200,"ts":"2026-04-11T08:04:20.4592528Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:20.4599588Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:04:20.7912758Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:20.7912758Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:04:21.1944068Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:21.1944068Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:04:21.5984795Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:21.5984795Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:04:22.022068Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:22.022068Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:04:22.3918701Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:04:22.3918701Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:04:22.8068284Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:22.8068284Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:04:23.1987355Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:23.1987355Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:04:23.5972412Z"}
+{"kind":"request","method":"GET","path":"/v1/tasks/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:04:23.5972412Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/tasks/open","status":200,"ts":"2026-04-11T08:04:23.9968729Z"}
+{"kind":"request","method":"GET","path":"/v1/organizations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:05:10.1406444Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/organizations","status":200,"ts":"2026-04-11T08:05:11.2161198Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:05:11.2181004Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:05:11.5477525Z"}
+{"kind":"request","method":"GET","path":"/v1/products/enabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:05:11.5477525Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/products/enabled","status":200,"ts":"2026-04-11T08:05:11.9449507Z"}
+{"kind":"request","method":"GET","path":"/v1/products/disabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:05:11.9457145Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/products/disabled","status":200,"ts":"2026-04-11T08:05:12.3672463Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page","provider"],"ts":"2026-04-11T08:05:12.3678079Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:05:12.7432656Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:05:12.7432656Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:05:13.1441545Z"}
+{"kind":"request","method":"POST","path":"/v1/services","query_param_names":null,"ts":"2026-04-11T08:05:13.1446719Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"errors":[[""]],"message":""},"kind":"response","method":"POST","path":"/v1/services","status":422,"ts":"2026-04-11T08:05:13.5491281Z"}
+{"kind":"request","method":"GET","path":"/v1/organizations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:18.8360879Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/organizations","status":200,"ts":"2026-04-11T08:06:19.8007022Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:19.801264Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:06:20.1207742Z"}
+{"kind":"request","method":"GET","path":"/v1/products/enabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:20.1207742Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/products/enabled","status":200,"ts":"2026-04-11T08:06:20.5182917Z"}
+{"kind":"request","method":"GET","path":"/v1/products/disabled","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:20.5182917Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/products/disabled","status":200,"ts":"2026-04-11T08:06:20.9290296Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page","provider"],"ts":"2026-04-11T08:06:20.9290296Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:06:21.3178865Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:21.3178865Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:06:21.7233331Z"}
+{"kind":"request","method":"GET","path":"/v1/services","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:21.7243562Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/services","status":200,"ts":"2026-04-11T08:06:22.0392852Z"}
+{"kind":"request","method":"GET","path":"/v1/slas","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:22.0400488Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/slas","status":200,"ts":"2026-04-11T08:06:22.4388198Z"}
+{"kind":"request","method":"GET","path":"/v1/teams","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:22.4395231Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/teams","status":200,"ts":"2026-04-11T08:06:22.843689Z"}
+{"kind":"request","method":"PATCH","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:06:22.843689Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":"","scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"PATCH","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:06:23.2862959Z"}
+{"kind":"request","method":"GET","path":"/v1/sites","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:23.2862959Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/sites","status":200,"ts":"2026-04-11T08:06:23.6425231Z"}
+{"kind":"request","method":"PATCH","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:06:23.6425231Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"account":{"id":"","name":""},"address":"","attachments":[],"city":"","country":"","created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":"","source":null,"sourceID":null,"state":"","time_zone":"","ui_extension":null,"updated_at":"","zip":""},"kind":"response","method":"PATCH","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:06:24.0744061Z"}
+{"kind":"request","method":"GET","path":"/v1/service_offerings","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:24.0744061Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/service_offerings","status":200,"ts":"2026-04-11T08:06:24.4518942Z"}
+{"kind":"request","method":"GET","path":"/v1/request_templates","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:24.4518942Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/request_templates","status":200,"ts":"2026-04-11T08:06:24.8434145Z"}
+{"kind":"request","method":"GET","path":"/v1/calendars","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:24.8434145Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/calendars","status":200,"ts":"2026-04-11T08:06:25.247434Z"}
+{"kind":"request","method":"PATCH","path":"/v1/calendars/{id}","query_param_names":null,"ts":"2026-04-11T08:06:25.2477657Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"calendar_hours":[],"created_at":"","disabled":false,"id":0,"name":"","nodeID":"","source":"","sourceID":null,"updated_at":""},"kind":"response","method":"PATCH","path":"/v1/calendars/{id}","status":200,"ts":"2026-04-11T08:06:25.7172158Z"}
+{"kind":"request","method":"GET","path":"/v1/problems","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:25.7172158Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"message":""},"kind":"response","method":"GET","path":"/v1/problems","status":404,"ts":"2026-04-11T08:06:26.2427031Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:26.2427031Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:06:26.5673952Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:26.5673952Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:06:26.9710333Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:26.9710333Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:06:27.3739419Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:27.3739419Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:06:27.7784719Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:27.7784719Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:06:28.1687395Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:28.1687395Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:06:28.5703227Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:28.5703227Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:06:28.9822802Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:28.9822802Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:06:29.3727437Z"}
+{"kind":"request","method":"GET","path":"/v1/reservations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:29.3727437Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/reservations","status":200,"ts":"2026-04-11T08:06:29.9282888Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:29.9293169Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:06:30.5910073Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/open","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:30.5910073Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/open","status":200,"ts":"2026-04-11T08:06:30.9190235Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:30.9190235Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:06:31.4301172Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:31.4301172Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:06:31.7504093Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_my_team","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:31.7504093Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_my_team","status":200,"ts":"2026-04-11T08:06:32.1506339Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/requested_by_or_for_me","query_param_names":["fields","per_page","state"],"ts":"2026-04-11T08:06:32.1569353Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/requested_by_or_for_me","status":200,"ts":"2026-04-11T08:06:32.5562455Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/waiting_for_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:32.5568289Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/waiting_for_me","status":200,"ts":"2026-04-11T08:06:32.9779315Z"}
+{"kind":"request","method":"GET","path":"/v1/requests/assigned_to_me","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:32.9779315Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/requests/assigned_to_me","status":200,"ts":"2026-04-11T08:06:33.36508Z"}
+{"kind":"request","method":"GET","path":"/v1/tasks/open","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:06:33.36508Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[],"kind":"response","method":"GET","path":"/v1/tasks/open","status":200,"ts":"2026-04-11T08:06:33.7727524Z"}
+{"kind":"request","method":"GET","path":"/v1/organizations","query_param_names":["fields","per_page"],"ts":"2026-04-11T08:07:06.021148Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":[{"account":{"id":"","name":""},"disabled":false,"id":0,"nodeID":""}],"kind":"response","method":"GET","path":"/v1/organizations","status":200,"ts":"2026-04-11T08:07:06.8968357Z"}
+{"kind":"request","method":"POST","path":"/v1/teams","query_param_names":null,"ts":"2026-04-11T08:07:06.8968357Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":null,"scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"POST","path":"/v1/teams","status":201,"ts":"2026-04-11T08:07:07.2481402Z"}
+{"kind":"request","method":"GET","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:07:07.2481402Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":null,"scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"GET","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:07:07.6024947Z"}
+{"kind":"request","method":"PATCH","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:07:07.6024947Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":"","scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"PATCH","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:07:08.0561279Z"}
+{"kind":"request","method":"POST","path":"/v1/sites","query_param_names":null,"ts":"2026-04-11T08:07:08.0561279Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"address":null,"attachments":[],"city":null,"country":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":null,"source":"","sourceID":null,"state":null,"time_zone":null,"ui_extension":null,"updated_at":"","zip":null},"kind":"response","method":"POST","path":"/v1/sites","status":201,"ts":"2026-04-11T08:07:08.4361105Z"}
+{"kind":"request","method":"GET","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:07:08.4361105Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"address":null,"attachments":[],"city":null,"country":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":null,"source":"","sourceID":null,"state":null,"time_zone":null,"ui_extension":null,"updated_at":"","zip":null},"kind":"response","method":"GET","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:07:08.8064376Z"}
+{"kind":"request","method":"PATCH","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:07:08.8064376Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"address":null,"attachments":[],"city":null,"country":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":"","source":"","sourceID":null,"state":null,"time_zone":null,"ui_extension":null,"updated_at":"","zip":null},"kind":"response","method":"PATCH","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:07:09.2634334Z"}
+{"kind":"request","method":"POST","path":"/v1/services","query_param_names":null,"ts":"2026-04-11T08:07:09.2634334Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"errors":[[""]],"message":""},"kind":"response","method":"POST","path":"/v1/services","status":422,"ts":"2026-04-11T08:07:09.6046302Z"}
+{"kind":"request","method":"POST","path":"/v1/slas","query_param_names":null,"ts":"2026-04-11T08:07:09.6046302Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"message":""},"kind":"response","method":"POST","path":"/v1/slas","status":400,"ts":"2026-04-11T08:07:09.9979801Z"}
+{"kind":"request","method":"PATCH","path":"/v1/sites/{id}","query_param_names":null,"ts":"2026-04-11T08:07:09.9979801Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"address":null,"attachments":[],"city":null,"country":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"integration":false,"name":"","nodeID":"","picture_uri":null,"remarks":"","source":"","sourceID":null,"state":null,"time_zone":null,"ui_extension":null,"updated_at":"","zip":null},"kind":"response","method":"PATCH","path":"/v1/sites/{id}","status":200,"ts":"2026-04-11T08:07:10.4824968Z"}
+{"kind":"request","method":"PATCH","path":"/v1/teams/{id}","query_param_names":null,"ts":"2026-04-11T08:07:10.4824968Z"}
+{"content_type":"application/json; charset=utf-8","json_skeleton":{"agile_board":null,"attachments":[],"auto_assign":false,"configuration_manager":null,"coordinator":null,"created_at":"","custom_fields":null,"disabled":false,"id":0,"inbound_email_local_part":null,"manager":null,"name":"","nodeID":"","picture_uri":null,"remarks":"","scrum_workspace":null,"source":"","sourceID":null,"time_zone":null,"ui_extension":null,"updated_at":"","work_hours":null},"kind":"response","method":"PATCH","path":"/v1/teams/{id}","status":200,"ts":"2026-04-11T08:07:10.859858Z"}

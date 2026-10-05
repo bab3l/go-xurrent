@@ -19,22 +19,21 @@ import (
 	"strings"
 )
 
-
 // OrganizationsAPIService OrganizationsAPI service
 type OrganizationsAPIService service
 
 type ApiGetOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *OrganizationsAPIService
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *OrganizationsAPIService
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetOrganizationsRequest) Authorization(authorization string) ApiGetOrganizationsRequest {
@@ -89,31 +88,32 @@ func (r ApiGetOrganizationsRequest) State(state string) ApiGetOrganizationsReque
 	return r
 }
 
-func (r ApiGetOrganizationsRequest) Execute() ([]Organization, *http.Response, error) {
+func (r ApiGetOrganizationsRequest) Execute() ([]GetOrganizations200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetOrganizationsExecute(r)
 }
 
 /*
 GetOrganizations GetOrganizationsList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetOrganizationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetOrganizationsRequest
 */
 func (a *OrganizationsAPIService) GetOrganizations(ctx context.Context) ApiGetOrganizationsRequest {
 	return ApiGetOrganizationsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Organization
-func (a *OrganizationsAPIService) GetOrganizationsExecute(r ApiGetOrganizationsRequest) ([]Organization, *http.Response, error) {
+//
+//	@return []GetOrganizations200ResponseInner
+func (a *OrganizationsAPIService) GetOrganizationsExecute(r ApiGetOrganizationsRequest) ([]GetOrganizations200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Organization
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetOrganizations200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrganizations")
@@ -209,13 +209,13 @@ func (a *OrganizationsAPIService) GetOrganizationsExecute(r ApiGetOrganizationsR
 }
 
 type ApiGetOrganizationsIdRequest struct {
-	ctx context.Context
-	ApiService *OrganizationsAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *OrganizationsAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	ifNoneMatch *string
+	ifNoneMatch      *string
 }
 
 func (r ApiGetOrganizationsIdRequest) Authorization(authorization string) ApiGetOrganizationsIdRequest {
@@ -240,33 +240,34 @@ func (r ApiGetOrganizationsIdRequest) IfNoneMatch(ifNoneMatch string) ApiGetOrga
 	return r
 }
 
-func (r ApiGetOrganizationsIdRequest) Execute() (*Organization, *http.Response, error) {
+func (r ApiGetOrganizationsIdRequest) Execute() (*GetOrganizationsId200Response, *http.Response, error) {
 	return r.ApiService.GetOrganizationsIdExecute(r)
 }
 
 /*
 GetOrganizationsId GetOrganizationProperties
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetOrganizationsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetOrganizationsIdRequest
 */
 func (a *OrganizationsAPIService) GetOrganizationsId(ctx context.Context, id int32) ApiGetOrganizationsIdRequest {
 	return ApiGetOrganizationsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Organization
-func (a *OrganizationsAPIService) GetOrganizationsIdExecute(r ApiGetOrganizationsIdRequest) (*Organization, *http.Response, error) {
+//
+//	@return GetOrganizationsId200Response
+func (a *OrganizationsAPIService) GetOrganizationsIdExecute(r ApiGetOrganizationsIdRequest) (*GetOrganizationsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Organization
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetOrganizationsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrganizationsId")
@@ -348,12 +349,12 @@ func (a *OrganizationsAPIService) GetOrganizationsIdExecute(r ApiGetOrganization
 }
 
 type ApiPatchOrganizationsIdRequest struct {
-	ctx context.Context
-	ApiService *OrganizationsAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *OrganizationsAPIService
+	id            int32
 	authorization *string
-	x4meAccount *string
-	organization *Organization
+	x4meAccount   *string
+	organization  *Organization
 }
 
 func (r ApiPatchOrganizationsIdRequest) Authorization(authorization string) ApiPatchOrganizationsIdRequest {
@@ -371,33 +372,34 @@ func (r ApiPatchOrganizationsIdRequest) Organization(organization Organization) 
 	return r
 }
 
-func (r ApiPatchOrganizationsIdRequest) Execute() (*Organization, *http.Response, error) {
+func (r ApiPatchOrganizationsIdRequest) Execute() (*GetOrganizationsId200Response, *http.Response, error) {
 	return r.ApiService.PatchOrganizationsIdExecute(r)
 }
 
 /*
 PatchOrganizationsId UpdateOrganization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchOrganizationsIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchOrganizationsIdRequest
 */
 func (a *OrganizationsAPIService) PatchOrganizationsId(ctx context.Context, id int32) ApiPatchOrganizationsIdRequest {
 	return ApiPatchOrganizationsIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Organization
-func (a *OrganizationsAPIService) PatchOrganizationsIdExecute(r ApiPatchOrganizationsIdRequest) (*Organization, *http.Response, error) {
+//
+//	@return GetOrganizationsId200Response
+func (a *OrganizationsAPIService) PatchOrganizationsIdExecute(r ApiPatchOrganizationsIdRequest) (*GetOrganizationsId200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Organization
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetOrganizationsId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.PatchOrganizationsId")
@@ -475,11 +477,11 @@ func (a *OrganizationsAPIService) PatchOrganizationsIdExecute(r ApiPatchOrganiza
 }
 
 type ApiPostOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *OrganizationsAPIService
+	ctx           context.Context
+	ApiService    *OrganizationsAPIService
 	authorization *string
-	x4meAccount *string
-	organization *Organization
+	x4meAccount   *string
+	organization  *Organization
 }
 
 func (r ApiPostOrganizationsRequest) Authorization(authorization string) ApiPostOrganizationsRequest {
@@ -504,24 +506,25 @@ func (r ApiPostOrganizationsRequest) Execute() (*Organization, *http.Response, e
 /*
 PostOrganizations CreateOrganization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostOrganizationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostOrganizationsRequest
 */
 func (a *OrganizationsAPIService) PostOrganizations(ctx context.Context) ApiPostOrganizationsRequest {
 	return ApiPostOrganizationsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationsAPIService) PostOrganizationsExecute(r ApiPostOrganizationsRequest) (*Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Organization
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.PostOrganizations")

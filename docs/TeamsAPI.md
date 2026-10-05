@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## GetTeams
 
-> []map[string]interface{} GetTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetTeams200ResponseInner GetTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List teams
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTeams`: []map[string]interface{}
+	// response from `GetTeams`: []GetTeams200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeams`: %v\n", resp)
 }
 ```
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetTeams200ResponseInner**](GetTeams200ResponseInner.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ No authorization required
 
 ## GetTeamsId
 
-> map[string]interface{} GetTeamsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetTeamsId200Response GetTeamsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetTeamProperties
 
@@ -124,7 +124,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeamsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTeamsId`: map[string]interface{}
+	// response from `GetTeamsId`: GetTeamsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeamsId`: %v\n", resp)
 }
 ```
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetTeamsId200Response**](GetTeamsId200Response.md)
 
 ### Authorization
 
@@ -170,7 +170,7 @@ No authorization required
 
 ## GetTeamsIdMembers
 
-> map[string]interface{} GetTeamsIdMembers(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetTeamsIdMembers(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetTeamMembersList
 
@@ -205,7 +205,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeamsIdMembers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTeamsIdMembers`: map[string]interface{}
+	// response from `GetTeamsIdMembers`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeamsIdMembers`: %v\n", resp)
 }
 ```
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ No authorization required
 
 ## PatchTeamsId
 
-> map[string]interface{} PatchTeamsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> GetTeamsId200Response PatchTeamsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Update a team
 
@@ -285,7 +285,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.PatchTeamsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchTeamsId`: map[string]interface{}
+	// response from `PatchTeamsId`: GetTeamsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.PatchTeamsId`: %v\n", resp)
 }
 ```
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetTeamsId200Response**](GetTeamsId200Response.md)
 
 ### Authorization
 
@@ -330,7 +330,7 @@ No authorization required
 
 ## PostTeams
 
-> map[string]interface{} PostTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostTeams201Response PostTeams(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Create a team
 
@@ -358,7 +358,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.PostTeams``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostTeams`: map[string]interface{}
+	// response from `PostTeams`: PostTeams201Response
 	fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.PostTeams`: %v\n", resp)
 }
 ```
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostTeams201Response**](PostTeams201Response.md)
 
 ### Authorization
 

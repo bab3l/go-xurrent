@@ -100,7 +100,7 @@ No authorization required
 
 ## GetTasksApprovalByMe
 
-> []map[string]interface{} GetTasksApprovalByMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetTasksApprovalByMe200ResponseInner GetTasksApprovalByMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List approval tasks assigned to API user (non-registered status)
 
@@ -134,7 +134,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksApprovalByMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTasksApprovalByMe`: []map[string]interface{}
+	// response from `GetTasksApprovalByMe`: []GetTasksApprovalByMe200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.GetTasksApprovalByMe`: %v\n", resp)
 }
 ```
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetTasksApprovalByMe200ResponseInner**](GetTasksApprovalByMe200ResponseInner.md)
 
 ### Authorization
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -482,7 +482,7 @@ No authorization required
 
 ## GetTasksId
 
-> GetTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetTasksId200Response GetTasksId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetTasksProperties
 
@@ -507,11 +507,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.TasksAPI.GetTasksId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.GetTasksId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetTasksId`: GetTasksId200Response
+	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.GetTasksId`: %v\n", resp)
 }
 ```
 
@@ -538,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetTasksId200Response**](GetTasksId200Response.md)
 
 ### Authorization
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetProductCategories
 
-> map[string]interface{} GetProductCategories(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetProductCategories200ResponseInner GetProductCategories(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetProductCategoriesList
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductCategoriesAPI.GetProductCategories``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetProductCategories`: map[string]interface{}
+	// response from `GetProductCategories`: []GetProductCategories200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `ProductCategoriesAPI.GetProductCategories`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetProductCategories200ResponseInner**](GetProductCategories200ResponseInner.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ No authorization required
 
 ## GetProductCategoriesId
 
-> GetProductCategoriesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetProductCategoriesId200Response GetProductCategoriesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetProductCategoriesProperties
 
@@ -116,11 +116,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ProductCategoriesAPI.GetProductCategoriesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.ProductCategoriesAPI.GetProductCategoriesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductCategoriesAPI.GetProductCategoriesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetProductCategoriesId`: GetProductCategoriesId200Response
+	fmt.Fprintf(os.Stdout, "Response from `ProductCategoriesAPI.GetProductCategoriesId`: %v\n", resp)
 }
 ```
 
@@ -147,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetProductCategoriesId200Response**](GetProductCategoriesId200Response.md)
 
 ### Authorization
 

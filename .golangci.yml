@@ -1,0 +1,20 @@
+# Focus on hand-maintained code: integration tests use //go:build integration; generated client/model files are skipped.
+version: "2"
+
+run:
+  timeout: 5m
+  tests: true
+  build-tags:
+    - integration
+  skip-files:
+    - "^api_.*\\.go$"
+    - "^model_.*\\.go$"
+    - "^(client|configuration|response|utils)\\.go$"
+    - "^test/api_.*_test\\.go$"
+
+linters:
+  default: standard
+
+issues:
+  max-issues-per-linter: 50
+  max-same-issues: 5

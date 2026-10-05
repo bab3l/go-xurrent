@@ -11,6 +11,10 @@ Write-Host "Generating Go client from $InputFile..."
 # Pin image tag for reproducible builds (see .openapi-generator/VERSION for last generated toolchain).
 $OpenApiGenImage = "openapitools/openapi-generator-cli:v7.8.0"
 
+# If Docker Desktop's engine is not running, use WSL, e.g.:
+#   wsl -e bash -c 'docker run --rm -v "/mnt/c/GitRoot/go-xurrent:/local" openapitools/openapi-generator-cli:v7.8.0 generate ...'
+# Hand-maintained files are listed in ..\.openapi-generator-ignore (README, go.mod, collection_*.go, etc.).
+
 # Run OpenAPI Generator via Docker
 docker run --rm `
     -v "${ProjectRoot}:/local" `

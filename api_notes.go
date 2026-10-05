@@ -19,23 +19,22 @@ import (
 	"strings"
 )
 
-
 // NotesAPIService NotesAPI service
 type NotesAPIService service
 
 type ApiGetRequestsIdNotesRequest struct {
-	ctx context.Context
-	ApiService *NotesAPIService
-	id int32
-	authorization *string
-	x4meAccount *string
+	ctx              context.Context
+	ApiService       *NotesAPIService
+	id               int32
+	authorization    *string
+	x4meAccount      *string
 	xXurrentLanguage *string
-	perPage *int32
-	searchAfter *string
-	searchBefore *string
-	fields *string
-	sort *string
-	state *string
+	perPage          *int32
+	searchAfter      *string
+	searchBefore     *string
+	fields           *string
+	sort             *string
+	state            *string
 }
 
 func (r ApiGetRequestsIdNotesRequest) Authorization(authorization string) ApiGetRequestsIdNotesRequest {
@@ -90,33 +89,34 @@ func (r ApiGetRequestsIdNotesRequest) State(state string) ApiGetRequestsIdNotesR
 	return r
 }
 
-func (r ApiGetRequestsIdNotesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetRequestsIdNotesRequest) Execute() ([]GetRequestsIdNotes200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetRequestsIdNotesExecute(r)
 }
 
 /*
 GetRequestsIdNotes GetIssuesNotesList
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetRequestsIdNotesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetRequestsIdNotesRequest
 */
 func (a *NotesAPIService) GetRequestsIdNotes(ctx context.Context, id int32) ApiGetRequestsIdNotesRequest {
 	return ApiGetRequestsIdNotesRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *NotesAPIService) GetRequestsIdNotesExecute(r ApiGetRequestsIdNotesRequest) (map[string]interface{}, *http.Response, error) {
+//
+//	@return []GetRequestsIdNotes200ResponseInner
+func (a *NotesAPIService) GetRequestsIdNotesExecute(r ApiGetRequestsIdNotesRequest) ([]GetRequestsIdNotes200ResponseInner, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GetRequestsIdNotes200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotesAPIService.GetRequestsIdNotes")

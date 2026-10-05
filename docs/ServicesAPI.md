@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -95,7 +95,7 @@ No authorization required
 
 ## GetServicesId
 
-> map[string]interface{} GetServicesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetServicesId200Response GetServicesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetServiceProperties
 
@@ -125,7 +125,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServicesAPI.GetServicesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetServicesId`: map[string]interface{}
+	// response from `GetServicesId`: GetServicesId200Response
 	fmt.Fprintf(os.Stdout, "Response from `ServicesAPI.GetServicesId`: %v\n", resp)
 }
 ```
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetServicesId200Response**](GetServicesId200Response.md)
 
 ### Authorization
 

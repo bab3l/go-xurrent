@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## GetSlas
 
-> map[string]interface{} GetSlas(ctx).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetSlas(ctx).Authorization(authorization).X4meAccount(x4meAccount).ServiceInstance(serviceInstance).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetSLAListAllByService
 
@@ -50,7 +50,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlas``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSlas`: map[string]interface{}
+	// response from `GetSlas`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlas`: %v\n", resp)
 }
 ```
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 
 ## GetSlasActive
 
-> map[string]interface{} GetSlasActive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetSlasActive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetSLAListActive
 
@@ -131,7 +131,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasActive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSlasActive`: map[string]interface{}
+	// response from `GetSlasActive`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlasActive`: %v\n", resp)
 }
 ```
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ No authorization required
 
 ## GetSlasId
 
-> GetSlasId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetSlasId200Response GetSlasId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetSLAProperties
 
@@ -202,11 +202,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServiceLevelAgreementsAPI.GetSlasId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.ServiceLevelAgreementsAPI.GetSlasId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetSlasId`: GetSlasId200Response
+	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlasId`: %v\n", resp)
 }
 ```
 
@@ -233,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetSlasId200Response**](GetSlasId200Response.md)
 
 ### Authorization
 
@@ -251,7 +253,7 @@ No authorization required
 
 ## GetSlasInactive
 
-> map[string]interface{} GetSlasInactive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetSlasInactive(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetSLAListInactive
 
@@ -285,7 +287,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelAgreementsAPI.GetSlasInactive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSlasInactive`: map[string]interface{}
+	// response from `GetSlasInactive`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelAgreementsAPI.GetSlasInactive`: %v\n", resp)
 }
 ```
@@ -313,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 

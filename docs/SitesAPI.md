@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetSites
 
-> []map[string]interface{} GetSites(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetSites200ResponseInner GetSites(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List sites
 
@@ -47,7 +47,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.GetSites``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSites`: []map[string]interface{}
+	// response from `GetSites`: []GetSites200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `SitesAPI.GetSites`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetSites200ResponseInner**](GetSites200ResponseInner.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ No authorization required
 
 ## GetSitesId
 
-> GetSitesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetSitesId200Response GetSitesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetSiteProperties
 
@@ -118,11 +118,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SitesAPI.GetSitesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+	resp, r, err := apiClient.SitesAPI.GetSitesId(context.Background(), id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.GetSitesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetSitesId`: GetSitesId200Response
+	fmt.Fprintf(os.Stdout, "Response from `SitesAPI.GetSitesId`: %v\n", resp)
 }
 ```
 
@@ -149,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetSitesId200Response**](GetSitesId200Response.md)
 
 ### Authorization
 
@@ -167,7 +169,7 @@ No authorization required
 
 ## PatchSitesId
 
-> map[string]interface{} PatchSitesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> GetSitesId200Response PatchSitesId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Update a site
 
@@ -196,7 +198,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.PatchSitesId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchSitesId`: map[string]interface{}
+	// response from `PatchSitesId`: GetSitesId200Response
 	fmt.Fprintf(os.Stdout, "Response from `SitesAPI.PatchSitesId`: %v\n", resp)
 }
 ```
@@ -223,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetSitesId200Response**](GetSitesId200Response.md)
 
 ### Authorization
 
@@ -241,7 +243,7 @@ No authorization required
 
 ## PostSites
 
-> map[string]interface{} PostSites(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
+> PostSites201Response PostSites(ctx).Authorization(authorization).X4meAccount(x4meAccount).Body(body).Execute()
 
 Create a site
 
@@ -269,7 +271,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SitesAPI.PostSites``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostSites`: map[string]interface{}
+	// response from `PostSites`: PostSites201Response
 	fmt.Fprintf(os.Stdout, "Response from `SitesAPI.PostSites`: %v\n", resp)
 }
 ```
@@ -291,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**PostSites201Response**](PostSites201Response.md)
 
 ### Authorization
 

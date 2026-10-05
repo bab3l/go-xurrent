@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetUiExtensions
 
-> map[string]interface{} GetUiExtensions(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetUiExtensions(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetUIExtensionPropertiesList
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.GetUiExtensions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUiExtensions`: map[string]interface{}
+	// response from `GetUiExtensions`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.GetUiExtensions`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ No authorization required
 
 ## GetUiExtensionsId
 
-> map[string]interface{} GetUiExtensionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetUiExtensionsId200Response GetUiExtensionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetUIExtensionProperties Copy
 
@@ -121,7 +121,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIExtensionsAPI.GetUiExtensionsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUiExtensionsId`: map[string]interface{}
+	// response from `GetUiExtensionsId`: GetUiExtensionsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `UIExtensionsAPI.GetUiExtensionsId`: %v\n", resp)
 }
 ```
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetUiExtensionsId200Response**](GetUiExtensionsId200Response.md)
 
 ### Authorization
 

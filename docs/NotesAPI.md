@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetRequestsIdNotes
 
-> map[string]interface{} GetRequestsIdNotes(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetRequestsIdNotes200ResponseInner GetRequestsIdNotes(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesNotesList
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotesAPI.GetRequestsIdNotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdNotes`: map[string]interface{}
+	// response from `GetRequestsIdNotes`: []GetRequestsIdNotes200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `NotesAPI.GetRequestsIdNotes`: %v\n", resp)
 }
 ```
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetRequestsIdNotes200ResponseInner**](GetRequestsIdNotes200ResponseInner.md)
 
 ### Authorization
 

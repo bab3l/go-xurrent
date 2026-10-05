@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetAttachmentsStorage
 
-> map[string]interface{} GetAttachmentsStorage(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetAttachmentsStorage200Response GetAttachmentsStorage(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 Add Attach - ReservePlaceForAttachment
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttachmentsAPI.GetAttachmentsStorage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAttachmentsStorage`: map[string]interface{}
+	// response from `GetAttachmentsStorage`: GetAttachmentsStorage200Response
 	fmt.Fprintf(os.Stdout, "Response from `AttachmentsAPI.GetAttachmentsStorage`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetAttachmentsStorage200Response**](GetAttachmentsStorage200Response.md)
 
 ### Authorization
 

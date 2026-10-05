@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetCustomCollectionElements
 
-> map[string]interface{} GetCustomCollectionElements(ctx).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetCustomCollectionElements(ctx).Authorization(authorization).X4meAccount(x4meAccount).CustomCollection(customCollection).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCustomCollectionElementsList (by custom_collection_id)
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionElements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCustomCollectionElements`: map[string]interface{}
+	// response from `GetCustomCollectionElements`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionElements`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -95,7 +95,7 @@ No authorization required
 
 ## GetCustomCollectionElementsId
 
-> map[string]interface{} GetCustomCollectionElementsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetCustomCollectionElementsId200Response GetCustomCollectionElementsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetCustomCollectionElementsProperties
 
@@ -125,7 +125,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionElementsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCustomCollectionElementsId`: map[string]interface{}
+	// response from `GetCustomCollectionElementsId`: GetCustomCollectionElementsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionElementsId`: %v\n", resp)
 }
 ```
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetCustomCollectionElementsId200Response**](GetCustomCollectionElementsId200Response.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ No authorization required
 
 ## GetCustomCollections
 
-> map[string]interface{} GetCustomCollections(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetCustomCollections(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetCustomCollectionsList
 
@@ -205,7 +205,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollections``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCustomCollections`: map[string]interface{}
+	// response from `GetCustomCollections`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollections`: %v\n", resp)
 }
 ```
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -251,7 +251,7 @@ No authorization required
 
 ## GetCustomCollectionsId
 
-> map[string]interface{} GetCustomCollectionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetCustomCollectionsId200Response GetCustomCollectionsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetCustomCollectionProperties
 
@@ -281,7 +281,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomCollectionsAPI.GetCustomCollectionsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCustomCollectionsId`: map[string]interface{}
+	// response from `GetCustomCollectionsId`: GetCustomCollectionsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `CustomCollectionsAPI.GetCustomCollectionsId`: %v\n", resp)
 }
 ```
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetCustomCollectionsId200Response**](GetCustomCollectionsId200Response.md)
 
 ### Authorization
 

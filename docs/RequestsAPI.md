@@ -111,7 +111,7 @@ No authorization required
 
 ## GetRequestsAssignedToMe
 
-> map[string]interface{} GetRequestsAssignedToMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestsAssignedToMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).Subject(subject).Status(status).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesList (assigned to ...)
 
@@ -147,7 +147,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsAssignedToMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsAssignedToMe`: map[string]interface{}
+	// response from `GetRequestsAssignedToMe`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsAssignedToMe`: %v\n", resp)
 }
 ```
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ No authorization required
 
 ## GetRequestsAssignedToMyTeam
 
-> map[string]interface{} GetRequestsAssignedToMyTeam(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestsAssignedToMyTeam(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesList (assigned to my team)
 
@@ -229,7 +229,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsAssignedToMyTeam``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsAssignedToMyTeam`: map[string]interface{}
+	// response from `GetRequestsAssignedToMyTeam`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsAssignedToMyTeam`: %v\n", resp)
 }
 ```
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ No authorization required
 
 ## GetRequestsCompleted
 
-> map[string]interface{} GetRequestsCompleted(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestsCompleted(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesList (in status \"completed\")
 
@@ -309,7 +309,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsCompleted``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsCompleted`: map[string]interface{}
+	// response from `GetRequestsCompleted`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsCompleted`: %v\n", resp)
 }
 ```
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ No authorization required
 
 ## GetRequestsId
 
-> map[string]interface{} GetRequestsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
+> GetRequestsId200Response GetRequestsId(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).IfNoneMatch(ifNoneMatch).Execute()
 
 GetIssuesProperties
 
@@ -385,7 +385,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsId`: map[string]interface{}
+	// response from `GetRequestsId`: GetRequestsId200Response
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsId`: %v\n", resp)
 }
 ```
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetRequestsId200Response**](GetRequestsId200Response.md)
 
 ### Authorization
 
@@ -515,7 +515,7 @@ No authorization required
 
 ## GetRequestsIdCis
 
-> map[string]interface{} GetRequestsIdCis(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetRequestsIdCis200ResponseInner GetRequestsIdCis(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssueAllRelatedCiList
 
@@ -550,7 +550,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdCis``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdCis`: map[string]interface{}
+	// response from `GetRequestsIdCis`: []GetRequestsIdCis200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdCis`: %v\n", resp)
 }
 ```
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]GetRequestsIdCis200ResponseInner**](GetRequestsIdCis200ResponseInner.md)
 
 ### Authorization
 
@@ -601,7 +601,7 @@ No authorization required
 
 ## GetRequestsIdCisActive
 
-> []map[string]interface{} GetRequestsIdCisActive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetRequestsIdCis200ResponseInner GetRequestsIdCisActive(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List active configuration items linked to a request
 
@@ -636,7 +636,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdCisActive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdCisActive`: []map[string]interface{}
+	// response from `GetRequestsIdCisActive`: []GetRequestsIdCis200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdCisActive`: %v\n", resp)
 }
 ```
@@ -669,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetRequestsIdCis200ResponseInner**](GetRequestsIdCis200ResponseInner.md)
 
 ### Authorization
 
@@ -755,7 +755,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -773,7 +773,7 @@ No authorization required
 
 ## GetRequestsIdGroupedRequests
 
-> map[string]interface{} GetRequestsIdGroupedRequests(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestsIdGroupedRequests(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetGroupedRequestLinkedRecordsList
 
@@ -808,7 +808,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdGroupedRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdGroupedRequests`: map[string]interface{}
+	// response from `GetRequestsIdGroupedRequests`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdGroupedRequests`: %v\n", resp)
 }
 ```
@@ -841,7 +841,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -859,7 +859,7 @@ No authorization required
 
 ## GetRequestsIdNotesInternal
 
-> []map[string]interface{} GetRequestsIdNotesInternal(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetRequestsIdNotesInternal200ResponseInner GetRequestsIdNotesInternal(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List internal notes for a request
 
@@ -894,7 +894,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdNotesInternal``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdNotesInternal`: []map[string]interface{}
+	// response from `GetRequestsIdNotesInternal`: []GetRequestsIdNotesInternal200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdNotesInternal`: %v\n", resp)
 }
 ```
@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetRequestsIdNotesInternal200ResponseInner**](GetRequestsIdNotesInternal200ResponseInner.md)
 
 ### Authorization
 
@@ -945,7 +945,7 @@ No authorization required
 
 ## GetRequestsIdNotesPublic
 
-> []map[string]interface{} GetRequestsIdNotesPublic(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []GetRequestsIdNotes200ResponseInner GetRequestsIdNotesPublic(ctx, id).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 List public notes for a request
 
@@ -980,7 +980,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsIdNotesPublic``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsIdNotesPublic`: []map[string]interface{}
+	// response from `GetRequestsIdNotesPublic`: []GetRequestsIdNotes200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsIdNotesPublic`: %v\n", resp)
 }
 ```
@@ -1013,7 +1013,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]GetRequestsIdNotes200ResponseInner**](GetRequestsIdNotes200ResponseInner.md)
 
 ### Authorization
 
@@ -1093,7 +1093,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1173,7 +1173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1191,7 +1191,7 @@ No authorization required
 
 ## GetRequestsRequestedByOrForMe
 
-> map[string]interface{} GetRequestsRequestedByOrForMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
+> []map[string]interface{} GetRequestsRequestedByOrForMe(ctx).Authorization(authorization).X4meAccount(x4meAccount).XXurrentLanguage(xXurrentLanguage).PerPage(perPage).SearchAfter(searchAfter).SearchBefore(searchBefore).Fields(fields).Sort(sort).State(state).Execute()
 
 GetIssuesList (requested by or for current user)
 
@@ -1225,7 +1225,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.GetRequestsRequestedByOrForMe``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRequestsRequestedByOrForMe`: map[string]interface{}
+	// response from `GetRequestsRequestedByOrForMe`: []map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.GetRequestsRequestedByOrForMe`: %v\n", resp)
 }
 ```
@@ -1253,7 +1253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1413,7 +1413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
@@ -1493,7 +1493,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]map[string]interface{}**](map.md)
 
 ### Authorization
 
