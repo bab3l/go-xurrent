@@ -56,6 +56,8 @@ type APIClient struct {
 
 	CalendarsAPI *CalendarsAPIService
 
+	ClosureCodesAPI *ClosureCodesAPIService
+
 	ConfigurationItemRelationsAPI *ConfigurationItemRelationsAPIService
 
 	ConfigurationItemsAPI *ConfigurationItemsAPIService
@@ -63,6 +65,10 @@ type APIClient struct {
 	ContractsAPI *ContractsAPIService
 
 	CustomCollectionsAPI *CustomCollectionsAPIService
+
+	EffortClassesAPI *EffortClassesAPIService
+
+	EmailTemplatesAPI *EmailTemplatesAPIService
 
 	EventsAPI *EventsAPIService
 
@@ -72,9 +78,13 @@ type APIClient struct {
 
 	GeneralAPI *GeneralAPIService
 
+	HolidaysAPI *HolidaysAPIService
+
 	ImportAPI *ImportAPIService
 
 	InvoicesAPI *InvoicesAPIService
+
+	KnowledgeArticlesAPI *KnowledgeArticlesAPIService
 
 	NotesAPI *NotesAPIService
 
@@ -108,6 +118,8 @@ type APIClient struct {
 
 	SitesAPI *SitesAPIService
 
+	SLANotificationSchemesAPI *SLANotificationSchemesAPIService
+
 	SurveysAPI *SurveysAPIService
 
 	TasksAPI *TasksAPIService
@@ -117,6 +129,8 @@ type APIClient struct {
 	UIExtensionsAPI *UIExtensionsAPIService
 
 	WorkflowsAPI *WorkflowsAPIService
+
+	WorkflowTypesAPI *WorkflowTypesAPIService
 }
 
 type service struct {
@@ -139,16 +153,21 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AttachmentsAPI = (*AttachmentsAPIService)(&c.common)
 	c.AutomationRulesAPI = (*AutomationRulesAPIService)(&c.common)
 	c.CalendarsAPI = (*CalendarsAPIService)(&c.common)
+	c.ClosureCodesAPI = (*ClosureCodesAPIService)(&c.common)
 	c.ConfigurationItemRelationsAPI = (*ConfigurationItemRelationsAPIService)(&c.common)
 	c.ConfigurationItemsAPI = (*ConfigurationItemsAPIService)(&c.common)
 	c.ContractsAPI = (*ContractsAPIService)(&c.common)
 	c.CustomCollectionsAPI = (*CustomCollectionsAPIService)(&c.common)
+	c.EffortClassesAPI = (*EffortClassesAPIService)(&c.common)
+	c.EmailTemplatesAPI = (*EmailTemplatesAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.ExportAPI = (*ExportAPIService)(&c.common)
 	c.FirstLineSupportAgreementsAPI = (*FirstLineSupportAgreementsAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
+	c.HolidaysAPI = (*HolidaysAPIService)(&c.common)
 	c.ImportAPI = (*ImportAPIService)(&c.common)
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
+	c.KnowledgeArticlesAPI = (*KnowledgeArticlesAPIService)(&c.common)
 	c.NotesAPI = (*NotesAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.PeopleAPI = (*PeopleAPIService)(&c.common)
@@ -165,11 +184,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServiceOfferingsAPI = (*ServiceOfferingsAPIService)(&c.common)
 	c.ServicesAPI = (*ServicesAPIService)(&c.common)
 	c.SitesAPI = (*SitesAPIService)(&c.common)
+	c.SLANotificationSchemesAPI = (*SLANotificationSchemesAPIService)(&c.common)
 	c.SurveysAPI = (*SurveysAPIService)(&c.common)
 	c.TasksAPI = (*TasksAPIService)(&c.common)
 	c.TeamsAPI = (*TeamsAPIService)(&c.common)
 	c.UIExtensionsAPI = (*UIExtensionsAPIService)(&c.common)
 	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)
+	c.WorkflowTypesAPI = (*WorkflowTypesAPIService)(&c.common)
 
 	return c
 }
